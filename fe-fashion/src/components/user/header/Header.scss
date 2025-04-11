@@ -1,0 +1,45 @@
+.navbar-brand {
+    font-family: volkhov, serif;
+    font-weight: 500;
+}
+.header-container {
+    .nav-link {
+        font-size: 0.8rem;
+    }
+    .me-auto {
+        margin-left: 35%;
+        display: flex;
+        gap: 2rem;
+    }
+    .ml-auto {
+        display: flex;
+        gap: 1rem;
+    }
+    .btn {
+        font-size: 0.6rem;
+        padding: 10px 30px;
+        border-radius: 10px;
+    }
+    .filter-input {
+        width: 150px;
+        padding: 5px 7px;
+        font-size: 0.8rem;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        outline: none;
+        transition: all 0.3s ease;
+    }
+    .filter-input:focus {
+        border-color: #8b97a3; /* Đổi màu viền khi focus */
+        box-shadow: 0 0 5px rgba(170, 187, 205, 0.5); 
+    }
+    .nav-link {
+        img {
+            width: 12px;
+            /* Kích thước icon */
+            height: 12px;
+            display: inline-block;
+            vertical-align: middle;
+        }
+    }
+}
