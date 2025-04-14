@@ -1,12 +1,12 @@
 import './App.scss';
-import Header from './components/user/header/Header';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
+import AdminRoutes from './routes/AdminRoutes';
+
 function App() {
   return (
     <div className="App">
       <Router>
-        <Header />
-        
+        <AdminRoutes />
       </Router>
     </div>
   );
