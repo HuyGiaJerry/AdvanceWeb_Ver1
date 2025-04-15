@@ -14,7 +14,7 @@ const UltimateSale = () => {
                         <img
                             src={require('../../../assets/images/model_left.png')}
                             alt="model_left"
-                            fluid
+                            
                             style={{ maxHeight: '400px' }}
                         />
                     </Col>
@@ -24,8 +24,8 @@ const UltimateSale = () => {
                         <div className="mb-3">
                             <img
                                 src={require('../../../assets/images/model_top.png')}
-                                alt="model_left"
-                                fluid
+                                alt="model_top"
+                                
                                 style={{ maxHeight: '120px' }}
                             />
                         </div>
@@ -42,8 +42,8 @@ const UltimateSale = () => {
                         <div className="mt-3">
                             <img
                                 src={require('../../../assets/images/model_bottom.png')}
-                                alt="model_left"
-                                fluid
+                                alt="model_bottom"
+                                
                                 style={{ maxHeight: '120px' }}
                             />
                         </div>
@@ -53,8 +53,8 @@ const UltimateSale = () => {
                     <Col md={4} className="d-flex justify-content-center align-items-center" style={{ backgroundColor: '#f4f4f4', height: '540px', borderRadius: '10px' }}>
                         <img
                             src={require('../../../assets/images/model_right.png')}
-                            alt="model_left"
-                            fluid
+                            alt="model_right"
+                            
                             style={{ maxHeight: '400px' }}
                         />
                     </Col>
