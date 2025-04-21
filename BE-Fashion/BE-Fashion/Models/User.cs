@@ -1,20 +1,47 @@
-﻿namespace BE_Fashion.Models
+﻿using System;
+using System.Collections.Generic;
+
+namespace BE_Fashion.Models;
+
+public partial class User
 {
-    public class User
-    {
-        public int Id { get; set; }
-        
-        public string? Email { get; set; }
+    public int UserId { get; set; }
 
-        public string? Phone {  get; set; }
-        public string? PasswordHash { get; set; } = string.Empty;
+    public string? Email { get; set; }
 
-        public string? Salt {  get; set; } = string.Empty;
-        public string Role {  get; set; } = "Customer"; // Role Default
+    public string? PhoneNumber { get; set; }
 
-        public string? Provider { get; set; } // Google, Facebook
-        public string? ProviderId { get; set; } // ID from google, facebook
+    public string? PasswordHash { get; set; }
 
-        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
-    }
+    public string? FullName { get; set; }
+
+    public string? AvatarUrl { get; set; }
+
+    public string? Role { get; set; }
+
+    public bool? IsActive { get; set; }
+
+    public DateTime? CreatedAt { get; set; }
+
+    public DateTime? UpdatedAt { get; set; }
+
+    public string? OauthProvider { get; set; }
+
+    public string? OauthId { get; set; }
+
+    public bool? TwoFactorEnabled { get; set; }
+
+    public string? TwoFactorSecret { get; set; }
+
+    public virtual Cart? Cart { get; set; }
+
+    public virtual ICollection<LoyaltyPoint> LoyaltyPoints { get; set; } = new List<LoyaltyPoint>();
+
+    public virtual ICollection<Order> Orders { get; set; } = new List<Order>();
+
+    public virtual ICollection<Otp> Otps { get; set; } = new List<Otp>();
+
+    public virtual ICollection<Review> Reviews { get; set; } = new List<Review>();
+
+    public virtual ICollection<Wishlist> Wishlists { get; set; } = new List<Wishlist>();
 }

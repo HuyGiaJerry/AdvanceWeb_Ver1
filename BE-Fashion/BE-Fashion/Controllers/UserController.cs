@@ -1,96 +1,46 @@
-﻿using BE_Fashion.Data;
-using BE_Fashion.DTOs;
-using Microsoft.AspNetCore.Mvc;
-using BE_Fashion.Helpers;
-using BE_Fashion.Models;
-using System.Linq;
-using Microsoft.EntityFrameworkCore;
+﻿using BE_Fashion.DTOs;
 using BE_Fashion.Services;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 
 namespace BE_Fashion.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UserController : Controller
+    public class UserController : ControllerBase
     {
-        private readonly IJwtService _jwtService;
-        private readonly AppDbContext _context;
-
-        public UserController(IJwtService jwtService, AppDbContext context)
+        private readonly UserService _userService;
+        public UserController(UserService userService)
         {
-            _jwtService = jwtService;
-            _context = context;
+            _userService = userService;
         }
-
-        // Action business register
         [HttpPost("register")]
-        public IActionResult Register(RegisterRequestDTO requestDTO)
+        public async Task<IActionResult> Register([FromBody] RegisterRequest dto)
         {
-            // Kiểm tra nếu username đã tồn tại
-            if (_context.Users.Any(u => u.UserName == requestDTO.UserName))
+            if (!ModelState.IsValid)
             {
-                return BadRequest("Username already exists.");
+                return BadRequest(ModelState);
             }
-
-            if (string.IsNullOrWhiteSpace(requestDTO.UserName) || string.IsNullOrWhiteSpace(requestDTO.Password))
+            var (isSuccess, message) = await _userService.RegisterAsync(dto);
+            if (!isSuccess)
             {
-                return BadRequest("Username and Password cannot be empty.");
+                return BadRequest( new {message} );
             }
-
-            // Tạo salt và mã hóa mật khẩu
-            string salt = PasswordHelper.CreateSalt();
-            string passwordHash = PasswordHelper.HashPasswordWithSalt(requestDTO.Password, salt);
-
-            // Tạo người dùng mới
-            User user = new User
-            {
-                UserName = requestDTO.UserName,
-                Email = requestDTO.Email,
-                PasswordHash = passwordHash,
-                Salt = salt
-            };
-
-            _context.Users.Add(user);
-            _context.SaveChanges();
-
-            // Trả về thông tin người dùng đã đăng ký
-            var response = new RegisterResponseDTO
-            {
-                Id = user.Id,
-                UserName = user.UserName,
-                Email = user.Email,
-                Role = user.Role
-            };
-            return Ok(response);
+            return Ok(new { message });
         }
-
-        // Đăng nhập và trả về JWT token
         [HttpPost("login")]
-        public async Task<IActionResult> Login([FromBody] LoginRequestDTO requestDTO)
+        public async Task<IActionResult> Login(LoginRequest dto)
         {
-            var user = await _context.Users.FirstOrDefaultAsync(u => u.UserName == requestDTO.UserName);
-            if (user == null)
+            if (!ModelState.IsValid)
             {
-                return Unauthorized("Invalid username or password.");
+                return BadRequest(ModelState);
             }
+            var (isSuccess, message, userInfo) = await _userService.LoginAsync(dto);
 
-            string hashedPassword = PasswordHelper.HashPasswordWithSalt(requestDTO.Password, user.Salt);
-            Console.WriteLine("Password hass:" + hashedPassword);
-            if (hashedPassword != user.PasswordHash)
-            {
-                return Unauthorized("False.");
-            }
+            if (!isSuccess)
+                return Unauthorized(message);
 
-            var token = _jwtService.GenerateToken(user);
-            var response = new LoginResponseDTO
-            {
-                Token = token,
-                Username = user.UserName,
-                Email = user.Email,
-                Role = user.Role
-            };
-
-            return Ok(response);
+            return Ok(userInfo);
         }
     }
 }
