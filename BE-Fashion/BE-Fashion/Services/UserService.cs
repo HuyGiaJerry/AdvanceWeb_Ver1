@@ -2,6 +2,7 @@
 using BE_Fashion.DTOs;
 using BE_Fashion.Models;
 using BE_Fashion.Repositories;
+using Microsoft.EntityFrameworkCore;
 
 namespace BE_Fashion.Services
 {
@@ -42,5 +43,29 @@ namespace BE_Fashion.Services
             Console.WriteLine($"Mapped Role: {userInfo.Role}");
             return (true, "Login successful", userInfo); 
         }
+        public async Task<(bool isSuccess, string message, CreateUser? dto)> CheckEmailExistsAsync(string email)
+        {
+            if (string.IsNullOrWhiteSpace(email))
+            {
+                return (false, "Email không hợp lệ", null);
+            }
+
+            // Chuẩn hóa email
+            email = email.Trim();
+
+            // Gọi repository để kiểm tra
+            var existingUser = await _userRepository.GetByEmailAsync(email);
+
+            if (existingUser != null)
+            {
+                // Ánh xạ User sang UserDto
+                var userDto = _mapper.Map<CreateUser>(existingUser);
+                return (true, "Email đã tồn tại", userDto);
+            }
+
+            return (false, "Email chưa tồn tại", null);
+        }
+
+      
     }
 }

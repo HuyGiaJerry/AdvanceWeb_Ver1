@@ -16,6 +16,7 @@ namespace BE_Fashion.Mappings
                 .ForMember(dest => dest.PasswordHash,opt => opt.MapFrom(src =>  BCrypt.Net.BCrypt.HashPassword(src.Password)));
             // Mapping User -> LoginRequest
             CreateMap<User, LoginRequest>();
+            CreateMap<User, CreateUser>();
         }
     }
 }

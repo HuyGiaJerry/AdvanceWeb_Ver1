@@ -4,6 +4,9 @@ using BE_Fashion.Services;
 using BE_Fashion.Repositories;
 using Microsoft.EntityFrameworkCore;
 using static System.Net.Mime.MediaTypeNames;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -27,9 +30,32 @@ builder.Services.AddAutoMapper(typeof(UserProfile));
 
 // Add UserRepository to DI container
 builder.Services.AddScoped<UserRepository>();
+builder.Services.AddScoped<ProductRepository>();
 
 // Register UserService in Dependency Injection DI Container: 
 builder.Services.AddScoped<UserService>();
+builder.Services.AddScoped<ProductService>();
+
+// Jwt
+var jwtKey = builder.Configuration["Jwt:Key"];
+if (string.IsNullOrEmpty(jwtKey))
+{
+    throw new InvalidOperationException("JWT key is not configured.");
+}
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(options =>
+    {
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuer = true,
+            ValidateAudience = true,
+            ValidateLifetime = true,
+            ValidateIssuerSigningKey = true,
+            ValidIssuer = builder.Configuration["Jwt:Issuer"],
+            ValidAudience = builder.Configuration["Jwt:Audience"],
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtKey))
+        };
+    });
 
 // allow CORS (Cross-Origin Resource Sharing) is a browser security mechanism that allow (or blocks) a website on one domain from accessing resource from another domain.
 builder.Services.AddCors(options =>
@@ -39,12 +65,14 @@ builder.Services.AddCors(options =>
         {
         //Allows all types of headers from the client to be sent to the server without being blocked.
         // Host: localhost:5000 Content - Type: application / json Authorization: Bearer eyJhbGciOiJIUzI1...User - Agent: Mozilla / 5.0(Windows NT 10.0; Win64; x64)
-            policy.WithOrigins("http://localhost:5173").AllowAnyHeader().AllowAnyMethod();
+            policy.WithOrigins("http://localhost:3000").AllowAnyHeader().AllowAnyMethod();
         });
 });
 
 var app = builder.Build();
 
+// Allow access static files in wwwroot
+app.UseStaticFiles();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

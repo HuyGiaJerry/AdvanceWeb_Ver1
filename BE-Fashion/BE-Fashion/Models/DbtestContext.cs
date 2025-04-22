@@ -38,6 +38,8 @@ public partial class DbtestContext : DbContext
 
     public virtual DbSet<ProductVariant> ProductVariants { get; set; }
 
+    public virtual DbSet<RefreshToken> RefreshTokens { get; set; }
+
     public virtual DbSet<Review> Reviews { get; set; }
 
     public virtual DbSet<User> Users { get; set; }
@@ -403,6 +405,36 @@ public partial class DbtestContext : DbContext
                 .HasConstraintName("product_variants_ibfk_1");
         });
 
+        modelBuilder.Entity<RefreshToken>(entity =>
+        {
+            entity.HasKey(e => e.TokenId).HasName("PRIMARY");
+
+            entity.ToTable("refresh_tokens");
+
+            entity.HasIndex(e => new { e.UserId, e.Provider }, "unique_user_provider").IsUnique();
+
+            entity.Property(e => e.TokenId).HasColumnName("token_id");
+            entity.Property(e => e.ExpiresAt)
+                .HasColumnType("timestamp")
+                .HasColumnName("expires_at");
+            entity.Property(e => e.IssuedAt)
+                .HasDefaultValueSql("CURRENT_TIMESTAMP")
+                .HasColumnType("timestamp")
+                .HasColumnName("issued_at");
+            entity.Property(e => e.Provider)
+                .HasMaxLength(50)
+                .HasColumnName("provider");
+            entity.Property(e => e.Revoked).HasColumnName("revoked");
+            entity.Property(e => e.Token)
+                .HasMaxLength(512)
+                .HasColumnName("token");
+            entity.Property(e => e.UserId).HasColumnName("user_id");
+
+            entity.HasOne(d => d.User).WithMany(p => p.RefreshTokens)
+                .HasForeignKey(d => d.UserId)
+                .HasConstraintName("fk_user_id");
+        });
+
         modelBuilder.Entity<Review>(entity =>
         {
             entity.HasKey(e => e.ReviewId).HasName("PRIMARY");
@@ -475,7 +507,7 @@ public partial class DbtestContext : DbContext
                 .HasColumnName("phone_number");
             entity.Property(e => e.Role)
                 .HasMaxLength(50)
-                .HasDefaultValueSql("'customrt'")
+                .HasDefaultValueSql("'customer'")
                 .HasColumnName("role");
             entity.Property(e => e.TwoFactorEnabled)
                 .HasDefaultValueSql("'0'")

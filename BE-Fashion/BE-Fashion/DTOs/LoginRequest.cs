@@ -4,6 +4,8 @@ namespace BE_Fashion.DTOs
 {
     public class LoginRequest : IValidatableObject
     {
+        public int UserId { get; set; }
+
         public string? Email { get; set; }
 
         public string? PhoneNumber { get; set; }
@@ -11,6 +13,7 @@ namespace BE_Fashion.DTOs
         [Required(ErrorMessage = "Password is required")]
         public string Password { get; set; } = string.Empty;
 
+        public string FullName { get; set; } = string.Empty;
         public string AvatarUrl { get; set; } = string.Empty;
         public string Role { get; set; } = string.Empty;
 
