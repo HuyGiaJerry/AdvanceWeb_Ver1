@@ -2,40 +2,55 @@ import React, { useState } from 'react';
 import { Navbar, Nav, Button, Container } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { login, logout } from '../../../store/store';
-import '../../../assets/fonts/Volkhov.scss';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import './Header.scss';
+
 const Header = () => {
     const dispatch = useDispatch();
     const isLoggin = useSelector((state) => state.auth.isLoggin);
     const [showFilter, setShowFilter] = useState(false);
+    const [isNavbarOpen, setIsNavbarOpen] = useState(false);
+
+    const handleToggle = () => setIsNavbarOpen(!isNavbarOpen);
+
+    // Đóng menu khi nhấp vào NavLink
+    const handleNavLinkClick = () => {
+        setIsNavbarOpen(false);
+    };
+    console.log('isLoggin:', isLoggin);
+
     return (
         <div className='header'>
-            <Navbar bg="white" expand="md" className="header-container">
+            <Navbar bg="white" expand="md" className="header-container" fixed="top" key={isLoggin ? 'logged-in' : 'logged-out'}>
                 <Container>
                     <NavLink to='/' className='navbar-brand'>FASCO</NavLink>
-                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                    <Navbar.Collapse id="basic-navbar-nav">
+                    <Navbar.Toggle
+                        aria-controls="basic-navbar-nav"
+                        onClick={handleToggle}
+                    />
+                    <Navbar.Collapse
+                        id="basic-navbar-nav"
+                        in={isNavbarOpen}
+                    >
                         <Nav className="me-auto">
-                            <NavLink to='/home' className='nav-link' >Home</NavLink>
+                            <NavLink to='/home' className='nav-link' onClick={handleNavLinkClick}>Home</NavLink>
                             {isLoggin ? (
                                 <>
-                                    <NavLink to='/shop' className='nav-link'>Shop</NavLink>
-                                    <NavLink to='/products' className='nav-link'>Products</NavLink>
-                                    <NavLink to='/pages' className='nav-link'>Pages</NavLink>
+                                    <NavLink to='/shop' className='nav-link' onClick={handleNavLinkClick}>Shop</NavLink>
+                                    <NavLink to='/products' className='nav-link' onClick={handleNavLinkClick}>Products</NavLink>
+                                    <NavLink to='/pages' className='nav-link' onClick={handleNavLinkClick}>Pages</NavLink>
                                 </>
                             ) : (
                                 <>
-                                    <NavLink to='/deals' className='nav-link'>Deals</NavLink>
-                                    <NavLink to='/new-arrivals' className='nav-link'>New Arrivals</NavLink>
-                                    <NavLink to='/packages' className='nav-link'>Packages</NavLink>
+                                    <NavLink to='/deals' className='nav-link' onClick={handleNavLinkClick}>Deals</NavLink>
+                                    <NavLink to='/new-arrivals' className='nav-link' onClick={handleNavLinkClick}>New Arrivals</NavLink>
+                                    <NavLink to='/packages' className='nav-link' onClick={handleNavLinkClick}>Packages</NavLink>
                                 </>
                             )}
                         </Nav>
                         <Nav className="ml-auto">
                             {isLoggin ? (
                                 <>
-
                                     {showFilter && (
                                         <input
                                             type="text"
@@ -44,23 +59,39 @@ const Header = () => {
                                             autoFocus
                                         />
                                     )}
-                                    <NavLink as="button" onClick={() => setShowFilter(!showFilter)} className='nav-link'>
+                                    <NavLink onClick={() => setShowFilter(!showFilter)} className='nav-link'>
                                         <img src={require('../../../assets/icons/search.png')} alt="Search" />
                                     </NavLink>
-                                    <NavLink className='nav-link' to='/profile' >
-                                        <img src={require('../../../assets/icons/user.png')} /></NavLink>
-                                    <NavLink className='nav-link' to='/wish-list' >
-                                        <img src={require('../../../assets/icons/star.png')} /></NavLink>
-                                    <NavLink className='nav-link' to='/cart' >
-                                        <img src={require('../../../assets/icons/cart.png')} /></NavLink>
-                                    <NavLink className='nav-link' to='/home' onClick={() => dispatch(logout())} style={{ fontSize: '12px' }}>
-                                        Sign Out
+                                    <NavLink className='nav-link' to='/profile' onClick={handleNavLinkClick}>
+                                        <img src={require('../../../assets/icons/user.png')} alt="User" />
+                                    </NavLink>
+                                    <NavLink className='nav-link' to='/wish-list' onClick={handleNavLinkClick}>
+                                        <img src={require('../../../assets/icons/star.png')} alt="Wishlist" />
+                                    </NavLink>
+                                    <NavLink className='nav-link' to='/cart' onClick={handleNavLinkClick}>
+                                        <img src={require('../../../assets/icons/cart.png')} alt="Cart" />
+                                    </NavLink>
+                                    <NavLink
+                                        className='nav-link'
+                                        to='/home'
+                                    >
+
+                                        <Button onClick={() => dispatch(logout())} variant="dark" style={{ fontSize: '12px' }}>
+                                            Sign Out
+                                        </Button>
                                     </NavLink>
                                 </>
                             ) : (
                                 <>
-                                    <NavLink className='nav-link' to='/home' style={{ fontSize: '12px' }} onClick={() => dispatch(login())}>Sign In</NavLink>
-                                    <Button variant="dark" >
+                                    <NavLink
+                                        className='nav-link'
+                                        to='/home'
+                                        style={{ fontSize: '12px' }}
+                                        onClick={() => dispatch(login())}
+                                    >
+                                        Sign In
+                                    </NavLink>
+                                    <Button variant="dark">
                                         Sign Up
                                     </Button>
                                 </>
@@ -72,7 +103,5 @@ const Header = () => {
         </div>
     );
 };
-
-
 
 export default Header;
