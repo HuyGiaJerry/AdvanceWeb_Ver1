@@ -8,6 +8,8 @@ import './Header.scss';
 const Header = () => {
     const dispatch = useDispatch();
     const isLoggin = useSelector((state) => state.auth.isLoggin);
+    const cartCnt = useSelector((state) => state.auth.cartCount);
+    const wishlistCnt = useSelector((state) => state.auth.wishlistCount);
     const [showFilter, setShowFilter] = useState(false);
     const [isNavbarOpen, setIsNavbarOpen] = useState(false);
 
@@ -67,9 +69,16 @@ const Header = () => {
                                     </NavLink>
                                     <NavLink className='nav-link' to='/wish-list' onClick={handleNavLinkClick}>
                                         <img src={require('../../../assets/icons/star.png')} alt="Wishlist" />
+                                        {wishlistCnt > 0 &&(
+                                            <span className="badge badge-danger">{wishlistCnt}</span>
+                                        )}
                                     </NavLink>
                                     <NavLink className='nav-link' to='/cart' onClick={handleNavLinkClick}>
                                         <img src={require('../../../assets/icons/cart.png')} alt="Cart" />
+                                        {cartCnt > 0 &&(
+                                            <span className="badge badge-danger">{cartCnt}</span>
+
+                                            )}
                                     </NavLink>
                                     <NavLink
                                         className='nav-link'
