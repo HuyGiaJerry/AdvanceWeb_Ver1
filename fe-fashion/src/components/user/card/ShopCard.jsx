@@ -34,7 +34,7 @@ const ShopCard = (props) => {
 
     return (
         <div className="col-md-4 col-sm-6 mb-4">
-            <div className="card shop-card">
+            <div className="card shop-card" style={{border: "none"}}>
                 <div className="card-img-container">
                     <img
                         src={require(`../../../assets/images/${props.image}`)}

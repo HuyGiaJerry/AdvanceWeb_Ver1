@@ -64,3 +64,68 @@ export const sampleDataShop = [
     },
 
 ]
+
+export const sampleDataBrand = [
+    {
+        id: 1,
+        name: "Minimog",
+    },
+    {
+        id: 2,
+        name: "Retrolie",
+    },
+    {
+        id: 3,
+        name: "Brook",
+    },
+    {
+        id: 4,
+        name: "Learts",
+    },
+    {
+        id: 5,
+        name: "Vagabond",
+    },
+    {
+        id: 6,
+        name: "Abby",
+    }
+]
+    
+export const sampleDataCategory = [
+    {
+        id: 1,
+        name: "Dresses",
+    },
+    {
+        id: 2,
+        name: "Tops",
+    },
+    {
+        id: 3,
+        name: "Jackets",
+    },
+    {
+        id: 4,
+        name: "Accessories",
+    },
+] 
+
+export const sampleDataCollection = [
+    {
+        id: 1,
+        name: "All products",
+    },
+    {
+        id: 2,
+        name: "Best Sellers",
+    },
+    {
+        id: 3,
+        name: "New Arrivals",
+    },
+    {
+        id: 4,
+        name: "Accessories",
+    },
+]
