@@ -53,6 +53,27 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "BE_Fashion.Controllers.ProductColorImageController",
+    "Method": "GetAllProduct",
+    "RelativePath": "api/ProductColorImage/products",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "pageNumber",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "pageSize",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "BE_Fashion.Controllers.UserController",
     "Method": "Login",
     "RelativePath": "api/User/login",

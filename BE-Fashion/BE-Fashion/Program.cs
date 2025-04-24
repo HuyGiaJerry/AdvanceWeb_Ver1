@@ -12,7 +12,11 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddControllers();
+builder.Services.AddControllers()
+    .AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.Preserve;
+    });
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -31,10 +35,15 @@ builder.Services.AddAutoMapper(typeof(UserProfile));
 // Add UserRepository to DI container
 builder.Services.AddScoped<UserRepository>();
 builder.Services.AddScoped<ProductRepository>();
+builder.Services.AddScoped<ProductColorImageRepository>();
 
 // Register UserService in Dependency Injection DI Container: 
 builder.Services.AddScoped<UserService>();
 builder.Services.AddScoped<ProductService>();
+builder.Services.AddScoped<ProductColorImageService>();
+
+builder.Services.AddAutoMapper(typeof(ProductProfile));
+
 
 // Jwt
 var jwtKey = builder.Configuration["Jwt:Key"];

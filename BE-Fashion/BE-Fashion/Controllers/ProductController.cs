@@ -26,7 +26,16 @@ namespace BE_Fashion.Controllers
             var products = await _productService.GetAllProductsAsync(pageNumber, pageSize);
             return Ok(products);
         }
-
+        //[HttpGet("{id}")]
+        //public async Task<IActionResult> GetProductDetail(int id)
+        //{
+        //    var productDetail = await _productService.GetProductDetailAsync(id);
+        //    if (productDetail == null)
+        //    {
+        //        return NotFound();
+        //    }
+        //    return Ok(productDetail);
+        //}
 
     }
 }

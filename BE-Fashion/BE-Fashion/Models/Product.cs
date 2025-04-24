@@ -15,7 +15,7 @@ public partial class Product
 
     public decimal? DiscountPrice { get; set; }
 
-    public string? Sku { get; set; }
+    public string Sku { get; set; } = null!;
 
     public int? CategoryId { get; set; }
 
@@ -23,11 +23,9 @@ public partial class Product
 
     public DateTime? UpdatedAt { get; set; }
 
-    public DateTime? RowVersion { get; set; }
-
     public virtual Category? Category { get; set; }
 
-    public virtual ICollection<ProductImage> ProductImages { get; set; } = new List<ProductImage>();
+    public virtual ICollection<ProductColor> ProductColors { get; set; } = new List<ProductColor>();
 
     public virtual ICollection<ProductVariant> ProductVariants { get; set; } = new List<ProductVariant>();
 

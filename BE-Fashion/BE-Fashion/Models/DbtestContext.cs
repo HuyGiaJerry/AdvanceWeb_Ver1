@@ -34,7 +34,9 @@ public partial class DbtestContext : DbContext
 
     public virtual DbSet<Product> Products { get; set; }
 
-    public virtual DbSet<ProductImage> ProductImages { get; set; }
+    public virtual DbSet<ProductColor> ProductColors { get; set; }
+
+    public virtual DbSet<ProductColorImage> ProductColorImages { get; set; }
 
     public virtual DbSet<ProductVariant> ProductVariants { get; set; }
 
@@ -327,10 +329,6 @@ public partial class DbtestContext : DbContext
             entity.Property(e => e.Name)
                 .HasMaxLength(255)
                 .HasColumnName("name");
-            entity.Property(e => e.RowVersion)
-                .ValueGeneratedOnAddOrUpdate()
-                .HasDefaultValueSql("CURRENT_TIMESTAMP")
-                .HasColumnType("timestamp");
             entity.Property(e => e.Sku)
                 .HasMaxLength(50)
                 .HasColumnName("sku");
@@ -345,15 +343,41 @@ public partial class DbtestContext : DbContext
                 .HasConstraintName("products_ibfk_1");
         });
 
-        modelBuilder.Entity<ProductImage>(entity =>
+        modelBuilder.Entity<ProductColor>(entity =>
         {
-            entity.HasKey(e => e.ImageId).HasName("PRIMARY");
+            entity.HasKey(e => e.ColorId).HasName("PRIMARY");
 
-            entity.ToTable("product_images");
+            entity.ToTable("product_colors");
+
+            entity.HasIndex(e => e.ColorSku, "color_sku").IsUnique();
 
             entity.HasIndex(e => e.ProductId, "product_id");
 
-            entity.Property(e => e.ImageId).HasColumnName("image_id");
+            entity.Property(e => e.ColorId).HasColumnName("color_id");
+            entity.Property(e => e.ColorName)
+                .HasMaxLength(50)
+                .HasColumnName("color_name");
+            entity.Property(e => e.ColorSku)
+                .HasMaxLength(50)
+                .HasColumnName("color_sku");
+            entity.Property(e => e.ProductId).HasColumnName("product_id");
+
+            entity.HasOne(d => d.Product).WithMany(p => p.ProductColors)
+                .HasForeignKey(d => d.ProductId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("product_colors_ibfk_1");
+        });
+
+        modelBuilder.Entity<ProductColorImage>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PRIMARY");
+
+            entity.ToTable("product_color_images");
+
+            entity.HasIndex(e => e.ColorId, "color_id");
+
+            entity.Property(e => e.Id).HasColumnName("id");
+            entity.Property(e => e.ColorId).HasColumnName("color_id");
             entity.Property(e => e.CreatedAt)
                 .HasDefaultValueSql("CURRENT_TIMESTAMP")
                 .HasColumnType("timestamp")
@@ -364,12 +388,11 @@ public partial class DbtestContext : DbContext
             entity.Property(e => e.IsPrimary)
                 .HasDefaultValueSql("'0'")
                 .HasColumnName("is_primary");
-            entity.Property(e => e.ProductId).HasColumnName("product_id");
 
-            entity.HasOne(d => d.Product).WithMany(p => p.ProductImages)
-                .HasForeignKey(d => d.ProductId)
-                .OnDelete(DeleteBehavior.Cascade)
-                .HasConstraintName("product_images_ibfk_1");
+            entity.HasOne(d => d.Color).WithMany(p => p.ProductColorImages)
+                .HasForeignKey(d => d.ColorId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("product_color_images_ibfk_1");
         });
 
         modelBuilder.Entity<ProductVariant>(entity =>
@@ -378,30 +401,33 @@ public partial class DbtestContext : DbContext
 
             entity.ToTable("product_variants");
 
+            entity.HasIndex(e => e.ColorId, "color_id");
+
             entity.HasIndex(e => e.ProductId, "product_id");
 
             entity.HasIndex(e => e.VariantSku, "variant_sku").IsUnique();
 
             entity.Property(e => e.VariantId).HasColumnName("variant_id");
-            entity.Property(e => e.AdditionalPrice)
-                .HasPrecision(10, 2)
-                .HasDefaultValueSql("'0.00'")
-                .HasColumnName("additional_price");
-            entity.Property(e => e.Color)
-                .HasMaxLength(50)
-                .HasColumnName("color");
+            entity.Property(e => e.ColorId).HasColumnName("color_id");
             entity.Property(e => e.ProductId).HasColumnName("product_id");
             entity.Property(e => e.Size)
                 .HasMaxLength(50)
                 .HasColumnName("size");
-            entity.Property(e => e.StockQuantity).HasColumnName("stock_quantity");
+            entity.Property(e => e.StockQuantity)
+                .HasDefaultValueSql("'0'")
+                .HasColumnName("stock_quantity");
             entity.Property(e => e.VariantSku)
                 .HasMaxLength(50)
                 .HasColumnName("variant_sku");
 
+            entity.HasOne(d => d.Color).WithMany(p => p.ProductVariants)
+                .HasForeignKey(d => d.ColorId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("product_variants_ibfk_2");
+
             entity.HasOne(d => d.Product).WithMany(p => p.ProductVariants)
                 .HasForeignKey(d => d.ProductId)
-                .OnDelete(DeleteBehavior.Cascade)
+                .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("product_variants_ibfk_1");
         });
 

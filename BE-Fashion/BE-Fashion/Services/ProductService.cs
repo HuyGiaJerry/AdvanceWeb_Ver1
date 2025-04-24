@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using BE_Fashion.DTOs;
+using BE_Fashion.Models;
 using BE_Fashion.Repositories;
 
 namespace BE_Fashion.Services
@@ -18,15 +19,27 @@ namespace BE_Fashion.Services
             // calculator page number
             return await _productRepository.GetTotalPagesAsync(pageSize);
         }
-        public async Task<IEnumerable<ProductList>> GetAllProductsAsync(int pageNumber, int pageSize)
+        public async Task<IEnumerable<ProductListDto>> GetAllProductsAsync(int pageNumber, int pageSize)
         {
-            // Get paginated products from repository
             var products = await _productRepository.GetAllAsync(pageNumber, pageSize);
-
-            // Use AutoMapper to convert Product to ProductList
-            var productList = _mapper.Map<IEnumerable<ProductList>>(products);
-            return (productList);
+            return _mapper.Map<IEnumerable<ProductListDto>>(products);
         }
+        //public async Task<IEnumerable<ProductListDto>> GetAllProductsAsync(int pageNumber, int pageSize)
+        //{
+        //    // Get paginated products from repository
+        //    var products = await _productRepository.GetAllAsync(pageNumber, pageSize);
 
+        //    // Use AutoMapper to convert Product to ProductList
+        //    var productList = _mapper.Map<IEnumerable<ProductListDto>>(products);
+        //    return (productList);
+        //}
+        //public async Task<ProductDetail?> GetProductDetailAsync(int productId)
+        //{
+        //    var product = await _productRepository.GetByIdAsync(id);
+        //    if (product == null)
+        //        return null;
+
+        //    return _mapper.Map<ProductDetailDto>(product);
+        //}
     }
 }

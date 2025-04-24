@@ -1,4 +1,5 @@
-﻿using BE_Fashion.Models;
+﻿using BE_Fashion.DTOs;
+using BE_Fashion.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace BE_Fashion.Repositories
@@ -14,9 +15,10 @@ namespace BE_Fashion.Repositories
         public async Task<Product?> GetByIdAsync(int id)
         {
             return await _context.Products
-                .Include(p => p.ProductImages)
-                .Include(p => p.ProductVariants)
-                .FirstOrDefaultAsync(p => p.ProductId == id);
+                        .Include(p => p.ProductColors)
+                            .ThenInclude(pc => pc.ProductColorImages) // Lấy tất cả ảnh, không lọc IsPrimary
+                        .Include(p => p.ProductVariants)
+                        .FirstOrDefaultAsync(p => p.ProductId == id);
         }
         public async Task<int> GetTotalPagesAsync(int pageSize)
         {
@@ -27,20 +29,14 @@ namespace BE_Fashion.Repositories
         public async Task<IEnumerable<Product>> GetAllAsync(int pageNumber, int pageSize)
         {
             return await _context.Products
-                .Include(p => p.ProductImages)
-                .Select(p => new Product
-                {
-                    ProductId = p.ProductId,
-                    Name = p.Name,
-                    BasePrice = p.BasePrice,
-                    DiscountPrice = p.DiscountPrice,
-                    ProductImages = p.ProductImages
-                })
+                .Include(p => p.ProductColors)
+                    .ThenInclude(pc => pc.ProductColorImages)
+                .OrderBy(p => p.ProductId)
                 .Skip((pageNumber - 1) * pageSize)
                 .Take(pageSize)
                 .ToListAsync();
         }
-       
+
 
         // Add new product
         public async Task AddAsync(Product product)

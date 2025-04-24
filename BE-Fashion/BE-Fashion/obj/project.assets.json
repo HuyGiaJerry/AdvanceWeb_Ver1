@@ -4386,6 +4386,7 @@
       "Microsoft.AspNetCore.Authentication.Google >= 8.0.15",
       "Microsoft.AspNetCore.Authentication.JwtBearer >= 8.0.15",
       "Microsoft.EntityFrameworkCore >= 8.0.13",
+      "Microsoft.EntityFrameworkCore.Design >= 8.0.13",
       "Microsoft.EntityFrameworkCore.Tools >= 8.0.13",
       "Pomelo.EntityFrameworkCore.MySql >= 8.0.3",
       "Swashbuckle.AspNetCore >= 6.4.0"
@@ -4465,6 +4466,12 @@
             "version": "[8.0.15, )"
           },
           "Microsoft.EntityFrameworkCore": {
+            "target": "Package",
+            "version": "[8.0.13, )"
+          },
+          "Microsoft.EntityFrameworkCore.Design": {
+            "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+            "suppressParent": "All",
             "target": "Package",
             "version": "[8.0.13, )"
           },

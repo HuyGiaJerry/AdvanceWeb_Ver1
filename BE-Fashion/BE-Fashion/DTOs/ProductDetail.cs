@@ -7,7 +7,6 @@
         public string Description { get; set; } = string.Empty;
         public decimal BasePrice { get; set; }
         public decimal? DiscountPrice { get; set; }
-        public string Sku { get; set; } = string.Empty;
         public int CategoryId { get; set; }
 
         public List<ImageDetail> Images { get; set; } = new();
