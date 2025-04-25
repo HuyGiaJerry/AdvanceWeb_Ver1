@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Web\\ProjectWeb\\BE-Fashion\\BE-Fashion\\BE-Fashion\\BE-Fashion.csproj": {}
+    "D:\\Web\\ProjectWeb\\BE-Fashion\\BE-Fashion\\BE-Fashion.csproj": {}
   },
   "projects": {
-    "D:\\Web\\ProjectWeb\\BE-Fashion\\BE-Fashion\\BE-Fashion\\BE-Fashion.csproj": {
+    "D:\\Web\\ProjectWeb\\BE-Fashion\\BE-Fashion\\BE-Fashion.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Web\\ProjectWeb\\BE-Fashion\\BE-Fashion\\BE-Fashion\\BE-Fashion.csproj",
+        "projectUniqueName": "D:\\Web\\ProjectWeb\\BE-Fashion\\BE-Fashion\\BE-Fashion.csproj",
         "projectName": "BE-Fashion",
-        "projectPath": "D:\\Web\\ProjectWeb\\BE-Fashion\\BE-Fashion\\BE-Fashion\\BE-Fashion.csproj",
+        "projectPath": "D:\\Web\\ProjectWeb\\BE-Fashion\\BE-Fashion\\BE-Fashion.csproj",
         "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
-        "outputPath": "D:\\Web\\ProjectWeb\\BE-Fashion\\BE-Fashion\\BE-Fashion\\obj\\",
+        "outputPath": "D:\\Web\\ProjectWeb\\BE-Fashion\\BE-Fashion\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\ADMIN\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -46,41 +46,57 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[12.0.1, )"
+            },
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[12.0.1, )"
+            },
             "BCrypt.Net-Next": {
               "target": "Package",
               "version": "[4.0.3, )"
             },
+            "Google.Apis.Auth": {
+              "target": "Package",
+              "version": "[1.69.0, )"
+            },
+            "Microsoft.AspNetCore.Authentication": {
+              "target": "Package",
+              "version": "[2.3.0, )"
+            },
             "Microsoft.AspNetCore.Authentication.Google": {
               "target": "Package",
-              "version": "[8.0.14, )"
+              "version": "[8.0.15, )"
             },
             "Microsoft.AspNetCore.Authentication.JwtBearer": {
               "target": "Package",
-              "version": "[8.0.5, )"
+              "version": "[8.0.15, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.13, )"
             },
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[9.0.3, )"
-            },
-            "Microsoft.EntityFrameworkCore.SqlServer": {
-              "target": "Package",
-              "version": "[9.0.3, )"
+              "version": "[8.0.13, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[9.0.3, )"
+              "version": "[8.0.13, )"
+            },
+            "Pomelo.EntityFrameworkCore.MySql": {
+              "target": "Package",
+              "version": "[8.0.3, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.4.0, )"
-            },
-            "System.IdentityModel.Tokens.Jwt": {
-              "target": "Package",
-              "version": "[8.7.0, )"
             }
           },
           "imports": [

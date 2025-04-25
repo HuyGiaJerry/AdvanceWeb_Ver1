@@ -6,7 +6,7 @@ import './Footer.scss';
 const Footer = () => {
     return (
         <>
-            <div className='border-top '></div>
+            <div className='border-top'></div>
             <Navbar bg="white" expand="md" className="footer-container">
                 <Container>
                     <NavLink to='/' className='navbar-brand'>FASCO</NavLink>

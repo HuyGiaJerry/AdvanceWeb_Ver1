@@ -1,8 +1,12 @@
 import { configureStore, createSlice } from '@reduxjs/toolkit';
+
+// Slice
 const authSlice = createSlice({
     name: 'auth',
     initialState: {
         isLoggin: false,
+        cartCount: 0,
+        wishlistCount: 0,
     },
     reducers: {
         login: (state) => {
@@ -10,12 +14,20 @@ const authSlice = createSlice({
         },
         logout: (state) => {
             state.isLoggin = false;
-        }
+        },
+        addToCart: (state) => {
+            state.cartCount += 1;
+        },
+        addToWishlist: (state) => {
+            state.wishlistCount += 1;
+        },
     },
 });
 
-export const {login, logout} = authSlice.actions;
-const store =  configureStore({
+export const { login, logout, addToCart, addToWishlist } = authSlice.actions;
+
+// Store
+const store = configureStore({
     reducer: {
         auth: authSlice.reducer,
     },
