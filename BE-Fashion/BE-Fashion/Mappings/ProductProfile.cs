@@ -21,6 +21,7 @@ namespace BE_Fashion.Mappings
                         {
                             ImageUrl = i.ImageUrl,
                             ColorName = i.Color.ColorName
+
                         })
                         .ToList()));
         }

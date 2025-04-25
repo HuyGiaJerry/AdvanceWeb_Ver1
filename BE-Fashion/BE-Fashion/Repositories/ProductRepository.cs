@@ -62,5 +62,25 @@ namespace BE_Fashion.Repositories
                 await _context.SaveChangesAsync();
             }
         }
+        public async Task<ProductDetailRawDto[]> GetProductDetailRawAsync(int productId)
+        {
+            var query = from p in _context.Products
+                        join pc in _context.ProductColors on p.ProductId equals pc.ProductId into pcGroup
+                        from pc in pcGroup.DefaultIfEmpty()
+                        join pv in _context.ProductVariants on new { pc.ProductId, pc.ColorId } equals new { pv.ProductId, pv.ColorId } into pvGroup
+                        from pv in pvGroup.DefaultIfEmpty()
+                        join pci in _context.ProductColorImages on pc.ColorId equals pci.ColorId into pciGroup
+                        from pci in pciGroup.DefaultIfEmpty()
+                        where p.ProductId == productId
+                        select new ProductDetailRawDto
+                        {
+                            Product = p,
+                            Color = pc,
+                            Variant = pv,
+                            Image = pci
+                        };
+
+            return await query.ToArrayAsync();
+        }
     }
 }
