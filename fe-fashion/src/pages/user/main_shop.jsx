@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import ShopCard from "../../components/user/card/ShopCard";
-import { sampleDataShop, sampleDataBrand, sampleDataCategory, sampleDataCollection } from "../../services/sampleDataShop";
+import { sampleDataBrand, sampleDataCategory, sampleDataCollection } from "../../services/sampleDataShop";
+import dataProduct from "../../services/test";
 import searchIcon from "../../assets/icons/search.png"; // Gọi icon từ thư mục assets
 import "./main_shop.scss";
 
@@ -13,8 +14,9 @@ const Main_Shop = () => {
     const [currentPage, setCurrentPage] = useState(1); // Trạng thái trang hiện tại
 
     const itemsPerPage = 6; // Số lượng sản phẩm trên mỗi trang
-    const totalPages = Math.ceil(sampleDataShop.length / itemsPerPage); // Tổng số trang
-    const currentItems = sampleDataShop.slice(
+    const totalPages = Math.ceil(dataProduct.length / itemsPerPage); // Tổng số trang
+
+    const currentItems = dataProduct.slice(
         (currentPage - 1) * itemsPerPage,
         currentPage * itemsPerPage
     )
@@ -256,12 +258,13 @@ const Main_Shop = () => {
                     {/* Product Cards */}
                     <div className="row">
                         {currentItems.map((item) => (
-                            <div className="col-lg-4 col-md-6 col-sm-12 mb-4" key={item.id}>
+                            <div className="col-lg-4 col-md-6 col-sm-12 mb-4" key={item.productId}>
                                 <ShopCard
+                                    id={item.productId}
                                     name={item.name}
-                                    price={item.price}
-                                    image={item.image}
-                                    colorOptions={item.colorOptions}
+                                    price={item.basePrice}
+
+                                    colors={item.colors}
                                 />
                             </div>
                         ))}

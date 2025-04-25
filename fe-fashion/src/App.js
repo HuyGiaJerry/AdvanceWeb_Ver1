@@ -5,13 +5,18 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import DealTheMonth from './pages/user/deal';
 import ShopCard from './components/user/card/ShopCard';
 import Main_Shop from './pages/user/main_shop';
+import Detail from './pages/user/detail';
 function App() {
   return (
     <div className="App">
       <Router>
         <Header />
         <div className='main-content'>
-          <Main_Shop />
+          <Routes>
+            <Route path="/" element={<Main_Shop />} />
+
+            <Route path="product/detail/:id" element={<Detail />} />
+          </Routes>
         </div>
         <Footer />
       </Router>
