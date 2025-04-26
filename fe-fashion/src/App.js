@@ -1,27 +1,31 @@
-import './App.scss';
-import Header from './components/user/header/Header';
-import Footer from './components/user/footer/Footer';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Header from './components/user/header/Header';
+import Login from './pages/user/login';
+import MainShop from './pages/user/main_shop'; // Adjust path as needed
+import Register from './pages/user/signup'; // Adjust path as needed
 import DealTheMonth from './pages/user/deal';
-import ShopCard from './components/user/card/ShopCard';
-import Main_Shop from './pages/user/main_shop';
 import Detail from './pages/user/detail';
-function App() {
-  return (
-    <div className="App">
-      <Router>
-        <Header />
-        <div className='main-content'>
-          <Routes>
-            <Route path="/" element={<Main_Shop />} />
+const App = () => {
+  const [user, setUser] = useState({
+    isLoggedIn: false,
+    fullName: ''
+  });
 
-            <Route path="product/detail/:id" element={<Detail />} />
-          </Routes>
-        </div>
-        <Footer />
-      </Router>
-    </div>
+  return (
+    <Router>
+      <Header isLoggedIn={user.isLoggedIn} fullName={user.fullName} setUser={setUser} />
+      <Routes>
+        <Route path="/login" element={<Login setUser={setUser} />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/main_shop" element={<MainShop />} />
+        <Route path="/home" element={<div>Home Page</div>} /> {/* Placeholder */}
+        <Route path="/deal" element={<DealTheMonth />} />
+        <Route path="/main_shop/product/detail/:id" element={<Detail />} />
+        <Route path="/" element={<div>Welcome Page</div>} /> {/* Placeholder */}
+      </Routes>
+    </Router>
   );
-}
+};
 
 export default App;
