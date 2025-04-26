@@ -12,10 +12,8 @@ const Main_Shop = () => {
         setShowSearchInput(!showSearchInput); // Bật/tắt thanh input
     };
     const [currentPage, setCurrentPage] = useState(1); // Trạng thái trang hiện tại
-
     const itemsPerPage = 6; // Số lượng sản phẩm trên mỗi trang
     const totalPages = Math.ceil(dataProduct.length / itemsPerPage); // Tổng số trang
-
     const currentItems = dataProduct.slice(
         (currentPage - 1) * itemsPerPage,
         currentPage * itemsPerPage
@@ -263,7 +261,6 @@ const Main_Shop = () => {
                                     id={item.productId}
                                     name={item.name}
                                     price={item.basePrice}
-
                                     colors={item.colors}
                                 />
                             </div>

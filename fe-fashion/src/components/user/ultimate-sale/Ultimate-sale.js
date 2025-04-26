@@ -14,7 +14,7 @@ const UltimateSale = () => {
                         <img
                             src={require('../../../assets/images/model_left.png')}
                             alt="model_left"
-                            
+
                             style={{ maxHeight: '400px' }}
                         />
                     </Col>
@@ -25,7 +25,7 @@ const UltimateSale = () => {
                             <img
                                 src={require('../../../assets/images/model_top.png')}
                                 alt="model_top"
-                                
+
                                 style={{ maxHeight: '120px' }}
                             />
                         </div>
@@ -43,7 +43,7 @@ const UltimateSale = () => {
                             <img
                                 src={require('../../../assets/images/model_bottom.png')}
                                 alt="model_bottom"
-                                
+
                                 style={{ maxHeight: '120px' }}
                             />
                         </div>
@@ -54,7 +54,7 @@ const UltimateSale = () => {
                         <img
                             src={require('../../../assets/images/model_right.png')}
                             alt="model_right"
-                            
+
                             style={{ maxHeight: '400px' }}
                         />
                     </Col>

@@ -159,8 +159,5 @@ export const sampleDataCollection = [
         id: 3,
         name: "New Arrivals",
     },
-    {
-        id: 4,
-        name: "Accessories",
-    },
 ]
+

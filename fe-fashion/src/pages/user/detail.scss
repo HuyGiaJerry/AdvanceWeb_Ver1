@@ -145,34 +145,7 @@
     margin-left: 10px;
 }
 
-/* Nút Add to Cart */
-.btn {
-    border: 2px solid black;
-    /* Viền đen */
-    background-color: transparent;
-    /* Nền rỗng */
-    color: black;
-    /* Màu chữ đen */
-    font-size: 1rem;
-    font-weight: bold;
-    padding: 10px 15px;
-    transition: all 0.3s ease;
-    /* Hiệu ứng chuyển đổi */
-}
 
-.btn:hover,
-.btn:active {
-    background-color: black;
-    /* Nền đen */
-    color: white;
-    /* Màu chữ trắng */
-    transform: scale(0.95);
-    /* Thu nhỏ nút */
-}
-
-.btn-group .btn {
-    margin-right: 5px;
-}
 
 .main-image-container {
     position: relative;

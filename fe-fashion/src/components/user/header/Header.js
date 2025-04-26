@@ -1,29 +1,29 @@
 import React, { useState } from 'react';
 import { Navbar, Nav, Button, Container } from 'react-bootstrap';
-import { NavLink } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { login, logout } from '../../../store/store';
+import { NavLink, useNavigate } from 'react-router-dom';
 import './Header.scss';
 
-const Header = ({ isLoggedIn, fullName, setUser }) => {
+const Header = () => {
+    const dispatch = useDispatch();
+    const isLoggin = useSelector((state) => state.auth.isLoggin);
+    const cartCnt = useSelector((state) => state.auth.cartCount);
+    const wishlistCnt = useSelector((state) => state.auth.wishlistCount);
     const [showFilter, setShowFilter] = useState(false);
     const [isNavbarOpen, setIsNavbarOpen] = useState(false);
 
     const handleToggle = () => setIsNavbarOpen(!isNavbarOpen);
 
-    // Close menu when clicking NavLink
+    // Đóng menu khi nhấp vào NavLink
     const handleNavLinkClick = () => {
         setIsNavbarOpen(false);
     };
-
-    const handleSignOut = () => {
-        setUser({
-            isLoggedIn: false,
-            fullName: ''
-        });
-    };
+    console.log('isLoggin:', isLoggin);
 
     return (
         <div className='header'>
-            <Navbar bg="white" expand="md" className="header-container" fixed="top" key={isLoggedIn ? 'logged-in' : 'logged-out'}>
+            <Navbar bg="white" expand="md" className="header-container" fixed="top" key={isLoggin ? 'logged-in' : 'logged-out'}>
                 <Container>
                     <NavLink to='/' className='navbar-brand'>FASCO</NavLink>
                     <Navbar.Toggle
@@ -36,7 +36,7 @@ const Header = ({ isLoggedIn, fullName, setUser }) => {
                     >
                         <Nav className="me-auto">
                             <NavLink to='/home' className='nav-link' onClick={handleNavLinkClick}>Home</NavLink>
-                            {isLoggedIn ? (
+                            {isLoggin ? (
                                 <>
                                     <NavLink to='/shop' className='nav-link' onClick={handleNavLinkClick}>Shop</NavLink>
                                     <NavLink to='/products' className='nav-link' onClick={handleNavLinkClick}>Products</NavLink>
@@ -51,7 +51,7 @@ const Header = ({ isLoggedIn, fullName, setUser }) => {
                             )}
                         </Nav>
                         <Nav className="ml-auto">
-                            {isLoggedIn ? (
+                            {isLoggin ? (
                                 <>
                                     {showFilter && (
                                         <input
@@ -69,15 +69,23 @@ const Header = ({ isLoggedIn, fullName, setUser }) => {
                                     </NavLink>
                                     <NavLink className='nav-link' to='/wish-list' onClick={handleNavLinkClick}>
                                         <img src={require('../../../assets/icons/star.png')} alt="Wishlist" />
+                                        {wishlistCnt > 0 && (
+                                            <span className="badge badge-danger">{wishlistCnt}</span>
+                                        )}
                                     </NavLink>
                                     <NavLink className='nav-link' to='/cart' onClick={handleNavLinkClick}>
                                         <img src={require('../../../assets/icons/cart.png')} alt="Cart" />
+                                        {cartCnt > 0 && (
+                                            <span className="badge badge-danger">{cartCnt}</span>
+
+                                        )}
                                     </NavLink>
-                                    <NavLink className='nav-link' to='/profile' onClick={handleNavLinkClick}>
-                                        <span className="full-name">{fullName || 'User'}</span>
-                                    </NavLink>
-                                    <NavLink className='nav-link' to='/home'>
-                                        <Button onClick={handleSignOut} variant="dark" style={{ fontSize: '12px' }}>
+                                    <NavLink
+                                        className='nav-link'
+                                        to='/home'
+                                    >
+
+                                        <Button onClick={() => dispatch(logout())} variant="dark" style={{ fontSize: '12px', width: '105px' }}>
                                             Sign Out
                                         </Button>
                                     </NavLink>
@@ -86,22 +94,15 @@ const Header = ({ isLoggedIn, fullName, setUser }) => {
                                 <>
                                     <NavLink
                                         className='nav-link'
-                                        to='/login'
-                                        style={{ fontSize: '12px' }}
-                                        onClick={handleNavLinkClick}
+                                        to='/home'
+                                        style={{ fontSize: '12px', width: '75px' }}
+                                        onClick={() => dispatch(login())}
                                     >
                                         Sign In
                                     </NavLink>
-                                    <NavLink
-                                        className='nav-link'
-                                        to='/register'
-                                        style={{ fontSize: '12px' }}
-                                        onClick={handleNavLinkClick}
-                                    >
-                                        <Button variant="dark" style={{ fontSize: '12px' }}>
-                                            Sign Up
-                                        </Button>
-                                    </NavLink>
+                                    <Button variant="dark">
+                                        Sign Up
+                                    </Button>
                                 </>
                             )}
                         </Nav>
