@@ -1,34 +1,60 @@
-﻿using BE_Fashion.Data;
+using BE_Fashion.Mappings;
+using BE_Fashion.Models;
 using BE_Fashion.Services;
-using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Authentication.Google;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
+using BE_Fashion.Repositories;
 using Microsoft.EntityFrameworkCore;
+using static System.Net.Mime.MediaTypeNames;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Cấu hình kết nối SQL Server
-builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection") ??
-        throw new InvalidOperationException("Chuỗi kết nối 'DefaultConnection' không được tìm thấy.")));
+// Add services to the container.
 
-// Đăng ký JwtService
-builder.Services.AddScoped<IJwtService, JwtService>();
+builder.Services.AddControllers()
+    .AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.IgnoreCycles; // Or Ignore
+        options.JsonSerializerOptions.WriteIndented = true;
+    });
+// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
 
-// Xác thực JWT
+
+// Configure Database
+builder.Services.AddDbContext<DbtestContext>(options =>
+    options.UseMySql(
+        builder.Configuration.GetConnectionString("DefaultConnection"),
+        ServerVersion.AutoDetect(builder.Configuration.GetConnectionString("DefaultConnection"))
+    ));
+// AutoMapper
+builder.Services.AddAutoMapper(typeof(UserProfile));
+
+
+// Add UserRepository to DI container
+builder.Services.AddScoped<UserRepository>();
+builder.Services.AddScoped<ProductRepository>();
+builder.Services.AddScoped<ProductColorImageRepository>();
+
+// Register UserService in Dependency Injection DI Container: 
+builder.Services.AddScoped<UserService>();
+builder.Services.AddScoped<ProductService>();
+builder.Services.AddScoped<ProductColorImageService>();
+
+builder.Services.AddAutoMapper(typeof(ProductProfile));
+
+
+// Jwt
 var jwtKey = builder.Configuration["Jwt:Key"];
 if (string.IsNullOrEmpty(jwtKey))
 {
-    throw new InvalidOperationException("Khóa JWT chưa được cấu hình");
+    throw new InvalidOperationException("JWT key is not configured.");
 }
-
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {
-        options.RequireHttpsMetadata = false;
-        options.SaveToken = true;
         options.TokenValidationParameters = new TokenValidationParameters
         {
             ValidateIssuer = true,
@@ -40,48 +66,23 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtKey))
         };
     });
-var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+
+// allow CORS (Cross-Origin Resource Sharing) is a browser security mechanism that allow (or blocks) a website on one domain from accessing resource from another domain.
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy(name: MyAllowSpecificOrigins, policy =>
-    {
-        policy.WithOrigins(
-            "http://localhost:5173",
-            "https://localhost:5173",
-            "http://localhost:7009",
-            "https://localhost:7009"  // Swagger origin
-        )
-        .AllowAnyHeader()
-        .AllowAnyMethod()
-        .AllowCredentials();  // Đảm bảo bật để gửi cookie
-    });
+    options.AddPolicy("AllowFrontEnd",
+        policy =>
+        {
+        //Allows all types of headers from the client to be sent to the server without being blocked.
+        // Host: localhost:5000 Content - Type: application / json Authorization: Bearer eyJhbGciOiJIUzI1...User - Agent: Mozilla / 5.0(Windows NT 10.0; Win64; x64)
+            policy.WithOrigins("http://localhost:3000").AllowAnyHeader().AllowAnyMethod();
+        });
 });
-// Thêm Authentication
-builder.Services.AddAuthentication(options =>
-{
-    options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-    options.DefaultChallengeScheme = GoogleDefaults.AuthenticationScheme;
-})
-.AddCookie(options =>
-{
-    options.Cookie.SameSite = SameSiteMode.Lax; // Linh hoạt cho development
-    options.Cookie.SecurePolicy = CookieSecurePolicy.SameAsRequest; // Dùng HTTPS nếu có
-}) // Cookie để lưu trạng thái đăng nhập
-.AddGoogle(GoogleDefaults.AuthenticationScheme, options =>
-{
-    options.ClientId = "1082077099324-9naa7hjqigq0brkum7gr65nmkdfevte4.apps.googleusercontent.com";
-    options.ClientSecret = "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";
-    options.CallbackPath = "/signin-google"; // Đường dẫn callback sau khi Google xác thực
-});
-
-// Add services to the container.
-
-builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
+
+// Allow access static files in wwwroot
+app.UseStaticFiles();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -89,8 +90,11 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-app.UseCors(MyAllowSpecificOrigins);
-app.UseAuthentication();
+
+// use CORS
+
+app.UseCors("AllowFrontEnd");
+
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
