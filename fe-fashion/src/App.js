@@ -1,10 +1,10 @@
-import './App.scss';
-import Header from './components/user/header/Header';
-import Footer from './components/user/footer/Footer';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Header from './components/user/header/Header';
+import Login from './pages/user/login';
+import MainShop from './pages/user/main_shop'; // Adjust path as needed
+import Register from './pages/user/signup'; // Adjust path as needed
 import DealTheMonth from './pages/user/deal';
-import ShopCard from './components/user/card/ShopCard';
-import Main_Shop from './pages/user/main_shop';
 import Detail from './pages/user/detail';
 import AdminRoutes from '../src/routes/AdminRoutes';
 function App() {
@@ -24,6 +24,6 @@ function App() {
       </Router>
     </div>
   );
-}
+};
 
 export default App;
