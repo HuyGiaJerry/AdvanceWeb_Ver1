@@ -6,6 +6,7 @@ import DealTheMonth from './pages/user/deal';
 import ShopCard from './components/user/card/ShopCard';
 import Main_Shop from './pages/user/main_shop';
 import Detail from './pages/user/detail';
+import AdminRoutes from '../src/routes/AdminRoutes';
 function App() {
   return (
     <div className="App">
@@ -16,6 +17,7 @@ function App() {
             <Route path="/" element={<Main_Shop />} />
 
             <Route path="product/detail/:id" element={<Detail />} />
+            <Route path="/admin/*" element={<AdminRoutes />} />
           </Routes>
         </div>
         <Footer />
