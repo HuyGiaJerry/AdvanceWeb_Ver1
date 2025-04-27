@@ -21,50 +21,69 @@ CREATE TABLE users (
 ALTER TABLE users
 MODIFY role varchar(50) default 'customer';
 
--- danh mục sản phẩm
+CREATE TABLE refresh_tokens (
+    token_id INT PRIMARY KEY AUTO_INCREMENT,
+    user_id INT NOT NULL,
+    provider VARCHAR(50) NOT NULL,
+    token VARCHAR(512) NOT NULL,
+    expires_at TIMESTAMP NULL,
+    issued_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    revoked BOOLEAN NOT NULL DEFAULT FALSE,
+    CONSTRAINT fk_user_id FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE,
+    CONSTRAINT unique_user_provider UNIQUE (user_id, provider)
+);
+
+-- Bảng danh mục
 CREATE TABLE categories (
-    category_id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(255) NOT NULL,
-    parent_id INT,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (parent_id) REFERENCES categories(category_id)
+  category_id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(255) NOT NULL,
+  parent_id INT DEFAULT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (parent_id) REFERENCES categories(category_id)
 );
 
--- sản phẩm
+-- Bảng sản phẩm
 CREATE TABLE products (
-    product_id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(255) NOT NULL, -- "Áo thun XYZ", "Quần jeans XYZ"
-    description TEXT,
-    base_price DECIMAL(10, 2) NOT NULL,
-    discount_price DECIMAL(10, 2),
-    sku VARCHAR(50) UNIQUE,
-    category_id INT,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    FOREIGN KEY (category_id) REFERENCES categories(category_id)
+  product_id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(255) NOT NULL,
+  description TEXT,
+  base_price DECIMAL(10,2) NOT NULL,
+  discount_price DECIMAL(10,2),
+  sku VARCHAR(50) UNIQUE NOT NULL,
+  category_id INT,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  FOREIGN KEY (category_id) REFERENCES categories(category_id)
 );
 
--- ảnh sản phẩm
-CREATE TABLE product_images (
-    image_id INT AUTO_INCREMENT PRIMARY KEY,
-    product_id INT,
-    image_url VARCHAR(255) NOT NULL,
-    is_primary TINYINT(1) DEFAULT 0,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (product_id) REFERENCES products(product_id) ON DELETE CASCADE
+CREATE TABLE product_colors (
+  color_id INT AUTO_INCREMENT PRIMARY KEY,
+  product_id INT NOT NULL,
+  color_name VARCHAR(50) NOT NULL,
+  color_sku VARCHAR(50) UNIQUE NOT NULL,
+  FOREIGN KEY (product_id) REFERENCES products(product_id)
 );
 
--- biến thể sản phẩm
 CREATE TABLE product_variants (
-    variant_id INT AUTO_INCREMENT PRIMARY KEY,
-    product_id INT,
-    size VARCHAR(50),
-    color VARCHAR(50),
-    stock_quantity INT NOT NULL DEFAULT 0,
-    variant_sku VARCHAR(50) UNIQUE,
-    additional_price DECIMAL(10, 2) DEFAULT 0,
-    FOREIGN KEY (product_id) REFERENCES products(product_id) ON DELETE CASCADE
+  variant_id INT AUTO_INCREMENT PRIMARY KEY,
+  product_id INT NOT NULL,
+  size VARCHAR(50) NOT NULL,
+  color_id INT NOT NULL,
+  stock_quantity INT DEFAULT 0,
+  variant_sku VARCHAR(50) UNIQUE NOT NULL,
+  FOREIGN KEY (product_id) REFERENCES products(product_id),
+  FOREIGN KEY (color_id) REFERENCES product_colors(color_id)
 );
+
+CREATE TABLE product_color_images (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  color_id INT NOT NULL,
+  image_url VARCHAR(255) NOT NULL,
+  is_primary BOOLEAN DEFAULT FALSE,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (color_id) REFERENCES product_colors(color_id)
+);
+
 
  -- sản phẩm yêu thích 
 CREATE TABLE wishlists (
@@ -166,6 +185,9 @@ CREATE TABLE otps (
     FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE
 );
 
+
+
+--
 ALTER TABLE products
 ADD COLUMN RowVersion TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP;
 

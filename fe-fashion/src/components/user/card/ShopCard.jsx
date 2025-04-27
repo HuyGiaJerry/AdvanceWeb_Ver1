@@ -2,14 +2,17 @@ import React, { useState } from "react";
 import { FaEye, FaHeart, FaShoppingCart } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart, addToWishlist, login } from "../../../store/store";
+import { useNavigate } from "react-router-dom";
 import "./ShopCard.scss";
 
-const ShopCard = (props) => {
+const ShopCard = ({ id, name, price, colors }) => {
     const dispatch = useDispatch();
     const isLoggin = useSelector((state) => state.auth.isLoggin);
+    const navigate = useNavigate();
 
-    // Trạng thái màu đang được chọn
-    const [activeColor, setActiveColor] = useState(props.colorOptions[0]);
+    // Trạng thái màu và ảnh đang được chọn
+    const [activeColor, setActiveColor] = useState(colors[0].colorName); // Màu đầu tiên
+    const [activeImage, setActiveImage] = useState(colors[0].images[0].imageUrl); // Ảnh đầu tiên của màu đầu tiên
 
     const handleAddToCart = () => {
         if (!isLoggin) {
@@ -27,22 +30,26 @@ const ShopCard = (props) => {
         }
     };
 
+    const handleViewDetails = () => {
+        navigate(`product/detail/${id}`); // Điều hướng đến trang chi tiết với id sản phẩm
+    };
+
     const handleColorClick = (color) => {
-        setActiveColor(color); // Cập nhật màu đang được chọn
-        console.log(`Selected color: ${color}`);
+        setActiveColor(color.colorName); // Cập nhật màu đang được chọn
+        setActiveImage(color.images[0].imageUrl); // Cập nhật ảnh tương ứng với màu đang được chọn
     };
 
     return (
         <div className="col-md-4 col-sm-6 mb-4">
-            <div className="card shop-card" style={{border: "none"}}>
+            <div className="card shop-card" style={{ border: "none" }}>
                 <div className="card-img-container">
                     <img
-                        src={require(`../../../assets/images/${props.image}`)}
+                        src={require(`../../../assets/images/${activeImage}`)}
                         className="card-img-top"
-                        alt={props.name || "Product Image"}
+                        alt={name || "Product Image"}
                     />
                     <div className="card-hover-overlay">
-                        <button className="btn btn-primary">
+                        <button className="btn btn-primary" onClick={handleViewDetails}>
                             <FaEye className="icon" />
                         </button>
                         <button className="btn btn-secondary" onClick={handleAddToWishlist}>
@@ -54,14 +61,14 @@ const ShopCard = (props) => {
                     </div>
                 </div>
                 <div className="card-body">
-                    <h5 className="card-title">{props.name}</h5>
-                    <p className="card-text">${props.price}</p>
+                    <h5 className="card-title">{name}</h5>
+                    <p className="card-text">${price}</p>
                     <div className="color-options">
-                        {props.colorOptions.map((color, index) => (
+                        {colors.map((color, index) => (
                             <button
                                 key={index}
-                                className={`color-dot ${activeColor === color ? "active" : ""}`}
-                                style={{ backgroundColor: color }}
+                                className={`color-dot ${activeColor === color.colorName ? "active" : ""}`}
+                                style={{ backgroundColor: color.colorName.toLowerCase() }}
                                 onClick={() => handleColorClick(color)}
                             ></button>
                         ))}

@@ -17,22 +17,6 @@
   },
   {
     "ContainingType": "BE_Fashion.Controllers.ProductController",
-    "Method": "GetProductDetail",
-    "RelativePath": "api/Product/{id}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "BE_Fashion.Controllers.ProductController",
     "Method": "GetAllProducts",
     "RelativePath": "api/Product/products",
     "HttpMethod": "GET",

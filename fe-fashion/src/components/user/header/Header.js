@@ -69,23 +69,23 @@ const Header = () => {
                                     </NavLink>
                                     <NavLink className='nav-link' to='/wish-list' onClick={handleNavLinkClick}>
                                         <img src={require('../../../assets/icons/star.png')} alt="Wishlist" />
-                                        {wishlistCnt > 0 &&(
+                                        {wishlistCnt > 0 && (
                                             <span className="badge badge-danger">{wishlistCnt}</span>
                                         )}
                                     </NavLink>
                                     <NavLink className='nav-link' to='/cart' onClick={handleNavLinkClick}>
                                         <img src={require('../../../assets/icons/cart.png')} alt="Cart" />
-                                        {cartCnt > 0 &&(
+                                        {cartCnt > 0 && (
                                             <span className="badge badge-danger">{cartCnt}</span>
 
-                                            )}
+                                        )}
                                     </NavLink>
                                     <NavLink
                                         className='nav-link'
                                         to='/home'
                                     >
 
-                                        <Button onClick={() => dispatch(logout())} variant="dark" style={{ fontSize: '12px' }}>
+                                        <Button onClick={() => dispatch(logout())} variant="dark" style={{ fontSize: '12px', width: '105px' }}>
                                             Sign Out
                                         </Button>
                                     </NavLink>
@@ -95,7 +95,7 @@ const Header = () => {
                                     <NavLink
                                         className='nav-link'
                                         to='/home'
-                                        style={{ fontSize: '12px' }}
+                                        style={{ fontSize: '12px', width: '75px' }}
                                         onClick={() => dispatch(login())}
                                     >
                                         Sign In
