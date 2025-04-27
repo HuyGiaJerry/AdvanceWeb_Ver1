@@ -85,11 +85,11 @@ const Detail = () => {
     };
 
     if (!product) {
-        return <div className="container my-5">Product not found!</div>;
+        return <div className="container" style={{ marginTop: "100px" }}>Product not found!</div>;
     }
 
     return (
-        <div className="container my-5">
+        <div className="container" style={{ marginTop: "100px" }}>
             <div className="row">
                 {/* Sidebar tất cả hình ảnh sp bên trái */}
                 <div className="col-lg-2 col-md-3 col-sm-12 mb-3">
