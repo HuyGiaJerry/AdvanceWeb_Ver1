@@ -26,17 +26,24 @@ namespace BE_Fashion.Repositories
             return (int)Math.Ceiling((double)totalCount / pageSize); // calculator page size
         }
         // Get all products
-        public async Task<IEnumerable<Product>> GetAllAsync(int pageNumber, int pageSize)
+        //public async Task<IEnumerable<Product>> GetAllAsync(int pageNumber, int pageSize)
+        //{
+        //    return await _context.Products
+        //        .Include(p => p.ProductColors)
+        //            .ThenInclude(pc => pc.ProductColorImages)
+        //        .OrderBy(p => p.ProductId)
+        //        .Skip((pageNumber - 1) * pageSize)
+        //        .Take(pageSize)
+        //        .ToListAsync();
+        //}
+        public async Task<IEnumerable<Product>> GetAllAsync()
         {
             return await _context.Products
                 .Include(p => p.ProductColors)
                     .ThenInclude(pc => pc.ProductColorImages)
                 .OrderBy(p => p.ProductId)
-                .Skip((pageNumber - 1) * pageSize)
-                .Take(pageSize)
                 .ToListAsync();
         }
-
 
         // Add new product
         public async Task AddAsync(Product product)

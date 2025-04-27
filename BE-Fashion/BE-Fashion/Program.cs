@@ -36,12 +36,10 @@ builder.Services.AddAutoMapper(typeof(UserProfile));
 // Add UserRepository to DI container
 builder.Services.AddScoped<UserRepository>();
 builder.Services.AddScoped<ProductRepository>();
-builder.Services.AddScoped<ProductColorImageRepository>();
 
 // Register UserService in Dependency Injection DI Container: 
 builder.Services.AddScoped<UserService>();
 builder.Services.AddScoped<ProductService>();
-builder.Services.AddScoped<ProductColorImageService>();
 
 builder.Services.AddAutoMapper(typeof(ProductProfile));
 

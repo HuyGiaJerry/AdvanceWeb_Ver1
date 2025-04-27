@@ -21,9 +21,14 @@ namespace BE_Fashion.Services
             // calculator page number
             return await _productRepository.GetTotalPagesAsync(pageSize);
         }
-        public async Task<IEnumerable<ProductListDto>> GetAllProductsAsync(int pageNumber, int pageSize)
+        //public async Task<IEnumerable<ProductListDto>> GetAllProductsAsync(int pageNumber, int pageSize)
+        //{
+        //    var products = await _productRepository.GetAllAsync(pageNumber, pageSize);
+        //    return _mapper.Map<IEnumerable<ProductListDto>>(products);
+        //}
+        public async Task<IEnumerable<ProductListDto>> GetAllProductsAsync()
         {
-            var products = await _productRepository.GetAllAsync(pageNumber, pageSize);
+            var products = await _productRepository.GetAllAsync();
             return _mapper.Map<IEnumerable<ProductListDto>>(products);
         }
         //public async Task<IEnumerable<ProductListDto>> GetAllProductsAsync(int pageNumber, int pageSize)

@@ -65,7 +65,11 @@ namespace BE_Fashion.Repositories
                 return null;
             }
         }
-        public async Task<IEnumerable<User>> GetAllAsync(int pageNumber,int pageSize)
+        //public async Task<IEnumerable<User>> GetAllAsync(int pageNumber,int pageSize)
+        //{
+        //    return await _userSet.ToListAsync();
+        //}
+        public async Task<IEnumerable<User>> GetAllAsync()
         {
             return await _userSet.ToListAsync();
         }
@@ -81,6 +85,7 @@ namespace BE_Fashion.Repositories
 
             return isPasswordValid ? user : null;
         }
+
         //public async Task SaveRefreshTokenAsync(RefreshToken dto)
         //{
         //    _context.RefreshTokens.Add(dto);

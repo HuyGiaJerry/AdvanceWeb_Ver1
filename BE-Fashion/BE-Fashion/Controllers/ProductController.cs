@@ -21,9 +21,14 @@ namespace BE_Fashion.Controllers
             return Ok(new { TotalPages = totalPages });
         }
         [HttpGet("products")]
-        public async Task<IActionResult> GetAllProducts(int pageNumber,int pageSize)
+        //public async Task<IActionResult> GetAllProducts(int pageNumber,int pageSize)
+        //{
+        //    var products = await _productService.GetAllProductsAsync(pageNumber, pageSize);
+        //    return Ok(products);
+        //}
+        public async Task<IActionResult> GetAllProducts()
         {
-            var products = await _productService.GetAllProductsAsync(pageNumber, pageSize);
+            var products = await _productService.GetAllProductsAsync();
             return Ok(products);
         }
         [HttpGet("{id}")]
