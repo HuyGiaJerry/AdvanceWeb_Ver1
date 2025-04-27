@@ -40,6 +40,7 @@ INSERT INTO categories (name, parent_id) VALUES
 ('Ba lô', 5);
 
 -- Product
+SET @row := 0;
 INSERT INTO products (name, description, base_price, discount_price, sku, category_id)
 SELECT 
   CONCAT('Sản phẩm ', n),
@@ -47,7 +48,7 @@ SELECT
   100000 + FLOOR(RAND() * 50000),
   90000 + FLOOR(RAND() * 40000),
   CONCAT('SKU', LPAD(n, 4, '0')),
-  FLOOR(RAND() * 13) + 3  -- category_id từ 3 đến 15
+  FLOOR(RAND() * 5) + 1  -- category_id từ 1 đến 5
 FROM (
   SELECT @row := @row + 1 AS n FROM information_schema.columns LIMIT 250
 ) AS t;
@@ -57,7 +58,7 @@ SET @img_index := 0;
 INSERT INTO product_images (product_id, image_url, is_primary)
 SELECT 
   p.product_id,
-  CONCAT('/images/', LPAD(@img_index := @img_index + 1, 4, '0'), '.jpg'),
+  CONCAT('/images/', LPAD(@img_index := @img_index + 1, 3, '0'), '.jpg'),
   CASE WHEN i = 1 THEN TRUE ELSE FALSE END
 FROM (
   SELECT product_id FROM products ORDER BY product_id LIMIT 250
