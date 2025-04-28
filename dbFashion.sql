@@ -1,3 +1,4 @@
+create database dbtest;
 USE dbtest;
 
 -- Người dùng
@@ -209,5 +210,5 @@ DROP TABLE order_items;
 DROP TABLE otps;
 
 DROP database dbtest;
-create database dbtest;
+
 
