@@ -39,7 +39,6 @@ INSERT INTO categories (name, parent_id) VALUES
 ('Túi tote', 5),
 ('Ba lô', 5);
 
-<<<<<<< HEAD
 -- Product
 SET @row := 0;
 INSERT INTO products (name, description, base_price, discount_price, sku, category_id)
