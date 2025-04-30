@@ -37,7 +37,7 @@ const Login = () => {
                             </Form.Group>
                             <Form.Group className="mb-3" controlId="formPassword">
                                 <Form.Label>Password</Form.Label>
-                                <Form.Control type="password" placeholder="Enter your password" />
+                                <Form.Control type="password" />
                             </Form.Group>
                             <Button variant="dark" type="submit">
                                 Sign In

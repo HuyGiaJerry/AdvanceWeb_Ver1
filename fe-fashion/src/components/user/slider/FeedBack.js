@@ -24,10 +24,16 @@ const FeedBack = () => {
 
     return (
         <div className="feedback-slider-wrapper">
+            {/* Caption */}
+            <div className="feedback-caption text-center">
+                <h2 className="feedback-title">This Is What Our Customers Say</h2>
+                <p className="feedback-description">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Scelerisque duis
+                </p>
+            </div>
 
-
+            {/* Slider */}
             <div className="slider">
-                {/* Render chỉ 3 slide: prev, current, next */}
                 <div className="prev">
                     <FeedBackCard {...sampleDataFeedBackCard[getIndex(-1)]} />
                 </div>
@@ -38,15 +44,18 @@ const FeedBack = () => {
                     <FeedBackCard {...sampleDataFeedBackCard[getIndex(1)]} />
                 </div>
             </div>
-            <button className="prev-btn" onClick={handlePrev}>
-                &#8249;
-            </button>
-            <button className="next-btn" onClick={handleNext}>
-                &#8250;
-            </button>
+
+            {/* Slider Buttons */}
+            <div className="slider-buttons">
+                <button className="prev-btn" onClick={handlePrev}>
+                    &#8249;
+                </button>
+                <button className="next-btn" onClick={handleNext}>
+                    &#8250;
+                </button>
+            </div>
         </div>
     );
-
 };
 
 export default FeedBack;

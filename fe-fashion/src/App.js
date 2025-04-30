@@ -6,6 +6,9 @@ import Home from './pages/user/home'
 import Detail from './pages/user/detail';
 import AdminRoutes from '../src/routes/AdminRoutes';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Login from './pages/user/login';
+import SignUp from './pages/user/signup';
+import ShopCart from './pages/user/shop-cart';
 function App() {
   return (
     <div className="App">
@@ -16,6 +19,9 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/home" element={<Home />} />
             <Route path="/shop" element={<MainShop />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<SignUp />} />
+            <Route path="/cart" element={<ShopCart />} />
 
             <Route path="/shop/product/detail/:id" element={<Detail />} />
             <Route path="/admin/*" element={<AdminRoutes />} />

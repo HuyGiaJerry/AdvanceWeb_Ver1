@@ -1,0 +1,93 @@
+.shop-cart-page {
+    padding: 50px 20px;
+    margin-top: 100px;
+
+    h1 {
+        font-size: 2rem;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+
+    p {
+        font-size: 1rem;
+        color: #666;
+    }
+
+    .product-info {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        /* Căn giữa theo chiều dọc */
+        text-align: left;
+        /* Căn lề trái */
+        gap: 15px;
+        /* Khoảng cách giữa ảnh và thông tin */
+
+        .product-image {
+            width: 80px;
+            height: auto;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .product-details {
+            display: flex;
+            flex-direction: column;
+            /* Căn thông tin theo chiều dọc */
+            justify-content: center;
+            /* Căn giữa thông tin theo chiều dọc */
+        }
+
+        .product-name {
+            font-size: 1rem;
+            font-weight: bold;
+            margin: 0;
+        }
+
+        .product-color,
+        .product-size {
+            font-size: 0.9rem;
+            color: #666;
+            margin: 0;
+        }
+
+        .remove-link {
+            font-size: 0.9rem;
+            color: #8A8A8A;
+            text-decoration: none;
+            background-color: #fff;
+            border: none;
+            padding: 0;
+            margin-top: 5px;
+            /* Khoảng cách giữa nút Remove và thông tin */
+            text-align: left;
+        }
+
+        .remove-link:hover {
+            text-decoration: underline;
+        }
+    }
+
+    .quantity-control {
+        button {
+            width: 30px;
+            height: 30px;
+            font-size: 1rem;
+        }
+    }
+
+    .wrap-option {
+        font-size: 1rem;
+    }
+
+    .checkout-btn {
+        width: 200px;
+        font-size: 1rem;
+        font-weight: bold;
+    }
+
+    .view-cart-btn {
+        width: 200px;
+        font-size: 1rem;
+    }
+}
