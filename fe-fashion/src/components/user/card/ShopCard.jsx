@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addToCart, addToWishlist, login } from "../../../store/store";
 import { useNavigate } from "react-router-dom";
 import "./ShopCard.scss";
+import dataWishList from "../../../services/sampleDataWishList";
 
 const ShopCard = ({ id, name, price, colors }) => {
     const dispatch = useDispatch();
@@ -13,7 +14,8 @@ const ShopCard = ({ id, name, price, colors }) => {
     // Trạng thái màu và ảnh đang được chọn
     const [activeColor, setActiveColor] = useState(colors[0].colorName); // Màu đầu tiên
     const [activeImage, setActiveImage] = useState(colors[0].images[0].imageUrl); // Ảnh đầu tiên của màu đầu tiên
-
+    const [wishlist, setWishlist] = useState(dataWishList); // Trạng thái danh sách yêu thích
+    const isInWishlist = wishlist.some((item) => item.productId === id); // Kiểm tra xem sản phẩm đã có trong danh sách yêu thích chưa
     const handleAddToCart = () => {
         if (!isLoggin) {
             dispatch(login());
@@ -27,6 +29,22 @@ const ShopCard = ({ id, name, price, colors }) => {
             dispatch(login());
         } else {
             dispatch(addToWishlist());
+            if (isInWishlist) {
+                // Nếu sản phẩm đã có trong wishlist, xóa nó
+                setWishlist(wishlist.filter((item) => item.productId !== id));
+            } else {
+                // Nếu sản phẩm chưa có, thêm vào wishlist
+                setWishlist([
+                    ...wishlist,
+                    {
+                        productId: id,
+                        name,
+                        price,
+                        color: activeColor,
+                        imageUrl: activeImage,
+                    },
+                ]);
+            }
         }
     };
 
@@ -52,16 +70,18 @@ const ShopCard = ({ id, name, price, colors }) => {
                         <button className="btn btn-primary" onClick={handleViewDetails}>
                             <FaEye className="icon" />
                         </button>
-                        <button className="btn btn-secondary" onClick={handleAddToWishlist}>
-                            <FaHeart className="icon" />
-                        </button>
                         <button className="btn btn-success" onClick={handleAddToCart}>
                             <FaShoppingCart className="icon" />
                         </button>
                     </div>
                 </div>
                 <div className="card-body">
-                    <h5 className="card-title">{name}</h5>
+                    <div className="card-title-container">
+                        <h5 className="card-title">{name}</h5>
+                        <button className={`btn heart-btn ${isInWishlist ? "active" : ""}`} onClick={handleAddToWishlist}>
+                            <FaHeart className="icon" />
+                        </button>
+                    </div>
                     <p className="card-text">${price}</p>
                     <div className="color-options">
                         {colors.map((color, index) => (

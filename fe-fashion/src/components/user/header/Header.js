@@ -2,11 +2,12 @@ import React, { useState } from 'react';
 import { Navbar, Nav, Button, Container, Modal } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { login, logout } from '../../../store/store';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import './Header.scss';
 
 const Header = () => {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const isLoggin = useSelector((state) => state.auth.isLoggin);
     const cartCnt = useSelector((state) => state.auth.cartCount);
     const wishlistCnt = useSelector((state) => state.auth.wishlistCount);
@@ -47,6 +48,10 @@ const Header = () => {
 
         setSearchResults(filteredResults);
     };
+    const handleSignOut = () => {
+        dispatch(logout());
+        navigate('/home');
+    }
 
     return (
         <div className='header'>
@@ -80,9 +85,9 @@ const Header = () => {
                         <Nav className="ml-auto">
                             {isLoggin ? (
                                 <>
-                                    <NavLink className='nav-link' onClick={handleSearchClick}>
+                                    <button className='nav-link search-button' onClick={handleSearchClick}>
                                         <img src={require('../../../assets/icons/search.png')} alt="Search" />
-                                    </NavLink>
+                                    </button>
                                     <NavLink className='nav-link' exact to='/profile' activeClassName="active" onClick={handleNavLinkClick}>
                                         <img src={require('../../../assets/icons/user.png')} alt="User" />
                                     </NavLink>
@@ -98,26 +103,28 @@ const Header = () => {
                                             <span className="badge badge-danger">{cartCnt}</span>
                                         )}
                                     </NavLink>
-                                    <NavLink
+                                    <button
                                         className='nav-link'
-                                        to='/home'
+                                        onClick={handleSignOut}
+                                        style={{ background: 'none', border: 'none', padding: 0 }}
                                     >
-                                        <Button onClick={() => dispatch(logout())} variant="dark" style={{ fontSize: '12px', width: '105px' }}>
+                                        <Button variant="dark" style={{ fontSize: '12px', width: '105px' }}>
                                             Sign Out
                                         </Button>
-                                    </NavLink>
+                                    </button>
                                 </>
                             ) : (
                                 <>
                                     <NavLink
                                         className='nav-link'
-                                        to='/home'
+                                        exact
+                                        to='/login'
                                         activeClassName="active"
                                         style={{ fontSize: '12px', width: '75px' }}
                                         onClick={() => dispatch(login())}
                                     >
                                         Sign In
-                                    </NavLink>
+                                    </NavLink >
                                     <Button variant="dark">
                                         Sign Up
                                     </Button>

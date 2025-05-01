@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Header from './components/user/header/Header';
 import MainShop from './pages/user/main_shop';
@@ -8,6 +9,7 @@ import AdminRoutes from './routes/AdminRoutes';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
+import UserRoutes from './routes/UserRoutes';
 // Kiểm tra đường dẫn và chỉ hiển thị Header cho các route không phải admin
 const AppContent = () => {
   const location = useLocation();
@@ -38,6 +40,14 @@ function App() {
     <div className="App">
       <Router>
         <AppContent />
+
+
+        <Routes>
+          <Route path="/*" element={<UserRoutes />} />
+          <Route path="/admin/*" element={<AdminRoutes />} />
+        </Routes>
+
+
       </Router>
     </div>
   );
