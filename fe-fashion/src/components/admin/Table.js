@@ -1,31 +1,31 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { FaEdit, FaTrash, FaSort, FaSortUp, FaSortDown } from 'react-icons/fa';
-import '../../assets/styles/Table.scss';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { FaEdit, FaTrash, FaSort, FaSortUp, FaSortDown } from "react-icons/fa";
+import "../../assets/styles/Table.scss";
 
 const Table = ({ columns, data, onDelete, editUrl, createUrl, itemsPerPage = 5 }) => {
-  const [sortConfig, setSortConfig] = useState({ key: null, direction: 'ascending' });
+  const [sortConfig, setSortConfig] = useState({ key: null, direction: "ascending" });
   const [currentPage, setCurrentPage] = useState(1);
 
   const requestSort = (key) => {
-    let direction = 'ascending';
-    if (sortConfig.key === key && sortConfig.direction === 'ascending') {
-      direction = 'descending';
+    let direction = "ascending";
+    if (sortConfig.key === key && sortConfig.direction === "ascending") {
+      direction = "descending";
     }
     setSortConfig({ key, direction });
   };
 
   const getSortIcon = (name) => {
     if (sortConfig.key !== name) return <FaSort />;
-    return sortConfig.direction === 'ascending' ? <FaSortUp /> : <FaSortDown />;
+    return sortConfig.direction === "ascending" ? <FaSortUp /> : <FaSortDown />;
   };
 
   const sortedData = React.useMemo(() => {
     let sortableItems = [...data];
     if (sortConfig.key) {
       sortableItems.sort((a, b) => {
-        if (a[sortConfig.key] < b[sortConfig.key]) return sortConfig.direction === 'ascending' ? -1 : 1;
-        if (a[sortConfig.key] > b[sortConfig.key]) return sortConfig.direction === 'ascending' ? 1 : -1;
+        if (a[sortConfig.key] < b[sortConfig.key]) return sortConfig.direction === "ascending" ? -1 : 1;
+        if (a[sortConfig.key] > b[sortConfig.key]) return sortConfig.direction === "ascending" ? 1 : -1;
         return 0;
       });
     }
@@ -57,7 +57,7 @@ const Table = ({ columns, data, onDelete, editUrl, createUrl, itemsPerPage = 5 }
     pagination.push(
       <button
         key={1}
-        className={`pagination-button ${currentPage === 1 ? 'active' : ''}`}
+        className={`pagination-button ${currentPage === 1 ? "active" : ""}`}
         onClick={() => handlePageChange(1)}
       >
         1
@@ -72,7 +72,7 @@ const Table = ({ columns, data, onDelete, editUrl, createUrl, itemsPerPage = 5 }
       pagination.push(
         <button
           key={i}
-          className={`pagination-button ${currentPage === i ? 'active' : ''}`}
+          className={`pagination-button ${currentPage === i ? "active" : ""}`}
           onClick={() => handlePageChange(i)}
         >
           {i}
@@ -88,7 +88,7 @@ const Table = ({ columns, data, onDelete, editUrl, createUrl, itemsPerPage = 5 }
       pagination.push(
         <button
           key={totalPages}
-          className={`pagination-button ${currentPage === totalPages ? 'active' : ''}`}
+          className={`pagination-button ${currentPage === totalPages ? "active" : ""}`}
           onClick={() => handlePageChange(totalPages)}
         >
           {totalPages}
@@ -113,20 +113,17 @@ const Table = ({ columns, data, onDelete, editUrl, createUrl, itemsPerPage = 5 }
   return (
     <div className="table-wrapper">
       <div className="table-header">
-        <h2>{columns.title || 'Danh sách'}</h2>
-        {createUrl && (
-          <Link to={createUrl} className="button-add">➕ Thêm mới</Link>
-        )}
+        <h2>{columns.title || "Danh sách"}</h2>
       </div>
       <div className="table-card">
         <table className="data-table">
           <thead>
             <tr>
               {columns.map((column) => (
-                <th 
+                <th
                   key={column.key}
                   onClick={() => column.sortable ? requestSort(column.key) : null}
-                  className={column.sortable ? 'sortable' : ''}
+                  className={column.sortable ? "sortable" : ""}
                 >
                   {column.name}
                   {column.sortable && <span className="sort-icon">{getSortIcon(column.key)}</span>}
@@ -137,18 +134,25 @@ const Table = ({ columns, data, onDelete, editUrl, createUrl, itemsPerPage = 5 }
           </thead>
           <tbody>
             {currentItems.map((item) => (
-              <tr key={item.product_id}>
+              <tr
+                key={item.product_id}
+                onClick={() => item.onClick && item.onClick()} // Ensure row is clickable if `onClick` is passed
+                style={{ cursor: item.onClick ? "pointer" : "default" }} // Change cursor style if `onClick` exists
+              >
                 {columns.map((column) => (
                   <td key={`${item.product_id}-${column.key}`}>{item[column.key]}</td>
                 ))}
                 <td className="actions">
                   {editUrl && (
                     <Link to={`${editUrl}/${item.product_id}`} className="button-edit">
-                      <FaEdit /> 
+                      <FaEdit />
                     </Link>
                   )}
-                  <button onClick={() => onDelete(item.product_id)} className="button-delete">
-                    <FaTrash /> 
+                  <button onClick={(e) => {
+                    e.stopPropagation(); // Prevent row click event
+                    onDelete(item.product_id);
+                  }} className="button-delete">
+                    <FaTrash />
                   </button>
                 </td>
               </tr>
@@ -156,9 +160,7 @@ const Table = ({ columns, data, onDelete, editUrl, createUrl, itemsPerPage = 5 }
           </tbody>
         </table>
       </div>
-      <div className="pagination">
-        {renderPagination()}
-      </div>
+      <div className="pagination">{renderPagination()}</div>
     </div>
   );
 };

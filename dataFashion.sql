@@ -96,8 +96,6 @@ select * from products
 join product_images on products.product_id = product_images.product_id
 where products.product_id = 2;
 
-=======
->>>>>>> 3ebc4b42d7425b492e979ee06eaaef9b5958ab98
 
 INSERT INTO products (name, description, base_price, discount_price, sku, category_id) VALUES ('Product 1', 'Description for Product 1', 288.0, 203.18, 'PROD001', 3);
 INSERT INTO product_colors (product_id, color_name, color_sku) VALUES (1, 'Blue', 'PROD001-BLUE');
