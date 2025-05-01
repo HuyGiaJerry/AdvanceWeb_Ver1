@@ -176,8 +176,9 @@ $sidebar-collapsed-width: 70px;
           
           .logout-btn {
             background: none;
+            font-weight: bold;
             border: none;
-            color: $danger-color;
+            color: rgb(30, 91, 177);
             padding: 0;
             font-size: 12px;
             cursor: pointer;

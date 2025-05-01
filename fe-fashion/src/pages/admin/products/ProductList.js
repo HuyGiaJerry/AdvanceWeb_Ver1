@@ -1,9 +1,12 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Layout from "../../../components/admin/Layout";
 import Table from "../../../components/admin/Table";
 import dataProduct from "../../../services/test"; // Import dataProduct
 
 const ProductList = () => {
+  const navigate = useNavigate(); // Initialize the navigation hook
+
   // Initialize the product data from `dataProduct`
   const [products, setProducts] = useState(
     dataProduct.map((product) => ({
@@ -27,6 +30,10 @@ const ProductList = () => {
     { key: "updated_at", name: "Cập nhật lúc", sortable: true },
   ];
 
+  const handleRowClick = (id) => {
+    navigate(`/shop/product/detail/${id}`); // Navigate to the detail page with the product ID
+  };
+
   const handleDelete = (id) => {
     if (window.confirm("Bạn có chắc chắn muốn xóa sản phẩm này?")) {
       setProducts(products.filter((product) => product.product_id !== id));
@@ -42,7 +49,10 @@ const ProductList = () => {
 
         <Table
           columns={columns}
-          data={products}
+          data={products.map((product) => ({
+            ...product,
+            onClick: () => handleRowClick(product.product_id), // Add onClick handler to each product
+          }))}
           onDelete={handleDelete}
           editUrl="/admin/products/edit"
           createUrl="/admin/products/create"

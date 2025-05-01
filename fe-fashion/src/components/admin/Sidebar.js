@@ -40,7 +40,7 @@ const Sidebar = () => {
             <ul className="submenu">
               <li><Link to="/admin/products">Danh sách sản phẩm</Link></li>
               <li><Link to="/admin/categories">Danh mục sản phẩm</Link></li>
-              <li><Link to="/admin/suppliers">Nhà cung cấp</Link></li>
+              {/* <li><Link to="/admin/suppliers">Nhà cung cấp</Link></li> */}
               <li><Link to="/admin/inventory">Quản lý tồn kho</Link></li>
             </ul>
           </li>
