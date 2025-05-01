@@ -6,9 +6,16 @@ import Login from "../pages/user/login"
 import SignUp from "../pages/user/signup"
 import ShopCart from "../pages/user/shop-cart"
 import WishList from "../pages/user/wish-list"
+import Account from "../pages/user/account"
+import Orders from "../pages/user/order"
+import OrderDetail from "../pages/user/orderDetail"
+import CheckOut from "../pages/user/check-out"
 import Header from "../components/user/header/Header"
 import Footer from "../components/user/footer/Footer"
 import '../App'
+
+
+
 const UserRoutes = () => {
     return (
         <>
@@ -22,6 +29,10 @@ const UserRoutes = () => {
                     <Route path="/register" element={<SignUp />} />
                     <Route path="/cart" element={<ShopCart />} />
                     <Route path="/wish-list" element={<WishList />} />
+                    <Route path="/account" element={<Account />} />
+                    <Route path="/orders" element={<Orders />} />
+                    <Route path="/order/:orderId" element={<OrderDetail />} />
+                    <Route path="/check-out" element={<CheckOut />} />
                     <Route path="/shop/product/detail/:id" element={<Detail />} />
                 </Routes>
             </div>

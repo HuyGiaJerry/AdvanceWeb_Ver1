@@ -1,9 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button, Form, Container, Row, Col } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { login } from '../../store/store';
 import './login.scss';
 
 const Login = () => {
+
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const [userName, setUserName] = useState('');
+
+    const handleLogin = (e) => {
+        e.preventDefault();
+        if (userName.trim() !== '') {
+            // Dispatch action login với username
+            dispatch(login({ userName }));
+            // Chuyển hướng về trang Home
+            navigate('/home');
+        } else {
+            alert('Please enter a username!');
+        }
+    }
+
     return (
         <Container className="login-page">
             <Row>
@@ -30,14 +49,23 @@ const Login = () => {
 
                         </div>
                         <div className="text-center my-3">-- OR --</div>
-                        <Form>
+                        <Form onSubmit={handleLogin}>
                             <Form.Group className="mb-3" controlId="formEmail">
-                                <Form.Label>Email Address</Form.Label>
-                                <Form.Control type="text" />
+                                <Form.Label>Username</Form.Label>
+                                <Form.Control
+                                    type="text"
+                                    placeholder='Enter your username or email'
+                                    value={userName}
+                                    onChange={(e) => setUserName(e.target.value)}
+                                    required
+                                />
                             </Form.Group>
                             <Form.Group className="mb-3" controlId="formPassword">
                                 <Form.Label>Password</Form.Label>
-                                <Form.Control type="password" />
+                                <Form.Control
+                                    type="password"
+                                    placeholder='Enter your password'
+                                />
                             </Form.Group>
                             <Button variant="dark" type="submit">
                                 Sign In

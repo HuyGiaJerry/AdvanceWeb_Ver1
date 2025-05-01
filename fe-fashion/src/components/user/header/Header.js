@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { Navbar, Nav, Button, Container, Modal } from 'react-bootstrap';
+import { Navbar, Nav, Button, Container, Modal, NavDropdown } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
-import { login, logout } from '../../../store/store';
+import { logout } from '../../../store/store';
 import { NavLink, useNavigate } from 'react-router-dom';
 import './Header.scss';
 
@@ -9,6 +9,7 @@ const Header = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const isLoggin = useSelector((state) => state.auth.isLoggin);
+    const userName = useSelector((state) => state.auth.userName); // Lấy tên người dùng từ Redux
     const cartCnt = useSelector((state) => state.auth.cartCount);
     const wishlistCnt = useSelector((state) => state.auth.wishlistCount);
     const [isNavbarOpen, setIsNavbarOpen] = useState(false);
@@ -67,69 +68,49 @@ const Header = () => {
                         in={isNavbarOpen}
                     >
                         <Nav className="me-auto">
-                            <NavLink exact to='/home' className='nav-link' activeClassName="active" onClick={handleNavLinkClick}>Home</NavLink>
-                            {isLoggin ? (
-                                <>
-                                    <NavLink exact to='/shop' className='nav-link' activeClassName="active" onClick={handleNavLinkClick}>Shop</NavLink>
-                                    <NavLink exact to='/products' className='nav-link' activeClassName="active" onClick={handleNavLinkClick}>Products</NavLink>
-                                    <NavLink to='/pages' className='nav-link' activeClassName="active" onClick={handleNavLinkClick}>Pages</NavLink>
-                                </>
-                            ) : (
-                                <>
-                                    <NavLink exact to='/deals' className='nav-link' activeClassName="active" onClick={handleNavLinkClick}>Deals</NavLink>
-                                    <NavLink exact to='/new-arrivals' className='nav-link' activeClassName="active" onClick={handleNavLinkClick}>New Arrivals</NavLink>
-                                    <NavLink exact to='/packages' className='nav-link' activeClassName="active" onClick={handleNavLinkClick}>Packages</NavLink>
-                                </>
-                            )}
+                            <NavLink to='/home' className='nav-link' onClick={handleToggle}>Home</NavLink>
+                            <NavLink to='/shop' className='nav-link' onClick={handleToggle}>Shop</NavLink>
+                            <NavLink to='/products' className='nav-link' onClick={handleToggle}>Products</NavLink>
+                            <NavDropdown title="Pages" id="pages-dropdown">
+                                <NavDropdown.Item as={NavLink} to="/new-arrivals">New Arrivals</NavDropdown.Item>
+                                <NavDropdown.Item as={NavLink} to="/blog">Blog</NavDropdown.Item>
+                                <NavDropdown.Item as={NavLink} to="/deals">Deals</NavDropdown.Item>
+                            </NavDropdown>
                         </Nav>
                         <Nav className="ml-auto">
+                            <button className='nav-link search-button' onClick={handleSearchClick}>
+                                <img src={require('../../../assets/icons/search.png')} alt="Search" />
+                            </button>
                             {isLoggin ? (
-                                <>
-                                    <button className='nav-link search-button' onClick={handleSearchClick}>
-                                        <img src={require('../../../assets/icons/search.png')} alt="Search" />
-                                    </button>
-                                    <NavLink className='nav-link' exact to='/profile' activeClassName="active" onClick={handleNavLinkClick}>
+                                <NavDropdown
+                                    title={
                                         <img src={require('../../../assets/icons/user.png')} alt="User" />
-                                    </NavLink>
-                                    <NavLink className='nav-link' to='/wish-list' onClick={handleNavLinkClick}>
-                                        <img src={require('../../../assets/icons/star.png')} alt="Wishlist" />
-                                        {wishlistCnt > 0 && (
-                                            <span className="badge badge-danger">{wishlistCnt}</span>
-                                        )}
-                                    </NavLink>
-                                    <NavLink className='nav-link' to='/cart' onClick={handleNavLinkClick}>
-                                        <img src={require('../../../assets/icons/cart.png')} alt="Cart" />
-                                        {cartCnt > 0 && (
-                                            <span className="badge badge-danger">{cartCnt}</span>
-                                        )}
-                                    </NavLink>
-                                    <button
-                                        className='nav-link'
-                                        onClick={handleSignOut}
-                                        style={{ background: 'none', border: 'none', padding: 0 }}
-                                    >
-                                        <Button variant="dark" style={{ fontSize: '12px', width: '105px' }}>
-                                            Sign Out
-                                        </Button>
-                                    </button>
-                                </>
+                                    }
+                                    id="user-dropdown"
+                                    className="user-dropdown"
+                                >
+
+                                    <NavDropdown.Item as={NavLink} to="/account">{`Hello, ${userName}`} </NavDropdown.Item>
+                                    <NavDropdown.Item as={NavLink} to="/orders">Orders</NavDropdown.Item>
+                                    <NavDropdown.Item onClick={handleSignOut}>Sign Out</NavDropdown.Item>
+                                </NavDropdown>
                             ) : (
-                                <>
-                                    <NavLink
-                                        className='nav-link'
-                                        exact
-                                        to='/login'
-                                        activeClassName="active"
-                                        style={{ fontSize: '12px', width: '75px' }}
-                                        onClick={() => dispatch(login())}
-                                    >
-                                        Sign In
-                                    </NavLink >
-                                    <Button variant="dark">
-                                        Sign Up
-                                    </Button>
-                                </>
+                                <NavLink className='nav-link' to='/login'>
+                                    <img src={require('../../../assets/icons/user.png')} alt="User" />
+                                </NavLink>
                             )}
+                            <NavLink className='nav-link' to='/wish-list'>
+                                <img src={require('../../../assets/icons/star.png')} alt="Wishlist" />
+                                {wishlistCnt > 0 && (
+                                    <span className="badge badge-danger">{wishlistCnt}</span>
+                                )}
+                            </NavLink>
+                            <NavLink className='nav-link' to='/cart'>
+                                <img src={require('../../../assets/icons/cart.png')} alt="Cart" />
+                                {cartCnt > 0 && (
+                                    <span className="badge badge-danger">{cartCnt}</span>
+                                )}
+                            </NavLink>
                         </Nav>
                     </Navbar.Collapse>
                 </Container>

@@ -28,7 +28,8 @@
         transition: color 0.3s ease;
 
         &.active {
-            color: #000; /* Đảm bảo màu chữ đậm */
+            color: #000;
+            /* Đảm bảo màu chữ đậm */
             font-weight: bold;
         }
 
@@ -39,7 +40,8 @@
             left: 0;
             width: 100%;
             height: 2px;
-            background-color: #000; /* Viền đen */
+            background-color: #000;
+            /* Viền đen */
         }
     }
 
@@ -209,7 +211,8 @@
     .search-result-item {
         display: flex;
         align-items: center;
-        width: calc(33.33% - 10px); /* Hiển thị 3 sản phẩm trên 1 dòng */
+        width: calc(33.33% - 10px);
+        /* Hiển thị 3 sản phẩm trên 1 dòng */
         padding: 10px;
         border: 1px solid #f1f1f1;
         border-radius: 4px;
@@ -236,4 +239,6 @@
         overflow: hidden;
         text-overflow: ellipsis;
     }
+
+    
 }

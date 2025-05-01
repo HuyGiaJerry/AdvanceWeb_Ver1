@@ -5,15 +5,18 @@ const authSlice = createSlice({
     name: 'auth',
     initialState: {
         isLoggin: false,
+        userName: '', // Thêm trạng thái userName
         cartCount: 0,
         wishlistCount: 0,
     },
     reducers: {
-        login: (state) => {
+        login: (state, action) => {
             state.isLoggin = true;
+            state.userName = action.payload.userName; // Lưu userName khi đăng nhập
         },
         logout: (state) => {
             state.isLoggin = false;
+            state.userName = ''; // Xóa userName khi đăng xuất
         },
         addToCart: (state) => {
             state.cartCount += 1;
