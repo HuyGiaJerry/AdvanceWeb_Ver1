@@ -59,7 +59,7 @@ const SalesReport = () => {
   ];
 
   return (
-    <Layout>
+  
       <div className="sales-report">
         <div className="report-header">
           <h1>Báo cáo doanh thu</h1>
@@ -139,7 +139,7 @@ const SalesReport = () => {
           </table>
         </div>
       </div>
-    </Layout>
+
   );
 };
 

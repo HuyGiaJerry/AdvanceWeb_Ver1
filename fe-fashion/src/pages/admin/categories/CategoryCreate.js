@@ -16,14 +16,14 @@ const CategoryCreate = () => {
   };
 
   return (
-    <Layout>
+ 
       <div className="category-create">
         <CategoryForm 
           onSubmit={handleSubmit}
           formType="create"
         />
       </div>
-    </Layout>
+
   );
 };
 

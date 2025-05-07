@@ -66,13 +66,12 @@ const ProductCreate = () => {
   };
 
   return (
-    <Layout>
+ 
       <ProductForm 
         categories={categories}
         onSubmit={handleSubmit}
         formType="create"
       />
-    </Layout>
   );
 };
 

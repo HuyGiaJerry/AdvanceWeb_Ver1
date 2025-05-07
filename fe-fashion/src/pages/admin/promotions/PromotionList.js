@@ -63,7 +63,6 @@ const PromotionList = () => {
   };
 
   return (
-    <Layout>
       <div className="promotion-list">
         <Table 
           columns={columns} 
@@ -74,7 +73,6 @@ const PromotionList = () => {
           title="Danh sách khuyến mãi"
         />
       </div>
-    </Layout>
   );
 };
 

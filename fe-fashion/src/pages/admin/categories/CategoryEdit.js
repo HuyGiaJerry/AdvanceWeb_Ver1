@@ -37,14 +37,14 @@ const CategoryEdit = () => {
 
   if (loading) {
     return (
-      <Layout>
+     
         <div className="loading">Đang tải...</div>
-      </Layout>
+  
     );
   }
 
   return (
-    <Layout>
+ 
       <div className="category-edit">
         <CategoryForm 
           category={category}
@@ -52,7 +52,7 @@ const CategoryEdit = () => {
           formType="edit"
         />
       </div>
-    </Layout>
+
   );
 };
 

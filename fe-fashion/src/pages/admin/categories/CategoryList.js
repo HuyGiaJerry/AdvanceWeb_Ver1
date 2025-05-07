@@ -31,7 +31,7 @@ const CategoryList = () => {
   };
 
   return (
-    <Layout>
+ 
       <div className="category-list">
         <Table
           columns={columns}
@@ -42,7 +42,7 @@ const CategoryList = () => {
           title="Danh mục sản phẩm"
         />
       </div>
-    </Layout>
+
   );
 };
 

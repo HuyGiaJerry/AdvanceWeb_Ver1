@@ -59,14 +59,12 @@ const ProductEdit = () => {
 
   if (loading) {
     return (
-      <Layout>
         <div className="loading">Đang tải...</div>
-      </Layout>
+  
     );
   }
 
   return (
-    <Layout>
       <div className="product-edit">
         <ProductForm 
           product={product}
@@ -76,7 +74,6 @@ const ProductEdit = () => {
           formType="edit"
         />
       </div>
-    </Layout>
   );
 };
 

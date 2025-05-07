@@ -41,14 +41,14 @@ const EmployeeEdit = () => {
 
   if (loading) {
     return (
-      <Layout>
+    
         <div className="loading">Đang tải...</div>
-      </Layout>
+    
     );
   }
 
   return (
-    <Layout>
+
       <div className="employee-edit">
         <EmployeeForm 
           employee={employee}
@@ -56,7 +56,7 @@ const EmployeeEdit = () => {
           formType="edit"
         />
       </div>
-    </Layout>
+ 
   );
 };
 

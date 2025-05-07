@@ -1,9 +1,10 @@
 .table-wrapper {
   background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
-  padding: 30px;
+  padding: 45px;
   border-radius: 16px;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
 
+margin: 30px;
   .table-header {
     display: flex;
     justify-content: space-between;
@@ -47,7 +48,12 @@
 
     th, td {
       padding: 15px;
-      text-align: left;
+      text-align: center;
+      word-wrap: break-word; /* Cho phép nội dung xuống dòng khi quá dài */
+      overflow-wrap: break-word; /* Đảm bảo xuống dòng đúng */
+      white-space: normal; /* Tránh nội dung bị dính trên một dòng */
+      max-width: 200px; /* Giới hạn chiều rộng cột */
+    
     }
 
     th {
@@ -76,6 +82,7 @@
 
     td {
       background: #fff;
+      align-items: center;
       font-size: 15px;
       color: #555;
       border-bottom: 1px solid #eee;
@@ -167,6 +174,20 @@
       justify-content: center;
       padding: 0 10px;
       color: #aaa;
+    }
+  }
+  @media screen and (max-width: 768px) {
+    font-size: 14px;
+    
+    th, td {
+      padding: 12px;
+      display: block;
+      text-align: left; /* Cho mobile */
+      width: 100%;
+    }
+
+    th {
+      text-align: center;
     }
   }
 }

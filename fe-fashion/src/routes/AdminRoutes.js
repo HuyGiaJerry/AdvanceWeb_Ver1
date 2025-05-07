@@ -3,7 +3,7 @@ import { Route, Routes } from 'react-router-dom';
 import ProtectedRoute from '../components/admin/ProtectedRoute';
 import AdminLogin from '../pages/admin/AdminLogin';
 import Dashboard from '../pages/admin/DashBoard';
-import EmployeeList from '../pages/admin/employees/EmployeeList';
+import CustomerList from '../pages/admin/customers/CustomerList';
 import ProductList from '../pages/admin/products/ProductList';
 import ProductCreate from '../pages/admin/products/ProductCreate';
 import CategoryList from '../pages/admin/categories/CategoryList';
@@ -24,7 +24,7 @@ const AdminRoutes = () => {
       {/* Route được bảo vệ yêu cầu đăng nhập */}
       <Route element={<ProtectedRoute />}>
         <Route path="dashboard" element={<Dashboard />} />
-        <Route path="employees" element={<EmployeeList />} />
+        <Route path="customers" element={<CustomerList />} />
         <Route path="products" element={<ProductList />} />
         <Route path="products/create" element={<ProductCreate />} />
         <Route path="categories" element={<CategoryList />} />

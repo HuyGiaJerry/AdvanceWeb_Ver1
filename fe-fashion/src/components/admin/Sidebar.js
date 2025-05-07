@@ -33,7 +33,7 @@ const Sidebar = () => {
             <Link to="/admin/dashboard"><FaHome /> Dashboard</Link>
           </li>
           <li>
-            <Link to="/admin/employees"><FaUsers /> Quản lý nhân viên</Link>
+            <Link to="/admin/customers"><FaUsers /> Quản lý khách hàng</Link>
           </li>
           <li className="menu-dropdown">
             <span><FaBoxes /> Quản lý sản phẩm</span>

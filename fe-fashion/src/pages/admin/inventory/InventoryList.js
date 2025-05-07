@@ -11,7 +11,7 @@ const InventoryList = () => {
     product.colors.flatMap((color) =>
       color.variants.map((variant) => ({
         id: variant.variantId,
-        code: variant.variantSku,
+        code: product.productId,
         name: `${product.name} (${color.colorName}, ${variant.size})`,
         category: `Category ${product.categoryId}`, // You can modify this with actual category data if available
         stock: variant.stockQuantity,
@@ -67,7 +67,7 @@ const InventoryList = () => {
   };
 
   return (
-    <Layout>
+ 
       <div className="inventory-list">
         <div className="page-header">
           <h1>Quản lý tồn kho</h1>
@@ -88,7 +88,7 @@ const InventoryList = () => {
                 <option value="lowStock">Sản phẩm cần nhập thêm</option>
               </select>
             </div>
-            <button className="import-btn">Nhập hàng</button>
+            {/* <button className="import-btn">Nhập hàng</button> */}
           </div>
         </div>
 
@@ -135,7 +135,7 @@ const InventoryList = () => {
           />
         </div>
       </div>
-    </Layout>
+
   );
 };
 

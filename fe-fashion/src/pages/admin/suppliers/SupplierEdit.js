@@ -42,14 +42,14 @@ const SupplierEdit = () => {
 
   if (loading) {
     return (
-      <Layout>
+  
         <div className="loading">Đang tải dữ liệu...</div>
-      </Layout>
+ 
     );
   }
 
   return (
-    <Layout>
+
       <div className="supplier-edit">
         <SupplierForm 
           supplier={supplier}
@@ -57,7 +57,7 @@ const SupplierEdit = () => {
           formType="edit"
         />
       </div>
-    </Layout>
+
   );
 };
 

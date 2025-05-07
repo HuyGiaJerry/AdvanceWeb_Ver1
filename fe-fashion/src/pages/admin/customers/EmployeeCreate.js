@@ -16,14 +16,14 @@ const EmployeeCreate = () => {
   };
 
   return (
-    <Layout>
+ 
       <div className="employee-create">
         <EmployeeForm 
           onSubmit={handleSubmit}
           formType="create"
         />
       </div>
-    </Layout>
+ 
   );
 };
 

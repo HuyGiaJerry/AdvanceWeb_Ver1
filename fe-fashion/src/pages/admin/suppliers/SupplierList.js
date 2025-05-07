@@ -27,7 +27,7 @@ const SupplierList = () => {
   };
 
   return (
-    <Layout>
+
       <div className="supplier-list">
         <Table 
           columns={columns} 
@@ -38,7 +38,6 @@ const SupplierList = () => {
           title="Danh sách nhà cung cấp"
         />
       </div>
-    </Layout>
   );
 };
 

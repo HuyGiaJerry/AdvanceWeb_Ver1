@@ -47,7 +47,6 @@ const InventoryReport = () => {
   ];
 
   return (
-    <Layout>
       <div className="inventory-report">
         <div className="report-header">
           <h1>Báo cáo tồn kho</h1>
@@ -129,7 +128,6 @@ const InventoryReport = () => {
           </table>
         </div>
       </div>
-    </Layout>
   );
 };
 

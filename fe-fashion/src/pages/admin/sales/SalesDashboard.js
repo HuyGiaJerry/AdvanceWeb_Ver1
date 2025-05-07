@@ -46,7 +46,7 @@ const SalesDashboard = () => {
   };
 
   return (
-    <Layout>
+   
       <div className="sales-dashboard">
         <h1>Quản lý bán hàng</h1>
         
@@ -147,7 +147,7 @@ const SalesDashboard = () => {
           </div>
         </div>
       </div>
-    </Layout>
+ 
   );
 };
 

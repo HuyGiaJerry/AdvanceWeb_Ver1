@@ -16,14 +16,13 @@ const SupplierCreate = () => {
   };
 
   return (
-    <Layout>
+  
       <div className="supplier-create">
         <SupplierForm 
           onSubmit={handleSubmit}
           formType="create"
         />
       </div>
-    </Layout>
   );
 };
 

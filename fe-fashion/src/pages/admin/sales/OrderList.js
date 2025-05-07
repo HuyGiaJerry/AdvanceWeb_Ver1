@@ -125,7 +125,7 @@ const OrderList = () => {
   };
 
   return (
-    <Layout>
+  
       <div className="order-list">
         <div className="page-header">
           <h1>Quản lý đơn hàng</h1>
@@ -228,7 +228,7 @@ const OrderList = () => {
           />
         </div>
       </div>
-    </Layout>
+
   );
 };
 

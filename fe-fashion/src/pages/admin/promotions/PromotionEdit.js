@@ -51,14 +51,13 @@ const PromotionEdit = () => {
 
   if (loading) {
     return (
-      <Layout>
+     
         <div className="loading">Đang tải dữ liệu...</div>
-      </Layout>
+    
     );
   }
 
   return (
-    <Layout>
       <div className="promotion-edit">
         <PromotionForm 
           promotion={promotion}
@@ -67,7 +66,6 @@ const PromotionEdit = () => {
           formType="edit"
         />
       </div>
-    </Layout>
   );
 };
 

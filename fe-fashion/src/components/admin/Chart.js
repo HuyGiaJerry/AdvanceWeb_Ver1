@@ -1,47 +1,30 @@
-// Chart.js
-import React from 'react';
-import { Line } from 'react-chartjs-2';
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Title,
-  Tooltip,
-  Legend
-} from 'chart.js';
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
+import { data } from '../../services/dataRevenue'; // Import dữ liệu đã xử lý
 
-// Đăng ký các component cần thiết cho Chart.js
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Title,
-  Tooltip,
-  Legend
+const Chart = () => (
+  <div className="chart-container">
+    <LineChart width={800} height={400} data={data}>
+      <defs>
+        <linearGradient id="colorGradient" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="10%" stopColor="blue" stopOpacity={0.8} />
+          <stop offset="80%" stopColor="blue" stopOpacity={0.4} />
+        </linearGradient>
+      </defs>
+      <CartesianGrid strokeDasharray="4 4" stroke="#ddd" />
+      <XAxis dataKey="name" tick={{ fill: '#333', fontSize: 16 }} />
+      <YAxis tick={{ fill: '#333', fontSize: 16 }} />
+      <Tooltip />
+      <Legend />
+      <Line
+        type="monotone"
+        dataKey="doanhThu"
+        stroke="url(#colorGradient)"
+        strokeWidth={5}
+        dot={{ r: 7, fill: '#00c6ff', stroke: '#fff', strokeWidth: 3 }}
+        activeDot={{ r: 9, stroke: '#0072ff', strokeWidth: 3 }}
+      />
+    </LineChart>
+  </div>
 );
-
-const Chart = () => {
-  const data = {
-    labels: ['Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4'],
-    datasets: [
-      {
-        label: 'Doanh thu',
-        data: [1000, 1500, 2000, 1800],
-        borderColor: '#4caf50',
-        fill: false,
-      },
-    ],
-  };
-  const options = {
-    responsive: true,
-    plugins: {
-      legend: { display: true },
-    },
-  };
-  return <Line data={data} options={options} />;
-};
 
 export default Chart;

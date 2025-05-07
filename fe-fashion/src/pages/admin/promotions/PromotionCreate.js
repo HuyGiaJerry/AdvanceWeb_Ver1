@@ -25,7 +25,6 @@ const PromotionCreate = () => {
   };
 
   return (
-    <Layout>
       <div className="promotion-create">
         <PromotionForm 
           products={products}
@@ -33,7 +32,6 @@ const PromotionCreate = () => {
           formType="create"
         />
       </div>
-    </Layout>
   );
 };
 
