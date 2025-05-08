@@ -3,63 +3,19 @@
   "WorkspaceRootPath": "D:\\LEARN\\SUBJECT\\ASP_NET\\AdvanceWeb\\BE-Fashion\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|d:\\learn\\subject\\asp_net\\advanceweb\\be-fashion\\be-fashion\\models\\dbtestcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|solutionrelative:be-fashion\\models\\dbtestcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|d:\\learn\\subject\\asp_net\\advanceweb\\be-fashion\\be-fashion\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|solutionrelative:be-fashion\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|d:\\learn\\subject\\asp_net\\advanceweb\\be-fashion\\be-fashion\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|solutionrelative:be-fashion\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|d:\\learn\\subject\\asp_net\\advanceweb\\be-fashion\\be-fashion\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|solutionrelative:be-fashion\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|d:\\learn\\subject\\asp_net\\advanceweb\\be-fashion\\be-fashion\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|solutionrelative:be-fashion\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Program Files\\dotnet\\sdk\\8.0.400\\Sdks\\Microsoft.NET.Sdk\\targets\\Microsoft.PackageDependencyResolution.targets||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|d:\\learn\\subject\\asp_net\\advanceweb\\be-fashion\\be-fashion\\repositories\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|solutionrelative:be-fashion\\repositories\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|d:\\learn\\subject\\asp_net\\advanceweb\\be-fashion\\be-fashion\\repositories\\productrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|solutionrelative:be-fashion\\repositories\\productrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|d:\\learn\\subject\\asp_net\\advanceweb\\be-fashion\\be-fashion\\repositories\\irepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|solutionrelative:be-fashion\\repositories\\irepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|d:\\learn\\subject\\asp_net\\advanceweb\\be-fashion\\be-fashion\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|solutionrelative:be-fashion\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|d:\\learn\\subject\\asp_net\\advanceweb\\be-fashion\\be-fashion\\services\\productservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|solutionrelative:be-fashion\\services\\productservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|d:\\learn\\subject\\asp_net\\advanceweb\\be-fashion\\be-fashion\\models\\cartitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|solutionrelative:be-fashion\\models\\cartitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|d:\\learn\\subject\\asp_net\\advanceweb\\be-fashion\\be-fashion\\repositories\\cartrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|solutionrelative:be-fashion\\repositories\\cartrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|d:\\learn\\subject\\asp_net\\advanceweb\\be-fashion\\be-fashion\\mappings\\cartprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|solutionrelative:be-fashion\\mappings\\cartprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|d:\\learn\\subject\\asp_net\\advanceweb\\be-fashion\\be-fashion\\models\\cart.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|solutionrelative:be-fashion\\models\\cart.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|d:\\learn\\subject\\asp_net\\advanceweb\\be-fashion\\be-fashion\\mappings\\productprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|solutionrelative:be-fashion\\mappings\\productprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|d:\\learn\\subject\\asp_net\\advanceweb\\be-fashion\\be-fashion\\dtos\\addcartitemdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -90,137 +46,15 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "DbtestContext.cs",
-              "DocumentMoniker": "D:\\LEARN\\SUBJECT\\ASP_NET\\AdvanceWeb\\BE-Fashion\\BE-Fashion\\Models\\DbtestContext.cs",
-              "RelativeDocumentMoniker": "BE-Fashion\\Models\\DbtestContext.cs",
-              "ToolTip": "D:\\LEARN\\SUBJECT\\ASP_NET\\AdvanceWeb\\BE-Fashion\\BE-Fashion\\Models\\DbtestContext.cs",
-              "RelativeToolTip": "BE-Fashion\\Models\\DbtestContext.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-27T15:43:44.692Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
               "Title": "appsettings.json",
               "DocumentMoniker": "D:\\LEARN\\SUBJECT\\ASP_NET\\AdvanceWeb\\BE-Fashion\\BE-Fashion\\appsettings.json",
               "RelativeDocumentMoniker": "BE-Fashion\\appsettings.json",
               "ToolTip": "D:\\LEARN\\SUBJECT\\ASP_NET\\AdvanceWeb\\BE-Fashion\\BE-Fashion\\appsettings.json",
               "RelativeToolTip": "BE-Fashion\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAnAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-04-27T15:37:49.7Z",
+              "WhenOpened": "2025-05-08T14:19:17.626Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "UserService.cs",
-              "DocumentMoniker": "D:\\LEARN\\SUBJECT\\ASP_NET\\AdvanceWeb\\BE-Fashion\\BE-Fashion\\Services\\UserService.cs",
-              "RelativeDocumentMoniker": "BE-Fashion\\Services\\UserService.cs",
-              "ToolTip": "D:\\LEARN\\SUBJECT\\ASP_NET\\AdvanceWeb\\BE-Fashion\\BE-Fashion\\Services\\UserService.cs",
-              "RelativeToolTip": "BE-Fashion\\Services\\UserService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAgAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-27T01:58:44.606Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "ProductController.cs",
-              "DocumentMoniker": "D:\\LEARN\\SUBJECT\\ASP_NET\\AdvanceWeb\\BE-Fashion\\BE-Fashion\\Controllers\\ProductController.cs",
-              "RelativeDocumentMoniker": "BE-Fashion\\Controllers\\ProductController.cs",
-              "ToolTip": "D:\\LEARN\\SUBJECT\\ASP_NET\\AdvanceWeb\\BE-Fashion\\BE-Fashion\\Controllers\\ProductController.cs",
-              "RelativeToolTip": "BE-Fashion\\Controllers\\ProductController.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAA0wB4AAABFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-27T01:54:36.687Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "ProductService.cs",
-              "DocumentMoniker": "D:\\LEARN\\SUBJECT\\ASP_NET\\AdvanceWeb\\BE-Fashion\\BE-Fashion\\Services\\ProductService.cs",
-              "RelativeDocumentMoniker": "BE-Fashion\\Services\\ProductService.cs",
-              "ToolTip": "D:\\LEARN\\SUBJECT\\ASP_NET\\AdvanceWeb\\BE-Fashion\\BE-Fashion\\Services\\ProductService.cs",
-              "RelativeToolTip": "BE-Fashion\\Services\\ProductService.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAAB4AAABAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-27T01:54:03.511Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "UserRepository.cs",
-              "DocumentMoniker": "D:\\LEARN\\SUBJECT\\ASP_NET\\AdvanceWeb\\BE-Fashion\\BE-Fashion\\Repositories\\UserRepository.cs",
-              "RelativeDocumentMoniker": "BE-Fashion\\Repositories\\UserRepository.cs",
-              "ToolTip": "D:\\LEARN\\SUBJECT\\ASP_NET\\AdvanceWeb\\BE-Fashion\\BE-Fashion\\Repositories\\UserRepository.cs",
-              "RelativeToolTip": "BE-Fashion\\Repositories\\UserRepository.cs",
-              "ViewState": "AgIAADgAAAAAAAAAAABAwEcAAAA5AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-26T14:49:34.362Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "ProductRepository.cs",
-              "DocumentMoniker": "D:\\LEARN\\SUBJECT\\ASP_NET\\AdvanceWeb\\BE-Fashion\\BE-Fashion\\Repositories\\ProductRepository.cs",
-              "RelativeDocumentMoniker": "BE-Fashion\\Repositories\\ProductRepository.cs",
-              "ToolTip": "D:\\LEARN\\SUBJECT\\ASP_NET\\AdvanceWeb\\BE-Fashion\\BE-Fashion\\Repositories\\ProductRepository.cs",
-              "RelativeToolTip": "BE-Fashion\\Repositories\\ProductRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAqwBQAAABBAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-26T14:48:19.254Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "CartRepository.cs",
-              "DocumentMoniker": "D:\\LEARN\\SUBJECT\\ASP_NET\\AdvanceWeb\\BE-Fashion\\BE-Fashion\\Repositories\\CartRepository.cs",
-              "RelativeDocumentMoniker": "BE-Fashion\\Repositories\\CartRepository.cs",
-              "ToolTip": "D:\\LEARN\\SUBJECT\\ASP_NET\\AdvanceWeb\\BE-Fashion\\BE-Fashion\\Repositories\\CartRepository.cs",
-              "RelativeToolTip": "BE-Fashion\\Repositories\\CartRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAPAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-26T14:43:17.279Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "ProductProfile.cs",
-              "DocumentMoniker": "D:\\LEARN\\SUBJECT\\ASP_NET\\AdvanceWeb\\BE-Fashion\\BE-Fashion\\Mappings\\ProductProfile.cs",
-              "RelativeDocumentMoniker": "BE-Fashion\\Mappings\\ProductProfile.cs",
-              "ToolTip": "D:\\LEARN\\SUBJECT\\ASP_NET\\AdvanceWeb\\BE-Fashion\\BE-Fashion\\Mappings\\ProductProfile.cs",
-              "RelativeToolTip": "BE-Fashion\\Mappings\\ProductProfile.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAVAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-26T14:38:30.056Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "CartProfile.cs",
-              "DocumentMoniker": "D:\\LEARN\\SUBJECT\\ASP_NET\\AdvanceWeb\\BE-Fashion\\BE-Fashion\\Mappings\\CartProfile.cs",
-              "RelativeDocumentMoniker": "BE-Fashion\\Mappings\\CartProfile.cs",
-              "ToolTip": "D:\\LEARN\\SUBJECT\\ASP_NET\\AdvanceWeb\\BE-Fashion\\BE-Fashion\\Mappings\\CartProfile.cs",
-              "RelativeToolTip": "BE-Fashion\\Mappings\\CartProfile.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAyAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-26T14:37:09.486Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "CartItem.cs",
-              "DocumentMoniker": "D:\\LEARN\\SUBJECT\\ASP_NET\\AdvanceWeb\\BE-Fashion\\BE-Fashion\\Models\\CartItem.cs",
-              "RelativeDocumentMoniker": "BE-Fashion\\Models\\CartItem.cs",
-              "ToolTip": "D:\\LEARN\\SUBJECT\\ASP_NET\\AdvanceWeb\\BE-Fashion\\BE-Fashion\\Models\\CartItem.cs",
-              "RelativeToolTip": "BE-Fashion\\Models\\CartItem.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAXAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-26T14:35:43.091Z"
             },
             {
               "$type": "Document",
@@ -230,14 +64,13 @@
               "RelativeDocumentMoniker": "BE-Fashion\\Program.cs",
               "ToolTip": "D:\\LEARN\\SUBJECT\\ASP_NET\\AdvanceWeb\\BE-Fashion\\BE-Fashion\\Program.cs",
               "RelativeToolTip": "BE-Fashion\\Program.cs",
-              "ViewState": "AgIAAE4AAAAAAAAAAAAiwGUAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAArAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-22T18:03:35.171Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-22T18:03:35.171Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 2,
               "Title": "Microsoft.PackageDependencyResolution.targets",
               "DocumentMoniker": "C:\\Program Files\\dotnet\\sdk\\8.0.400\\Sdks\\Microsoft.NET.Sdk\\targets\\Microsoft.PackageDependencyResolution.targets",
               "ToolTip": "C:\\Program Files\\dotnet\\sdk\\8.0.400\\Sdks\\Microsoft.NET.Sdk\\targets\\Microsoft.PackageDependencyResolution.targets",
@@ -247,19 +80,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "Cart.cs",
-              "DocumentMoniker": "D:\\LEARN\\SUBJECT\\ASP_NET\\AdvanceWeb\\BE-Fashion\\BE-Fashion\\Models\\Cart.cs",
-              "RelativeDocumentMoniker": "BE-Fashion\\Models\\Cart.cs",
-              "ToolTip": "D:\\LEARN\\SUBJECT\\ASP_NET\\AdvanceWeb\\BE-Fashion\\BE-Fashion\\Models\\Cart.cs",
-              "RelativeToolTip": "BE-Fashion\\Models\\Cart.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAArAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-26T14:35:20.33Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 4,
               "Title": "AddCartItemDto.cs",
               "DocumentMoniker": "D:\\LEARN\\SUBJECT\\ASP_NET\\AdvanceWeb\\BE-Fashion\\BE-Fashion\\DTOs\\AddCartItemDto.cs",
               "RelativeDocumentMoniker": "BE-Fashion\\DTOs\\AddCartItemDto.cs",
@@ -271,7 +92,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 3,
               "Title": "IRepository.cs",
               "DocumentMoniker": "D:\\LEARN\\SUBJECT\\ASP_NET\\AdvanceWeb\\BE-Fashion\\BE-Fashion\\Repositories\\IRepository.cs",
               "RelativeDocumentMoniker": "BE-Fashion\\Repositories\\IRepository.cs",

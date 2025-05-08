@@ -6,6 +6,7 @@ import DealTheMonth from './deal';
 import NewArrival from './newArrival';
 import Sub from '../../components/user/sub/sub';
 import Feedback from '../../components/user/slider/FeedBack';
+import PopularProduct from '../../components/user/popular_product/popular';
 const Home = () => {
 
     return (
@@ -13,7 +14,9 @@ const Home = () => {
             <UltimateSale />
             <DealTheMonth />
             <NewArrival />
+            
             <Feedback />
+            <PopularProduct />
             <Sub />
         </div>
     );

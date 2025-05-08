@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import './deal.scss';
 import { sliderData as initialSliderData } from '../../services/sampleDataDealSlider';
-
+import { useNavigate } from 'react-router-dom';
 const DealTheMonth = () => {
+    const navigate = useNavigate();
     const calculateTimeLeft = () => {
-        const targetDate = new Date('2025-05-01T00:00:00');
+        const targetDate = new Date('2025-05-21T00:00:00');
         const now = new Date();
         const difference = targetDate - now;
 
@@ -84,7 +85,9 @@ const DealTheMonth = () => {
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Scelerisque duis
                         ultrices sollicitudin aliquam sem. Scelerisque duis ultrices sollicitudin.
                     </p>
-                    <button className="buy-now-btn">Buy Now</button>
+                    <button
+                        onClick={() => navigate('/shop')} 
+                    className="buy-now-btn">Buy Now</button>
                 </div>
                 <div className="deal-timer">
                     <h3>Hurry, Before It's Too Late!</h3>
