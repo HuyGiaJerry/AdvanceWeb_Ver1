@@ -1,0 +1,74 @@
+.login-page {
+    display: flex;
+    align-items: center;
+    /* Căn giữa theo chiều dọc */
+    justify-content: center;
+    /* Căn giữa theo chiều ngang */
+    height: 100vh;
+    /* Chiều cao toàn màn hình */
+    margin: 0 auto;
+    /* Loại bỏ margin */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin-top: 100px;
+
+    .btn {
+        width: 15vw;
+
+
+    }
+
+    .login-form {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        /* Căn giữa theo chiều ngang */
+        text-align: center;
+        /* Căn giữa nội dung */
+    }
+
+    .login-form .form-control {
+        width: 15vw;
+        margin: 10px auto;
+        /* Thêm khoảng cách giữa các input */
+        border: none;
+        border-bottom: 2px solid #9D9D9D;
+        border-radius: 0;
+        box-shadow: none;
+    }
+
+    .login-form .form-label {
+        text-align: left;
+        width: 70%;
+        color: #9D9D9D;
+        display: block;
+    }
+
+    .login-form .form-control:focus {
+        outline: none;
+        border-bottom: 2px solid #007bff;
+        box-shadow: none;
+    }
+
+    .login-image {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+
+    .login-image img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    /* Buttons */
+
+
+    .forgotPass {
+        font-size: 1rem;
+        text-decoration: none;
+        display: block;
+        margin-top: 10px;
+    }
+}

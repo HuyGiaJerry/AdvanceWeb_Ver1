@@ -1,0 +1,49 @@
+.account {
+
+
+    .profile-image-container {
+        position: relative;
+    }
+
+    .profile-image {
+        width: 150px;
+        height: 150px;
+        object-fit: cover;
+        border: 2px solid #ddd;
+    }
+
+    .btn-outline-dark {
+        font-size: 14px;
+        padding: 5px 10px;
+    }
+
+    .form-control {
+        border-radius: 20px;
+    }
+
+    h1 {
+        font-size: 24px;
+        font-weight: bold;
+    }
+
+    .save-btn {
+
+        display: block;
+        margin: 17px auto;
+        background-color: #000;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        font-size: 0.8rem;
+
+        &:hover {
+            background-color: #fefeff;
+            border: 1px solid #000;
+            color: #000;
+        }
+    }
+
+}

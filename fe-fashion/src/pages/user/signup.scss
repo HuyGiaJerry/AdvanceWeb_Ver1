@@ -1,0 +1,32 @@
+.signup-page {
+
+    .signup-form {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .forgotPass {
+        font-size: 1rem;
+        text-decoration: none;
+    }
+
+    .signup-form .form-control {
+        background-color: #ffffff;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 10px;
+    }
+
+    .signup-form small a {
+        color: #007bff;
+        text-decoration: none;
+    }
+
+    .signup-form small a:hover {
+        text-decoration: underline;
+    }
+
+
+}

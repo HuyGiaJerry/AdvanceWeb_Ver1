@@ -1,0 +1,80 @@
+.feedback-slider-wrapper {
+    background-color: #FAFAFA;
+    width: 100%;
+    margin-top: 100px;
+    padding: 100px 20px;
+    position: relative;
+
+    .feedback-caption {
+        margin-bottom: 40px;
+
+        .feedback-title {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .feedback-description {
+            font-size: 1rem;
+            color: #666;
+        }
+    }
+
+    .active {
+        opacity: 1;
+        position: relative;
+        width: 70vw;
+        transition: opacity 0.5s ease-in-out;
+        z-index: 3;
+        background-color: #ffff;
+    }
+
+    .slider {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+    }
+
+    .slider-buttons {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+    }
+
+    .prev {
+        position: relative;
+        left: 20%;
+        z-index: 2;
+    }
+
+    .next {
+        position: relative;
+        right: 20%;
+        z-index: 2;
+    }
+
+    .next-btn,
+    .prev-btn {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: #fff;
+        border: none;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #000;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        margin: 0 10px;
+    }
+
+    .prev-btn:hover,
+    .next-btn:hover {
+        background-color: #f0f0f0;
+        color: #fff;
+    }
+}

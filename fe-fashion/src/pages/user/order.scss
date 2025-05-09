@@ -1,0 +1,34 @@
+.orders {
+    .nav-tabs .nav-link {
+        color: #555;
+        font-weight: bold;
+        border: none;
+        border-bottom: 2px solid transparent;
+    }
+
+    .nav-tabs .nav-link.active {
+        color: #d9534f;
+        border-bottom: 2px solid #d9534f;
+    }
+
+    .order-card {
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        overflow: hidden;
+        transition: transform 0.2s ease-in-out;
+
+        &:hover {
+            transform: scale(1.02);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+    }
+
+    .btn-primary {
+        background-color: #d9534f;
+        border: none;
+    }
+
+    .btn-primary:hover {
+        background-color: #c9302c;
+    }
+}

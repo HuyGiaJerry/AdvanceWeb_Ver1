@@ -1,0 +1,53 @@
+.check-out {
+    h1 {
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+
+    h4 {
+        margin-top: 20px;
+        margin-bottom: 15px;
+        font-weight: bold;
+    }
+
+    .btn {
+        margin-right: 10px;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        border: none;
+    }
+
+    .btn-outline-primary {
+        border-color: #007bff;
+        color: #007bff;
+    }
+
+    .btn-outline-primary:hover {
+        background-color: #007bff;
+        color: #fff;
+    }
+
+    .card-img {
+        margin-top:30px ;
+        width: 50%;
+        /* Đảm bảo ảnh chiếm toàn bộ chiều rộng của cột */
+        height: 100px;
+        /* Đặt chiều cao cố định */
+        object-fit: cover;
+        /* Đảm bảo ảnh không bị méo, cắt vừa khung */
+        border-radius: 5px;
+        /* Tùy chọn: Bo góc ảnh */
+    }
+
+    .card {
+        margin-bottom: 15px;
+    }
+
+    .text-end {
+        margin-top: 20px;
+    }
+
+}

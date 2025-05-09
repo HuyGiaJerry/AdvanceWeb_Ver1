@@ -1,0 +1,200 @@
+.deal-container {
+    padding: 2rem;
+    font-family: Arial, sans-serif;
+
+    display: flex;
+    background-color: #FAFAFA;
+
+    .deal-header-container {
+        margin-left: 19vw;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 2rem;
+
+        .deal-header {
+            text-align: left;
+            max-width: 50%;
+            width: 30vw;
+
+            h1 {
+                font-size: 2rem;
+                font-weight: bold;
+                margin-bottom: 1rem;
+            }
+
+            p {
+                font-size: 1rem;
+                color: #666;
+                line-height: 1.5;
+                margin-bottom: 1.5rem;
+            }
+
+            .buy-now-btn {
+                background-color: black;
+                color: white;
+                padding: 0.8rem 1.5rem;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                font-size: 0.8rem;
+                transition: background-color 0.3s ease;
+                padding: 10px 40px;
+                font-size: 0.8rem;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+                &:hover {
+                    background-color: #000000;
+                }
+            }
+        }
+
+        .deal-timer {
+            text-align: center;
+
+            h3 {
+                font-size: 1.2rem;
+                margin-bottom: 1rem;
+            }
+
+            .timer {
+                display: flex;
+                justify-content: center;
+                gap: 1rem;
+
+                .time-box {
+                    background-color: #f8f8f8;
+                    padding: 1rem;
+                    border-radius: 5px;
+                    text-align: center;
+                    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+                    span {
+                        font-size: 1.5rem;
+                        font-weight: bold;
+                        display: block;
+                    }
+
+                    p {
+                        font-size: 0.9rem;
+                        color: #666;
+                    }
+                }
+            }
+        }
+    }
+
+    .deal-slider {
+        position: relative;
+        overflow: hidden;
+        width: 100%;
+        max-width: 800px;
+        margin: 2rem auto;
+
+        .slider-wrapper {
+            display: flex;
+
+            gap: 1rem;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .slider-item {
+            flex: 0 0 auto;
+            min-width: 20%;
+            text-align: center;
+            transition: transform 0.3s ease, width 0.3s ease;
+
+            img {
+                width: 80%;
+                height: auto;
+                margin: 0 auto;
+                object-fit: cover;
+                border-radius: 5px;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            }
+
+            &.active {
+                width: 30%;
+                height: auto;
+                transform: scale(1.1);
+            }
+
+            .slider-caption {
+                background-color: #f8f8f8;
+                width: 150px;
+                position: relative;
+                bottom: 85px;
+                left: 40px;
+                padding: 10px 20px;
+                border-radius: 5px;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+                p {
+                    font-size: 0.7rem;
+                    color: #666;
+                }
+
+                h4 {
+                    font-size: 1rem;
+                    font-weight: 400;
+                }
+            }
+        }
+
+        .slider-dots {
+            display: flex;
+            justify-content: center;
+            margin-top: 1rem;
+
+            .dot {
+                width: 10px;
+                height: 10px;
+                margin: 0 5px;
+                border-radius: 50%;
+                background-color: #ccc;
+                border: none;
+                cursor: pointer;
+                transition: background-color 0.3s ease;
+                padding: 8px;
+
+                &.active {
+                    background-color: #333;
+                }
+            }
+        }
+
+        .slider-btn {
+
+            width: 150px;
+            margin-left: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 1.4rem;
+            align-items: center;
+
+            .prev,
+            .next {
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                background-color: #fff;
+                border: none;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                font-size: 1.5rem;
+                font-weight: bold;
+                color: #000;
+                cursor: pointer;
+                transition: background-color 0.3s ease;
+                margin-bottom: 20px;
+                margin-top: 20px;
+            }
+
+            .prev:hover,
+            .next:hover {
+                background-color: #f0f0f0;
+                color: #b6b6b6;
+            }
+        }
+    }
+}
