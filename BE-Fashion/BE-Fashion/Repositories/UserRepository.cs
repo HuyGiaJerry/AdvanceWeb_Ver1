@@ -1,100 +1,170 @@
-﻿using AutoMapper;
-using BE_Fashion.DTOs;
+﻿using Microsoft.EntityFrameworkCore;
 using BE_Fashion.Models;
-using Microsoft.EntityFrameworkCore;
+using BE_Fashion.DTOs;
 
 namespace BE_Fashion.Repositories
 {
-    public class UserRepository : IRepository<User>
+    public class UserRepository : IUserRepository
     {
         private readonly DbtestContext _context;
-        private readonly DbSet<User> _userSet;
-        private readonly IMapper _mapper;
-        public UserRepository(DbtestContext context, IMapper mapper)
+        private readonly ILogger<UserRepository> _logger;
+
+        public UserRepository(DbtestContext context, ILogger<UserRepository> logger)
         {
             _context = context;
-            _userSet = context.Set<User>();
-            _mapper = mapper;
+            _logger = logger;
         }
-        public async Task<User?> GetByEmailOrPhoneAsync(RegisterRequest dto)
+
+        public async Task<User?> GetByEmailOrPhoneAsync(string? email, string? phoneNumber)
         {
-            if (dto.Email != null)
+            try
             {
-                var userByEmail = await _userSet.FirstOrDefaultAsync(u =>
-                    u.Email != null && u.Email.Trim() == dto.Email);
-                if (userByEmail != null) return userByEmail;
-            }
+                if (!string.IsNullOrEmpty(email))
+                {
+                    var userByEmail = await _context.Users.FirstOrDefaultAsync(u =>
+                        u.Email != null && u.Email.Trim() == email.Trim());
+                    if (userByEmail != null)
+                        return userByEmail;
+                }
 
-            if (dto.PhoneNumber != null)
+                if (!string.IsNullOrEmpty(phoneNumber))
+                {
+                    var userByPhone = await _context.Users.FirstOrDefaultAsync(u =>
+                        u.PhoneNumber != null && u.PhoneNumber.Trim() == phoneNumber.Trim());
+                    if (userByPhone != null)
+                        return userByPhone;
+                }
+
+                return null;
+            }
+            catch (Exception ex)
             {
-                var userByPhone = await _userSet.FirstOrDefaultAsync(u =>
-                    u.PhoneNumber != null && u.PhoneNumber.Trim() == dto.PhoneNumber);
-                if (userByPhone != null) return userByPhone;
+                // TODO: Log error
+                _logger.LogError(ex, "Error occurred while trying to retrieve user by email or phone. Email: {Email}, Phone: {Phone}", email, phoneNumber);
+                return null;
             }
-
-            return null;
         }
+
         public async Task AddAsync(User entity)
         {
-            // add user in database
-            await _userSet.AddAsync(entity);
-            await _context.SaveChangesAsync();
-        }
-        public async Task UpdateAsync(User entity)
-        {
-            _userSet.Update(entity);
-            await _context.SaveChangesAsync();
-        }
-        public async Task DeleteAsync(int id)
-        {
-            var user = await _userSet.FindAsync(id);
-            if (user != null)
+            try
             {
-                _userSet.Remove(user);
+                await _context.Users.AddAsync(entity);
                 await _context.SaveChangesAsync();
             }
+            catch (Exception ex)
+            {
+                // TODO: Log error
+                _logger.LogError(ex, "Error occurred while trying to add user.");
+                throw;
+            }
         }
+
+        public async Task UpdateAsync(User entity)
+        {
+            try
+            {
+                _context.Users.Update(entity);
+                await _context.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+                // TODO: Log error
+                _logger.LogError(ex, "Error occurred while trying to update user with ID: {UserId}", entity.UserId);
+                throw;
+            }
+        }
+
+        public async Task DeleteAsync(int id)
+        {
+            try
+            {
+                var user = await _context.Users.FindAsync(id);
+                if (user != null)
+                {
+                    _context.Users.Remove(user);
+                    await _context.SaveChangesAsync();
+                }
+            }
+            catch (Exception ex)
+            {
+                // TODO: Log error
+                _logger.LogError(ex, "Error occurred while trying to delete user with ID: {UserId}", id);
+                throw;
+            }
+        }
+
         public async Task<User?> GetByIdAsync(int id)
         {
             try
             {
-                return await _userSet.FindAsync(id);
+                return await _context.Users.FindAsync(id);
             }
-            catch
+            catch (Exception ex)
             {
+                // TODO: Log error
+                _logger.LogError(ex, "Error occurred while trying to retrieve user by ID: {UserId}", id);
                 return null;
             }
         }
-        //public async Task<IEnumerable<User>> GetAllAsync(int pageNumber,int pageSize)
-        //{
-        //    return await _userSet.ToListAsync();
-        //}
+
         public async Task<IEnumerable<User>> GetAllAsync()
         {
-            return await _userSet.ToListAsync();
+            try
+            {
+                return await _context.Users.ToListAsync();
+            }
+            catch (Exception ex)
+            {
+                // TODO: Log error
+                _logger.LogError(ex, "Error occurred while trying to retrieve all users.");
+                return Enumerable.Empty<User>();
+            }
         }
-        public async Task<User?> GetByCredentialsAsync(LoginRequest dto)
+
+        public async Task<User?> GetByCredentialsAsync(string login, string password)
         {
-            var user = await _userSet.FirstOrDefaultAsync(u =>
-                                        (u.Email != null && u.Email.Trim().Equals(dto.Email)) ||
-                                        (u.PhoneNumber != null && u.PhoneNumber.Trim().Equals(dto.PhoneNumber)));
-            if (user == null)
+            try
+            {
+                var user = await _context.Users.FirstOrDefaultAsync(u =>
+                    (u.Email != null && u.Email.Trim().Equals(login)) ||
+                    (u.PhoneNumber != null && u.PhoneNumber.Trim().Equals(login)));
+
+                if (user == null)
+                    return null;
+
+                bool isPasswordValid = BCrypt.Net.BCrypt.Verify(password, user.PasswordHash);
+                return isPasswordValid ? user : null;
+            }
+            catch (Exception ex)
+            {
+                // TODO: Log error
+                _logger.LogError(ex, "Error occurred while trying to authenticate user with login: {Login}", login);
                 return null;
-
-            bool isPasswordValid = BCrypt.Net.BCrypt.Verify(dto.Password, user.PasswordHash);
-
-            return isPasswordValid ? user : null;
+            }
         }
 
-        //public async Task SaveRefreshTokenAsync(RefreshToken dto)
-        //{
-        //    _context.RefreshTokens.Add(dto);
-        //    await _context.SaveChangesAsync();
-        //}
         public async Task<User?> GetByEmailAsync(string email)
         {
-            return await _userSet.FirstOrDefaultAsync(u =>
-                u.Email != null && u.Email.Trim().Equals(email.Trim()));
+            try
+            {
+                if (string.IsNullOrEmpty(email))
+                    return null;
+
+                return await _context.Users.FirstOrDefaultAsync(u =>
+                    u.Email != null && u.Email.Trim().Equals(email.Trim()));
+            }
+            catch (Exception ex)
+            {
+                // TODO: Log error
+                _logger.LogError(ex, "Error occurred while trying to retrieve user by email: {Email}", email);
+                return null;
+            }
+        }
+        public async Task<User?> GetByOauthIdAsync(string oauthId)
+        {
+            return await _context.Users
+                .FirstOrDefaultAsync(u => u.OauthId == oauthId);
         }
 
     }

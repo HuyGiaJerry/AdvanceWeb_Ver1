@@ -4,7 +4,7 @@ namespace BE_Fashion.Services
 {
     public interface IAuthService
     {
-        Task<(bool IsSuccess, string Message, Auth Auth)> LoginAsync(LoginRequest dto);
-        Task<(bool IsSuccess, string Message, Auth Auth)> GoogleLoginAsync(string idToken);
+        Task<(bool IsSuccess, string Message, Auth Auth)> RefreshLoginAsync(string token);
+        Task<(bool IsSuccess, string Message, Auth Auth)> GoogleLoginWithCodeAsync(string idToken);
     }
 }

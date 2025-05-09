@@ -8,8 +8,24 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "dto",
+        "Name": "request",
         "Type": "BE_Fashion.DTOs.GoogleLoginRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BE_Fashion.Controllers.AuthController",
+    "Method": "RefreshToken",
+    "RelativePath": "api/Auth/refresh-token",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "System.String",
         "IsRequired": true
       }
     ],
@@ -58,7 +74,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "BE_Fashion.Controllers.UserController",
+    "ContainingType": "UserController",
     "Method": "Login",
     "RelativePath": "api/User/login",
     "HttpMethod": "POST",
@@ -74,7 +90,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "BE_Fashion.Controllers.UserController",
+    "ContainingType": "UserController",
     "Method": "Register",
     "RelativePath": "api/User/register",
     "HttpMethod": "POST",

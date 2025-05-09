@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Web_reactjs\\WebNC\\AdvanceWeb_Ver1\\BE-Fashion\\BE-Fashion\\BE-Fashion.csproj": {}
+    "D:\\Web\\ProjectWeb\\BE-Fashion\\BE-Fashion\\BE-Fashion.csproj": {}
   },
   "projects": {
-    "C:\\Web_reactjs\\WebNC\\AdvanceWeb_Ver1\\BE-Fashion\\BE-Fashion\\BE-Fashion.csproj": {
+    "D:\\Web\\ProjectWeb\\BE-Fashion\\BE-Fashion\\BE-Fashion.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Web_reactjs\\WebNC\\AdvanceWeb_Ver1\\BE-Fashion\\BE-Fashion\\BE-Fashion.csproj",
+        "projectUniqueName": "D:\\Web\\ProjectWeb\\BE-Fashion\\BE-Fashion\\BE-Fashion.csproj",
         "projectName": "BE-Fashion",
-        "projectPath": "C:\\Web_reactjs\\WebNC\\AdvanceWeb_Ver1\\BE-Fashion\\BE-Fashion\\BE-Fashion.csproj",
-        "packagesPath": "C:\\Users\\Huyen\\.nuget\\packages\\",
-        "outputPath": "C:\\Web_reactjs\\WebNC\\AdvanceWeb_Ver1\\BE-Fashion\\BE-Fashion\\obj\\",
+        "projectPath": "D:\\Web\\ProjectWeb\\BE-Fashion\\BE-Fashion\\BE-Fashion.csproj",
+        "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
+        "outputPath": "D:\\Web\\ProjectWeb\\BE-Fashion\\BE-Fashion\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Huyen\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\ADMIN\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -62,6 +62,10 @@
               "target": "Package",
               "version": "[1.69.0, )"
             },
+            "Microsoft.AspNet.WebApi.Client": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            },
             "Microsoft.AspNetCore.Authentication": {
               "target": "Package",
               "version": "[2.3.0, )"
@@ -89,6 +93,10 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[8.0.13, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
             },
             "Pomelo.EntityFrameworkCore.MySql": {
               "target": "Package",
@@ -118,7 +126,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

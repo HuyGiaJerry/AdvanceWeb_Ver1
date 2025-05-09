@@ -30,10 +30,11 @@ CREATE TABLE refresh_tokens (
     expires_at TIMESTAMP NULL,
     issued_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     revoked BOOLEAN NOT NULL DEFAULT FALSE,
-    CONSTRAINT fk_user_id FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE,
-    CONSTRAINT unique_user_provider UNIQUE (user_id, provider)
+    CONSTRAINT fk_user_id FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE
+    -- CONSTRAINT unique_user_provider UNIQUE (user_id, provider)
 );
 
+DROP TABLE refresh_tokens;
 -- Bảng danh mục
 CREATE TABLE categories (
   category_id INT AUTO_INCREMENT PRIMARY KEY,

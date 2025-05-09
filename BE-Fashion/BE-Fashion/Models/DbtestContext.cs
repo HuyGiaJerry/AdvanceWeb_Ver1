@@ -437,7 +437,7 @@ public partial class DbtestContext : DbContext
 
             entity.ToTable("refresh_tokens");
 
-            entity.HasIndex(e => new { e.UserId, e.Provider }, "unique_user_provider").IsUnique();
+            entity.HasIndex(e => e.UserId, "fk_user_id");
 
             entity.Property(e => e.TokenId).HasColumnName("token_id");
             entity.Property(e => e.ExpiresAt)

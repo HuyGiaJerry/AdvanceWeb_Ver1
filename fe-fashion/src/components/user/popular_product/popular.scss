@@ -1,0 +1,70 @@
+.popular-product {
+    padding: 50px 0;
+
+    .product-image {
+        position: relative;
+
+        img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+
+    }
+
+    .product-info {
+
+        .collection {
+            font-size: 14px;
+            color: #888;
+            text-transform: uppercase;
+        }
+
+        .product-title {
+            font-size: 36px;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        .description-title {
+            font-size: 16px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        .description {
+            font-size: 14px;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .product-size {
+            margin: 20px 0;
+
+            span {
+                font-size: 14px;
+                margin-right: 10px;
+            }
+
+            .size-button {
+                font-size: 14px;
+                padding: 5px 10px;
+            }
+        }
+
+        .product-price {
+            margin: 20px 0;
+
+            h3 {
+                font-size: 20px;
+                font-weight: bold;
+                color: #000;
+            }
+        }
+
+        .buy-now-button {
+            font-size: 12px;
+            padding: 10px 20px;
+        }
+    }
+}
