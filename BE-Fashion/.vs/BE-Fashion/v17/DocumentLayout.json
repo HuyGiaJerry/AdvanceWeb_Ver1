@@ -1,15 +1,38 @@
-<<<<<<< HEAD
 {
   "Version": 1,
   "WorkspaceRootPath": "D:\\Web\\ProjectWeb\\BE-Fashion\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|d:\\web\\projectweb\\be-fashion\\be-fashion\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|solutionrelative:be-fashion\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|d:\\web\\projectweb\\be-fashion\\be-fashion\\dtos\\createuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|solutionrelative:be-fashion\\dtos\\createuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|d:\\web\\projectweb\\be-fashion\\be-fashion\\mappings\\userprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|solutionrelative:be-fashion\\mappings\\userprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|d:\\web\\projectweb\\be-fashion\\be-fashion\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|solutionrelative:be-fashion\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|d:\\web\\projectweb\\be-fashion\\be-fashion\\services\\iuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|solutionrelative:be-fashion\\services\\iuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|d:\\web\\projectweb\\be-fashion\\be-fashion\\dtos\\loginresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|solutionrelative:be-fashion\\dtos\\loginresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|d:\\web\\projectweb\\be-fashion\\be-fashion\\repositories\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|solutionrelative:be-fashion\\repositories\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|d:\\web\\projectweb\\be-fashion\\be-fashion\\repositories\\iuserrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|solutionrelative:be-fashion\\repositories\\iuserrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|d:\\web\\projectweb\\be-fashion\\be-fashion\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|solutionrelative:be-fashion\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|d:\\web\\projectweb\\be-fashion\\be-fashion\\repositories\\refreshtokenrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -18,30 +41,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|d:\\web\\projectweb\\be-fashion\\be-fashion\\services\\jwttokenservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|solutionrelative:be-fashion\\services\\jwttokenservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|d:\\web\\projectweb\\be-fashion\\be-fashion\\repositories\\iuserrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|solutionrelative:be-fashion\\repositories\\iuserrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|d:\\web\\projectweb\\be-fashion\\be-fashion\\repositories\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|solutionrelative:be-fashion\\repositories\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|d:\\web\\projectweb\\be-fashion\\be-fashion\\services\\iuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|solutionrelative:be-fashion\\services\\iuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|d:\\web\\projectweb\\be-fashion\\be-fashion\\services\\ijwttokenservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|solutionrelative:be-fashion\\services\\ijwttokenservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|d:\\web\\projectweb\\be-fashion\\be-fashion\\repositories\\irefreshtokenrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|solutionrelative:be-fashion\\repositories\\irefreshtokenrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|d:\\web\\projectweb\\be-fashion\\be-fashion\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|solutionrelative:be-fashion\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|d:\\web\\projectweb\\be-fashion\\be-fashion\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -54,10 +53,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|d:\\web\\projectweb\\be-fashion\\be-fashion\\dtos\\refreshtokenrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|solutionrelative:be-fashion\\dtos\\refreshtokenrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|d:\\web\\projectweb\\be-fashion\\be-fashion\\dtos\\loginresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|solutionrelative:be-fashion\\dtos\\loginresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -72,51 +67,38 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "AuthService.cs",
-              "DocumentMoniker": "D:\\Web\\ProjectWeb\\BE-Fashion\\BE-Fashion\\Services\\AuthService.cs",
-              "RelativeDocumentMoniker": "BE-Fashion\\Services\\AuthService.cs",
-              "ToolTip": "D:\\Web\\ProjectWeb\\BE-Fashion\\BE-Fashion\\Services\\AuthService.cs",
-              "RelativeToolTip": "BE-Fashion\\Services\\AuthService.cs",
-              "ViewState": "AgIAADsAAAAAAAAAAAAuwDUAAAAfAAAAAAAAAA==",
+              "Title": "CreateUser.cs",
+              "DocumentMoniker": "D:\\Web\\ProjectWeb\\BE-Fashion\\BE-Fashion\\DTOs\\CreateUser.cs",
+              "RelativeDocumentMoniker": "BE-Fashion\\DTOs\\CreateUser.cs",
+              "ToolTip": "D:\\Web\\ProjectWeb\\BE-Fashion\\BE-Fashion\\DTOs\\CreateUser.cs",
+              "RelativeToolTip": "BE-Fashion\\DTOs\\CreateUser.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAA7AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-09T16:43:10.671Z",
+              "WhenOpened": "2025-05-09T17:39:06.144Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "IRefreshTokenRepository.cs",
-              "DocumentMoniker": "D:\\Web\\ProjectWeb\\BE-Fashion\\BE-Fashion\\Repositories\\IRefreshTokenRepository.cs",
-              "RelativeDocumentMoniker": "BE-Fashion\\Repositories\\IRefreshTokenRepository.cs",
-              "ToolTip": "D:\\Web\\ProjectWeb\\BE-Fashion\\BE-Fashion\\Repositories\\IRefreshTokenRepository.cs",
-              "RelativeToolTip": "BE-Fashion\\Repositories\\IRefreshTokenRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "UserProfile.cs",
+              "DocumentMoniker": "D:\\Web\\ProjectWeb\\BE-Fashion\\BE-Fashion\\Mappings\\UserProfile.cs",
+              "RelativeDocumentMoniker": "BE-Fashion\\Mappings\\UserProfile.cs",
+              "ToolTip": "D:\\Web\\ProjectWeb\\BE-Fashion\\BE-Fashion\\Mappings\\UserProfile.cs",
+              "RelativeToolTip": "BE-Fashion\\Mappings\\UserProfile.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAABWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-09T16:26:53.884Z",
+              "WhenOpened": "2025-05-09T17:22:25.351Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "IJwtTokenService.cs",
-              "DocumentMoniker": "D:\\Web\\ProjectWeb\\BE-Fashion\\BE-Fashion\\Services\\IJwtTokenService.cs",
-              "RelativeDocumentMoniker": "BE-Fashion\\Services\\IJwtTokenService.cs",
-              "ToolTip": "D:\\Web\\ProjectWeb\\BE-Fashion\\BE-Fashion\\Services\\IJwtTokenService.cs",
-              "RelativeToolTip": "BE-Fashion\\Services\\IJwtTokenService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-09T16:26:35.989Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 3,
               "Title": "IUserService.cs",
               "DocumentMoniker": "D:\\Web\\ProjectWeb\\BE-Fashion\\BE-Fashion\\Services\\IUserService.cs",
               "RelativeDocumentMoniker": "BE-Fashion\\Services\\IUserService.cs",
               "ToolTip": "D:\\Web\\ProjectWeb\\BE-Fashion\\BE-Fashion\\Services\\IUserService.cs",
               "RelativeToolTip": "BE-Fashion\\Services\\IUserService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAABAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-09T16:07:46.902Z",
               "EditorCaption": ""
@@ -129,14 +111,14 @@
               "RelativeDocumentMoniker": "BE-Fashion\\Repositories\\UserRepository.cs",
               "ToolTip": "D:\\Web\\ProjectWeb\\BE-Fashion\\BE-Fashion\\Repositories\\UserRepository.cs",
               "RelativeToolTip": "BE-Fashion\\Repositories\\UserRepository.cs",
-              "ViewState": "AgIAACUAAAAAAAAAAAAIwAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAH8AAAAAAAAAAAAxwIgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-09T16:04:00.385Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "IUserRepository.cs",
               "DocumentMoniker": "D:\\Web\\ProjectWeb\\BE-Fashion\\BE-Fashion\\Repositories\\IUserRepository.cs",
               "RelativeDocumentMoniker": "BE-Fashion\\Repositories\\IUserRepository.cs",
@@ -149,7 +131,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 9,
               "Title": "JwtTokenService.cs",
               "DocumentMoniker": "D:\\Web\\ProjectWeb\\BE-Fashion\\BE-Fashion\\Services\\JwtTokenService.cs",
               "RelativeDocumentMoniker": "BE-Fashion\\Services\\JwtTokenService.cs",
@@ -157,12 +139,11 @@
               "RelativeToolTip": "BE-Fashion\\Services\\JwtTokenService.cs",
               "ViewState": "AgIAAAUAAAAAAAAAAAAiwC0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-09T15:50:42.246Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-09T15:50:42.246Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 8,
               "Title": "RefreshTokenRepository.cs",
               "DocumentMoniker": "D:\\Web\\ProjectWeb\\BE-Fashion\\BE-Fashion\\Repositories\\RefreshTokenRepository.cs",
               "RelativeDocumentMoniker": "BE-Fashion\\Repositories\\RefreshTokenRepository.cs",
@@ -170,44 +151,43 @@
               "RelativeToolTip": "BE-Fashion\\Repositories\\RefreshTokenRepository.cs",
               "ViewState": "AgIAAAUAAAAAAAAAAAASwDcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-09T15:47:04.447Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-09T15:47:04.447Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "UserService.cs",
               "DocumentMoniker": "D:\\Web\\ProjectWeb\\BE-Fashion\\BE-Fashion\\Services\\UserService.cs",
               "RelativeDocumentMoniker": "BE-Fashion\\Services\\UserService.cs",
               "ToolTip": "D:\\Web\\ProjectWeb\\BE-Fashion\\BE-Fashion\\Services\\UserService.cs",
               "RelativeToolTip": "BE-Fashion\\Services\\UserService.cs",
-              "ViewState": "AgIAAEMAAAAAAAAAAIAxwFMAAAATAAAAAAAAAA==",
+              "ViewState": "AgIAAEgAAAAAAAAAAAAywGsAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-09T15:46:00.923Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 4,
               "Title": "LoginResponse.cs",
               "DocumentMoniker": "D:\\Web\\ProjectWeb\\BE-Fashion\\BE-Fashion\\DTOs\\LoginResponse.cs",
               "RelativeDocumentMoniker": "BE-Fashion\\DTOs\\LoginResponse.cs",
               "ToolTip": "D:\\Web\\ProjectWeb\\BE-Fashion\\BE-Fashion\\DTOs\\LoginResponse.cs",
               "RelativeToolTip": "BE-Fashion\\DTOs\\LoginResponse.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-09T15:42:48.876Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 7,
               "Title": "UserController.cs",
               "DocumentMoniker": "D:\\Web\\ProjectWeb\\BE-Fashion\\BE-Fashion\\Controllers\\UserController.cs",
               "RelativeDocumentMoniker": "BE-Fashion\\Controllers\\UserController.cs",
               "ToolTip": "D:\\Web\\ProjectWeb\\BE-Fashion\\BE-Fashion\\Controllers\\UserController.cs",
               "RelativeToolTip": "BE-Fashion\\Controllers\\UserController.cs",
-              "ViewState": "AgIAABUAAAAAAAAAAAAswC0AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAnwC0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-09T15:41:40.151Z",
               "EditorCaption": ""
@@ -222,8 +202,7 @@
               "RelativeToolTip": "BE-Fashion\\DTOs\\RefreshTokenRequest.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-09T15:39:02.761Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-09T15:39:02.761Z"
             },
             {
               "$type": "Document",
@@ -235,8 +214,7 @@
               "RelativeToolTip": "BE-Fashion\\DTOs\\RefreshTokenResponse.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-09T15:38:16.072Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-09T15:38:16.072Z"
             },
             {
               "$type": "Document",
@@ -248,467 +226,11 @@
               "RelativeToolTip": "BE-Fashion\\Controllers\\AuthController.cs",
               "ViewState": "AgIAABIAAAAAAAAAAAAiwDIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-09T07:05:24.167Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-09T07:05:24.167Z"
             }
           ]
         }
       ]
     }
   ]
-=======
-{
-  "Version": 1,
-  "WorkspaceRootPath": "D:\\LEARN\\SUBJECT\\ASP_NET\\AdvanceWeb\\BE-Fashion\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|d:\\learn\\subject\\asp_net\\advanceweb\\be-fashion\\be-fashion\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|solutionrelative:be-fashion\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|d:\\learn\\subject\\asp_net\\advanceweb\\be-fashion\\be-fashion\\models\\dbtestcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|solutionrelative:be-fashion\\models\\dbtestcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|d:\\learn\\subject\\asp_net\\advanceweb\\be-fashion\\be-fashion\\models\\productvariant.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|solutionrelative:be-fashion\\models\\productvariant.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|d:\\learn\\subject\\asp_net\\advanceweb\\be-fashion\\be-fashion\\models\\productimage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|solutionrelative:be-fashion\\models\\productimage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|d:\\learn\\subject\\asp_net\\advanceweb\\be-fashion\\be-fashion\\models\\productcolorimage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|solutionrelative:be-fashion\\models\\productcolorimage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|d:\\learn\\subject\\asp_net\\advanceweb\\be-fashion\\be-fashion\\models\\productcolor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|solutionrelative:be-fashion\\models\\productcolor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|d:\\learn\\subject\\asp_net\\advanceweb\\be-fashion\\be-fashion\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|solutionrelative:be-fashion\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|d:\\learn\\subject\\asp_net\\advanceweb\\be-fashion\\be-fashion\\mappings\\userprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|solutionrelative:be-fashion\\mappings\\userprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|d:\\learn\\subject\\asp_net\\advanceweb\\be-fashion\\be-fashion\\dtos\\loginresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|solutionrelative:be-fashion\\dtos\\loginresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|d:\\learn\\subject\\asp_net\\advanceweb\\be-fashion\\be-fashion\\dtos\\googleuserinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|solutionrelative:be-fashion\\dtos\\googleuserinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|d:\\learn\\subject\\asp_net\\advanceweb\\be-fashion\\be-fashion\\dtos\\googleloginrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|solutionrelative:be-fashion\\dtos\\googleloginrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|d:\\learn\\subject\\asp_net\\advanceweb\\be-fashion\\be-fashion\\dtos\\loginrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|solutionrelative:be-fashion\\dtos\\loginrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|d:\\learn\\subject\\asp_net\\advanceweb\\be-fashion\\be-fashion\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|solutionrelative:be-fashion\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|d:\\learn\\subject\\asp_net\\advanceweb\\be-fashion\\be-fashion\\repositories\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|solutionrelative:be-fashion\\repositories\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|d:\\learn\\subject\\asp_net\\advanceweb\\be-fashion\\be-fashion\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|solutionrelative:be-fashion\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|d:\\learn\\subject\\asp_net\\advanceweb\\be-fashion\\be-fashion\\repositories\\refreshtokenrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|solutionrelative:be-fashion\\repositories\\refreshtokenrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|d:\\learn\\subject\\asp_net\\advanceweb\\be-fashion\\be-fashion\\repositories\\irefreshtokenrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|solutionrelative:be-fashion\\repositories\\irefreshtokenrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|d:\\learn\\subject\\asp_net\\advanceweb\\be-fashion\\be-fashion\\dtos\\refreshtokenresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|solutionrelative:be-fashion\\dtos\\refreshtokenresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|d:\\learn\\subject\\asp_net\\advanceweb\\be-fashion\\be-fashion\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|solutionrelative:be-fashion\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|d:\\learn\\subject\\asp_net\\advanceweb\\be-fashion\\be-fashion\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|solutionrelative:be-fashion\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|d:\\learn\\subject\\asp_net\\advanceweb\\be-fashion\\be-fashion\\services\\jwttokenservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|solutionrelative:be-fashion\\services\\jwttokenservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|d:\\learn\\subject\\asp_net\\advanceweb\\be-fashion\\be-fashion\\services\\ijwttokenservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|solutionrelative:be-fashion\\services\\ijwttokenservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|d:\\learn\\subject\\asp_net\\advanceweb\\be-fashion\\be-fashion\\services\\iauthservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|solutionrelative:be-fashion\\services\\iauthservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|d:\\learn\\subject\\asp_net\\advanceweb\\be-fashion\\be-fashion\\dtos\\createuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|solutionrelative:be-fashion\\dtos\\createuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|d:\\learn\\subject\\asp_net\\advanceweb\\be-fashion\\be-fashion\\models\\refreshtoken.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|solutionrelative:be-fashion\\models\\refreshtoken.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|d:\\learn\\subject\\asp_net\\advanceweb\\be-fashion\\be-fashion\\dtos\\auth.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|solutionrelative:be-fashion\\dtos\\auth.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    }
-  ],
-  "DocumentGroupContainers": [
-    {
-      "Orientation": 0,
-      "VerticalTabListWidth": 256,
-      "DocumentGroups": [
-        {
-          "DockedWidth": 200,
-          "SelectedChildIndex": 8,
-          "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "AuthService.cs",
-              "DocumentMoniker": "D:\\LEARN\\SUBJECT\\ASP_NET\\AdvanceWeb\\BE-Fashion\\BE-Fashion\\Services\\AuthService.cs",
-              "RelativeDocumentMoniker": "BE-Fashion\\Services\\AuthService.cs",
-              "ToolTip": "D:\\LEARN\\SUBJECT\\ASP_NET\\AdvanceWeb\\BE-Fashion\\BE-Fashion\\Services\\AuthService.cs",
-              "RelativeToolTip": "BE-Fashion\\Services\\AuthService.cs",
-              "ViewState": "AgIAAHoAAAAAAAAAAAAvwLcAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-01T23:48:53.673Z",
-              "IsPinned": true
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 22,
-              "Title": "IAuthService.cs",
-              "DocumentMoniker": "D:\\LEARN\\SUBJECT\\ASP_NET\\AdvanceWeb\\BE-Fashion\\BE-Fashion\\Services\\IAuthService.cs",
-              "RelativeDocumentMoniker": "BE-Fashion\\Services\\IAuthService.cs",
-              "ToolTip": "D:\\LEARN\\SUBJECT\\ASP_NET\\AdvanceWeb\\BE-Fashion\\BE-Fashion\\Services\\IAuthService.cs",
-              "RelativeToolTip": "BE-Fashion\\Services\\IAuthService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAhAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-01T23:49:56.109Z",
-              "IsPinned": true
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 20,
-              "Title": "JwtTokenService.cs",
-              "DocumentMoniker": "D:\\LEARN\\SUBJECT\\ASP_NET\\AdvanceWeb\\BE-Fashion\\BE-Fashion\\Services\\JwtTokenService.cs",
-              "RelativeDocumentMoniker": "BE-Fashion\\Services\\JwtTokenService.cs",
-              "ToolTip": "D:\\LEARN\\SUBJECT\\ASP_NET\\AdvanceWeb\\BE-Fashion\\BE-Fashion\\Services\\JwtTokenService.cs",
-              "RelativeToolTip": "BE-Fashion\\Services\\JwtTokenService.cs",
-              "ViewState": "AgIAAAEAAAAAAAAAAAAwwCIAAAArAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-03T02:59:42.943Z",
-              "IsPinned": true
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 19,
-              "Title": "AuthController.cs",
-              "DocumentMoniker": "D:\\LEARN\\SUBJECT\\ASP_NET\\AdvanceWeb\\BE-Fashion\\BE-Fashion\\Controllers\\AuthController.cs",
-              "RelativeDocumentMoniker": "BE-Fashion\\Controllers\\AuthController.cs",
-              "ToolTip": "D:\\LEARN\\SUBJECT\\ASP_NET\\AdvanceWeb\\BE-Fashion\\BE-Fashion\\Controllers\\AuthController.cs",
-              "RelativeToolTip": "BE-Fashion\\Controllers\\AuthController.cs",
-              "ViewState": "AgIAAA4AAAAAAAAAAIAxwBYAAAAiAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-02T01:24:32.049Z",
-              "IsPinned": true
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "DbtestContext.cs",
-              "DocumentMoniker": "D:\\LEARN\\SUBJECT\\ASP_NET\\AdvanceWeb\\BE-Fashion\\BE-Fashion\\Models\\DbtestContext.cs",
-              "RelativeDocumentMoniker": "BE-Fashion\\Models\\DbtestContext.cs",
-              "ToolTip": "D:\\LEARN\\SUBJECT\\ASP_NET\\AdvanceWeb\\BE-Fashion\\BE-Fashion\\Models\\DbtestContext.cs",
-              "RelativeToolTip": "BE-Fashion\\Models\\DbtestContext.cs",
-              "ViewState": "AgIAAHYAAAAAAAAAAAAnwIAAAAArAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-09T06:31:24.134Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "D:\\LEARN\\SUBJECT\\ASP_NET\\AdvanceWeb\\BE-Fashion\\BE-Fashion\\appsettings.json",
-              "RelativeDocumentMoniker": "BE-Fashion\\appsettings.json",
-              "ToolTip": "D:\\LEARN\\SUBJECT\\ASP_NET\\AdvanceWeb\\BE-Fashion\\BE-Fashion\\appsettings.json",
-              "RelativeToolTip": "BE-Fashion\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAABFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-05-03T06:37:50.225Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "ProductColorImage.cs",
-              "DocumentMoniker": "D:\\LEARN\\SUBJECT\\ASP_NET\\AdvanceWeb\\BE-Fashion\\BE-Fashion\\Models\\ProductColorImage.cs",
-              "RelativeDocumentMoniker": "BE-Fashion\\Models\\ProductColorImage.cs",
-              "ToolTip": "D:\\LEARN\\SUBJECT\\ASP_NET\\AdvanceWeb\\BE-Fashion\\BE-Fashion\\Models\\ProductColorImage.cs",
-              "RelativeToolTip": "BE-Fashion\\Models\\ProductColorImage.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-09T06:39:15.255Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "ProductImage.cs",
-              "DocumentMoniker": "D:\\LEARN\\SUBJECT\\ASP_NET\\AdvanceWeb\\BE-Fashion\\BE-Fashion\\Models\\ProductImage.cs",
-              "RelativeDocumentMoniker": "BE-Fashion\\Models\\ProductImage.cs",
-              "ToolTip": "D:\\LEARN\\SUBJECT\\ASP_NET\\AdvanceWeb\\BE-Fashion\\BE-Fashion\\Models\\ProductImage.cs",
-              "RelativeToolTip": "BE-Fashion\\Models\\ProductImage.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-09T06:39:16.711Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "ProductColor.cs",
-              "DocumentMoniker": "D:\\LEARN\\SUBJECT\\ASP_NET\\AdvanceWeb\\BE-Fashion\\BE-Fashion\\Models\\ProductColor.cs",
-              "RelativeDocumentMoniker": "BE-Fashion\\Models\\ProductColor.cs",
-              "ToolTip": "D:\\LEARN\\SUBJECT\\ASP_NET\\AdvanceWeb\\BE-Fashion\\BE-Fashion\\Models\\ProductColor.cs",
-              "RelativeToolTip": "BE-Fashion\\Models\\ProductColor.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-09T06:39:10.791Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "ProductVariant.cs",
-              "DocumentMoniker": "D:\\LEARN\\SUBJECT\\ASP_NET\\AdvanceWeb\\BE-Fashion\\BE-Fashion\\Models\\ProductVariant.cs",
-              "RelativeDocumentMoniker": "BE-Fashion\\Models\\ProductVariant.cs",
-              "ToolTip": "D:\\LEARN\\SUBJECT\\ASP_NET\\AdvanceWeb\\BE-Fashion\\BE-Fashion\\Models\\ProductVariant.cs",
-              "RelativeToolTip": "BE-Fashion\\Models\\ProductVariant.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-09T06:39:18.127Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "appsettings.Development.json",
-              "DocumentMoniker": "D:\\LEARN\\SUBJECT\\ASP_NET\\AdvanceWeb\\BE-Fashion\\BE-Fashion\\appsettings.Development.json",
-              "RelativeDocumentMoniker": "BE-Fashion\\appsettings.Development.json",
-              "ToolTip": "D:\\LEARN\\SUBJECT\\ASP_NET\\AdvanceWeb\\BE-Fashion\\BE-Fashion\\appsettings.Development.json",
-              "RelativeToolTip": "BE-Fashion\\appsettings.Development.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-05-09T06:38:12.903Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "GoogleUserInfo.cs",
-              "DocumentMoniker": "D:\\LEARN\\SUBJECT\\ASP_NET\\AdvanceWeb\\BE-Fashion\\BE-Fashion\\DTOs\\GoogleUserInfo.cs",
-              "RelativeDocumentMoniker": "BE-Fashion\\DTOs\\GoogleUserInfo.cs",
-              "ToolTip": "D:\\LEARN\\SUBJECT\\ASP_NET\\AdvanceWeb\\BE-Fashion\\BE-Fashion\\DTOs\\GoogleUserInfo.cs",
-              "RelativeToolTip": "BE-Fashion\\DTOs\\GoogleUserInfo.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-09T06:06:32.183Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "GoogleLoginRequest.cs",
-              "DocumentMoniker": "D:\\LEARN\\SUBJECT\\ASP_NET\\AdvanceWeb\\BE-Fashion\\BE-Fashion\\DTOs\\GoogleLoginRequest.cs",
-              "RelativeDocumentMoniker": "BE-Fashion\\DTOs\\GoogleLoginRequest.cs",
-              "ToolTip": "D:\\LEARN\\SUBJECT\\ASP_NET\\AdvanceWeb\\BE-Fashion\\BE-Fashion\\DTOs\\GoogleLoginRequest.cs",
-              "RelativeToolTip": "BE-Fashion\\DTOs\\GoogleLoginRequest.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-09T06:06:28.223Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "UserService.cs",
-              "DocumentMoniker": "D:\\LEARN\\SUBJECT\\ASP_NET\\AdvanceWeb\\BE-Fashion\\BE-Fashion\\Services\\UserService.cs",
-              "RelativeDocumentMoniker": "BE-Fashion\\Services\\UserService.cs",
-              "ToolTip": "D:\\LEARN\\SUBJECT\\ASP_NET\\AdvanceWeb\\BE-Fashion\\BE-Fashion\\Services\\UserService.cs",
-              "RelativeToolTip": "BE-Fashion\\Services\\UserService.cs",
-              "ViewState": "AgIAACsAAAAAAAAAAAAywDEAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-09T05:55:55.503Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "UserRepository.cs",
-              "DocumentMoniker": "D:\\LEARN\\SUBJECT\\ASP_NET\\AdvanceWeb\\BE-Fashion\\BE-Fashion\\Repositories\\UserRepository.cs",
-              "RelativeDocumentMoniker": "BE-Fashion\\Repositories\\UserRepository.cs",
-              "ToolTip": "D:\\LEARN\\SUBJECT\\ASP_NET\\AdvanceWeb\\BE-Fashion\\BE-Fashion\\Repositories\\UserRepository.cs",
-              "RelativeToolTip": "BE-Fashion\\Repositories\\UserRepository.cs",
-              "ViewState": "AgIAAHQAAAAAAAAAAAAIwHsAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-09T05:54:21.552Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "LoginResponse.cs",
-              "DocumentMoniker": "D:\\LEARN\\SUBJECT\\ASP_NET\\AdvanceWeb\\BE-Fashion\\BE-Fashion\\DTOs\\LoginResponse.cs",
-              "RelativeDocumentMoniker": "BE-Fashion\\DTOs\\LoginResponse.cs",
-              "ToolTip": "D:\\LEARN\\SUBJECT\\ASP_NET\\AdvanceWeb\\BE-Fashion\\BE-Fashion\\DTOs\\LoginResponse.cs",
-              "RelativeToolTip": "BE-Fashion\\DTOs\\LoginResponse.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAxAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-09T05:47:28.188Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "LoginRequest.cs",
-              "DocumentMoniker": "D:\\LEARN\\SUBJECT\\ASP_NET\\AdvanceWeb\\BE-Fashion\\BE-Fashion\\DTOs\\LoginRequest.cs",
-              "RelativeDocumentMoniker": "BE-Fashion\\DTOs\\LoginRequest.cs",
-              "ToolTip": "D:\\LEARN\\SUBJECT\\ASP_NET\\AdvanceWeb\\BE-Fashion\\BE-Fashion\\DTOs\\LoginRequest.cs",
-              "RelativeToolTip": "BE-Fashion\\DTOs\\LoginRequest.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAgwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-09T05:47:23.891Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "IRefreshTokenRepository.cs",
-              "DocumentMoniker": "D:\\LEARN\\SUBJECT\\ASP_NET\\AdvanceWeb\\BE-Fashion\\BE-Fashion\\Repositories\\IRefreshTokenRepository.cs",
-              "RelativeDocumentMoniker": "BE-Fashion\\Repositories\\IRefreshTokenRepository.cs",
-              "ToolTip": "D:\\LEARN\\SUBJECT\\ASP_NET\\AdvanceWeb\\BE-Fashion\\BE-Fashion\\Repositories\\IRefreshTokenRepository.cs",
-              "RelativeToolTip": "BE-Fashion\\Repositories\\IRefreshTokenRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAnAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-09T01:16:30.985Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 21,
-              "Title": "IJwtTokenService.cs",
-              "DocumentMoniker": "D:\\LEARN\\SUBJECT\\ASP_NET\\AdvanceWeb\\BE-Fashion\\BE-Fashion\\Services\\IJwtTokenService.cs",
-              "RelativeDocumentMoniker": "BE-Fashion\\Services\\IJwtTokenService.cs",
-              "ToolTip": "D:\\LEARN\\SUBJECT\\ASP_NET\\AdvanceWeb\\BE-Fashion\\BE-Fashion\\Services\\IJwtTokenService.cs",
-              "RelativeToolTip": "BE-Fashion\\Services\\IJwtTokenService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-09T00:24:44.409Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 23,
-              "Title": "CreateUser.cs",
-              "DocumentMoniker": "D:\\LEARN\\SUBJECT\\ASP_NET\\AdvanceWeb\\BE-Fashion\\BE-Fashion\\DTOs\\CreateUser.cs",
-              "RelativeDocumentMoniker": "BE-Fashion\\DTOs\\CreateUser.cs",
-              "ToolTip": "D:\\LEARN\\SUBJECT\\ASP_NET\\AdvanceWeb\\BE-Fashion\\BE-Fashion\\DTOs\\CreateUser.cs",
-              "RelativeToolTip": "BE-Fashion\\DTOs\\CreateUser.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAA5AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-03T14:01:31.51Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "RefreshTokenResponse.cs",
-              "DocumentMoniker": "D:\\LEARN\\SUBJECT\\ASP_NET\\AdvanceWeb\\BE-Fashion\\BE-Fashion\\DTOs\\RefreshTokenResponse.cs",
-              "RelativeDocumentMoniker": "BE-Fashion\\DTOs\\RefreshTokenResponse.cs",
-              "ToolTip": "D:\\LEARN\\SUBJECT\\ASP_NET\\AdvanceWeb\\BE-Fashion\\BE-Fashion\\DTOs\\RefreshTokenResponse.cs",
-              "RelativeToolTip": "BE-Fashion\\DTOs\\RefreshTokenResponse.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAA/AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-03T03:47:58.769Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 24,
-              "Title": "RefreshToken.cs",
-              "DocumentMoniker": "D:\\LEARN\\SUBJECT\\ASP_NET\\AdvanceWeb\\BE-Fashion\\BE-Fashion\\Models\\RefreshToken.cs",
-              "RelativeDocumentMoniker": "BE-Fashion\\Models\\RefreshToken.cs",
-              "ToolTip": "D:\\LEARN\\SUBJECT\\ASP_NET\\AdvanceWeb\\BE-Fashion\\BE-Fashion\\Models\\RefreshToken.cs",
-              "RelativeToolTip": "BE-Fashion\\Models\\RefreshToken.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAaAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-03T03:01:30.63Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 25,
-              "Title": "Auth.cs",
-              "DocumentMoniker": "D:\\LEARN\\SUBJECT\\ASP_NET\\AdvanceWeb\\BE-Fashion\\BE-Fashion\\DTOs\\Auth.cs",
-              "RelativeDocumentMoniker": "BE-Fashion\\DTOs\\Auth.cs",
-              "ToolTip": "D:\\LEARN\\SUBJECT\\ASP_NET\\AdvanceWeb\\BE-Fashion\\BE-Fashion\\DTOs\\Auth.cs",
-              "RelativeToolTip": "BE-Fashion\\DTOs\\Auth.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-03T02:20:37.828Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "UserProfile.cs",
-              "DocumentMoniker": "D:\\LEARN\\SUBJECT\\ASP_NET\\AdvanceWeb\\BE-Fashion\\BE-Fashion\\Mappings\\UserProfile.cs",
-              "RelativeDocumentMoniker": "BE-Fashion\\Mappings\\UserProfile.cs",
-              "ToolTip": "D:\\LEARN\\SUBJECT\\ASP_NET\\AdvanceWeb\\BE-Fashion\\BE-Fashion\\Mappings\\UserProfile.cs",
-              "RelativeToolTip": "BE-Fashion\\Mappings\\UserProfile.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-27T14:31:49.704Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "RefreshTokenRepository.cs",
-              "DocumentMoniker": "D:\\LEARN\\SUBJECT\\ASP_NET\\AdvanceWeb\\BE-Fashion\\BE-Fashion\\Repositories\\RefreshTokenRepository.cs",
-              "RelativeDocumentMoniker": "BE-Fashion\\Repositories\\RefreshTokenRepository.cs",
-              "ToolTip": "D:\\LEARN\\SUBJECT\\ASP_NET\\AdvanceWeb\\BE-Fashion\\BE-Fashion\\Repositories\\RefreshTokenRepository.cs",
-              "RelativeToolTip": "BE-Fashion\\Repositories\\RefreshTokenRepository.cs",
-              "ViewState": "AgIAABcAAAAAAAAAAAASwC0AAAAuAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-03T03:04:34.807Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "Program.cs",
-              "DocumentMoniker": "D:\\LEARN\\SUBJECT\\ASP_NET\\AdvanceWeb\\BE-Fashion\\BE-Fashion\\Program.cs",
-              "RelativeDocumentMoniker": "BE-Fashion\\Program.cs",
-              "ToolTip": "D:\\LEARN\\SUBJECT\\ASP_NET\\AdvanceWeb\\BE-Fashion\\BE-Fashion\\Program.cs",
-              "RelativeToolTip": "BE-Fashion\\Program.cs",
-              "ViewState": "AgIAABgAAAAAAAAAAAAWwDAAAAA0AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-22T18:03:35.171Z"
-            }
-          ]
-        }
-      ]
-    }
-  ]
->>>>>>> 1792b4571a0a6e9e16d46a299147bce9a77420a5
 }
