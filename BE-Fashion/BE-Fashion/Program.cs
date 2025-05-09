@@ -21,10 +21,14 @@ if (string.IsNullOrEmpty(redisConnectionString))
     throw new InvalidOperationException("Redis connection string is not configured.");
 }
 
+
 builder.Services.AddSingleton<IConnectionMultiplexer>(ConnectionMultiplexer.Connect(redisConnectionString));
 
 var multiplexer = ConnectionMultiplexer.Connect(redisConnectionString);
 builder.Services.AddSingleton<IConnectionMultiplexer>(multiplexer);
+
+
+builder.Services.AddSingleton<IConnectionMultiplexer>(ConnectionMultiplexer.Connect(redisConnectionString));
 
 builder.Services.AddControllers()
     .AddJsonOptions(options =>
