@@ -36,6 +36,37 @@
         }
       }
     },
+    "/api/Auth/refresh-token": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
     "/api/Product/total-pages": {
       "get": {
         "tags": [
@@ -161,7 +192,7 @@
       "GoogleLoginRequest": {
         "type": "object",
         "properties": {
-          "idToken": {
+          "code": {
             "type": "string",
             "nullable": true
           }
@@ -174,10 +205,6 @@
         ],
         "type": "object",
         "properties": {
-          "userId": {
-            "type": "integer",
-            "format": "int32"
-          },
           "email": {
             "type": "string",
             "nullable": true
@@ -189,18 +216,6 @@
           "password": {
             "minLength": 1,
             "type": "string"
-          },
-          "fullName": {
-            "type": "string",
-            "nullable": true
-          },
-          "avatarUrl": {
-            "type": "string",
-            "nullable": true
-          },
-          "role": {
-            "type": "string",
-            "nullable": true
           }
         },
         "additionalProperties": false
