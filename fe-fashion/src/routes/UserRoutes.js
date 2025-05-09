@@ -13,6 +13,7 @@ import CheckOut from "../pages/user/check-out"
 import Header from "../components/user/header/Header"
 import Footer from "../components/user/footer/Footer"
 import '../App'
+import NotFound from "../components/user/not_found/NotFound"
 
 const UserRoutes = () => {
     return (
@@ -32,6 +33,8 @@ const UserRoutes = () => {
                     <Route path="/order/:orderId" element={<OrderDetail />} />
                     <Route path="/check-out" element={<CheckOut />} />
                     <Route path="/shop/product/detail/:id" element={<Detail />} />
+
+                    <Route path="*" element={<NotFound />} />
                 </Routes>
             </div>
             <Footer />
