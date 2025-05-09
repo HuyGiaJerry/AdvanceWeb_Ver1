@@ -1,22 +1,50 @@
 import { configureStore, createSlice } from '@reduxjs/toolkit';
 
+// Get State from localStorage
+let persistedState;
+try {
+    persistedState = JSON.parse(localStorage.getItem('authState')) || {
+        auth: false,
+        userId: '',
+        userName: '',
+        accessToken: '',
+        refreshToken: '',
+        cartCount: 0,
+        wishlistCount: 0,
+    };
+} catch (error) {
+    console.error('Error parsing authState from localStorage:', error);
+    persistedState = {
+        auth: false,
+        userId: '',
+        userName: '',
+        accessToken: '',
+        refreshToken: '',
+        cartCount: 0,
+        wishlistCount: 0,
+    };
+}
+
+
 // Slice
 const authSlice = createSlice({
     name: 'auth',
-    initialState: {
-        isLoggin: false,
-        userName: '', // Thêm trạng thái userName
-        cartCount: 0,
-        wishlistCount: 0,
-    },
+    initialState: persistedState,
     reducers: {
         login: (state, action) => {
-            state.isLoggin = true;
-            state.userName = action.payload.userName; // Lưu userName khi đăng nhập
+            state.auth = true;
+            state.userId = action.payload.userId; // Lưu userId
+            state.userName = action.payload.userName;
+            state.accessToken = action.payload.accessToken; // Lưu accessToken
+            state.refreshToken = action.payload.refreshToken; // Lưu refreshToken
         },
         logout: (state) => {
-            state.isLoggin = false;
-            state.userName = ''; // Xóa userName khi đăng xuất
+            state.auth = false;
+            state.userId = '';
+            state.userName = '';
+            state.accessToken = '';
+            state.refreshToken = '';
+            // localStorage.removeItem('authState'); // Xóa state khỏi localStorage khi logout
         },
         addToCart: (state) => {
             state.cartCount += 1;
@@ -36,4 +64,12 @@ const store = configureStore({
     },
 });
 
+// Lưu state redux vào localStorage mỗi khi thay đổi
+store.subscribe(() => {
+    try {
+        localStorage.setItem('authState', JSON.stringify(store.getState().auth));
+    } catch (error) {
+        console.error('Error saving authState to localStorage:', error);
+    }
+});
 export default store;
