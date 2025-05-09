@@ -134,7 +134,7 @@ namespace BE_Fashion.Services
                 return (false, "An error occurred while checking email", null);
             }
         }
-        public async Task<IEnumerable<LoginResponse>> GetAllCustomersAsync()
+        public async Task<IEnumerable<UserDto>> GetAllCustomersAsync()
         {
             try
             {
@@ -142,7 +142,7 @@ namespace BE_Fashion.Services
                 var customers = users.ToList();
 
                 _logger.LogInformation("Retrieved {Count} customers", customers.Count);
-                return _mapper.Map<IEnumerable<LoginResponse>>(customers);
+                return _mapper.Map<IEnumerable<UserDto>>(customers);
             }
             catch (Exception ex)
             {

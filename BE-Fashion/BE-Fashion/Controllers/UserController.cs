@@ -40,6 +40,10 @@ public class UserController : ControllerBase
         return Ok(userInfo);
     }
     //[Authorize(Roles = "admin")]
-    //[HttpGet("customers")]
-    //public async Task<IEnumerable<LoginResponse>>
+    [HttpGet("customers")]
+    public async Task<IEnumerable<UserDto>> GetAllCustomer()
+    {
+        var customers = await _userService.GetAllCustomersAsync();
+        return customers;
+    }
 }

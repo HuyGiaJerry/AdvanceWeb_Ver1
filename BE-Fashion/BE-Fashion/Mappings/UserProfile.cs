@@ -39,6 +39,7 @@ namespace BE_Fashion.Mappings
                     opt.MapFrom(src => src.OauthProvider == "google" && !string.IsNullOrEmpty(src.OauthId)));
             CreateMap<CreateUser, User>();
             CreateMap<RefreshToken, RefreshTokenResponse>();
+            CreateMap<User, UserDto>();
         }
     }
 }
