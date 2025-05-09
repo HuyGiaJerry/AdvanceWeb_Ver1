@@ -14,14 +14,14 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-var redisConnectionString = builder.Configuration.GetValue<string>("Redis:ConnectionString");
+//var redisConnectionString = builder.Configuration.GetValue<string>("Redis:ConnectionString");
 
-if (string.IsNullOrEmpty(redisConnectionString))
-{
-    throw new InvalidOperationException("Redis connection string is not configured.");
-}
+//if (string.IsNullOrEmpty(redisConnectionString))
+//{
+//    throw new InvalidOperationException("Redis connection string is not configured.");
+//}
 
-builder.Services.AddSingleton<IConnectionMultiplexer>(ConnectionMultiplexer.Connect(redisConnectionString));
+//builder.Services.AddSingleton<IConnectionMultiplexer>(ConnectionMultiplexer.Connect(redisConnectionString));
 builder.Services.AddControllers()
     .AddJsonOptions(options =>
     {
