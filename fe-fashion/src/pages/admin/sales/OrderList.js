@@ -1,84 +1,84 @@
 import React, { useState } from 'react';
-import Layout from '../../../components/admin/Layout';
 import Table from '../../../components/admin/Table';
-import { FaSearch, FaFilter, FaEye, FaPrint } from 'react-icons/fa';
+import Card from '../../../components/admin/Card';
+import { FaSearch, FaFilter, FaEye, FaPrint, FaEdit, FaShoppingCart, FaSpinner, FaTruck, FaCheckCircle } from 'react-icons/fa';
+import dataOrders from '../../../services/dataOrders';
+import { useNavigate } from 'react-router-dom';
+import "../../../assets/styles/EditOrder.scss";
+import SearchBar from '../../../components/admin/SearchBar';
+import FilterDropdown from '../../../components/admin/FilterDropdown';
 
 const OrderList = () => {
-  // Dữ liệu mẫu cho bảng đơn hàng
-  const [orders, setOrders] = useState([
-    { 
-      id: 1, 
-      code: '#ORD001', 
-      customerName: 'Nguyễn Văn A', 
-      date: '10/04/2025', 
-      paymentMethod: 'Thẻ tín dụng', 
-      status: 'Hoàn thành', 
-      total: '2,500,000đ' 
-    },
-    { 
-      id: 2, 
-      code: '#ORD002', 
-      customerName: 'Trần Thị B', 
-      date: '09/04/2025', 
-      paymentMethod: 'COD', 
-      status: 'Đang xử lý', 
-      total: '1,800,000đ' 
-    },
-    { 
-      id: 3, 
-      code: '#ORD003', 
-      customerName: 'Lê Văn C', 
-      date: '08/04/2025', 
-      paymentMethod: 'Chuyển khoản', 
-      status: 'Đang giao', 
-      total: '3,200,000đ'
-    },
-    { 
-      id: 4, 
-      code: '#ORD004', 
-      customerName: 'Phạm Thị D', 
-      date: '07/04/2025', 
-      paymentMethod: 'Thẻ tín dụng', 
-      status: 'Hoàn thành', 
-      total: '1,500,000đ' 
-    },
-    { 
-      id: 5, 
-      code: '#ORD005', 
-      customerName: 'Hoàng Văn E', 
-      date: '06/04/2025', 
-      paymentMethod: 'COD', 
-      status: 'Đã hủy', 
-      total: '2,100,000đ' 
-    },
-    { 
-      id: 6, 
-      code: '#ORD006', 
-      customerName: 'Lê Thị F', 
-      date: '05/04/2025', 
-      paymentMethod: 'Thẻ tín dụng', 
-      status: 'Hoàn thành', 
-      total: '3,500,000đ' 
-    },
-    { 
-      id: 7, 
-      code: '#ORD007', 
-      customerName: 'Vũ Văn G', 
-      date: '04/04/2025', 
-      paymentMethod: 'Chuyển khoản', 
-      status: 'Hoàn thành', 
-      total: '1,850,000đ' 
-    },
-    { 
-      id: 8, 
-      code: '#ORD008', 
-      customerName: 'Nguyễn Thị H', 
-      date: '03/04/2025', 
-      paymentMethod: 'COD', 
-      status: 'Đang giao', 
-      total: '2,750,000đ' 
-    },
-  ]);
+  const navigate = useNavigate();
+  
+  // Chuyển đổi dữ liệu từ dataOrders thành định dạng cho bảng
+  const formatOrders = dataOrders.map(order => {
+    // Chuyển đổi status từ tiếng Anh sang tiếng Việt
+    let vietnameseStatus = '';
+    switch (order.status) {
+      case 'pending':
+        vietnameseStatus = 'Chờ xác nhận';
+        break;
+      case 'processing':
+        vietnameseStatus = 'Đang xử lý';
+        break;
+      case 'shipped':
+        vietnameseStatus = 'Đang giao';
+        break;
+      case 'delivered':
+        vietnameseStatus = 'Hoàn thành';
+        break;
+      case 'cancelled':
+        vietnameseStatus = 'Đã hủy';
+        break;
+      default:
+        vietnameseStatus = 'Không xác định';
+    }
+
+    // Chuyển đổi paymentMethod từ tiếng Anh sang tiếng Việt
+    let vietnamesePaymentMethod = '';
+    switch (order.payment.paymentMethod) {
+      case 'credit_card':
+        vietnamesePaymentMethod = 'Thẻ tín dụng';
+        break;
+      case 'paypal':
+        vietnamesePaymentMethod = 'PayPal';
+        break;
+      case 'bank_transfer':
+        vietnamesePaymentMethod = 'Chuyển khoản';
+        break;
+      case 'cod':
+        vietnamesePaymentMethod = 'COD';
+        break;
+      default:
+        vietnamesePaymentMethod = 'Khác';
+    }
+
+    // Format ngày tháng
+    const createdDate = new Date(order.createdAt);
+    const formattedDate = `${createdDate.getDate()}/${createdDate.getMonth() + 1}/${createdDate.getFullYear()}`;
+
+    return {
+      id: order.orderId,
+      code: `#ORD${order.orderId.toString().padStart(3, '0')}`,
+      customerName: order.customerName,
+      date: formattedDate,
+      paymentMethod: vietnamesePaymentMethod,
+      status: vietnameseStatus,
+      total: order.totalAmount.toLocaleString('vi-VN') + 'đ',
+      rawStatus: order.status // Lưu trữ status gốc để dễ dàng lọc
+    };
+  });
+
+  const [orders, setOrders] = useState(formatOrders);
+  const [showStatusModal, setShowStatusModal] = useState(false);
+  const [currentOrder, setCurrentOrder] = useState(null);
+  const [newStatus, setNewStatus] = useState('');
+  
+  const handleRowClick = (id) => {
+    // Xử lý khi click vào hàng, có thể chuyển đến trang chi tiết
+    navigate(`/admin/orders/detail/${id}`);
+  };
 
   const columns = [
     { key: 'code', name: 'Mã đơn', sortable: true },
@@ -97,7 +97,29 @@ const OrderList = () => {
       order.code.toLowerCase().includes(search.toLowerCase()) || 
       order.customerName.toLowerCase().includes(search.toLowerCase());
     
-    const matchesStatus = statusFilter === 'all' || order.status === statusFilter;
+    let statusFilterInVietnamese = '';
+    switch (statusFilter) {
+      case 'pending':
+        statusFilterInVietnamese = 'Chờ xác nhận';
+        break;
+      case 'processing':
+        statusFilterInVietnamese = 'Đang xử lý';
+        break;
+      case 'shipped':
+        statusFilterInVietnamese = 'Đang giao';
+        break;
+      case 'delivered':
+        statusFilterInVietnamese = 'Hoàn thành';
+        break;
+      case 'cancelled':
+        statusFilterInVietnamese = 'Đã hủy';
+        break;
+      default:
+        statusFilterInVietnamese = '';
+    }
+    
+    const matchesStatus = statusFilter === 'all' || 
+                          order.status === statusFilterInVietnamese;
     
     return matchesSearch && matchesStatus;
   });
@@ -113,122 +135,220 @@ const OrderList = () => {
     console.log("In đơn hàng:", id);
     // Implement chức năng in đơn hàng
   };
+  
+  const handleDelete = (id) => {
+    if (window.confirm("Bạn có chắc chắn muốn xóa đơn hàng này?")) {
+      // Xử lý xóa đơn hàng (demo)
+      setOrders(orders.filter(order => order.id !== id));
+    }
+  };
+  
+  const handleEditStatus = (id) => {
+    // Tìm đơn hàng cần sửa
+    const orderToEdit = orders.find(order => order.id === id);
+    if (orderToEdit) {
+      setCurrentOrder(orderToEdit);
+      // Set giá trị mặc định cho dropdown trong modal là trạng thái hiện tại
+      let rawStatus = '';
+      switch (orderToEdit.status) {
+        case 'Chờ xác nhận':
+          rawStatus = 'pending';
+          break;
+        case 'Đang xử lý':
+          rawStatus = 'processing';
+          break;
+        case 'Đang giao':
+          rawStatus = 'shipped';
+          break;
+        case 'Hoàn thành':
+          rawStatus = 'delivered';
+          break;
+        case 'Đã hủy':
+          rawStatus = 'cancelled';
+          break;
+        default:
+          rawStatus = '';
+      }
+      setNewStatus(rawStatus);
+      setShowStatusModal(true);
+    }
+  };
 
-  const handleUpdateStatus = (id, newStatus) => {
+  const handleUpdateStatus = () => {
+    if (!currentOrder || !newStatus) return;
+    
+    // Chuyển đổi trạng thái từ tiếng Anh sang tiếng Việt
+    let vietnameseStatus = '';
+    switch (newStatus) {
+      case 'pending':
+        vietnameseStatus = 'Chờ xác nhận';
+        break;
+      case 'processing':
+        vietnameseStatus = 'Đang xử lý';
+        break;
+      case 'shipped':
+        vietnameseStatus = 'Đang giao';
+        break;
+      case 'delivered':
+        vietnameseStatus = 'Hoàn thành';
+        break;
+      case 'cancelled':
+        vietnameseStatus = 'Đã hủy';
+        break;
+      default:
+        vietnameseStatus = 'Không xác định';
+    }
+    
     // Cập nhật trạng thái đơn hàng
     setOrders(orders.map(order => {
-      if (order.id === id) {
-        return { ...order, status: newStatus };
+      if (order.id === currentOrder.id) {
+        return { ...order, status: vietnameseStatus, rawStatus: newStatus };
       }
       return order;
     }));
+    
+    // Đóng modal sau khi cập nhật
+    setShowStatusModal(false);
+    setCurrentOrder(null);
+    setNewStatus('');
   };
 
+  const closeModal = () => {
+    setShowStatusModal(false);
+    setCurrentOrder(null);
+    setNewStatus('');
+  };
+
+  // Tính số lượng đơn hàng theo trạng thái
+  const pendingOrders = orders.filter(order => order.status === 'Chờ xác nhận').length;
+  const processingOrders = orders.filter(order => order.status === 'Đang xử lý').length;
+  const shippingOrders = orders.filter(order => order.status === 'Đang giao').length;
+  const completedOrders = orders.filter(order => order.status === 'Hoàn thành').length;
+  const cancelledOrders = orders.filter(order => order.status === 'Đã hủy').length;
+  const totalOrders = orders.length;
+
   return (
-  
-      <div className="order-list">
-        <div className="page-header">
-          <h1>Quản lý đơn hàng</h1>
-          <div className="header-actions">
-            <div className="search-bar">
-              <FaSearch />
-              <input 
-                type="text" 
-                placeholder="Tìm kiếm đơn hàng..." 
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-              />
-            </div>
-            <div className="filter-dropdown">
-              <FaFilter />
-              <select 
-                value={statusFilter} 
-                onChange={(e) => setStatusFilter(e.target.value)}
-              >
-                <option value="all">Tất cả trạng thái</option>
-                <option value="Đang xử lý">Đang xử lý</option>
-                <option value="Đang giao">Đang giao</option>
-                <option value="Hoàn thành">Hoàn thành</option>
-                <option value="Đã hủy">Đã hủy</option>
-              </select>
-            </div>
-          </div>
-        </div>
-        
-        <div className="order-summary">
-          <div className="summary-box">
-            <h3>Tổng đơn hàng</h3>
-            <p>{orders.length}</p>
-          </div>
-          <div className="summary-box">
-            <h3>Đang xử lý</h3>
-            <p>{orders.filter(order => order.status === 'Đang xử lý').length}</p>
-          </div>
-          <div className="summary-box">
-            <h3>Đang giao</h3>
-            <p>{orders.filter(order => order.status === 'Đang giao').length}</p>
-          </div>
-          <div className="summary-box">
-            <h3>Hoàn thành</h3>
-            <p>{orders.filter(order => order.status === 'Hoàn thành').length}</p>
-          </div>
-        </div>
-        
-        <div className="orders-table">
-          <Table 
-            columns={columns} 
-            data={filteredOrders.map(order => ({
-              ...order,
-              status: (
-                <span className={`status ${
-                  order.status === 'Hoàn thành' ? 'completed' : 
-                  order.status === 'Đang xử lý' ? 'pending' : 
-                  order.status === 'Đang giao' ? 'shipping' : 
-                  'cancelled'
-                }`}>
-                  {order.status}
-                </span>
-              )
-            }))} 
-            customAction={(id) => (
-              <div className="action-buttons">
-                <button 
-                  className="view-btn" 
-                  onClick={() => handleViewOrder(id)}
-                  title="Xem chi tiết"
-                >
-                  <FaEye />
-                </button>
-                <button 
-                  className="print-btn" 
-                  onClick={() => handlePrintOrder(id)}
-                  title="In đơn hàng"
-                >
-                  <FaPrint />
-                </button>
-                <select 
-                  className="status-select"
-                  defaultValue=""
-                  onChange={(e) => {
-                    if (e.target.value) {
-                      handleUpdateStatus(id, e.target.value);
-                      e.target.value = "";
-                    }
-                  }}
-                >
-                  <option value="" disabled>Cập nhật trạng thái</option>
-                  <option value="Đang xử lý">Đang xử lý</option>
-                  <option value="Đang giao">Đang giao</option>
-                  <option value="Hoàn thành">Hoàn thành</option>
-                  <option value="Đã hủy">Đã hủy</option>
-                </select>
-              </div>
-            )}
-            title="Danh sách đơn hàng"
-          />
-        </div>
+    <div className="order-list">
+      <div className="page-header">
+        <h1>Quản lý đơn hàng</h1>
+        <div className="header-actions">
+  <SearchBar
+    placeholder="Tìm kiếm đơn hàng..."
+    value={search}
+    onChange={(e) => setSearch(e.target.value)}
+  />
+  <FilterDropdown
+    value={statusFilter}
+    onChange={(e) => setStatusFilter(e.target.value)}
+    options={[
+      { value: 'all', label: 'Tất cả trạng thái' },
+      { value: 'pending', label: 'Chờ xác nhận' },
+      { value: 'processing', label: 'Đang xử lý' },
+      { value: 'shipped', label: 'Đang giao' },
+      { value: 'delivered', label: 'Hoàn thành' },
+      { value: 'cancelled', label: 'Đã hủy' },
+    ]}
+  />
+</div>
+
+      </div>
+      
+      <div className="dashboard-summary">
+        <Card
+          title="Tổng đơn hàng"
+          value={totalOrders}
+          icon={<FaShoppingCart />}
+          color="#2196f3"
+          percentage={5} // Example growth percentage
+        />
+        <Card
+          title="Đang xử lý"
+          value={processingOrders}
+          icon={<FaSpinner />}
+          color="#ff9800"
+          percentage={10} // Example growth percentage
+        />
+        <Card
+          title="Đang giao"
+          value={shippingOrders}
+          icon={<FaTruck />}
+          color="#9c27b0"
+          percentage={15} // Example growth percentage
+        />
+        <Card
+          title="Hoàn thành"
+          value={completedOrders}
+          icon={<FaCheckCircle />}
+          color="#4caf50"
+          percentage={20} // Example growth percentage
+        />
+      </div>
+      
+      <div className="orders-table">
+        <Table 
+          columns={columns} 
+          data={filteredOrders.map(order => ({
+            ...order,
+            // Đổi key id thành product_id để phù hợp với Table component
+            product_id: order.id,
+            status: (
+              <span className={`status ${
+                order.status === 'Hoàn thành' ? 'completed' : 
+                order.status === 'Đang xử lý' ? 'pending' : 
+                order.status === 'Đang giao' ? 'shipping' : 
+                order.status === 'Đã hủy' ? 'cancelled' :
+                order.status === 'Chờ xác nhận' ? 'waiting' :
+                'other'
+              }`}>
+                {order.status}
+              </span>
+            ),
+            onEdit: () => handleEditStatus(order.id) // Truyền hàm mở popup
+  }))}
+
+          onDelete={handleDelete}
+          // editUrl="/admin/orders/edit" // Định nghĩa URL cho nút sửa
+          title="Danh sách đơn hàng"
+        />
       </div>
 
+      {/* Modal cập nhật trạng thái */}
+      {showStatusModal && (
+        <div className="status-modal-overlay">
+          <div className="status-modal">
+            <div className="modal-header">
+              <h2>Cập nhật trạng thái đơn hàng</h2>
+              <button className="close-btn" onClick={closeModal}>×</button>
+            </div>
+            <div className="modal-body">
+              <p>Mã đơn hàng: {currentOrder?.code}</p>
+              <p>Khách hàng: {currentOrder?.customerName}</p>
+              <p>Trạng thái hiện tại: {currentOrder?.status}</p>
+              
+              <div className="form-group">
+                <label htmlFor="new-status">Trạng thái mới:</label>
+                <select 
+                  id="new-status" 
+                  value={newStatus} 
+                  onChange={(e) => setNewStatus(e.target.value)}
+                >
+                  <option value="" disabled>Chọn trạng thái</option>
+                  <option value="pending">Chờ xác nhận</option>
+                  <option value="processing">Đang xử lý</option>
+                  <option value="shipped">Đang giao</option>
+                  <option value="delivered">Hoàn thành</option>
+                  <option value="cancelled">Đã hủy</option>
+                </select>
+              </div>
+            </div>
+            <div className="modal-footer">
+              <button className="cancel-btn" onClick={closeModal}>Hủy</button>
+              <button className="save-btn" onClick={handleUpdateStatus}>Xác nhận</button>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
   );
 };
 

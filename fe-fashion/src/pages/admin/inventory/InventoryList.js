@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Layout from "../../../components/admin/Layout";
 import Table from "../../../components/admin/Table";
 import "../../../assets/styles/InventoryList.scss";
 import { FaSearch, FaFilter } from "react-icons/fa";

@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import Layout from "../../../components/admin/Layout";
 import Table from "../../../components/admin/Table";
 import dataProduct from "../../../services/test"; // Import dataProduct
+import SearchBar from '../../../components/admin/SearchBar';
+import FilterDropdown from '../../../components/admin/FilterDropdown';
 
 const ProductList = () => {
   const navigate = useNavigate(); // Initialize the navigation hook
@@ -19,6 +21,18 @@ const ProductList = () => {
       updated_at: product.updatedAt,
     }))
   );
+
+  // State for search term and selected category
+  const [searchTerm, setSearchTerm] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState('');
+
+  // Dummy categories for filtering (replace with actual category data if available)
+  const categories = [
+    { value: '', label: 'Tất cả' },
+    { value: '1', label: 'Điện thoại' },
+    { value: '2', label: 'Máy tính' },
+    { value: '3', label: 'Phụ kiện' }
+  ];
 
   const columns = [
     { key: "product_id", name: "ID", sortable: true },
@@ -40,23 +54,48 @@ const ProductList = () => {
     }
   };
 
-  return (
-      <div className="container mx-auto px-4 py-8">
-        <div className="flex justify-between items-center mb-6">
-          <h1 className="text-2xl font-bold">Danh sách sản phẩm</h1>
-        </div>
+  // Filter products based on search term and selected category
+  const filteredProducts = products.filter((product) => {
+    const matchesSearch = product.name.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesCategory = selectedCategory ? product.category_id === selectedCategory : true;
+    return matchesSearch && matchesCategory;
+  });
 
-        <Table
-          columns={columns}
-          data={products.map((product) => ({
-            ...product,
-            onClick: () => handleRowClick(product.product_id), // Add onClick handler to each product
-          }))}
-          onDelete={handleDelete}
-          editUrl="/admin/products/edit"
-          createUrl="/admin/products/create"
+  return (
+    <div>
+      <div className="flex justify-between items-center mb-6">
+        <h1 className="text-2xl font-bold">Danh sách sản phẩm</h1>
+      </div>
+
+      {/* Searchbar and Filter Section on the same row */}
+      <div className="flex items-center gap-4 mb-6">
+        {/* Search Bar */}
+        <SearchBar
+          placeholder="Tìm kiếm sản phẩm..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+        />
+
+        {/* Filter Dropdown */}
+        <FilterDropdown
+          value={selectedCategory}
+          onChange={(e) => setSelectedCategory(e.target.value)}
+          options={categories}
         />
       </div>
+
+      {/* Pass filtered data to the Table component */}
+      <Table
+        columns={columns}
+        data={filteredProducts.map((product) => ({
+          ...product,
+          onClick: () => handleRowClick(product.product_id), // Add onClick handler to each product
+        }))}
+        onDelete={handleDelete}
+        editUrl="/admin/products/edit"
+        createUrl="/admin/products/create"
+      />
+    </div>
   );
 };
 
