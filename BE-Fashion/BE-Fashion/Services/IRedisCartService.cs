@@ -10,5 +10,7 @@ namespace BE_Fashion.Services
         Task RemoveItemAsync(int userId, int variantId);
         Task ClearCartAsync(int userId);
         Task MergeCartAsync(int userId, List<CartItemDto> guestCart);
+        Task DecreaseItemQuantityAsync(int userId, int variantId, int quantityToDecrease);
+
     }
 }

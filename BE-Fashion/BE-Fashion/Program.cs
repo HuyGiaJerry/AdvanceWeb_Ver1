@@ -22,6 +22,10 @@ if (string.IsNullOrEmpty(redisConnectionString))
 }
 
 builder.Services.AddSingleton<IConnectionMultiplexer>(ConnectionMultiplexer.Connect(redisConnectionString));
+
+var multiplexer = ConnectionMultiplexer.Connect(redisConnectionString);
+builder.Services.AddSingleton<IConnectionMultiplexer>(multiplexer);
+
 builder.Services.AddControllers()
     .AddJsonOptions(options =>
     {
@@ -55,6 +59,7 @@ builder.Services.AddLogging();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<AuthService>();
 //builder.Services.AddScoped<IProductService, ProductService>();
+builder.Services.AddScoped<IRedisCartService, RedisCartService>();
 builder.Services.AddScoped<ProductService>();
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<IRefreshTokenRepository, RefreshTokenRepository>();

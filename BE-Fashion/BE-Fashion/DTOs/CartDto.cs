@@ -4,7 +4,7 @@ namespace BE_Fashion.DTOs
 {
     public class CartDto
     {
-        public int UserId { get; set; }
-        public List<CartItemDto> CartItems { get; set; } = new List<CartItemDto>();
+        //public int UserId { get; set; }
+        //public List<CartItemDto> CartItems { get; set; } = new List<CartItemDto>();
     }
 }

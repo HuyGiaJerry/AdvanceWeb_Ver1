@@ -111,6 +111,14 @@ namespace BE_Fashion.Repositories
 
             return variant?.Product.DiscountPrice ?? variant?.Product.BasePrice ?? 0;
         }
+        public async Task<int> GetStockQuantityAsync(int variantId)
+        {
+            var stockQuantity = await _context.ProductVariants
+                    .Where(v => v.VariantId == variantId)
+                    .Select(v => v.StockQuantity)
+                    .FirstOrDefaultAsync();
 
+            return stockQuantity ?? 0;
+        }
     }
 }
