@@ -7,6 +7,7 @@ using static System.Net.Mime.MediaTypeNames;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using Microsoft.Extensions.Logging;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -34,13 +35,18 @@ builder.Services.AddAutoMapper(typeof(UserProfile));
 
 
 // Add UserRepository to DI container
-builder.Services.AddScoped<UserRepository>();
+//builder.Services.AddScoped<IUserRepository>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+
 builder.Services.AddScoped<ProductRepository>();
 
 // Register UserService in Dependency Injection DI Container: 
-builder.Services.AddScoped<UserService>();
+builder.Services.AddHttpClient();
+builder.Services.AddLogging();
+builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<AuthService>();
 builder.Services.AddScoped<ProductService>();
-
+builder.Services.AddScoped<IRefreshTokenRepository, RefreshTokenRepository>();
 builder.Services.AddAutoMapper(typeof(ProductProfile));
 
 
@@ -64,6 +70,8 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtKey))
         };
     });
+builder.Services.AddScoped<IJwtTokenService, JwtTokenService>();
+
 
 // allow CORS (Cross-Origin Resource Sharing) is a browser security mechanism that allow (or blocks) a website on one domain from accessing resource from another domain.
 builder.Services.AddCors(options =>
@@ -76,6 +84,7 @@ builder.Services.AddCors(options =>
             policy.WithOrigins("http://localhost:3000").AllowAnyHeader().AllowAnyMethod();
         });
 });
+
 
 var app = builder.Build();
 

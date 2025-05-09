@@ -12,21 +12,39 @@ namespace BE_Fashion.Controllers
     [ApiController]
     public class AuthController : ControllerBase
     {
-        private readonly IAuthService _authService;
+        private readonly AuthService _authService;
 
-        public AuthController(IAuthService authService)
+        public AuthController(AuthService authService)
         {
             _authService = authService;
         }
 
+        
         [HttpPost("google-login")]
-        public async Task<IActionResult> GoogleLogin([FromBody] GoogleLoginRequest dto)
+        public async Task<IActionResult> GoogleLogin([FromBody] GoogleLoginRequest request)
         {
-            var (success, message, auth) = await _authService.GoogleLoginAsync(dto.IdToken);
-            if (!success)
-                return BadRequest(new { message });
-            return Ok(auth);
-        }
+            var result = await _authService.GoogleLoginWithCodeAsync(request.Code);
+            if (!result.IsSuccess)
+                return BadRequest(result.Message);
 
+            return Ok(result.Auth);
+        }
+        [HttpPost("refresh-token")]
+        public async Task<IActionResult> RefreshToken([FromBody] string request)
+        {
+            var result = await _authService.RefreshLoginAsync(request);
+
+            if (result.IsSuccess)
+            {
+                // Trả về đối tượng DTO trực tiếp từ kết quả Auth
+                return Ok(new RefreshTokenResponse
+                {
+                    AccessToken = result.Auth.AccessToken,
+                    RefreshToken = result.Auth.RefreshToken,
+                });
+            }
+
+            return BadRequest(result.Message); // Trả về thông báo lỗi nếu không thành công
+        }
     }
 }

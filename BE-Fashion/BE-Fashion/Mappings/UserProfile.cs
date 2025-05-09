@@ -17,6 +17,11 @@ namespace BE_Fashion.Mappings
             // Mapping User -> LoginRequest
             CreateMap<User, LoginRequest>();
             CreateMap<User, CreateUser>();
+            CreateMap<User, LoginResponse>()
+                 .ForMember(dest => dest.IsGoogleLinked, opt =>
+                    opt.MapFrom(src => src.OauthProvider == "google" && !string.IsNullOrEmpty(src.OauthId)));
+            CreateMap<CreateUser, User>();
+            CreateMap<RefreshToken, RefreshTokenResponse>();
         }
     }
 }

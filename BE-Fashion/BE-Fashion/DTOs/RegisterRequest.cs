@@ -5,34 +5,38 @@ namespace BE_Fashion.DTOs
     public class RegisterRequest : IValidatableObject
     {
         public string? Email { get; set; } = string.Empty;
-
         public string? PhoneNumber { get; set; } = string.Empty;
 
         [Required]
-        [RegularExpression(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{6,}$", ErrorMessage = "Mật khẩu phải có ít nhất 6 ký tự, gồm chữ hoa, chữ thường và số")]
+        [RegularExpression(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{6,}$", ErrorMessage = "The password must be at least 6 characters long, including uppercase letters, lowercase letters, and numbers.")]
         public string Password { get; set; } = string.Empty;
 
         [Required]
-        [RegularExpression(@"^[\p{L} ]+$", ErrorMessage = "Tên không hợp lệ")]
+        [RegularExpression(@"^[\p{L} ]+$", ErrorMessage = "Invalid name")]
         public string FullName { get; set; } = string.Empty;
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
-            if (string.IsNullOrWhiteSpace(Email) && string.IsNullOrWhiteSpace(PhoneNumber))
+            bool hasEmail = !string.IsNullOrWhiteSpace(Email);
+            bool hasPhone = !string.IsNullOrWhiteSpace(PhoneNumber);
+
+            if (!hasEmail && !hasPhone)
             {
-                yield return new ValidationResult("Phải cung cấp Email hoặc Số điện thoại", new[] { nameof(Email), nameof(PhoneNumber) });
+                yield return new ValidationResult("You must provide either an Email or a Phone number.", new[] { nameof(Email), nameof(PhoneNumber) });
+            }
+            else if (hasEmail && hasPhone)
+            {
+                yield return new ValidationResult("Please provide only one: either Email or Phone number, not both.", new[] { nameof(Email), nameof(PhoneNumber) });
             }
 
-            if (!string.IsNullOrWhiteSpace(Email) &&
-                !new EmailAddressAttribute().IsValid(Email))
+            if (hasEmail && !new EmailAddressAttribute().IsValid(Email))
             {
-                yield return new ValidationResult("Email không hợp lệ", new[] { nameof(Email) });
+                yield return new ValidationResult("Invalid email format.", new[] { nameof(Email) });
             }
 
-            if (!string.IsNullOrWhiteSpace(PhoneNumber) &&
-                !System.Text.RegularExpressions.Regex.IsMatch(PhoneNumber, @"^0\d{9}$"))
+            if (hasPhone && !System.Text.RegularExpressions.Regex.IsMatch(PhoneNumber!, @"^0\d{9}$"))
             {
-                yield return new ValidationResult("Số điện thoại không hợp lệ (phải bắt đầu bằng 0 và có 10 chữ số)", new[] { nameof(PhoneNumber) });
+                yield return new ValidationResult("Invalid phone number (must start with 0 and have 10 digits).", new[] { nameof(PhoneNumber) });
             }
         }
     }
