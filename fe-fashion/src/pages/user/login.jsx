@@ -3,6 +3,7 @@ import { Button, Form, Container, Row, Col } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { login } from '../../store/store';
+import { toast } from 'react-toastify';
 import './login.scss';
 
 const Login = () => {
@@ -17,9 +18,10 @@ const Login = () => {
             // Dispatch action login với username
             dispatch(login({ userName }));
             // Chuyển hướng về trang Home
+            toast.success('Login successfully!');
             navigate('/home');
         } else {
-            alert('Please enter a username!');
+            toast.error('Please enter your username!');
         }
     }
 
@@ -54,10 +56,10 @@ const Login = () => {
                                 <Form.Label>Username</Form.Label>
                                 <Form.Control
                                     type="text"
-                                    placeholder='Enter your username or email'
+                                    placeholder='Enter your phone or email'
                                     value={userName}
                                     onChange={(e) => setUserName(e.target.value)}
-                                    required
+
                                 />
                             </Form.Group>
                             <Form.Group className="mb-3" controlId="formPassword">
@@ -68,7 +70,7 @@ const Login = () => {
                                 />
                             </Form.Group>
                             <Button variant="dark" type="submit">
-                                Sign In
+                                Log In
                             </Button>
                         </Form>
                         <div className="text-center mt-3">

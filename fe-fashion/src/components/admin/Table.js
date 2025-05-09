@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { FaEdit, FaTrash, FaSort, FaSortUp, FaSortDown } from "react-icons/fa";
 import "../../assets/styles/Table.scss";
 
-const Table = ({ columns, data, onDelete, editUrl, createUrl, itemsPerPage = 5 }) => {
+const Table = ({ columns, data, onDelete, editUrl, createUrl, itemsPerPage = 8 }) => {
   const [sortConfig, setSortConfig] = useState({ key: null, direction: "ascending" });
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -143,11 +143,24 @@ const Table = ({ columns, data, onDelete, editUrl, createUrl, itemsPerPage = 5 }
                   <td key={`${item.product_id}-${column.key}`}>{item[column.key]}</td>
                 ))}
                 <td className="actions">
-                  {editUrl && (
-                    <Link to={`${editUrl}/${item.product_id}`} className="button-edit">
-                      <FaEdit />
-                    </Link>
-                  )}
+                {item.onEdit ? (
+  <button
+    onClick={(e) => {
+      e.stopPropagation(); // không gọi onClick của hàng
+      item.onEdit();       // gọi hàm mở modal
+    }}
+    className="button-edit"
+  >
+    <FaEdit />
+  </button>
+) : (
+  editUrl && (
+    <Link to={`${editUrl}/${item.product_id}`} className="button-edit">
+      <FaEdit />
+    </Link>
+  )
+)}
+
                   <button onClick={(e) => {
                     e.stopPropagation(); // Prevent row click event
                     onDelete(item.product_id);

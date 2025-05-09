@@ -1,0 +1,20 @@
+.filter-dropdown {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    padding: 3px 12px;
+    border-radius: 4px;
+    background-color: white;
+  
+    svg {
+      margin-right: 8px;
+      color: #888;
+    }
+  
+    select {
+      border: none;
+      outline: none;
+      background: transparent;
+    }
+  }
+  

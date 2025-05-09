@@ -35,9 +35,7 @@ const Layout = ({ children }) => {
       <div className="content">
         <div className="topbar">
           <div className="topbar-left">
-            <button className="menu-toggle" onClick={toggleSidebar}>
-              <i className={`fas ${sidebarCollapsed ? 'fa-bars' : 'fa-times'}`}></i>
-            </button>
+           
             <h2 className="page-title">Admin Dashboard</h2>
           </div>
           <div className="user-info">

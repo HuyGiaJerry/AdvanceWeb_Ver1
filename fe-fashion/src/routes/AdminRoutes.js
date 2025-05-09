@@ -14,7 +14,6 @@ import OrderList from '../pages/admin/sales/OrderList';
 import PromotionList from '../pages/admin/promotions/PromotionList';
 import SalesReport from '../pages/admin/reports/SalesReport';
 import InventoryReport from '../pages/admin/reports/InventoryReport';
-
 const AdminRoutes = () => {
   return (
     <Routes>
@@ -35,6 +34,7 @@ const AdminRoutes = () => {
         <Route path="promotions" element={<PromotionList />} />
         <Route path="reports/sales" element={<SalesReport />} />
         <Route path="reports/inventory" element={<InventoryReport />} />
+
       </Route>
       
       {/* Redirect từ /admin đến /admin/dashboard nếu đã đăng nhập */}
