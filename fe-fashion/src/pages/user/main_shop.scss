@@ -1,0 +1,138 @@
+.shop-container {
+    margin-top: 60px;
+}
+
+.filter-sidebar {
+    background-color: #f8f9fa;
+    padding: 10px;
+    border-radius: 8px;
+
+}
+
+.filter-section {
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+
+    gap: 1vw;
+
+    h5 {
+        font-size: 1.5rem;
+        font-weight: bolder;
+        margin-bottom: 20px;
+    }
+}
+
+.filter-group {
+    margin-bottom: 20px;
+    color: #8A8A8A;
+
+    .filter-topic {
+        text-align: left;
+        font-size: 1.2rem;
+        font-weight: 500;
+        color: #000;
+        margin-bottom: 10px;
+    }
+
+    .size-options {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    .list-unstyled {
+        display: flex;
+        flex-direction: column;
+        align-items: baseline;
+    }
+
+    .btn-group-vertical {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .btn {
+        text-align: left;
+        padding: 5px 10px;
+        font-size: 0.9rem;
+        border: none;
+    }
+}
+
+
+.color-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.color-dot {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 1px solid #ccc;
+    cursor: pointer;
+}
+
+.color-dot:hover {
+    border-color: #000;
+}
+
+
+
+.btn-outline-secondary {
+    font-size: 1rem;
+    padding: 5px 10px;
+}
+
+.fas.fa-search {
+    font-size: 1.2rem;
+}
+
+.form-select {
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.top-filter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    width: 920px;
+
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: end;
+    margin-right: 15px;
+}
+
+.pagination-container {
+    .btn {
+        width: 2.4rem;
+        height: 2.4rem;
+        font-size: 1rem;
+        border-radius: 50%;
+        border: none;
+    }
+
+    .btn.active {
+        background-color: #F3F3F3;
+        color: #000;
+    }
+
+    span {
+        font-size: 1rem;
+        font-weight: #6c757d;
+        display: flex;
+        align-items: center;
+    }
+}
