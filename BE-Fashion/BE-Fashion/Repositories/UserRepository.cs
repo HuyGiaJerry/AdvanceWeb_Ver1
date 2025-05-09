@@ -112,7 +112,9 @@ namespace BE_Fashion.Repositories
         {
             try
             {
-                return await _context.Users.ToListAsync();
+                return await _context.Users
+                    .Where(u => u.Role!.Equals("customer"))
+                    .ToListAsync();
             }
             catch (Exception ex)
             {

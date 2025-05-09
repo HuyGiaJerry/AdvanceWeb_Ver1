@@ -30,9 +30,9 @@ namespace BE_Fashion.Controllers
             return Ok(result.Auth);
         }
         [HttpPost("refresh-token")]
-        public async Task<IActionResult> RefreshToken([FromBody] string request)
+        public async Task<IActionResult> RefreshToken([FromBody] RefreshTokenRequest request)
         {
-            var result = await _authService.RefreshLoginAsync(request);
+            var result = await _authService.RefreshLoginAsync(request.RefreshToken);
 
             if (result.IsSuccess)
             {

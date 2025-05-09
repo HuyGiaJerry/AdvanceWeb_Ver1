@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BE_Fashion.Repositories
 {
-    public class ProductRepository : IRepository<Product>
+    public class ProductRepository : IProductRepository
     {
         private readonly DbtestContext _context;
 
@@ -89,5 +89,28 @@ namespace BE_Fashion.Repositories
 
             return await query.ToArrayAsync();
         }
+        public async Task<ProductVariant?> GetVariantByIdAsync(int variantId)
+        {
+            return await _context.ProductVariants
+                .AsNoTracking()
+                .FirstOrDefaultAsync(v => v.VariantId == variantId);
+        }
+
+        public async Task<bool> HasEnoughStockAsync(int variantId, int quantity)
+        {
+            var variant = await GetVariantByIdAsync(variantId);
+            return variant != null && variant.StockQuantity >= quantity;
+        }
+
+        public async Task<decimal> GetPriceAsync(int variantId)
+        {
+            var variant = await _context.ProductVariants
+                .AsNoTracking()
+                .Include(v => v.Product)
+                .FirstOrDefaultAsync(v => v.VariantId == variantId);
+
+            return variant?.Product.DiscountPrice ?? variant?.Product.BasePrice ?? 0;
+        }
+
     }
 }

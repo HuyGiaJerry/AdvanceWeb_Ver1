@@ -12,6 +12,7 @@ namespace BE_Fashion.Mappings
             // Destination, Option
             // Mapping RegisterRequest -> User
             CreateMap<RegisterRequest, User>()
+                .ForMember(dest => dest.FullName, opt => opt.MapFrom(src => src.FullName))
                 // dest.PasswordHash of User, src data user enter when register
                 .ForMember(dest => dest.PasswordHash,opt => opt.MapFrom(src =>  BCrypt.Net.BCrypt.HashPassword(src.Password)));
             // Mapping User -> LoginRequest

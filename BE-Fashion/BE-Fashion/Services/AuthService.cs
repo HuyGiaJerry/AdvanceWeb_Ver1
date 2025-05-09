@@ -48,7 +48,8 @@ namespace BE_Fashion.Services
                 return (false, "User not found", null!);
             }
 
-            // Tạo mới access token và refresh token
+            //// Tạo mới access token và refresh token
+            
             var userDto = _mapper.Map<CreateUser>(user);
             var auth = new Auth
             {
@@ -58,21 +59,13 @@ namespace BE_Fashion.Services
                 Role = userDto.Role
             };
 
-            // Cập nhật lại refresh token trong database
+            // Cập nhật refresh token hiện có trong database
             storedRefreshToken.Token = auth.RefreshToken;
             storedRefreshToken.ExpiresAt = DateTime.UtcNow.AddDays(7);
             storedRefreshToken.IssuedAt = DateTime.UtcNow;
+            storedRefreshToken.Revoked = false;
 
-            var newRefreshToken = new RefreshToken
-            {
-                UserId = user.UserId,
-                Token = auth.RefreshToken,
-                Provider = storedRefreshToken.Provider, // Lấy provider từ refresh token cũ
-                IssuedAt = DateTime.UtcNow,
-                ExpiresAt = DateTime.UtcNow.AddDays(7),
-                Revoked = false
-            };
-            await _refreshTokenRepository.AddAsync(storedRefreshToken);
+            await _refreshTokenRepository.UpdateAsync(storedRefreshToken); // Sử dụng UpdateAsync thay vì AddAsync
 
             return (true, "Token refreshed successfully", auth);
         }
@@ -153,8 +146,9 @@ namespace BE_Fashion.Services
                     await _userRepository.UpdateAsync(user);
                 }
             }
-
+            
             var userDto = _mapper.Map<CreateUser>(user);
+            
             var auth = new Auth
             {
                 AccessToken = _jwtTokenService.GenerateAccessToken(userDto),

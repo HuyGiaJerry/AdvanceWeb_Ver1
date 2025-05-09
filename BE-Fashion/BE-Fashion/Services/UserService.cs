@@ -11,12 +11,16 @@ namespace BE_Fashion.Services
         private readonly IUserRepository _userRepository;
         private readonly IMapper _mapper;
         private readonly ILogger<UserService> _logger;
+        private readonly IRefreshTokenRepository _refreshTokenRepository;
+        private readonly IJwtTokenService _jwtService;
 
-        public UserService(IUserRepository userRepository, IMapper mapper, ILogger<UserService> logger)
+        public UserService(IUserRepository userRepository, IMapper mapper, ILogger<UserService> logger, IRefreshTokenRepository refreshTokenRepository, IJwtTokenService jwtTokenService)
         {
             _userRepository = userRepository;
             _mapper = mapper;
             _logger = logger;
+            _refreshTokenRepository = refreshTokenRepository;
+            _jwtService = jwtTokenService;
         }
 
         public async Task<(bool isSuccess, string message)> RegisterAsync(RegisterRequest dto)
@@ -41,8 +45,8 @@ namespace BE_Fashion.Services
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Error occurred during registration");
-                return (false, "An error occurred during registration");  
+                _logger.LogError(ex, "Error occurred during registration. Email: {Email}, PhoneNumber: {PhoneNumber}", dto.Email, dto.PhoneNumber);
+                return (false, $"An error occurred during registration: {ex.Message}");
             }
         }
 
@@ -64,8 +68,25 @@ namespace BE_Fashion.Services
                 {
                     return (false, "Invalid credentials", null);
                 }
+                var createUserDto = _mapper.Map<CreateUser>(user);
 
+                var accessToken = _jwtService.GenerateAccessToken(createUserDto);  // Truyền CreateUser
+                var refreshToken = _jwtService.GenerateRefreshToken();
+
+                // Lưu refresh token vào DB
+                await _refreshTokenRepository.AddAsync(new RefreshToken
+                {
+                    UserId = user.UserId,
+                    Token = refreshToken,
+                    IssuedAt = DateTime.UtcNow,
+                    ExpiresAt = DateTime.UtcNow.AddDays(7), // Thời gian hết hạn refresh token
+                    Provider = "local", // Nếu sử dụng OAuth provider, có thể chỉnh sửa lại trường này
+                });
                 var userInfo = _mapper.Map<LoginResponse>(user);
+
+                // Gán token vào DTO trả về
+                userInfo.AccessToken = accessToken;
+                userInfo.RefreshToken = refreshToken;
                 return (true, "Login successful", userInfo);
             }
             catch (Exception ex)
@@ -100,6 +121,22 @@ namespace BE_Fashion.Services
             {
                 _logger.LogError(ex, "Error occurred while checking email existence");
                 return (false, "An error occurred while checking email", null);
+            }
+        }
+        public async Task<IEnumerable<LoginResponse>> GetAllCustomersAsync()
+        {
+            try
+            {
+                var users = await _userRepository.GetAllAsync();
+                var customers = users.ToList();
+
+                _logger.LogInformation("Retrieved {Count} customers", customers.Count);
+                return _mapper.Map<IEnumerable<LoginResponse>>(customers);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error occurred while retrieving all customers");
+                throw; // Hoặc return Enumerable.Empty<CustomerDto>() nếu muốn xử lý nhẹ nhàng hơn
             }
         }
     }

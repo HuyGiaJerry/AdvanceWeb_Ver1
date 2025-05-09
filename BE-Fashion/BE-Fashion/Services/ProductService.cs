@@ -7,11 +7,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BE_Fashion.Services
 {
-    public class ProductService
+    public class ProductService : IProductService
     {
-        private readonly ProductRepository _productRepository;
+        private readonly IProductRepository _productRepository;
         private readonly IMapper _mapper;
-        public ProductService(ProductRepository productRepository, IMapper mapper)
+        public ProductService(IProductRepository productRepository, IMapper mapper)
         {
             _productRepository = productRepository;
             _mapper = mapper;

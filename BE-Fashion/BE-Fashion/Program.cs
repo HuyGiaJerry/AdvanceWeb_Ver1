@@ -8,11 +8,20 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.Extensions.Logging;
+using StackExchange.Redis;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
+var redisConnectionString = builder.Configuration.GetValue<string>("Redis:ConnectionString");
+
+if (string.IsNullOrEmpty(redisConnectionString))
+{
+    throw new InvalidOperationException("Redis connection string is not configured.");
+}
+
+builder.Services.AddSingleton<IConnectionMultiplexer>(ConnectionMultiplexer.Connect(redisConnectionString));
 builder.Services.AddControllers()
     .AddJsonOptions(options =>
     {
@@ -45,7 +54,9 @@ builder.Services.AddHttpClient();
 builder.Services.AddLogging();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<AuthService>();
+//builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<ProductService>();
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<IRefreshTokenRepository, RefreshTokenRepository>();
 builder.Services.AddAutoMapper(typeof(ProductProfile));
 
