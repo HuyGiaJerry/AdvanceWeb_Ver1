@@ -53,6 +53,7 @@ const Header = () => {
     const handleSignOut = () => {
         dispatch(logout());
         localStorage.removeItem('authState'); // Xóa thông tin đăng nhập khỏi localStorage
+        localStorage.removeItem('cart'); // Xóa giỏ hàng khỏi localStorage
         toast.success('Logout successfully!');
         navigate('/login');
     }
@@ -146,13 +147,13 @@ const Header = () => {
                         {searchQuery === '' ? (
                             <>
                                 <div className="search-suggestions">
-                                    <h6 style={{paddingLeft:"10px",marginTop:"20px"}}>Từ khóa hot</h6>
+                                    <h6 style={{ paddingLeft: "10px", marginTop: "20px" }}>Từ khóa hot</h6>
                                     <div className="tags">
                                         {hotKeywords.map((keyword, index) => (
                                             <span key={index} className="tag">{keyword}</span>
                                         ))}
                                     </div>
-                                    <h6 style={{paddingLeft:"10px",marginTop:"20px"}}>Gợi ý sản phẩm</h6>
+                                    <h6 style={{ paddingLeft: "10px", marginTop: "20px" }}>Gợi ý sản phẩm</h6>
                                     <div className="suggestions">
                                         {suggestedProducts.map((product) => (
                                             <NavLink

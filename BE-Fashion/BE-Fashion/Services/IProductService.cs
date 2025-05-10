@@ -13,5 +13,6 @@ namespace BE_Fashion.Services
                         List<int>? categoryIds,
                         List<string>? colors,
                         List<string>? sizes);
+        Task<IEnumerable<ProductListDto>> GetAllProductsAsync(string? searchTerm = null);
     }
 }

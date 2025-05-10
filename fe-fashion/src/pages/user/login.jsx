@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
 import { login } from '../../store/store';
 import authService from '../../services/authService';
+import cartService from '../../services/cartService';
 import './login.scss';
 
 const Login = () => {
@@ -17,7 +18,26 @@ const Login = () => {
 
     const GOOGLE_CLIENT_ID = process.env.REACT_APP_GOOGLE_CLIENT_ID || "1082077099324-hehekdmi87odbeo46dbscapgofe0o5dv.apps.googleusercontent.com";
     const REDIRECT_URI = process.env.REACT_APP_REDIRECT_URI || `${window.location.origin}/login`;
+    console.log("Cart Before Merge", localStorage.getItem('cart'));
+    // Hàm xử lý merge cart
+    const mergeCart = async (userId) => {
 
+        const localCart = JSON.parse(localStorage.getItem('cart')) || [];
+        if (localCart.length > 0) {
+            try {
+                await cartService.mergeCart(userId, localCart);
+                toast.success('Cart merged successfully!');
+                localStorage.removeItem('cart'); // Xóa cart trong localStorage sau khi merge
+                console.log("Cart After Merge", localStorage.getItem('cart'));
+
+            } catch (mergeError) {
+                console.error('Lỗi khi merge giỏ hàng:', mergeError);
+                toast.error('Failed to merge cart. Please try again.');
+            }
+        }
+    };
+
+    // Xử lý đăng nhập thường
     const handleLogin = async (e) => {
         e.preventDefault();
 
@@ -38,6 +58,10 @@ const Login = () => {
         try {
             const userData = await authService.login(credentials);
             dispatch(login(userData));
+
+            // Merge cart sau khi đăng nhập
+            await mergeCart(userData.userId);
+
             toast.success('Login successfully!');
             navigate('/home');
         } catch (err) {
@@ -48,12 +72,17 @@ const Login = () => {
         }
     };
 
+    // Xử lý callback từ Google
     const handleGoogleCallback = async (code) => {
         setIsLoading(true);
 
         try {
             const userData = await authService.googleLogin(code);
             dispatch(login(userData));
+
+            // Merge cart sau khi đăng nhập bằng Google
+            await mergeCart(userData.userId);
+
             toast.success('Google Login successfully!');
             navigate('/', { replace: true });
         } catch (err) {

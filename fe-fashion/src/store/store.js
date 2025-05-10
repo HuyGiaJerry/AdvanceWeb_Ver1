@@ -1,5 +1,5 @@
 import { configureStore, createSlice } from '@reduxjs/toolkit';
-
+import cartReducer from './cartSlice';
 // Get State from localStorage
 let persistedState;
 try {
@@ -66,6 +66,8 @@ const authSlice = createSlice({
             state.isGoogleLinked = false;
             state.accessToken = null;
             state.refreshToken = null;
+            localStorage.removeItem('authState'); // Xóa thông tin đăng nhập khỏi localStorage
+            localStorage.removeItem('cart'); // Xóa giỏ hàng khỏi localStorage
         },
         addToCart: (state) => {
             state.cartCount += 1;
@@ -82,6 +84,7 @@ export const { login, logout, addToCart, addToWishlist } = authSlice.actions;
 const store = configureStore({
     reducer: {
         auth: authSlice.reducer,
+        cart: cartReducer,
     },
 });
 
@@ -93,4 +96,13 @@ store.subscribe(() => {
         console.error('Error saving authState to localStorage:', error);
     }
 });
+
+store.subscribe(() => {
+    try {
+        localStorage.setItem('cart', JSON.stringify(store.getState().cart));
+    } catch (error) {
+        console.error('Error saving cart to localStorage:', error);
+    }
+}
+);
 export default store;

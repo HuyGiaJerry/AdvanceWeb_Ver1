@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import productService from "../../services/productService";
+import { addToCart } from "../../store/cartSlice";
+import { useDispatch, useSelector } from "react-redux";
 import "./detail.scss";
-
+import { toast } from "react-toastify";
+import cartService from "../../services/cartService";
 const Detail = () => {
     const { id } = useParams(); // Lấy id từ URL
     const [product, setProduct] = useState(null); // Trạng thái lưu chi tiết sản phẩm
@@ -12,6 +15,10 @@ const Detail = () => {
     const [quantity, setQuantity] = useState(1); // Số lượng sản phẩm
     const [selectedSize, setSelectedSize] = useState(""); // Kích thước hiện tại
     const [quantityStock, setQuantityStock] = useState(0); // Số lượng tồn kho hiện tại
+
+    const dispatch = useDispatch(); // Khởi tạo dispatch từ Redux
+    const authState = useSelector((state) => state.auth); // Lấy trạng thái auth từ Redux
+
 
     // Gọi API để lấy chi tiết sản phẩm
     useEffect(() => {
@@ -83,7 +90,6 @@ const Detail = () => {
     const handleDecrease = () => {
         setQuantity((prev) => (prev > 1 ? prev - 1 : 1)); // Giảm số lượng, không nhỏ hơn 1
     };
-
     const handleNextImage = () => {
         setMainImageIndex((prevIndex) => (prevIndex + 1) % imagesToShow.length); // Chuyển sang ảnh tiếp theo
     };
@@ -92,6 +98,50 @@ const Detail = () => {
         setMainImageIndex((prevIndex) =>
             prevIndex === 0 ? imagesToShow.length - 1 : prevIndex - 1
         ); // Quay lại ảnh trước đó
+    };
+
+    // Xử lý thêm vào giỏ hàng
+    const handleAddToCart = async () => {
+        const variant = currentColor?.variants.find((variant) => variant.size === selectedSize);
+
+        if (!variant) {
+            toast.info("Vui lòng chọn kích thước trước khi thêm vào giỏ hàng!");
+            return;
+        }
+
+        const cartItem = {
+            variantId: variant.variantId,
+            productId: product.productId,
+            productName: product.name,
+            colorId: currentColor?.colorId,
+            colorName: colorPick,
+            size: selectedSize,
+            quantity,
+            price: product.discountPrice,
+            imageUrl: imagesToShow[mainImageIndex]?.imageUrl,
+        };
+
+        if (!authState.auth) {
+            // Nếu chưa đăng nhập, thêm vào Redux và localStorage
+            dispatch(addToCart(cartItem)); // Thêm sản phẩm vào Redux
+            toast.success("Sản phẩm đã được thêm vào giỏ hàng!");
+        } else {
+            // Nếu đã đăng nhập, gọi API để thêm vào giỏ hàng
+            const userId = JSON.parse(localStorage.getItem("authState"))?.userId;
+
+            if (!userId) {
+                toast.error("Không thể xác định người dùng. Vui lòng đăng nhập lại.");
+                return;
+            }
+
+            try {
+                await cartService.addToCart(userId, cartItem); // Gọi API thêm vào giỏ hàng
+                toast.success("Sản phẩm đã được thêm vào giỏ hàng!");
+            } catch (error) {
+                console.error("Lỗi khi thêm sản phẩm vào giỏ hàng:", error);
+                toast.error("Không thể thêm sản phẩm vào giỏ hàng. Vui lòng thử lại.");
+            }
+        }
     };
 
     if (!product) {
@@ -203,7 +253,9 @@ const Detail = () => {
                         </div>
 
                         {/* Add to Cart */}
-                        <button className="BtnAddCart ms-3">Add to cart</button>
+                        <button className="BtnAddCart ms-3" onClick={handleAddToCart}>
+                            Add to cart
+                        </button>
                     </div>
                 </div>
             </div>

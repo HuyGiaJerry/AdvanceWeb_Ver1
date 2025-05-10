@@ -13,6 +13,7 @@ const authService = {
 
     logout: () => {
         localStorage.removeItem('authState'); // Xóa thông tin đăng nhập khỏi localStorage
+        localStorage.removeItem('cart');
     },
 };
 

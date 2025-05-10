@@ -11,10 +11,12 @@ namespace BE_Fashion.Services
     {
         private readonly IProductRepository _productRepository;
         private readonly IMapper _mapper;
-        public ProductService(IProductRepository productRepository, IMapper mapper)
+        private readonly ILogger<ProductService> _logger;
+        public ProductService(IProductRepository productRepository, IMapper mapper, ILogger<ProductService> logger)
         {
             _productRepository = productRepository;
             _mapper = mapper;
+            _logger = logger;
         }
         public async Task<int> GetTotalPagesAsync(int pageSize)
         {
@@ -163,6 +165,15 @@ namespace BE_Fashion.Services
             }).ToList();
 
             return productDtos;
+        }
+        public async Task<IEnumerable<ProductListDto>> GetAllProductsAsync(string? searchTerm = null)
+        {
+            _logger.LogInformation("Bắt đầu lấy sản phẩm với từ khóa: {SearchTerm}", searchTerm);
+            var products = await _productRepository.GetAllAsync(searchTerm);
+            _logger.LogInformation("Số sản phẩm lấy được: {Count}", products.Count());
+            var result = _mapper.Map<IEnumerable<ProductListDto>>(products);
+            _logger.LogInformation("Số DTO trả về: {Count}", result.Count());
+            return result;
         }
     }
 }
