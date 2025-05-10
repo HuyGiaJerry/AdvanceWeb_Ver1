@@ -114,6 +114,7 @@ public class RedisCartService : IRedisCartService
 
         try
         {
+            //await Task.Delay(5000);
             var cart = await GetCartAsync(userId);
             var item = cart.FirstOrDefault(x => x.VariantId == variantId);
 
