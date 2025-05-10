@@ -3,12 +3,13 @@ import { Navbar, Nav, Button, Container, Modal, NavDropdown } from 'react-bootst
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../../../store/store';
 import { NavLink, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import './Header.scss';
 
 const Header = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const isLoggin = useSelector((state) => state.auth.isLoggin);
+    const auth = useSelector((state) => state.auth.auth);
     const userName = useSelector((state) => state.auth.userName); // Lấy tên người dùng từ Redux
     const cartCnt = useSelector((state) => state.auth.cartCount);
     const wishlistCnt = useSelector((state) => state.auth.wishlistCount);
@@ -51,12 +52,14 @@ const Header = () => {
     };
     const handleSignOut = () => {
         dispatch(logout());
-        navigate('/home');
+        localStorage.removeItem('authState'); // Xóa thông tin đăng nhập khỏi localStorage
+        toast.success('Logout successfully!');
+        navigate('/login');
     }
 
     return (
         <div className='header'>
-            <Navbar bg="white" expand="md" className="header-container" fixed="top" key={isLoggin ? 'logged-in' : 'logged-out'}>
+            <Navbar bg="white" expand="md" className="header-container" fixed="top" key={auth ? 'logged-in' : 'logged-out'}>
                 <Container>
                     <NavLink to='/' className='navbar-brand'>FASCO</NavLink>
                     <Navbar.Toggle
@@ -81,7 +84,7 @@ const Header = () => {
                             <button className='nav-link search-button' onClick={handleSearchClick}>
                                 <img src={require('../../../assets/icons/search.png')} alt="Search" />
                             </button>
-                            {isLoggin ? (
+                            {auth ? (
                                 <NavDropdown
                                     title={
                                         <img src={require('../../../assets/icons/user.png')} alt="User" />
