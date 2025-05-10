@@ -10,7 +10,7 @@ const Header = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const auth = useSelector((state) => state.auth.auth);
-    const userName = useSelector((state) => state.auth.userName); // Lấy tên người dùng từ Redux
+    const userName = useSelector((state) => state.auth.fullName); // Lấy tên người dùng từ Redux
     const cartCnt = useSelector((state) => state.auth.cartCount);
     const wishlistCnt = useSelector((state) => state.auth.wishlistCount);
     const [isNavbarOpen, setIsNavbarOpen] = useState(false);
@@ -95,7 +95,7 @@ const Header = () => {
 
                                     <NavDropdown.Item as={NavLink} to="/account">{`Hello, ${userName}`} </NavDropdown.Item>
                                     <NavDropdown.Item as={NavLink} to="/orders">Orders</NavDropdown.Item>
-                                    <NavDropdown.Item onClick={handleSignOut}>Sign Out</NavDropdown.Item>
+                                    <NavDropdown.Item onClick={handleSignOut}>Log Out</NavDropdown.Item>
                                 </NavDropdown>
                             ) : (
                                 <NavLink className='nav-link' to='/login'>
