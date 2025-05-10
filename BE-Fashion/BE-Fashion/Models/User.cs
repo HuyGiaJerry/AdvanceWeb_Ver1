@@ -33,10 +33,6 @@ public partial class User
 
     public string? TwoFactorSecret { get; set; }
 
-    public virtual Cart? Cart { get; set; }
-
-    public virtual ICollection<LoyaltyPoint> LoyaltyPoints { get; set; } = new List<LoyaltyPoint>();
-
     public virtual ICollection<Order> Orders { get; set; } = new List<Order>();
 
     public virtual ICollection<Otp> Otps { get; set; } = new List<Otp>();

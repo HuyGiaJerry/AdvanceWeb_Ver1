@@ -3,44 +3,80 @@
   "WorkspaceRootPath": "D:\\Web\\ProjectWeb\\BE-Fashion\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|d:\\web\\projectweb\\be-fashion\\be-fashion\\controllers\\cartcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|solutionrelative:be-fashion\\controllers\\cartcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|d:\\web\\projectweb\\be-fashion\\be-fashion\\services\\vnpayservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|solutionrelative:be-fashion\\services\\vnpayservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|d:\\web\\projectweb\\be-fashion\\be-fashion\\services\\irediscartservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|solutionrelative:be-fashion\\services\\irediscartservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|d:\\web\\projectweb\\be-fashion\\be-fashion\\services\\orderservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|solutionrelative:be-fashion\\services\\orderservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|d:\\web\\projectweb\\be-fashion\\be-fashion\\services\\rediscartservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|solutionrelative:be-fashion\\services\\rediscartservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|d:\\web\\projectweb\\be-fashion\\be-fashion\\services\\iorderservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|solutionrelative:be-fashion\\services\\iorderservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|d:\\web\\projectweb\\be-fashion\\be-fashion\\dtos\\cartitemresultdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|solutionrelative:be-fashion\\dtos\\cartitemresultdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|d:\\web\\projectweb\\be-fashion\\be-fashion\\repositories\\orderrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|solutionrelative:be-fashion\\repositories\\orderrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|d:\\web\\projectweb\\be-fashion\\be-fashion\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|solutionrelative:be-fashion\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+      "AbsoluteMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|d:\\web\\projectweb\\be-fashion\\be-fashion\\dtos\\cancelorderresult.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|solutionrelative:be-fashion\\dtos\\cancelorderresult.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|d:\\web\\projectweb\\be-fashion\\be-fashion\\controllers\\ordercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|solutionrelative:be-fashion\\controllers\\ordercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|d:\\web\\projectweb\\be-fashion\\be-fashion\\controllers\\vnpaycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|solutionrelative:be-fashion\\controllers\\vnpaycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|d:\\web\\projectweb\\be-fashion\\be-fashion\\services\\vnpayservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|solutionrelative:be-fashion\\services\\vnpayservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|d:\\web\\projectweb\\be-fashion\\be-fashion\\dtos\\vnpayrequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|solutionrelative:be-fashion\\dtos\\vnpayrequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|d:\\web\\projectweb\\be-fashion\\be-fashion\\helpers\\vnpaylibrary.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|solutionrelative:be-fashion\\helpers\\vnpaylibrary.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|d:\\web\\projectweb\\be-fashion\\be-fashion\\dtos\\checkoutresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|solutionrelative:be-fashion\\dtos\\checkoutresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|d:\\web\\projectweb\\be-fashion\\be-fashion\\repositories\\iorderrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|solutionrelative:be-fashion\\repositories\\iorderrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|d:\\web\\projectweb\\be-fashion\\be-fashion\\models\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|solutionrelative:be-fashion\\models\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|d:\\web\\projectweb\\be-fashion\\be-fashion\\dtos\\checkoutrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|solutionrelative:be-fashion\\dtos\\checkoutrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|d:\\web\\projectweb\\be-fashion\\be-fashion\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|solutionrelative:be-fashion\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|d:\\web\\projectweb\\be-fashion\\be-fashion\\dtos\\vnpayrequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|solutionrelative:be-fashion\\dtos\\vnpayrequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|d:\\web\\projectweb\\be-fashion\\be-fashion\\services\\rediscartservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|solutionrelative:be-fashion\\services\\rediscartservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|d:\\web\\projectweb\\be-fashion\\be-fashion\\controllers\\cartcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|solutionrelative:be-fashion\\controllers\\cartcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|d:\\web\\projectweb\\be-fashion\\be-fashion\\dtos\\cartitemdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|solutionrelative:be-fashion\\dtos\\cartitemdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|d:\\web\\projectweb\\be-fashion\\be-fashion\\services\\productservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|solutionrelative:be-fashion\\services\\productservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|d:\\web\\projectweb\\be-fashion\\be-fashion\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|solutionrelative:be-fashion\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|d:\\web\\projectweb\\be-fashion\\be-fashion\\helpers\\vnpaylibrary.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|solutionrelative:be-fashion\\helpers\\vnpaylibrary.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|d:\\web\\projectweb\\be-fashion\\be-fashion\\services\\iproductservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -49,10 +85,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|d:\\web\\projectweb\\be-fashion\\be-fashion\\repositories\\productrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|solutionrelative:be-fashion\\repositories\\productrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|d:\\web\\projectweb\\be-fashion\\be-fashion\\services\\productservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|solutionrelative:be-fashion\\services\\productservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|d:\\web\\projectweb\\be-fashion\\be-fashion\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -75,55 +107,198 @@
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "IRedisCartService.cs",
-              "DocumentMoniker": "D:\\Web\\ProjectWeb\\BE-Fashion\\BE-Fashion\\Services\\IRedisCartService.cs",
-              "RelativeDocumentMoniker": "BE-Fashion\\Services\\IRedisCartService.cs",
-              "ToolTip": "D:\\Web\\ProjectWeb\\BE-Fashion\\BE-Fashion\\Services\\IRedisCartService.cs",
-              "RelativeToolTip": "BE-Fashion\\Services\\IRedisCartService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAFAAAAAAAAAA==",
+              "Title": "OrderService.cs",
+              "DocumentMoniker": "D:\\Web\\ProjectWeb\\BE-Fashion\\BE-Fashion\\Services\\OrderService.cs",
+              "RelativeDocumentMoniker": "BE-Fashion\\Services\\OrderService.cs",
+              "ToolTip": "D:\\Web\\ProjectWeb\\BE-Fashion\\BE-Fashion\\Services\\OrderService.cs",
+              "RelativeToolTip": "BE-Fashion\\Services\\OrderService.cs",
+              "ViewState": "AgIAACgAAAAAAAAAAAAuwF0AAAAsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-10T18:04:45.297Z",
+              "WhenOpened": "2025-05-10T23:17:57.466Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "CancelOrderResult.cs",
+              "DocumentMoniker": "D:\\Web\\ProjectWeb\\BE-Fashion\\BE-Fashion\\DTOs\\CancelOrderResult.cs",
+              "RelativeDocumentMoniker": "BE-Fashion\\DTOs\\CancelOrderResult.cs",
+              "ToolTip": "D:\\Web\\ProjectWeb\\BE-Fashion\\BE-Fashion\\DTOs\\CancelOrderResult.cs",
+              "RelativeToolTip": "BE-Fashion\\DTOs\\CancelOrderResult.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAA7AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-10T23:16:32.807Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "IOrderService.cs",
+              "DocumentMoniker": "D:\\Web\\ProjectWeb\\BE-Fashion\\BE-Fashion\\Services\\IOrderService.cs",
+              "RelativeDocumentMoniker": "BE-Fashion\\Services\\IOrderService.cs",
+              "ToolTip": "D:\\Web\\ProjectWeb\\BE-Fashion\\BE-Fashion\\Services\\IOrderService.cs",
+              "RelativeToolTip": "BE-Fashion\\Services\\IOrderService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAowAgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-10T23:15:52.498Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "OrderController.cs",
+              "DocumentMoniker": "D:\\Web\\ProjectWeb\\BE-Fashion\\BE-Fashion\\Controllers\\OrderController.cs",
+              "RelativeDocumentMoniker": "BE-Fashion\\Controllers\\OrderController.cs",
+              "ToolTip": "D:\\Web\\ProjectWeb\\BE-Fashion\\BE-Fashion\\Controllers\\OrderController.cs",
+              "RelativeToolTip": "BE-Fashion\\Controllers\\OrderController.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAswCUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-10T23:12:36.581Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Order.cs",
+              "DocumentMoniker": "D:\\Web\\ProjectWeb\\BE-Fashion\\BE-Fashion\\Models\\Order.cs",
+              "RelativeDocumentMoniker": "BE-Fashion\\Models\\Order.cs",
+              "ToolTip": "D:\\Web\\ProjectWeb\\BE-Fashion\\BE-Fashion\\Models\\Order.cs",
+              "RelativeToolTip": "BE-Fashion\\Models\\Order.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-10T22:38:12.788Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "CheckoutResponse.cs",
+              "DocumentMoniker": "D:\\Web\\ProjectWeb\\BE-Fashion\\BE-Fashion\\DTOs\\CheckoutResponse.cs",
+              "RelativeDocumentMoniker": "BE-Fashion\\DTOs\\CheckoutResponse.cs",
+              "ToolTip": "D:\\Web\\ProjectWeb\\BE-Fashion\\BE-Fashion\\DTOs\\CheckoutResponse.cs",
+              "RelativeToolTip": "BE-Fashion\\DTOs\\CheckoutResponse.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-10T22:26:16.83Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "CartItemResultDto.cs",
-              "DocumentMoniker": "D:\\Web\\ProjectWeb\\BE-Fashion\\BE-Fashion\\DTOs\\CartItemResultDto.cs",
-              "RelativeDocumentMoniker": "BE-Fashion\\DTOs\\CartItemResultDto.cs",
-              "ToolTip": "D:\\Web\\ProjectWeb\\BE-Fashion\\BE-Fashion\\DTOs\\CartItemResultDto.cs",
-              "RelativeToolTip": "BE-Fashion\\DTOs\\CartItemResultDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "Title": "OrderRepository.cs",
+              "DocumentMoniker": "D:\\Web\\ProjectWeb\\BE-Fashion\\BE-Fashion\\Repositories\\OrderRepository.cs",
+              "RelativeDocumentMoniker": "BE-Fashion\\Repositories\\OrderRepository.cs",
+              "ToolTip": "D:\\Web\\ProjectWeb\\BE-Fashion\\BE-Fashion\\Repositories\\OrderRepository.cs",
+              "RelativeToolTip": "BE-Fashion\\Repositories\\OrderRepository.cs",
+              "ViewState": "AgIAABoAAAAAAAAAAAAYwC4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-10T18:01:24.904Z"
+              "WhenOpened": "2025-05-10T19:12:36.242Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "VnPayController.cs",
               "DocumentMoniker": "D:\\Web\\ProjectWeb\\BE-Fashion\\BE-Fashion\\Controllers\\VnPayController.cs",
               "RelativeDocumentMoniker": "BE-Fashion\\Controllers\\VnPayController.cs",
               "ToolTip": "D:\\Web\\ProjectWeb\\BE-Fashion\\BE-Fashion\\Controllers\\VnPayController.cs",
               "RelativeToolTip": "BE-Fashion\\Controllers\\VnPayController.cs",
-              "ViewState": "AgIAADwAAAAAAAAAAAAWwF4AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAmwDIAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-10T17:16:18.229Z"
+              "WhenOpened": "2025-05-10T17:16:18.229Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 0,
+              "Title": "VnPayService.cs",
+              "DocumentMoniker": "D:\\Web\\ProjectWeb\\BE-Fashion\\BE-Fashion\\Services\\VnPayService.cs",
+              "RelativeDocumentMoniker": "BE-Fashion\\Services\\VnPayService.cs",
+              "ToolTip": "D:\\Web\\ProjectWeb\\BE-Fashion\\BE-Fashion\\Services\\VnPayService.cs",
+              "RelativeToolTip": "BE-Fashion\\Services\\VnPayService.cs",
+              "ViewState": "AgIAACMAAAAAAAAAAAAzwDAAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-10T16:41:30.951Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "VnPayRequestDto.cs",
+              "DocumentMoniker": "D:\\Web\\ProjectWeb\\BE-Fashion\\BE-Fashion\\DTOs\\VnPayRequestDto.cs",
+              "RelativeDocumentMoniker": "BE-Fashion\\DTOs\\VnPayRequestDto.cs",
+              "ToolTip": "D:\\Web\\ProjectWeb\\BE-Fashion\\BE-Fashion\\DTOs\\VnPayRequestDto.cs",
+              "RelativeToolTip": "BE-Fashion\\DTOs\\VnPayRequestDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAABBAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-10T16:40:33.98Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "IOrderRepository.cs",
+              "DocumentMoniker": "D:\\Web\\ProjectWeb\\BE-Fashion\\BE-Fashion\\Repositories\\IOrderRepository.cs",
+              "RelativeDocumentMoniker": "BE-Fashion\\Repositories\\IOrderRepository.cs",
+              "ToolTip": "D:\\Web\\ProjectWeb\\BE-Fashion\\BE-Fashion\\Repositories\\IOrderRepository.cs",
+              "RelativeToolTip": "BE-Fashion\\Repositories\\IOrderRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAA8AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-10T19:12:50.761Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\Web\\ProjectWeb\\BE-Fashion\\BE-Fashion\\Program.cs",
               "RelativeDocumentMoniker": "BE-Fashion\\Program.cs",
               "ToolTip": "D:\\Web\\ProjectWeb\\BE-Fashion\\BE-Fashion\\Program.cs",
               "RelativeToolTip": "BE-Fashion\\Program.cs",
-              "ViewState": "AgIAACgAAAAAAAAAAIAwwEsAAAAkAAAAAAAAAA==",
+              "ViewState": "AgIAADkAAAAAAAAAAADgv0gAAABOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-10T16:49:27.387Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 11,
+              "Title": "CheckoutRequest.cs",
+              "DocumentMoniker": "D:\\Web\\ProjectWeb\\BE-Fashion\\BE-Fashion\\DTOs\\CheckoutRequest.cs",
+              "RelativeDocumentMoniker": "BE-Fashion\\DTOs\\CheckoutRequest.cs",
+              "ToolTip": "D:\\Web\\ProjectWeb\\BE-Fashion\\BE-Fashion\\DTOs\\CheckoutRequest.cs",
+              "RelativeToolTip": "BE-Fashion\\DTOs\\CheckoutRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-10T19:14:11.871Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "CartItemDto.cs",
+              "DocumentMoniker": "D:\\Web\\ProjectWeb\\BE-Fashion\\BE-Fashion\\DTOs\\CartItemDto.cs",
+              "RelativeDocumentMoniker": "BE-Fashion\\DTOs\\CartItemDto.cs",
+              "ToolTip": "D:\\Web\\ProjectWeb\\BE-Fashion\\BE-Fashion\\DTOs\\CartItemDto.cs",
+              "RelativeToolTip": "BE-Fashion\\DTOs\\CartItemDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-10T19:13:22.515Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "RedisCartService.cs",
+              "DocumentMoniker": "D:\\Web\\ProjectWeb\\BE-Fashion\\BE-Fashion\\Services\\RedisCartService.cs",
+              "RelativeDocumentMoniker": "BE-Fashion\\Services\\RedisCartService.cs",
+              "ToolTip": "D:\\Web\\ProjectWeb\\BE-Fashion\\BE-Fashion\\Services\\RedisCartService.cs",
+              "RelativeToolTip": "BE-Fashion\\Services\\RedisCartService.cs",
+              "ViewState": "AgIAANwAAAAAAAAAAAAuwO0AAAAzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-10T20:15:47.077Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
               "Title": "VnPayLibrary.cs",
               "DocumentMoniker": "D:\\Web\\ProjectWeb\\BE-Fashion\\BE-Fashion\\Helpers\\VnPayLibrary.cs",
               "RelativeDocumentMoniker": "BE-Fashion\\Helpers\\VnPayLibrary.cs",
@@ -135,57 +310,19 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "VnPayService.cs",
-              "DocumentMoniker": "D:\\Web\\ProjectWeb\\BE-Fashion\\BE-Fashion\\Services\\VnPayService.cs",
-              "RelativeDocumentMoniker": "BE-Fashion\\Services\\VnPayService.cs",
-              "ToolTip": "D:\\Web\\ProjectWeb\\BE-Fashion\\BE-Fashion\\Services\\VnPayService.cs",
-              "RelativeToolTip": "BE-Fashion\\Services\\VnPayService.cs",
-              "ViewState": "AgIAAB0AAAAAAAAAAAAWwDwAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-10T16:41:30.951Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "VnPayRequestDto.cs",
-              "DocumentMoniker": "D:\\Web\\ProjectWeb\\BE-Fashion\\BE-Fashion\\DTOs\\VnPayRequestDto.cs",
-              "RelativeDocumentMoniker": "BE-Fashion\\DTOs\\VnPayRequestDto.cs",
-              "ToolTip": "D:\\Web\\ProjectWeb\\BE-Fashion\\BE-Fashion\\DTOs\\VnPayRequestDto.cs",
-              "RelativeToolTip": "BE-Fashion\\DTOs\\VnPayRequestDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAABEAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-10T16:40:33.98Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "RedisCartService.cs",
-              "DocumentMoniker": "D:\\Web\\ProjectWeb\\BE-Fashion\\BE-Fashion\\Services\\RedisCartService.cs",
-              "RelativeDocumentMoniker": "BE-Fashion\\Services\\RedisCartService.cs",
-              "ToolTip": "D:\\Web\\ProjectWeb\\BE-Fashion\\BE-Fashion\\Services\\RedisCartService.cs",
-              "RelativeToolTip": "BE-Fashion\\Services\\RedisCartService.cs",
-              "ViewState": "AgIAAFAAAAAAAAAAAAAlwGoAAABCAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-10T15:32:18.167Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 14,
               "Title": "CartController.cs",
               "DocumentMoniker": "D:\\Web\\ProjectWeb\\BE-Fashion\\BE-Fashion\\Controllers\\CartController.cs",
               "RelativeDocumentMoniker": "BE-Fashion\\Controllers\\CartController.cs",
               "ToolTip": "D:\\Web\\ProjectWeb\\BE-Fashion\\BE-Fashion\\Controllers\\CartController.cs",
               "RelativeToolTip": "BE-Fashion\\Controllers\\CartController.cs",
-              "ViewState": "AgIAADcAAAAAAAAAAAAIwE0AAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAADUAAAAAAAAAAAAzwE0AAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-10T15:31:17.713Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-10T15:31:17.713Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 21,
               "Title": "ProductController.cs",
               "DocumentMoniker": "D:\\Web\\ProjectWeb\\BE-Fashion\\BE-Fashion\\Controllers\\ProductController.cs",
               "RelativeDocumentMoniker": "BE-Fashion\\Controllers\\ProductController.cs",
@@ -197,7 +334,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 19,
               "Title": "IProductService.cs",
               "DocumentMoniker": "D:\\Web\\ProjectWeb\\BE-Fashion\\BE-Fashion\\Services\\IProductService.cs",
               "RelativeDocumentMoniker": "BE-Fashion\\Services\\IProductService.cs",
@@ -209,7 +346,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 22,
               "Title": "IProductRepository.cs",
               "DocumentMoniker": "D:\\Web\\ProjectWeb\\BE-Fashion\\BE-Fashion\\Repositories\\IProductRepository.cs",
               "RelativeDocumentMoniker": "BE-Fashion\\Repositories\\IProductRepository.cs",
@@ -221,7 +358,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 16,
               "Title": "ProductService.cs",
               "DocumentMoniker": "D:\\Web\\ProjectWeb\\BE-Fashion\\BE-Fashion\\Services\\ProductService.cs",
               "RelativeDocumentMoniker": "BE-Fashion\\Services\\ProductService.cs",
@@ -233,7 +370,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 17,
               "Title": "appsettings.json",
               "DocumentMoniker": "D:\\Web\\ProjectWeb\\BE-Fashion\\BE-Fashion\\appsettings.json",
               "RelativeDocumentMoniker": "BE-Fashion\\appsettings.json",
@@ -245,7 +382,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 20,
               "Title": "ProductRepository.cs",
               "DocumentMoniker": "D:\\Web\\ProjectWeb\\BE-Fashion\\BE-Fashion\\Repositories\\ProductRepository.cs",
               "RelativeDocumentMoniker": "BE-Fashion\\Repositories\\ProductRepository.cs",

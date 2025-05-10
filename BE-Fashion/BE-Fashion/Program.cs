@@ -69,10 +69,12 @@ builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<IProductColorRepository, ProductColorRepository>();
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
+builder.Services.AddScoped<IOrderRepository, OrderRepository>();
 builder.Services.AddScoped<IRefreshTokenRepository, RefreshTokenRepository>();
 builder.Services.AddScoped<IProductColorService, ProductColorService>();
 builder.Services.AddScoped<ICategoryService, CategoryService>();
 builder.Services.AddScoped<IRedisCartService, RedisCartService>();
+builder.Services.AddScoped<IOrderService, OrderService>();
 builder.Services.AddScoped<VnPayService>();
 builder.Services.AddAutoMapper(typeof(ProductProfile));
 

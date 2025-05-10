@@ -17,8 +17,6 @@ public partial class ProductVariant
 
     public string VariantSku { get; set; } = null!;
 
-    public virtual ICollection<CartItem> CartItems { get; set; } = new List<CartItem>();
-
     public virtual ProductColor Color { get; set; } = null!;
 
     public virtual ICollection<OrderItem> OrderItems { get; set; } = new List<OrderItem>();
