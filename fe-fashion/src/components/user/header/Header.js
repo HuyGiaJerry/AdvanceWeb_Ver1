@@ -146,13 +146,13 @@ const Header = () => {
                         {searchQuery === '' ? (
                             <>
                                 <div className="search-suggestions">
-                                    <h6>Từ khóa hot</h6>
+                                    <h6 style={{paddingLeft:"10px",marginTop:"20px"}}>Từ khóa hot</h6>
                                     <div className="tags">
                                         {hotKeywords.map((keyword, index) => (
                                             <span key={index} className="tag">{keyword}</span>
                                         ))}
                                     </div>
-                                    <h6>Gợi ý sản phẩm</h6>
+                                    <h6 style={{paddingLeft:"10px",marginTop:"20px"}}>Gợi ý sản phẩm</h6>
                                     <div className="suggestions">
                                         {suggestedProducts.map((product) => (
                                             <NavLink

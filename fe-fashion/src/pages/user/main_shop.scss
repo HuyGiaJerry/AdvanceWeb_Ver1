@@ -4,8 +4,9 @@
 
 .filter-sidebar {
     background-color: #f8f9fa;
-    padding: 10px;
+    padding: 5px 10px 40px 30px;
     border-radius: 8px;
+    height: 1100px;
 
 }
 
@@ -47,6 +48,18 @@
         align-items: baseline;
     }
 
+    .list-unstyled-size {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 30px;
+    }
+
+    .list-unstyled-size label {
+        display: flex;
+        align-items: center;
+        white-space: nowrap;
+    }
+
     .btn-group-vertical {
         display: flex;
         flex-direction: column;
@@ -58,6 +71,44 @@
         padding: 5px 10px;
         font-size: 0.9rem;
         border: none;
+    }
+
+    input[type="checkbox"] {
+        appearance: none;
+        width: 20px;
+        height: 20px;
+        border: 2px solid #ccc;
+        border-radius: 50%;
+        outline: none;
+        cursor: pointer;
+        transition: all 0.3s ease;
+
+        &:checked {
+            background-color: #007bff;
+            border-color: #007bff;
+            position: relative;
+
+            &::after {
+                content: "";
+                /* Dấu tích */
+                display: block;
+                width: 10px;
+                height: 10px;
+                background-color: #fff;
+                /* Màu của dấu tích */
+                border-radius: 50%;
+                /* Bo tròn dấu tích */
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+        }
+
+        &:hover {
+            border-color: #007bff;
+            /* Màu viền khi hover */
+        }
     }
 }
 
@@ -135,4 +186,5 @@
         display: flex;
         align-items: center;
     }
+
 }
