@@ -16,7 +16,8 @@ const BestSellingProducts = ({ bestSellingProducts }) => {
   return (
     <div className="top-products">
       <h2>Sản phẩm bán chạy</h2>
-      <Table columns={columns} data={formattedData} itemsPerPage={5} />
+      <Table columns={columns} data={formattedData} itemsPerPage={5} showActions={false}
+  showAddButton={false}/>
     </div>
   );
 };

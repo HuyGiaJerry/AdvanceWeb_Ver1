@@ -5,7 +5,8 @@ import '../../assets/styles/FilterDropdown.scss';
 
 const FilterDropdown = ({ value, onChange, options }) => {
   return (
-    <div className="filter-dropdown">
+    <div>
+ <div className="filter-dropdown">
       <FaFilter />
       <select value={value} onChange={onChange}>
         {options.map(opt => (
@@ -13,6 +14,8 @@ const FilterDropdown = ({ value, onChange, options }) => {
         ))}
       </select>
     </div>
+    </div>
+   
   );
 };
 

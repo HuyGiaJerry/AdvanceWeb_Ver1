@@ -40,6 +40,8 @@ const CategoryList = () => {
           editUrl="/admin/categories/edit"
           createUrl="/admin/categories/create"
           title="Danh mục sản phẩm"
+          showActions={true}
+  showAddButton={false}
         />
       </div>
 

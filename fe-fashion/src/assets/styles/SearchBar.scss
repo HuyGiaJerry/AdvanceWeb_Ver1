@@ -1,14 +1,15 @@
 .search-bar {
     display: flex;
-    align-items: center;
+    
+
     background-color: white;
     border: 1px solid #d1d5db; /* Chỉ giữ một border duy nhất */
     border-radius: 9999px;
     padding: 8px 16px;
-    width: 100%; /* Giúp thanh search chiếm đủ không gian */
+    width: 50%; /* Giúp thanh search chiếm đủ không gian */
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
     transition: all 0.3s ease;
-  
+   
     &:hover {
       border-color: #a1a1aa;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
@@ -38,5 +39,12 @@
         color: #9ca3af;
       }
     }
+  }
+  .search-bar-container{
+    width: "100%";
+    display: flex;
+    align-items: right;
+      justify-content: center;
+     
   }
   

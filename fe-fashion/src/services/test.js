@@ -1370,5 +1370,55 @@ const dataProduct = [
 
 
 ];
+// Hàm để thêm sản phẩm mới
+const addProduct = (productData) => {
+    // Tạo ID mới dựa trên ID lớn nhất hiện tại + 1
+    const newId = Math.max(...dataProduct.map(product => product.productId), 0) + 1;
+    
+    // Tạo ngày hiện tại cho createdAt và updatedAt
+    const currentDate = new Date().toISOString();
+    
+    // Tạo đối tượng sản phẩm mới với cấu trúc giống như dataProduct
+    const newProduct = {
+        productId: newId,
+        name: productData.product.name,
+        description: productData.product.description || "",
+        basePrice: parseFloat(productData.product.base_price) || 0,
+        discountPrice: parseFloat(productData.product.discount_price) || 0,
+        sku: productData.product.sku,
+        categoryId: parseInt(productData.product.category_id) || 0,
+        createdAt: currentDate,
+        updatedAt: currentDate,
+        colors: productData.colors.map((color, idx) => {
+            return {
+                colorId: idx + 1,
+                colorName: color.color_name,
+                colorSku: color.color_sku,
+                variants: [], // Sẽ thêm variants từ dữ liệu đầu vào
+                images: [] // Sẽ xử lý hình ảnh ở một bước khác nếu cần
+            };
+        })
+    };
+    
+    // Xử lý variants
+    productData.variants.forEach((variant, idx) => {
+        const colorIndex = variant.color_id - 1;
+        if (colorIndex >= 0 && colorIndex < newProduct.colors.length) {
+            newProduct.colors[colorIndex].variants.push({
+                variantId: idx + 1,
+                size: variant.size,
+                stockQuantity: parseInt(variant.stock_quantity) || 0,
+                variantSku: variant.variant_sku
+            });
+        }
+    });
+    
+    // Thêm sản phẩm mới vào mảng dataProduct
+    dataProduct.push(newProduct);
+    
+    return newProduct;
+};
 
+// Export cả dataProduct và các hàm helper
 export default dataProduct;
+export { dataProduct, addProduct };
