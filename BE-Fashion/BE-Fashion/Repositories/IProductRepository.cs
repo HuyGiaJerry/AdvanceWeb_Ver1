@@ -16,6 +16,11 @@ namespace BE_Fashion.Repositories
         Task<bool> HasEnoughStockAsync(int variantId, int quantity);
         Task<decimal> GetPriceAsync(int variantId);
         Task<int> GetStockQuantityAsync(int variantId);
-
+        Task<IEnumerable<Product>> GetFilteredProductsAsync(
+                        List<PriceRangeDto>? priceRanges,
+                        List<int>? categoryIds,
+                        List<string>? colors,
+                        List<string>? sizes
+                        );
     }
 }

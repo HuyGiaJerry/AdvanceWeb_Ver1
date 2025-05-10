@@ -10,6 +10,5 @@ namespace BE_Fashion.DTOs
         public int StockQuantity { get; set; }
         public decimal AdditionalPrice { get; set; }
 
-        
     }
 }

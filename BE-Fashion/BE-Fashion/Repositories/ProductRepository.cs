@@ -1,5 +1,6 @@
 ﻿using BE_Fashion.DTOs;
 using BE_Fashion.Models;
+using LinqKit;
 using Microsoft.EntityFrameworkCore;
 
 namespace BE_Fashion.Repositories
@@ -119,6 +120,110 @@ namespace BE_Fashion.Repositories
                     .FirstOrDefaultAsync();
 
             return stockQuantity ?? 0;
+        }
+
+        public async Task<IEnumerable<Product>> GetFilteredProductsAsync(
+    List<PriceRangeDto>? priceRanges,
+    List<int>? categoryIds,
+    List<string>? colors,
+    List<string>? sizes)
+        {
+            var query = _context.Products
+                .Include(p => p.ProductColors)
+                    .ThenInclude(c => c.ProductColorImages)
+                        .ThenInclude(i => i.Color)
+                .Include(p => p.ProductVariants)
+                    .ThenInclude(v => v.Color)
+                .AsQueryable();
+
+            // Lọc theo khoảng giá
+            if (priceRanges?.Any() == true)
+            {
+                var pricePredicate = PredicateBuilder.New<Product>(false);
+                foreach (var range in priceRanges)
+                {
+                    pricePredicate = pricePredicate.Or(p =>
+                        p.BasePrice >= range.MinPrice && p.BasePrice <= range.MaxPrice);
+                }
+                query = query.Where(pricePredicate);
+            }
+
+            // Lọc theo danh mục (bao gồm danh mục con)
+            if (categoryIds?.Any() == true)
+            {
+                var allCategoryIds = new List<int>();
+                foreach (var catId in categoryIds)
+                {
+                    allCategoryIds.Add(catId);
+                    var subCategoryIds = await GetSubCategoryIdsAsync(catId);
+                    allCategoryIds.AddRange(subCategoryIds);
+                }
+                query = query.Where(p => p.CategoryId != null && allCategoryIds.Contains(p.CategoryId.Value));
+            }
+
+            // Lọc theo màu sắc
+            if (colors?.Any() == true)
+            {
+                query = query.Where(p => p.ProductColors.Any(c => colors.Contains(c.ColorName)));
+            }
+
+            // Lọc theo kích thước
+            if (sizes?.Any() == true)
+            {
+                query = query.Where(p => p.ProductVariants.Any(v => sizes.Contains(v.Size)));
+            }
+
+            var filteredProducts = await query
+                .Select(p => new Product
+                {
+                    ProductId = p.ProductId,
+                    Name = p.Name,
+                    BasePrice = p.BasePrice,
+                    DiscountPrice = p.DiscountPrice ?? 0,
+                    ProductColors = p.ProductColors
+                        .Select(c => new ProductColor
+                        {
+                            ColorId = c.ColorId,
+                            ColorName = c.ColorName,
+                            ProductColorImages = c.ProductColorImages
+                                .Where(i => i.IsPrimary == true)
+                                .ToList()
+                        }).ToList(),
+                    ProductVariants = p.ProductVariants
+                        .Select(v => new ProductVariant
+                        {
+                            VariantId = v.VariantId,
+                            Size = v.Size,
+                            ColorId = v.ColorId,
+                            StockQuantity = v.StockQuantity
+                        }).ToList()
+                })
+                .ToListAsync();
+
+            return filteredProducts ?? Enumerable.Empty<Product>();
+        }
+
+        private async Task<List<int>> GetSubCategoryIdsAsync(int categoryId)
+        {
+            var subCategoryIds = new List<int>();
+            var queue = new Queue<int>();
+            queue.Enqueue(categoryId);
+
+            while (queue.Any())
+            {
+                var currentId = queue.Dequeue();
+                var subCategories = await _context.Categories
+                    .Where(c => c.ParentId == currentId)
+                    .Select(c => c.CategoryId)
+                    .ToListAsync();
+                subCategoryIds.AddRange(subCategories);
+                foreach (var subId in subCategories)
+                {
+                    queue.Enqueue(subId);
+                }
+            }
+
+            return subCategoryIds;
         }
     }
 }

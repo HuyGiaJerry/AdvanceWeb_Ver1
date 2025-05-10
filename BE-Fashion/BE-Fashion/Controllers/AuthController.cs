@@ -19,7 +19,17 @@ namespace BE_Fashion.Controllers
             _authService = authService;
         }
 
-        
+
+        //[HttpPost("google-login")]
+        //public async Task<IActionResult> GoogleLogin([FromBody] GoogleLoginRequest request)
+        //{
+        //    var result = await _authService.GoogleLoginWithCodeAsync(request.Code);
+        //    if (!result.IsSuccess)
+        //        return BadRequest(result.Message);
+
+        //    return Ok(result.Auth);
+        //}
+
         [HttpPost("google-login")]
         public async Task<IActionResult> GoogleLogin([FromBody] GoogleLoginRequest request)
         {
@@ -27,7 +37,7 @@ namespace BE_Fashion.Controllers
             if (!result.IsSuccess)
                 return BadRequest(result.Message);
 
-            return Ok(result.Auth);
+            return Ok(result.loginResponse);
         }
         [HttpPost("refresh-token")]
         public async Task<IActionResult> RefreshToken([FromBody] RefreshTokenRequest request)
