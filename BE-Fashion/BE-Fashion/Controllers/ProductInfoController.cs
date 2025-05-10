@@ -6,11 +6,11 @@ namespace BE_Fashion.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ProductColorController : ControllerBase
+    public class ProductInfoController : ControllerBase
     {
         private readonly IProductColorService _productColorService;
 
-        public ProductColorController(IProductColorService productColorService)
+        public ProductInfoController(IProductColorService productColorService)
         {
             _productColorService = productColorService;
         }

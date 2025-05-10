@@ -6,6 +6,9 @@ namespace BE_Fashion.Mappings
 {
     public class CartProfile : Profile
     {
-        
+        public CartProfile() 
+        {
+            CreateMap<Category, CategoryDto>();
+        }
     }
 }

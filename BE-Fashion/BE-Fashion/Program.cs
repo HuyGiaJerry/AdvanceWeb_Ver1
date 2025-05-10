@@ -65,9 +65,11 @@ builder.Services.AddScoped<AuthService>();
 builder.Services.AddScoped<IProductService, ProductService>();
 //builder.Services.AddScoped<ProductService>();
 builder.Services.AddScoped<IProductColorRepository, ProductColorRepository>();
+builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<IRefreshTokenRepository, RefreshTokenRepository>();
 builder.Services.AddScoped<IProductColorService, ProductColorService>();
+builder.Services.AddScoped<ICategoryService, CategoryService>();
 builder.Services.AddScoped<IRedisCartService, RedisCartService>();
 builder.Services.AddAutoMapper(typeof(ProductProfile));
 
