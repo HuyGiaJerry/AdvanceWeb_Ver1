@@ -20,7 +20,15 @@ const RecentOrders = ({ recentOrders }) => {
   return (
     <div className="recent-orders">
       <h2>Đơn hàng gần đây</h2>
-      <Table columns={columns} data={formattedData} itemsPerPage={5} />
+      <Table columns={columns} data={formattedData} itemsPerPage={5}  showActions={false}
+  showAddButton={false} />
+      {/* <Table
+  columns={columns}
+  data={orders}
+  showActions={false}
+  showAddButton={false}
+/> */}
+
     </div>
   );
 };

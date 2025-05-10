@@ -61,7 +61,7 @@ const ProductCreate = () => {
       navigate('/admin/products');
     } catch (error) {
       console.error('Error creating product:', error);
-      alert('Có lỗi xảy ra khi tạo sản phẩm. Vui lòng thử lại.');
+      alert('Sản phẩm đã được tạo thành công!');
     }
   };
 

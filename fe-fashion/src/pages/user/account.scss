@@ -46,4 +46,22 @@
         }
     }
 
+    .google-connect-status {
+        margin-top: 20px;
+        font-size: 16px;
+    }
+
+    .google-connect-status .text-success {
+        color: green;
+    }
+
+    .google-connect-status .text-danger {
+        color: red;
+    }
+
+    .google-connect-status button {
+        font-size: 14px;
+        padding: 5px 10px;
+    }
+
 }

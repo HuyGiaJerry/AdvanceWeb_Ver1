@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Container, Row, Col, Form, Button } from 'react-bootstrap';
+import { FaGoogle, FaEdit } from 'react-icons/fa'; // Import icon Google và bút
 import './account.scss';
 
 const Account = () => {
@@ -10,6 +11,7 @@ const Account = () => {
         phone: '0123456789',
         email: 'userTest@gmail.com',
     });
+    const [isGoogleConnected, setIsGoogleConnected] = useState(false); // Trạng thái kết nối Google
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -29,6 +31,11 @@ const Account = () => {
 
     const handleSave = () => {
         alert('Profile updated successfully!');
+    };
+
+    const handleGoogleConnect = () => {
+        // Giả lập kết nối Google
+        setIsGoogleConnected(!isGoogleConnected);
     };
 
     return (
@@ -54,6 +61,34 @@ const Account = () => {
                                 />
                             </Form.Label>
                         </Form.Group>
+                    </div>
+
+                    {/* Trạng thái kết nối Google */}
+                    <div className="google-connect-status d-flex align-items-center justify-content-around">
+                        <div className="d-flex align-items-center">
+                            <img
+                                src={require('../../assets/images/google_icon.png')}
+                                alt="google-icon"
+                                width="40"
+                                className="rounded-circle mb-3"
+                            />
+                            <span style={{ paddingLeft: "20px", paddingBottom: "10px" }}>Google</span>
+                        </div>
+                        <Button
+                            variant="outline-secondary"
+                            className="d-flex align-items-center"
+                            onClick={handleGoogleConnect}
+                            disabled={isGoogleConnected} // Disable nếu đã liên kết
+                        >
+                            {isGoogleConnected ? (
+                                <span className="text-success">Đã liên kết</span>
+                            ) : (
+                                <>
+                                    <FaEdit className="me-1" style={{ color: "red" }} />
+                                    <span style={{ color: "red" }}>Liên kết</span>
+                                </>
+                            )}
+                        </Button>
                     </div>
                 </Col>
 

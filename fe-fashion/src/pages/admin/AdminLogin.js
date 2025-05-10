@@ -17,29 +17,34 @@ const AdminLogin = () => {
     }
   }, [navigate]);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setError('');
-    setLoading(true);
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  setError('');
+  setLoading(true);
 
-    // Giả lập đăng nhập (thay thế bằng API thực tế sau)
-    if (username === 'admin' && password === 'admin123') {
-      // Lưu token vào localStorage (hoặc có thể dùng Redux)
-      localStorage.setItem('adminToken', 'admin-token-example');
-      localStorage.setItem('adminUser', JSON.stringify({
-        name: 'Admin User',
-        role: 'Super Admin'
-      }));
-      
-      // Chuyển hướng đến dashboard sau khi đăng nhập
-      setTimeout(() => {
-        navigate('/admin/dashboard');
-      }, 1000);
+  try {
+    const response = await fetch('https://localhost:7123/api/User/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: username.includes('@') ? username : '', phoneNumber: username.includes('@') ? '' : username, password })
+    });
+
+    const data = await response.json();
+
+    if (response.ok) {
+      localStorage.setItem('adminToken', data.accessToken);
+      localStorage.setItem('adminUser', JSON.stringify(data));
+      navigate('/admin/dashboard');
     } else {
-      setLoading(false);
-      setError('Tên đăng nhập hoặc mật khẩu không đúng!');
+      setError(data.message || 'Đăng nhập thất bại!');
     }
-  };
+  } catch (error) {
+    setError('Có lỗi xảy ra, vui lòng thử lại!');
+    console.error('❌ Error logging in:', error);
+  }
+
+  setLoading(false);
+};
 
   return (
     <div className="admin-login-container">
@@ -70,7 +75,7 @@ const AdminLogin = () => {
               <div className="form-group">
                 <label htmlFor="username">Tên đăng nhập</label>
                 <div className="input-with-icon">
-                  <i className="fas fa-user"></i>
+                 
                   <input
                     type="text"
                     id="username"
@@ -85,7 +90,6 @@ const AdminLogin = () => {
               <div className="form-group">
                 <label htmlFor="password">Mật khẩu</label>
                 <div className="input-with-icon">
-                  <i className="fas fa-lock"></i>
                   <input
                     type="password"
                     id="password"

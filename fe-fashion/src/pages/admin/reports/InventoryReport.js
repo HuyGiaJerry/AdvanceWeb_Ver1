@@ -59,7 +59,7 @@ const InventoryReport = () => {
                 <option value="year">Năm nay</option>
               </select>
             </div>
-            <button className="download-btn"><FaDownload /> Xuất báo cáo</button>
+            {/* <button className="download-btn"><FaDownload /> Xuất báo cáo</button> */}
           </div>
         </div>
         

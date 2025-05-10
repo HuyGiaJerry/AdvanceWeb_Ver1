@@ -47,7 +47,7 @@ const Sidebar = () => {
           <li className="menu-dropdown">
             <span><FaShoppingCart /> Quản lý bán hàng</span>
             <ul className="submenu">
-              <li><Link to="/admin/sales">Theo dõi doanh thu</Link></li>
+              {/* <li><Link to="/admin/sales">Theo dõi doanh thu</Link></li> */}
               <li><Link to="/admin/orders">Quản lý đơn hàng</Link></li>
               <li><Link to="/admin/promotions">Quản lý khuyến mãi</Link></li>
             </ul>

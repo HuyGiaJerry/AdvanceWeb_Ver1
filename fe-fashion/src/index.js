@@ -14,7 +14,7 @@ root.render(
 
   <Provider store={store}>
     <App />
-    <ToastContainer position="top-right" autoClose={4000} />
+    <ToastContainer position="top-right" autoClose={3000} />
   </Provider>
 
 );

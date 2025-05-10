@@ -4,7 +4,7 @@ import { FaUndo, FaRedo, FaBold, FaItalic, FaUnderline, FaStrikethrough,
   FaAlignLeft, FaAlignCenter, FaAlignRight, FaAlignJustify, 
   FaListUl, FaListOl, FaLink, FaUpload, FaTrash, FaPlus } from 'react-icons/fa';
 import '../../../assets/styles/Forms.scss';
-
+import { addProduct } from '../../../services/test';
 const ProductForm = ({ product = {}, categories = [], onSubmit, formType = 'create' }) => {
   const navigate = useNavigate();
   const fileInputRef = useRef(null);
@@ -39,29 +39,127 @@ const ProductForm = ({ product = {}, categories = [], onSubmit, formType = 'crea
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    
-    // Prepare the submission data with all related entities
-    const submissionData = {
-      product: formData,
-      colors: colors,
-      variants: variants,
-      colorImages: colorImages
-    };
-    
-    console.log("Submitting product data:", submissionData);
-    onSubmit(submissionData);
+const handleSubmit = (e) => {
+  e.preventDefault();
+  
+  // Prepare the submission data with all related entities
+  const submissionData = {
+    product: formData,
+    colors: colors,
+    variants: variants,
+    colorImages: colorImages
   };
+  
+  try {
+    // Gọi hàm addProduct và nhận về sản phẩm mới đã được tạo
+    const newProduct = addProduct(submissionData);
+    if (!validateForm()) return;
+    console.log("Sản phẩm mới đã được tạo:", newProduct);
+    
+    // Tạo sự kiện để thông báo cho ProductList biết có sản phẩm mới
+    const productCreatedEvent = new CustomEvent('productCreated', {
+      detail: { product: newProduct }
+    });
+    window.dispatchEvent(productCreatedEvent);
+    
+    // Nếu onSubmit được truyền từ component cha, gọi nó
+    if (onSubmit) {
+      onSubmit(submissionData);
+    }
+    
+    // Chuyển hướng về trang danh sách sản phẩm
+    navigate('/admin/products');
+  } catch (error) {
+    console.error("Lỗi khi tạo sản phẩm:", error);
+    alert("Tạo sản phẩm thành công!");
+  }
+};
+const validateForm = () => {
+  // Kiểm tra form chính
+  if (!formData.name || !formData.base_price || isNaN(formData.base_price)) {
+    alert("Tên sản phẩm và giá gốc là bắt buộc.");
+    return false;
+  }
+
+  // Giá khuyến mãi (nếu có) phải là số và không lớn hơn giá gốc
+  if (formData.discount_price) {
+    if (isNaN(formData.discount_price)) {
+      alert("Giá khuyến mãi không hợp lệ.");
+      return false;
+    }
+    if (parseFloat(formData.discount_price) >= parseFloat(formData.base_price)) {
+      alert("Giá khuyến mãi phải nhỏ hơn giá gốc.");
+      return false;
+    }
+  }
+
+  // // Kiểm tra hình ảnh chung
+  // if (!previewImages.some(img => img.colorIndex === -1)) {
+  //   alert("Bạn cần tải lên ít nhất một hình ảnh chung cho sản phẩm.");
+  //   return false;
+  // }
+
+  // Kiểm tra từng màu
+  for (let i = 0; i < colors.length; i++) {
+    const color = colors[i];
+    if (!color.color_name || !color.color_sku) {
+      alert(`Vui lòng nhập đầy đủ thông tin màu sắc #${i + 1}`);
+      return false;
+    }
+
+    // Kiểm tra ảnh của màu
+    const colorImages = previewImages.filter(img => img.colorIndex === i);
+    if (colorImages.length === 0) {
+      alert(`Vui lòng thêm ít nhất một ảnh cho màu sắc "${color.color_name || 'Không tên'}"`);
+      return false;
+    }
+  }
+
+  // Kiểm tra biến thể
+  for (let i = 0; i < variants.length; i++) {
+    const variant = variants[i];
+    if (!variant.size || variant.color_id === "" || variant.stock_quantity === "" || !variant.variant_sku) {
+      alert(`Vui lòng điền đầy đủ thông tin biến thể #${i + 1}`);
+      return false;
+    }
+    if (isNaN(variant.stock_quantity) || variant.stock_quantity < 0) {
+      alert(`Số lượng kho của biến thể #${i + 1} phải là số không âm.`);
+      return false;
+    }
+  }
+const skuRegex = /^PROD\d{3}(-[\p{L}]+){0,2}$/u;
+  const allSkus = new Set();
+
+const checkAndAddSku = (sku) => {
+  if (!skuRegex.test(sku)) {
+    alert(`SKU không đúng định dạng (VD: PROD001 hoặc PROD001-ĐEN-L): ${sku}`);
+    return false;
+  }
+  if (allSkus.has(sku)) {
+    alert(`SKU bị trùng: ${sku}`);
+    return false;
+  }
+  allSkus.add(sku);
+  return true;
+};
+
+
+
+
+  for (let c of colors) {
+    if (!checkAndAddSku(c.color_sku)) return false;
+  }
+  for (let v of variants) {
+    if (!checkAndAddSku(v.variant_sku)) return false;
+  }
+
+  return true;
+};
 
   const handleDiscard = () => {
     navigate('/admin/products');
   };
 
-  const handleSaveDraft = () => {
-    // Save as draft logic
-    console.log('Saving draft:', formData);
-  };
 
   // Handle file selection for image uploads
   const handleBrowseClick = (colorIndex = -1) => {
@@ -182,13 +280,13 @@ const ProductForm = ({ product = {}, categories = [], onSubmit, formType = 'crea
     <div className="product-form-container">
       <form onSubmit={handleSubmit}>
         <div className="product-form-header">
-          <div>
-            <h1>{formType === 'create' ? 'Thêm sản phẩm mới' : 'Cập nhật sản phẩm'}</h1>
-            <p>Quản lý thông tin chi tiết sản phẩm</p>
-          </div>
+      <div className="m-40">
+  <h1 className="text-white">{formType === 'create' ? 'Thêm sản phẩm mới' : 'Cập nhật sản phẩm'}</h1>
+  <p className="text-white">Quản lý thông tin chi tiết sản phẩm</p>
+</div>
           <div className="header-actions">
             <button type="button" className="discard-btn" onClick={handleDiscard}>Hủy bỏ</button>
-            <button type="button" className="save-draft-btn" onClick={handleSaveDraft}>Lưu nháp</button>
+            {/* <button type="button" className="save-draft-btn" onClick={handleSaveDraft}>Lưu nháp</button> */}
             <button type="submit" className="publish-btn">
               {formType === 'create' ? 'Tạo sản phẩm' : 'Cập nhật sản phẩm'}
             </button>
@@ -283,7 +381,7 @@ const ProductForm = ({ product = {}, categories = [], onSubmit, formType = 'crea
               ></textarea>
             </div>
 
-            {/* Product Images */}
+            {/* Product Images
             <div className="form-section">
               <h2>Hình ảnh sản phẩm chung</h2>
               <div className="image-upload-area">
@@ -323,7 +421,7 @@ const ProductForm = ({ product = {}, categories = [], onSubmit, formType = 'crea
                   </div>
                 )}
               </div>
-            </div>
+            </div> */}
 
             {/* Pricing Information */}
             <div className="form-section">

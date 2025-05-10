@@ -69,16 +69,21 @@ const InventoryList = () => {
  
       <div className="inventory-list">
         <div className="page-header">
-          <h1>Quản lý tồn kho</h1>
+           <h1 style={{ fontSize: "24px", fontWeight: "600", color: "#333", margin: "20px" }}>
+        Quản lý tồn kho
+      </h1>
+        
           <div className="header-actions">
             <div className="search-bar">
-              <FaSearch />
+             
               <input
                 type="text"
                 placeholder="Tìm kiếm sản phẩm..."
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
               />
+             <FaSearch />
+
             </div>
             <div className="filter-dropdown">
               <FaFilter />
@@ -120,8 +125,11 @@ const InventoryList = () => {
                   {item.status}
                 </span>
               ),
+              
             }))}
             onDelete={() => {}}
+              showActions={false}
+        showAddButton={false}
             customAction={(id) => (
               <button
                 className="adjust-btn"
