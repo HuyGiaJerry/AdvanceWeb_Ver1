@@ -8,10 +8,12 @@ namespace BE_Fashion.Repositories
     public class ProductRepository : IProductRepository
     {
         private readonly DbtestContext _context;
+        private readonly ILogger<IProductRepository> _logger;
 
-        public ProductRepository(DbtestContext context)
+        public ProductRepository(DbtestContext context, ILogger<IProductRepository> logger)
         {
             _context = context;
+            _logger = logger;
         }
         public async Task<Product?> GetByIdAsync(int id)
         {
@@ -23,7 +25,7 @@ namespace BE_Fashion.Repositories
         }
         public async Task<int> GetTotalPagesAsync(int pageSize)
         {
-            var totalCount = await _context.Products.CountAsync(); // get total product
+            var totalCount = await _context.Products.CountAsync(); // get total productx
             return (int)Math.Ceiling((double)totalCount / pageSize); // calculator page size
         }
         // Get all products
@@ -224,6 +226,22 @@ namespace BE_Fashion.Repositories
             }
 
             return subCategoryIds;
+        }
+        public async Task<IEnumerable<Product>> GetAllAsync(string? searchTerm = null)
+        {
+            var query = _context.Products
+                            .Include(p => p.ProductColors)
+                                .ThenInclude(pc => pc.ProductColorImages)
+                            .AsQueryable();
+
+            if (!string.IsNullOrWhiteSpace(searchTerm))
+            {
+                query = query.Where(p => p.Name != null && p.Name.ToLower().Contains(searchTerm.ToLower()));
+            }
+
+            var result = await query.OrderBy(p => p.ProductId).ToListAsync();
+                _logger.LogInformation("Lấy được {Count} sản phẩm với searchTerm: {SearchTerm}", result.Count, searchTerm);
+            return result;
         }
     }
 }

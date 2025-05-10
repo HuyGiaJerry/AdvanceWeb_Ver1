@@ -22,5 +22,6 @@ namespace BE_Fashion.Repositories
                         List<string>? colors,
                         List<string>? sizes
                         );
+        Task<IEnumerable<Product>> GetAllAsync(string? searchTerm = null);
     }
 }

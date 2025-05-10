@@ -29,6 +29,8 @@ builder.Services.AddSingleton<IConnectionMultiplexer>(multiplexer);
 
 
 builder.Services.AddSingleton<IConnectionMultiplexer>(ConnectionMultiplexer.Connect(redisConnectionString));
+// IHttpContext
+builder.Services.AddHttpContextAccessor();
 
 builder.Services.AddControllers()
     .AddJsonOptions(options =>
@@ -71,6 +73,7 @@ builder.Services.AddScoped<IRefreshTokenRepository, RefreshTokenRepository>();
 builder.Services.AddScoped<IProductColorService, ProductColorService>();
 builder.Services.AddScoped<ICategoryService, CategoryService>();
 builder.Services.AddScoped<IRedisCartService, RedisCartService>();
+builder.Services.AddScoped<VnPayService>();
 builder.Services.AddAutoMapper(typeof(ProductProfile));
 
 
