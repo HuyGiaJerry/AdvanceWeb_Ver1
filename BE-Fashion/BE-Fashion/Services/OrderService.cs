@@ -29,7 +29,7 @@ namespace BE_Fashion.Services
             }
 
             var orderGuid = Guid.NewGuid();
-            var orderIdString = orderGuid.ToString();
+            
 
             // Lấy giỏ hàng từ Redis
             var cartItems = await _redisCartService.GetCartAsync(request.UserId.Value);
@@ -41,7 +41,7 @@ namespace BE_Fashion.Services
             // Tạo đơn hàng
             var order = new Order
             {
-                OrderId = Guid.Parse(orderIdString),
+                OrderId = orderGuid,
                 UserId = request.UserId.Value,
                 CustomerName = request.CustomerName,
                 CustomerEmail = request.CustomerEmail,
@@ -55,7 +55,7 @@ namespace BE_Fashion.Services
 
             var items = cartItems.Select(i => new OrderItem
             {
-                OrderId = Guid.Parse(orderIdString),
+                OrderId = orderGuid,
                 VariantId = i.VariantId,
                 Quantity = i.Quantity,
                 UnitPrice = i.Price,
@@ -64,7 +64,7 @@ namespace BE_Fashion.Services
 
             var payment = new Payment
             {
-                OrderId = Guid.Parse(orderIdString),
+                OrderId = orderGuid,
                 Amount = total,
                 Status = "pending",
                 PaymentMethod = "COD",
