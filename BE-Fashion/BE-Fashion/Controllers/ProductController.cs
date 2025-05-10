@@ -47,22 +47,26 @@ namespace BE_Fashion.Controllers
             }
             return Ok(productDetail);
         }
-        [HttpGet("filter")]
+        [HttpPost("filter")]
         public async Task<IActionResult> GetFilteredProducts(
-                    [FromQuery] List<PriceRangeDto> priceRanges,
-                    [FromQuery] List<int>? categoryIds,
-                    [FromQuery] List<string>? colors,
-                    [FromQuery] List<string>? sizes)
+                    [FromBody] FilterRequestDto filterRequest)
         {
-            _logger.LogInformation("Received priceRanges: {@PriceRanges}", priceRanges);
+            _logger.LogInformation("Filtering products with price range from {MinPrice} to {MaxPrice}",
+     filterRequest?.PriceRanges?.FirstOrDefault()?.MinPrice,
+     filterRequest?.PriceRanges?.FirstOrDefault()?.MaxPrice);
+
             // Kiểm tra khoảng giá
-            if (priceRanges?.Any(r => r.MinPrice > r.MaxPrice) == true)
+            if (filterRequest?.PriceRanges?.Any(r => r.MinPrice > r.MaxPrice) == true)
             {
                 return BadRequest("MinPrice phải nhỏ hơn hoặc bằng MaxPrice.");
             }
 
             var products = await _productService.GetFilteredProductsAsync(
-                priceRanges, categoryIds, colors, sizes);
+                filterRequest?.PriceRanges,
+                filterRequest?.CategoryIds,
+                filterRequest?.Colors,
+                filterRequest?.Sizes
+            );
 
             if (!products.Any())
             {

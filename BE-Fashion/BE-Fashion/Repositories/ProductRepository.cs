@@ -123,10 +123,10 @@ namespace BE_Fashion.Repositories
         }
 
         public async Task<IEnumerable<Product>> GetFilteredProductsAsync(
-            List<PriceRangeDto>? priceRanges,
-            List<int>? categoryIds,
-            List<string>? colors,
-            List<string>? sizes)
+    List<PriceRangeDto>? priceRanges,
+    List<int>? categoryIds,
+    List<string>? colors,
+    List<string>? sizes)
         {
             var query = _context.Products
                 .Include(p => p.ProductColors)
@@ -136,19 +136,18 @@ namespace BE_Fashion.Repositories
                     .ThenInclude(v => v.Color)
                 .AsQueryable();
 
-
             // Lọc theo khoảng giá
-            var predicate = PredicateBuilder.New<Product>(p => true);
-
             if (priceRanges?.Any() == true)
             {
+                var pricePredicate = PredicateBuilder.New<Product>(false);
                 foreach (var range in priceRanges)
                 {
-                    predicate = predicate.And(p => p.BasePrice >= range.MinPrice && p.BasePrice <= range.MaxPrice);
+                    pricePredicate = pricePredicate.Or(p =>
+                        p.BasePrice >= range.MinPrice && p.BasePrice <= range.MaxPrice);
                 }
+                query = query.Where(pricePredicate);
             }
 
-            query = query.Where(predicate);
             // Lọc theo danh mục (bao gồm danh mục con)
             if (categoryIds?.Any() == true)
             {
@@ -180,9 +179,8 @@ namespace BE_Fashion.Repositories
                     ProductId = p.ProductId,
                     Name = p.Name,
                     BasePrice = p.BasePrice,
-                    DiscountPrice = p.DiscountPrice ?? 0, // Xử lý DiscountPrice nullable
+                    DiscountPrice = p.DiscountPrice ?? 0,
                     ProductColors = p.ProductColors
-                        .Where(c => colors == null || colors.Contains(c.ColorName))
                         .Select(c => new ProductColor
                         {
                             ColorId = c.ColorId,
@@ -192,7 +190,6 @@ namespace BE_Fashion.Repositories
                                 .ToList()
                         }).ToList(),
                     ProductVariants = p.ProductVariants
-                        .Where(v => sizes == null || sizes.Contains(v.Size))
                         .Select(v => new ProductVariant
                         {
                             VariantId = v.VariantId,
@@ -202,13 +199,10 @@ namespace BE_Fashion.Repositories
                         }).ToList()
                 })
                 .ToListAsync();
-            foreach (var product in filteredProducts)
-            {
-                Console.WriteLine($"ProductId: {product.ProductId}, BasePrice: {product.BasePrice}");
-            }
 
             return filteredProducts ?? Enumerable.Empty<Product>();
         }
+
         private async Task<List<int>> GetSubCategoryIdsAsync(int categoryId)
         {
             var subCategoryIds = new List<int>();
