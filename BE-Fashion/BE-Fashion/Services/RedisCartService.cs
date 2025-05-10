@@ -56,6 +56,10 @@ public class RedisCartService : IRedisCartService
 
     public async Task AddOrUpdateItemAsync(int userId, CartItemDto item)
     {
+        if (item.Quantity <= 0)
+        {
+            throw new InvalidOperationException("Số lượng sản phẩm phải lớn hơn 0.");
+        }
         var lockAcquired = await AcquireLockAsync(userId);
         if (!lockAcquired)
         {

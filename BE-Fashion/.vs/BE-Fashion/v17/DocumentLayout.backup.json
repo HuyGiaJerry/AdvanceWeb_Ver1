@@ -3,6 +3,26 @@
   "WorkspaceRootPath": "D:\\Web\\ProjectWeb\\BE-Fashion\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|d:\\web\\projectweb\\be-fashion\\be-fashion\\services\\rediscartservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|solutionrelative:be-fashion\\services\\rediscartservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|d:\\web\\projectweb\\be-fashion\\be-fashion\\repositories\\productrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|solutionrelative:be-fashion\\repositories\\productrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|d:\\web\\projectweb\\be-fashion\\be-fashion\\mappings\\productprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|solutionrelative:be-fashion\\mappings\\productprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|d:\\web\\projectweb\\be-fashion\\be-fashion\\mappings\\categoryprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|solutionrelative:be-fashion\\mappings\\categoryprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|d:\\web\\projectweb\\be-fashion\\be-fashion\\dtos\\categorydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|solutionrelative:be-fashion\\dtos\\categorydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|d:\\web\\projectweb\\be-fashion\\be-fashion\\repositories\\categoryrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|solutionrelative:be-fashion\\repositories\\categoryrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -27,20 +47,8 @@
       "RelativeMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|solutionrelative:be-fashion\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|d:\\web\\projectweb\\be-fashion\\be-fashion\\mappings\\cartprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|solutionrelative:be-fashion\\mappings\\cartprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|d:\\web\\projectweb\\be-fashion\\be-fashion\\models\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|solutionrelative:be-fashion\\models\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|d:\\web\\projectweb\\be-fashion\\be-fashion\\dtos\\categorydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|solutionrelative:be-fashion\\dtos\\categorydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|d:\\web\\projectweb\\be-fashion\\be-fashion\\mappings\\categoryprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C4A5D6A3-8E00-471D-96EE-1BF33FF6DD1E}|BE-Fashion\\BE-Fashion.csproj|solutionrelative:be-fashion\\mappings\\categoryprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -50,11 +58,50 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 0,
+              "Title": "RedisCartService.cs",
+              "DocumentMoniker": "D:\\Web\\ProjectWeb\\BE-Fashion\\BE-Fashion\\Services\\RedisCartService.cs",
+              "RelativeDocumentMoniker": "BE-Fashion\\Services\\RedisCartService.cs",
+              "ToolTip": "D:\\Web\\ProjectWeb\\BE-Fashion\\BE-Fashion\\Services\\RedisCartService.cs",
+              "RelativeToolTip": "BE-Fashion\\Services\\RedisCartService.cs",
+              "ViewState": "AgIAAC0AAAAAAAAAAAAywD0AAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-10T11:03:17.989Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ProductRepository.cs",
+              "DocumentMoniker": "D:\\Web\\ProjectWeb\\BE-Fashion\\BE-Fashion\\Repositories\\ProductRepository.cs",
+              "RelativeDocumentMoniker": "BE-Fashion\\Repositories\\ProductRepository.cs",
+              "ToolTip": "D:\\Web\\ProjectWeb\\BE-Fashion\\BE-Fashion\\Repositories\\ProductRepository.cs",
+              "RelativeToolTip": "BE-Fashion\\Repositories\\ProductRepository.cs",
+              "ViewState": "AgIAABwAAAAAAAAAAAAYwD0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-10T11:00:56.748Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ProductProfile.cs",
+              "DocumentMoniker": "D:\\Web\\ProjectWeb\\BE-Fashion\\BE-Fashion\\Mappings\\ProductProfile.cs",
+              "RelativeDocumentMoniker": "BE-Fashion\\Mappings\\ProductProfile.cs",
+              "ToolTip": "D:\\Web\\ProjectWeb\\BE-Fashion\\BE-Fashion\\Mappings\\ProductProfile.cs",
+              "RelativeToolTip": "BE-Fashion\\Mappings\\ProductProfile.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAA+AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-10T11:00:01.868Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
               "Title": "CategoryController.cs",
               "DocumentMoniker": "D:\\Web\\ProjectWeb\\BE-Fashion\\BE-Fashion\\Controllers\\CategoryController.cs",
               "RelativeDocumentMoniker": "BE-Fashion\\Controllers\\CategoryController.cs",
@@ -62,12 +109,11 @@
               "RelativeToolTip": "BE-Fashion\\Controllers\\CategoryController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-10T10:33:33.626Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-10T10:33:33.626Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 8,
               "Title": "ICategoryService.cs",
               "DocumentMoniker": "D:\\Web\\ProjectWeb\\BE-Fashion\\BE-Fashion\\Services\\ICategoryService.cs",
               "RelativeDocumentMoniker": "BE-Fashion\\Services\\ICategoryService.cs",
@@ -75,12 +121,11 @@
               "RelativeToolTip": "BE-Fashion\\Services\\ICategoryService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-10T10:26:40.734Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-10T10:26:40.734Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 7,
               "Title": "CategoryService.cs",
               "DocumentMoniker": "D:\\Web\\ProjectWeb\\BE-Fashion\\BE-Fashion\\Services\\CategoryService.cs",
               "RelativeDocumentMoniker": "BE-Fashion\\Services\\CategoryService.cs",
@@ -88,25 +133,24 @@
               "RelativeToolTip": "BE-Fashion\\Services\\CategoryService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-10T10:26:20.76Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-10T10:26:20.76Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "CartProfile.cs",
-              "DocumentMoniker": "D:\\Web\\ProjectWeb\\BE-Fashion\\BE-Fashion\\Mappings\\CartProfile.cs",
-              "RelativeDocumentMoniker": "BE-Fashion\\Mappings\\CartProfile.cs",
-              "ToolTip": "D:\\Web\\ProjectWeb\\BE-Fashion\\BE-Fashion\\Mappings\\CartProfile.cs",
-              "RelativeToolTip": "BE-Fashion\\Mappings\\CartProfile.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAJAAAAAAAAAA==",
+              "DocumentIndex": 3,
+              "Title": "CategoryProfile.cs",
+              "DocumentMoniker": "D:\\Web\\ProjectWeb\\BE-Fashion\\BE-Fashion\\Mappings\\CategoryProfile.cs",
+              "RelativeDocumentMoniker": "BE-Fashion\\Mappings\\CategoryProfile.cs",
+              "ToolTip": "D:\\Web\\ProjectWeb\\BE-Fashion\\BE-Fashion\\Mappings\\CategoryProfile.cs",
+              "RelativeToolTip": "BE-Fashion\\Mappings\\CategoryProfile.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-10T10:18:52.635Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 11,
               "Title": "Category.cs",
               "DocumentMoniker": "D:\\Web\\ProjectWeb\\BE-Fashion\\BE-Fashion\\Models\\Category.cs",
               "RelativeDocumentMoniker": "BE-Fashion\\Models\\Category.cs",
@@ -114,12 +158,11 @@
               "RelativeToolTip": "BE-Fashion\\Models\\Category.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-10T10:18:08.669Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-10T10:18:08.669Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 4,
               "Title": "CategoryDto.cs",
               "DocumentMoniker": "D:\\Web\\ProjectWeb\\BE-Fashion\\BE-Fashion\\DTOs\\CategoryDto.cs",
               "RelativeDocumentMoniker": "BE-Fashion\\DTOs\\CategoryDto.cs",
@@ -132,20 +175,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "CategoryProfile.cs",
-              "DocumentMoniker": "D:\\Web\\ProjectWeb\\BE-Fashion\\BE-Fashion\\Mappings\\CategoryProfile.cs",
-              "RelativeDocumentMoniker": "BE-Fashion\\Mappings\\CategoryProfile.cs",
-              "ToolTip": "D:\\Web\\ProjectWeb\\BE-Fashion\\BE-Fashion\\Mappings\\CategoryProfile.cs",
-              "RelativeToolTip": "BE-Fashion\\Mappings\\CategoryProfile.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-10T10:17:33.607Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 6,
               "Title": "ICategoryRepository.cs",
               "DocumentMoniker": "D:\\Web\\ProjectWeb\\BE-Fashion\\BE-Fashion\\Repositories\\ICategoryRepository.cs",
               "RelativeDocumentMoniker": "BE-Fashion\\Repositories\\ICategoryRepository.cs",
@@ -158,20 +188,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 5,
               "Title": "CategoryRepository.cs",
               "DocumentMoniker": "D:\\Web\\ProjectWeb\\BE-Fashion\\BE-Fashion\\Repositories\\CategoryRepository.cs",
               "RelativeDocumentMoniker": "BE-Fashion\\Repositories\\CategoryRepository.cs",
-              "ToolTip": "D:\\Web\\ProjectWeb\\BE-Fashion\\BE-Fashion\\Repositories\\CategoryRepository.cs*",
-              "RelativeToolTip": "BE-Fashion\\Repositories\\CategoryRepository.cs*",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAmAAAAAAAAAA==",
+              "ToolTip": "D:\\Web\\ProjectWeb\\BE-Fashion\\BE-Fashion\\Repositories\\CategoryRepository.cs",
+              "RelativeToolTip": "BE-Fashion\\Repositories\\CategoryRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-10T10:14:27.444Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 10,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\Web\\ProjectWeb\\BE-Fashion\\BE-Fashion\\Program.cs",
               "RelativeDocumentMoniker": "BE-Fashion\\Program.cs",
@@ -179,8 +209,7 @@
               "RelativeToolTip": "BE-Fashion\\Program.cs",
               "ViewState": "AgIAAA4AAAAAAAAAAAAAAEcAAABAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-10T07:35:57.438Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-10T07:35:57.438Z"
             }
           ]
         }
