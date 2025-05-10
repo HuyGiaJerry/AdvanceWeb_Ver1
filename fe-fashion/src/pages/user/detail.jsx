@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import dataProduct from "../../services/test";
+import productService from "../../services/productService";
 import "./detail.scss";
 
 const Detail = () => {
     const { id } = useParams(); // Lấy id từ URL
-    const product = dataProduct.find((item) => item.productId === parseInt(id)); // Tìm sản phẩm theo id
-
-    // Trạng thái
+    const [product, setProduct] = useState(null); // Trạng thái lưu chi tiết sản phẩm
     const [mainImageIndex, setMainImageIndex] = useState(0); // Chỉ số ảnh chính mặc định
     const [currentColor, setCurrentColor] = useState(null); // Màu hiện tại
     const [colorPick, setColorPick] = useState(""); // Tên màu hiện tại
@@ -15,25 +13,37 @@ const Detail = () => {
     const [selectedSize, setSelectedSize] = useState(""); // Kích thước hiện tại
     const [quantityStock, setQuantityStock] = useState(0); // Số lượng tồn kho hiện tại
 
-    // Khi trang được tải lần đầu, đặt màu và size mặc định
+    // Gọi API để lấy chi tiết sản phẩm
     useEffect(() => {
-        if (product && product.colors.length > 0) {
-            const defaultColor = product.colors[0]; // Màu đầu tiên
-            setCurrentColor(defaultColor);
-            setColorPick(defaultColor.colorName);
+        const fetchProduct = async () => {
+            try {
+                const data = await productService.getProductById(id); // Gọi API
+                setProduct(data); // Lưu dữ liệu sản phẩm vào state
 
-            if (defaultColor.variants.length > 0) {
-                const defaultSize = defaultColor.variants[0]; // Size đầu tiên
-                setSelectedSize(defaultSize.size);
-                setQuantityStock(defaultSize.stockQuantity); // Số lượng tồn kho của size đầu tiên
+                // Đặt màu và size mặc định
+                if (data.colors.length > 0) {
+                    const defaultColor = data.colors[0]; // Màu đầu tiên
+                    setCurrentColor(defaultColor);
+                    setColorPick(defaultColor.colorName);
+
+                    if (defaultColor.variants.length > 0) {
+                        const defaultSize = defaultColor.variants[0]; // Size đầu tiên
+                        setSelectedSize(defaultSize.size);
+                        setQuantityStock(defaultSize.stockQuantity); // Số lượng tồn kho của size đầu tiên
+                    }
+                }
+            } catch (error) {
+                console.error("Lỗi khi lấy chi tiết sản phẩm:", error);
             }
-        }
-    }, [product]);
+        };
+
+        fetchProduct();
+    }, [id]);
 
     // Lấy danh sách ảnh hiển thị
     const imagesToShow = currentColor
         ? currentColor.images // Nếu đã chọn màu, hiển thị ảnh của màu đó
-        : product.colors.flatMap((color) => color.images); // Nếu chưa chọn, hiển thị tất cả ảnh
+        : product?.colors.flatMap((color) => color.images) || []; // Nếu chưa chọn, hiển thị tất cả ảnh
 
     // Xử lý khi chọn màu
     const handleColorImageClick = (color) => {
@@ -85,11 +95,11 @@ const Detail = () => {
     };
 
     if (!product) {
-        return <div className="container" style={{ marginTop: "100px" }}>Product not found!</div>;
+        return <div className="container" style={{ marginTop: "100px" }}>Loading...</div>;
     }
 
     return (
-        <div className="container" style={{ marginTop: "100px" }}>
+        <div className="container" style={{ marginTop: "100px", marginBottom: "150px" }}>
             <div className="row">
                 {/* Sidebar tất cả hình ảnh sp bên trái */}
                 <div className="col-lg-2 col-md-3 col-sm-12 mb-3">
@@ -97,7 +107,7 @@ const Detail = () => {
                         {imagesToShow.map((image, index) => (
                             <img
                                 key={index}
-                                src={require(`../../assets/images/${image.imageUrl}`)}
+                                src={`https://localhost:7123${image.imageUrl}`}
                                 alt={`Thumbnail ${index + 1}`}
                                 className={`img-thumbnail mb-2 w-100 ${mainImageIndex === index ? "active-thumbnail" : ""}`}
                                 style={{ maxWidth: "60px", height: "auto" }}
@@ -114,7 +124,7 @@ const Detail = () => {
                             &#8249;
                         </button>
                         <img
-                            src={require(`../../assets/images/${imagesToShow[mainImageIndex].imageUrl}`)}
+                            src={`https://localhost:7123${imagesToShow[mainImageIndex]?.imageUrl}`}
                             alt="Main Product"
                             className="img-fluid product-main-image"
                         />
@@ -144,7 +154,7 @@ const Detail = () => {
                         {product.colors.map((color, index) => (
                             <div key={index} className="text-center me-2">
                                 <img
-                                    src={require(`../../assets/images/${color.images[0].imageUrl}`)}
+                                    src={`https://localhost:7123${color.images[0]?.imageUrl}`}
                                     alt={`Color ${color.colorName}`}
                                     className={`img-thumbnail ${currentColor?.colorId === color.colorId ? "active-thumbnail" : ""}`}
                                     style={{ maxWidth: "60px", height: "auto" }}

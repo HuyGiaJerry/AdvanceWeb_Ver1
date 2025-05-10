@@ -5,10 +5,15 @@ let persistedState;
 try {
     persistedState = JSON.parse(localStorage.getItem('authState')) || {
         auth: false,
-        userId: '',
-        userName: '',
-        accessToken: '',
-        refreshToken: '',
+        userId: null,
+        email: null,
+        phoneNumber: null,
+        fullName: null,
+        avatarUrl: null,
+        role: null,
+        isGoogleLinked: false,
+        accessToken: null,
+        refreshToken: null,
         cartCount: 0,
         wishlistCount: 0,
     };
@@ -16,12 +21,18 @@ try {
     console.error('Error parsing authState from localStorage:', error);
     persistedState = {
         auth: false,
-        userId: '',
-        userName: '',
-        accessToken: '',
-        refreshToken: '',
+        userId: null,
+        email: null,
+        phoneNumber: null,
+        fullName: null,
+        avatarUrl: null,
+        role: null,
+        isGoogleLinked: false,
+        accessToken: null,
+        refreshToken: null,
         cartCount: 0,
         wishlistCount: 0,
+
     };
 }
 
@@ -33,18 +44,28 @@ const authSlice = createSlice({
     reducers: {
         login: (state, action) => {
             state.auth = true;
-            state.userId = action.payload.userId; // Lưu userId
-            state.userName = action.payload.userName;
-            state.accessToken = action.payload.accessToken; // Lưu accessToken
-            state.refreshToken = action.payload.refreshToken; // Lưu refreshToken
+            state.userId = action.payload.userId;
+            state.email = action.payload.email;
+            state.phoneNumber = action.payload.phoneNumber;
+            state.fullName = action.payload.fullName;
+            state.avatarUrl = action.payload.avatarUrl;
+            state.role = action.payload.role;
+            state.isGoogleLinked = action.payload.isGoogleLinked;
+            state.accessToken = action.payload.accessToken;
+            state.refreshToken = action.payload.refreshToken;
+
         },
         logout: (state) => {
             state.auth = false;
-            state.userId = '';
-            state.userName = '';
-            state.accessToken = '';
-            state.refreshToken = '';
-            // localStorage.removeItem('authState'); // Xóa state khỏi localStorage khi logout
+            state.userId = null;
+            state.email = null;
+            state.phoneNumber = null;
+            state.fullName = null;
+            state.avatarUrl = null;
+            state.role = null;
+            state.isGoogleLinked = false;
+            state.accessToken = null;
+            state.refreshToken = null;
         },
         addToCart: (state) => {
             state.cartCount += 1;
