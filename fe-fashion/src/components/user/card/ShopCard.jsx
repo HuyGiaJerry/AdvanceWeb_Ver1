@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { FaEye, FaHeart, FaShoppingCart } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
-import { addToCart, addToWishlist, login } from "../../../store/store";
+import { addToWishlist, login } from "../../../store/store";
 import { useNavigate } from "react-router-dom";
 import "./ShopCard.scss";
 import dataWishList from "../../../services/sampleDataWishList";
@@ -10,7 +10,6 @@ const ShopCard = ({ id, name, price, images }) => {
     const dispatch = useDispatch();
     const isLoggin = useSelector((state) => state.auth.auth);
     const navigate = useNavigate();
-
     // Trạng thái màu và ảnh đang được chọn
     const [activeColor, setActiveColor] = useState(images[0].colorName); // Màu đầu tiên
     const [activeImage, setActiveImage] = useState(`https://localhost:7123${images[0].imageUrl}`); // Ảnh đầu tiên
@@ -18,13 +17,6 @@ const ShopCard = ({ id, name, price, images }) => {
     const [wishlist, setWishlist] = useState(dataWishList); // Trạng thái danh sách yêu thích
     const isInWishlist = wishlist.some((item) => item.productId === id); // Kiểm tra xem sản phẩm đã có trong danh sách yêu thích chưa
 
-    const handleAddToCart = () => {
-        if (!isLoggin) {
-            dispatch(login());
-        } else {
-            dispatch(addToCart());
-        }
-    };
 
     const handleAddToWishlist = () => {
         if (!isLoggin) {
@@ -71,9 +63,6 @@ const ShopCard = ({ id, name, price, images }) => {
                     <div className="card-hover-overlay">
                         <button className="btn btn-primary" onClick={handleViewDetails}>
                             <FaEye className="icon" />
-                        </button>
-                        <button className="btn btn-success" onClick={handleAddToCart}>
-                            <FaShoppingCart className="icon" />
                         </button>
                     </div>
                 </div>
