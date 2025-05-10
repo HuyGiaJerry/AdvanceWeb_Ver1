@@ -62,6 +62,19 @@ namespace BE_Fashion.Controllers
                 return BadRequest(new { message = ex.Message });
             }
         }
-
+        [HttpPut("{userId}/increase/{variantId}")]
+        public async Task<IActionResult> IncreaseItemQuantity(int userId, int variantId, [FromQuery] int quantity)
+        {
+            try
+            {
+                // Gọi service để tăng số lượng
+                var result = await _redisCartService.IncreaseItemQuantityAsync(userId, variantId, quantity);
+                return Ok(new { message = "Đã tăng số lượng sản phẩm trong giỏ hàng.", result });
+            }
+            catch (InvalidOperationException ex)
+            {
+                return BadRequest(new { message = ex.Message });
+            }
+        }
     }
 }

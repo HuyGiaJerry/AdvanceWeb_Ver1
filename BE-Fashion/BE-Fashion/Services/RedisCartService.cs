@@ -104,6 +104,50 @@ public class RedisCartService : IRedisCartService
         }
     }
 
+    public async Task<CartItemResultDto> IncreaseItemQuantityAsync(int userId, int variantId, int quantityToIncrease)
+    {
+        var lockAcquired = await AcquireLockAsync(userId);
+        if (!lockAcquired)
+        {
+            throw new InvalidOperationException("Giỏ hàng đang được xử lý. Vui lòng thử lại sau.");
+        }
+
+        try
+        {
+            var cart = await GetCartAsync(userId);
+            var item = cart.FirstOrDefault(x => x.VariantId == variantId);
+
+            if (item == null)
+            {
+                throw new InvalidOperationException("Sản phẩm không có trong giỏ hàng.");
+            }
+
+            // Kiểm tra lại số lượng có hợp lệ và đủ tồn kho
+            var stock = await _productRepository.GetStockQuantityAsync(variantId);
+            if (item.Quantity + quantityToIncrease > stock)
+            {
+                throw new InvalidOperationException($"Số lượng yêu cầu vượt quá số lượng tồn kho. Tồn kho hiện tại là {stock}.");
+            }
+
+            // Tăng số lượng sản phẩm
+            item.Quantity += quantityToIncrease;
+
+            // Lưu lại giỏ hàng sau khi thay đổi
+            await SaveCartAsync(userId, cart);
+
+            // Trả về thông tin sản phẩm đã cập nhật
+            return new CartItemResultDto
+            {
+                VariantId = variantId,
+                QuantityInCart = item.Quantity,  // Trả về số lượng mới
+            };
+        }
+        finally
+        {
+            await ReleaseLockAsync(userId);
+        }
+    }
+
 
     public async Task RemoveItemAsync(int userId, int variantId)
     {
