@@ -9,7 +9,7 @@ const Table = ({
   onDelete,
   editUrl,
   createUrl,
-  itemsPerPage = 8,
+  itemsPerPage = 6,
   showActions = true,
   showAddButton = true,
 }) => {

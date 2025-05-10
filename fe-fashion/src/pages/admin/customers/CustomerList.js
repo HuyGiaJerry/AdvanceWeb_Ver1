@@ -4,6 +4,8 @@ import SearchBar from "../../../components/admin/SearchBar";
 import { dataCustomers } from "../../../services/dataCustomers";
 import "../../../assets/styles/ModalCustomer.scss";
 import "../../../assets/styles/SearchBar.scss";
+import { toast } from "react-toastify";
+
 const CustomerList = () => {
   // State để lưu trữ dữ liệu khách hàng gốc
   const [allCustomers, setAllCustomers] = useState([]);
@@ -16,31 +18,43 @@ const CustomerList = () => {
   const [showModal, setShowModal] = useState(false);
 
   // Khởi tạo dữ liệu khách hàng
+// Gọi API để lấy danh sách khách hàng
   useEffect(() => {
-    if (dataCustomers && dataCustomers.length > 0) {
-      const formattedCustomers = dataCustomers.map((customer) => ({
-  id: customer?.userId?.toString() || "N/A",
-  userId: customer?.userId?.toString() || "N/A",
-  fullName: customer?.fullName || "Không có dữ liệu",
-  email: customer?.email || "Không có email",
-  phoneNumber: customer?.phoneNumber || "Không có số điện thoại",
-  isActive: customer?.isActive === 1 ? "✅ Đang hoạt động" : "❌ Bị khóa",
- avatar: customer?.avatarUrl ? (
-  <img
-    src={require(`../../../assets/images/${customer.avatarUrl}`)}
-    alt={customer.fullName}
-    style={{ width: "40px", height: "40px", borderRadius: "50%" }}
-  />
-) : "Không có ảnh"
+    const fetchCustomers = async () => {
+      try {
+        const response = await fetch("https://localhost:7123/api/User/customers");
+        const data = await response.json();
 
-}));
+        if (response.ok) {
+          const formattedCustomers = data.map((customer) => ({
+            id: customer?.userId?.toString() || "N/A",
+            userId: customer?.userId?.toString() || "N/A",
+            fullName: customer?.fullName || "Không có dữ liệu",
+            email: customer?.email || "Không có email",
+            phoneNumber: customer?.phoneNumber || "Không có số điện thoại",
+            isActive: customer?.isActive ? "✅ Đang hoạt động" : "❌ Bị khóa",
+            avatar: customer?.avatarUrl ? (
+              <img
+                src={require(`../../../assets/images/${customer.avatarUrl}`)}
+                alt={customer.fullName}
+                style={{ width: "40px", height: "40px", borderRadius: "50%" }}
+              />
+            ) : "Không có ảnh"
+          }));
 
-      setAllCustomers(formattedCustomers);
-      setFilteredCustomers(formattedCustomers);
-    } else {
-      console.error("Không có dữ liệu khách hàng!");
-    }
+          setAllCustomers(formattedCustomers);
+          setFilteredCustomers(formattedCustomers);
+        } else {
+          console.error("Lỗi khi lấy dữ liệu khách hàng:", data.message);
+        }
+      } catch (error) {
+        console.error("Lỗi kết nối API:", error);
+      }
+    };
+
+    fetchCustomers();
   }, []);
+
 
   // Cập nhật danh sách khách hàng đã lọc mỗi khi searchTerm thay đổi
   useEffect(() => {
@@ -75,16 +89,29 @@ const CustomerList = () => {
     setShowModal(true);
   };
 
-  const handleSaveStatus = (newStatus) => {
-    // Cập nhật trạng thái trong danh sách gốc
-    const updatedCustomers = allCustomers.map((c) =>
-      c.userId === editingCustomer.userId ? { ...c, isActive: newStatus } : c
-    );
-    setAllCustomers(updatedCustomers);
-    // Áp dụng bộ lọc hiện tại
-    filterCustomers();
-    setShowModal(false);
-  };
+const handleSaveStatus = (newStatus) => {
+  // Cập nhật trạng thái trong danh sách gốc
+  const updatedCustomers = allCustomers.map((c) =>
+    c.userId === editingCustomer.userId ? { ...c, isActive: newStatus } : c
+  );
+  setAllCustomers(updatedCustomers);
+
+  // Áp dụng bộ lọc hiện tại
+  filterCustomers();
+
+  // Thông báo thành công
+  toast.success("Cập nhật trạng thái thành công!", {
+    position: "top-right",
+    autoClose: 2000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+  });
+
+  setShowModal(false);
+};
+
 
   const handleDelete = (id) => {
     if (window.confirm("Bạn có chắc chắn muốn xóa khách hàng này?")) {

@@ -8,10 +8,22 @@ import SearchBar from '../../../components/admin/SearchBar';
 import FilterDropdown from '../../../components/admin/FilterDropdown';
 import EditProductModal from "./EditProductModal "; // Import modal component
 import "../../../assets/styles/SearchBar.scss";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 
 const ProductList = () => {
   const navigate = useNavigate();
-  
+
+ 
+const validatePrice = () => {
+  if (minPrice && maxPrice && parseFloat(minPrice) > parseFloat(maxPrice)) {
+    setErrorMessage("Giá tối thiểu không thể lớn hơn giá tối đa!");
+  } else {
+    setErrorMessage(""); // Xóa lỗi nếu hợp lệ
+  }
+};
+
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedProductId, setSelectedProductId] = useState(null);
   
@@ -20,21 +32,35 @@ const ProductList = () => {
   
   // Tải dữ liệu sản phẩm khi component mount
   useEffect(() => {
-    // Chuyển đổi dữ liệu từ dataProduct sang định dạng bảng
-    const formattedProducts = dataProduct.map((product) => ({
-      id: product.productId,
-      product_id: product.productId,
-      name: product.name,
-      sku: product.sku,
-      base_price: product.basePrice,
-      discount_price: product.discountPrice,
-      category_id: product.categoryId,
-      updated_at: product.updatedAt,
-    }));
-    
-    setProducts(formattedProducts);
+    const fetchProducts = async () => {
+      try {
+        const response = await fetch("https://localhost:7123/api/Product/products");
+        const data = await response.json();
+
+        if (response.ok) {
+          const formattedProducts = data.map((product) => ({
+            id: product.productId,
+            name: product.name,
+            base_price: product.basePrice,
+            discount_price: product.discountPrice,
+            images: product.images.map(img => ({
+              color: img.colorName,
+              url: img.imageUrl
+            }))
+          }));
+
+          setProducts(formattedProducts);
+        } else {
+          console.error("Lỗi khi lấy dữ liệu sản phẩm:", data.message);
+        }
+      } catch (error) {
+        console.error("Lỗi kết nối API:", error);
+      }
+    };
+
+    fetchProducts();
   }, []);
-  
+
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('');
   
@@ -46,13 +72,12 @@ const ProductList = () => {
   ];
 
   const columns = [
-    { key: "product_id", name: "ID", sortable: true },
+    { key: "id", name: "ID", sortable: true },
     { key: "name", name: "Tên sản phẩm", sortable: true },
-    { key: "sku", name: "SKU", sortable: true },
+   
     { key: "base_price", name: "Giá gốc", sortable: true },
     { key: "discount_price", name: "Giá khuyến mãi", sortable: true },
-    { key: "category_id", name: "Danh mục ID", sortable: true },
-    { key: "updated_at", name: "Cập nhật lúc", sortable: true },
+   
   ];
 
   const handleRowClick = (id) => {
@@ -63,6 +88,7 @@ const ProductList = () => {
     if (window.confirm("Bạn có chắc chắn muốn xóa sản phẩm này?")) {
       setProducts(products.filter((product) => product.id !== id));
     }
+     toast.success("Xóa sản phẩm thành công!");
   };
 
   const handleEdit = (id) => {
@@ -86,6 +112,8 @@ const ProductList = () => {
     });
 
     setProducts(updatedProducts);
+    
+  toast.success("Cập nhật sản phẩm thành công!");
     console.log("Đã cập nhật sản phẩm:", updatedProductData);
   };
 
@@ -121,33 +149,55 @@ const ProductList = () => {
       window.removeEventListener('productCreated', handleAddNewProduct);
     };
   }, [products]);
+ const [minPrice, setMinPrice] = useState('');
+const [maxPrice, setMaxPrice] = useState('');
+const [errorMessage, setErrorMessage] = useState('');
 
-  const filteredProducts = products.filter((product) => {
-    const matchesSearch = product.name.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchesCategory = selectedCategory ? product.category_id.toString() === selectedCategory : true;
-    return matchesSearch && matchesCategory;
-  });
+
+const filteredProducts = products.filter((product) => {
+  const matchesSearch = product.name.toLowerCase().includes(searchTerm.toLowerCase());
+  const matchesPrice = 
+    (!minPrice || product.base_price >= parseFloat(minPrice)) &&
+    (!maxPrice || product.base_price <= parseFloat(maxPrice));
+  return matchesSearch && matchesPrice;
+});
 
   return (
     <div>
-      <div className="flex justify-between items-center mb-6">
-        <h1 className="text-2xl font-bold">Danh sách sản phẩm</h1>
-      </div>
+       <h1 style={{ fontSize: "24px", fontWeight: "600", color: "#333", margin: "20px" }}>
+        Danh sách sản phẩm
+      </h1>
       
       <div className="search-bar-container">
         <SearchBar
-          placeholder="Tìm kiếm sản phẩm..."
+          placeholder="Tìm kiếm sản phẩm theo tên hoặc ID"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
           style={{ flex: "1", minWidth: "250px" }}
         />
 
-        <FilterDropdown
-          value={selectedCategory}
-          onChange={(e) => setSelectedCategory(e.target.value)}
-          options={categories}
-          style={{ flexShrink: "0", minWidth: "150px" }}
-        />
+        <div className="filter-container">
+  <div className="input-container">
+  <input
+    type="number"
+    placeholder="Giá tối thiểu"
+    className="input-box"
+    value={minPrice}
+    onChange={(e) => setMinPrice(e.target.value)}
+    onBlur={validatePrice}
+  />
+  <input
+    type="number"
+    placeholder="Giá tối đa"
+    className="input-box"
+    value={maxPrice}
+    onChange={(e) => setMaxPrice(e.target.value)}
+    onBlur={validatePrice}
+  />
+</div>
+
+{errorMessage && <p className="error-text">{errorMessage}</p>}
+</div>
       </div>
       
       <Table
@@ -155,7 +205,7 @@ const ProductList = () => {
         data={filteredProducts.map((product) => ({
           ...product,
           onClick: () => handleRowClick(product.id),
-          onEdit: () => handleEdit(product.product_id)
+          onEdit: () => handleEdit(product.id)
         }))}
         onDelete={handleDelete}
         createUrl="/admin/products/create"
