@@ -1,14 +1,14 @@
 import { useState, useEffect } from "react";
 import ShopCard from "../../components/user/card/ShopCard";
-import { sampleDataBrand, sampleDataCategory, sampleDataCollection } from "../../services/sampleDataShop";
-import productService from "../../services/productService"; // Import service để gọi API
+import { sampleDataCategory, sampleDataCollection } from "../../services/sampleDataShop";
+import productService from "../../services/productService";
+import { NavLink } from "react-router-dom";
 import "./main_shop.scss";
 
 const Main_Shop = () => {
     const [products, setProducts] = useState([]); // Trạng thái lưu danh sách sản phẩm
-    const [currentPage, setCurrentPage] = useState(1); // Trạng thái trang hiện tại
-    const itemsPerPage = 6; // Số lượng sản phẩm trên mỗi trang
-
+    const [currentPage, setCurrentPage] = useState(1);
+    const itemsPerPage = 6;
     // Gọi API để lấy danh sách sản phẩm
     useEffect(() => {
         const fetchProducts = async () => {
@@ -127,35 +127,23 @@ const Main_Shop = () => {
             <div className="row">
                 <div className="col-12 text-center my-4">
                     <h1 className="page-title">Fashion</h1>
-                    <p className="page-breadcrumb">Home &gt; Fashion</p>
+                    <p style={{ color: "gray" }}>
+                        <NavLink to="/home" style={{ color: "gray", textDecoration: "none" }}>Home</NavLink> &gt; Shop
+                    </p>
                 </div>
             </div>
 
             <div className="row">
                 {/* Sidebar Filter */}
-                <div className="col-lg-3 col-md-4 col-sm-12 filter-sidebar">
+                <div className="col-lg-3 col-md-4 col-sm-10 filter-sidebar">
                     <div className="filter-section">
                         <h5>Filters</h5>
 
-                        {/* Collections Filter */}
-                        <div className="filter-group">
-                            <div className="filter-topic">Collections</div>
-                            <div className="btn-group-vertical w-100">
-                                {sampleDataCollection.map((collection) => (
-                                    <button
-                                        key={collection.id}
-                                        className="btn btn-outline-secondary btn-sm text-start"
-                                    >
-                                        {collection.name}
-                                    </button>
-                                ))}
-                            </div>
-                        </div>
 
                         {/* Size Filter */}
                         <div className="filter-group">
                             <div className="filter-topic">Size</div>
-                            <div className="list-unstyled">
+                            <div className="list-unstyled-size">
                                 <label>
                                     <input type="checkbox" className="me-2" /> S
                                 </label>
@@ -204,20 +192,6 @@ const Main_Shop = () => {
                             </div>
                         </div>
 
-                        {/* Brands Filter */}
-                        <div className="filter-group">
-                            <div className="filter-topic">Brands</div>
-                            <div className="btn-group-vertical w-100">
-                                {sampleDataBrand.map((brand) => (
-                                    <button
-                                        key={brand.id}
-                                        className="btn btn-outline-secondary btn-sm text-start"
-                                    >
-                                        {brand.name}
-                                    </button>
-                                ))}
-                            </div>
-                        </div>
 
                         {/* Categories Filter */}
                         <div className="filter-group">
