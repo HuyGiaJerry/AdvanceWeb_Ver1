@@ -6,16 +6,18 @@ import { useNavigate } from "react-router-dom";
 import "./ShopCard.scss";
 import dataWishList from "../../../services/sampleDataWishList";
 
-const ShopCard = ({ id, name, price, colors }) => {
+const ShopCard = ({ id, name, price, images }) => {
     const dispatch = useDispatch();
-    const isLoggin = useSelector((state) => state.auth.isLoggin);
+    const isLoggin = useSelector((state) => state.auth.auth);
     const navigate = useNavigate();
 
     // Trạng thái màu và ảnh đang được chọn
-    const [activeColor, setActiveColor] = useState(colors[0].colorName); // Màu đầu tiên
-    const [activeImage, setActiveImage] = useState(colors[0].images[0].imageUrl); // Ảnh đầu tiên của màu đầu tiên
+    const [activeColor, setActiveColor] = useState(images[0].colorName); // Màu đầu tiên
+    const [activeImage, setActiveImage] = useState(`https://localhost:7123${images[0].imageUrl}`); // Ảnh đầu tiên
+
     const [wishlist, setWishlist] = useState(dataWishList); // Trạng thái danh sách yêu thích
     const isInWishlist = wishlist.some((item) => item.productId === id); // Kiểm tra xem sản phẩm đã có trong danh sách yêu thích chưa
+
     const handleAddToCart = () => {
         if (!isLoggin) {
             dispatch(login());
@@ -54,7 +56,7 @@ const ShopCard = ({ id, name, price, colors }) => {
 
     const handleColorClick = (color) => {
         setActiveColor(color.colorName); // Cập nhật màu đang được chọn
-        setActiveImage(color.images[0].imageUrl); // Cập nhật ảnh tương ứng với màu đang được chọn
+        setActiveImage(`https://localhost:7123${color.imageUrl}`); // Cập nhật ảnh tương ứng với màu đang được chọn
     };
 
     return (
@@ -62,7 +64,7 @@ const ShopCard = ({ id, name, price, colors }) => {
             <div className="card shop-card" style={{ border: "none" }}>
                 <div className="card-img-container">
                     <img
-                        src={require(`../../../assets/images/${activeImage}`)}
+                        src={activeImage}
                         className="card-img-top"
                         alt={name || "Product Image"}
                     />
@@ -84,7 +86,7 @@ const ShopCard = ({ id, name, price, colors }) => {
                     </div>
                     <p className="card-text">${price}</p>
                     <div className="color-options">
-                        {colors.map((color, index) => (
+                        {images.map((color, index) => (
                             <button
                                 key={index}
                                 className={`color-dot ${activeColor === color.colorName ? "active" : ""}`}

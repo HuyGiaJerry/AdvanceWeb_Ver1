@@ -195,6 +195,7 @@
         display: flex;
         align-items: center;
         margin-bottom: 10px;
+        text-decoration: none;
     }
 
     .suggestion-item:hover {
@@ -218,6 +219,7 @@
         border-radius: 4px;
         cursor: pointer;
         transition: background-color 0.3s ease;
+        text-decoration: none;
     }
 
     .search-result-item:hover {
@@ -240,5 +242,5 @@
         text-overflow: ellipsis;
     }
 
-    
+
 }

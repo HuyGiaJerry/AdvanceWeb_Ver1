@@ -48,7 +48,8 @@ namespace BE_Fashion.Services
                 return (false, "User not found", null!);
             }
 
-            // Tạo mới access token và refresh token
+            //// Tạo mới access token và refresh token
+            
             var userDto = _mapper.Map<CreateUser>(user);
             var auth = new Auth
             {
@@ -58,26 +59,121 @@ namespace BE_Fashion.Services
                 Role = userDto.Role
             };
 
-            // Cập nhật lại refresh token trong database
+            // Cập nhật refresh token hiện có trong database
             storedRefreshToken.Token = auth.RefreshToken;
             storedRefreshToken.ExpiresAt = DateTime.UtcNow.AddDays(7);
             storedRefreshToken.IssuedAt = DateTime.UtcNow;
+            storedRefreshToken.Revoked = false;
 
-            var newRefreshToken = new RefreshToken
-            {
-                UserId = user.UserId,
-                Token = auth.RefreshToken,
-                Provider = storedRefreshToken.Provider, // Lấy provider từ refresh token cũ
-                IssuedAt = DateTime.UtcNow,
-                ExpiresAt = DateTime.UtcNow.AddDays(7),
-                Revoked = false
-            };
-            await _refreshTokenRepository.AddAsync(storedRefreshToken);
+            await _refreshTokenRepository.UpdateAsync(storedRefreshToken); // Sử dụng UpdateAsync thay vì AddAsync
 
             return (true, "Token refreshed successfully", auth);
         }
 
-        public async Task<(bool IsSuccess, string Message, Auth Auth)> GoogleLoginWithCodeAsync(string code)
+    //    public async Task<(bool IsSuccess, string Message, Auth Auth)> GoogleLoginWithCodeAsync(string code)
+    //    {
+    //        // Step 1: Đổi code lấy access token
+    //        var client = new HttpClient();
+    //        var values = new Dictionary<string, string>
+    //{
+    //    { "code", code },
+    //    { "client_id", _config["Google:ClientId"]! },
+    //    { "client_secret", _config["Google:ClientSecret"]! },
+    //    { "redirect_uri", _config["Google:RedirectUri"]! },
+    //    { "grant_type", "authorization_code" }
+    //};
+
+    //        var tokenResponse = await client.PostAsync("https://oauth2.googleapis.com/token", new FormUrlEncodedContent(values));
+    //        if (!tokenResponse.IsSuccessStatusCode)
+    //            return (false, "Failed to get Google token", null!);
+
+    //        var tokenContent = await tokenResponse.Content.ReadAsStringAsync();
+    //        var tokenObj = JsonConvert.DeserializeObject<dynamic>(tokenContent);
+    //        if (tokenObj?.access_token == null)
+    //        {
+    //            return (false, "Failed to obtain access token from Google", null!);
+    //        }
+    //        var accessToken = (string)tokenObj.access_token;
+
+    //        // Step 2: Lấy thông tin người dùng từ Google
+    //        client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", accessToken);
+    //        var userInfoResponse = await client.GetAsync("https://www.googleapis.com/oauth2/v3/userinfo");
+
+    //        if (!userInfoResponse.IsSuccessStatusCode)
+    //            return (false, "Failed to get user info", null!);
+
+    //        var userInfoJson = await userInfoResponse.Content.ReadAsStringAsync();
+    //        var googleUser = JsonConvert.DeserializeObject<GoogleUserInfo>(userInfoJson);
+
+    //        // Kiểm tra Sub và Email có phải null không
+    //        if (googleUser?.Sub == null || googleUser?.Email == null)
+    //        {
+    //            return (false, "Google user information is incomplete", null!);
+    //        }
+
+    //        // Step 3: Kiểm tra theo OauthId
+    //        var user = await _userRepository.GetByOauthIdAsync(googleUser.Sub);
+
+    //        if (user == null)
+    //        {
+    //            // Nếu chưa có OauthId, kiểm tra theo Email
+    //            user = await _userRepository.GetByEmailAsync(googleUser.Email);
+
+    //            if (user == null)
+    //            {
+    //                // Nếu cũng không có email, tạo mới từ DTO
+    //                var plainPass = Guid.NewGuid().ToString();
+    //                var hashPassword = BCrypt.Net.BCrypt.HashPassword(plainPass);
+    //                var createUserDto = new CreateUser
+    //                {
+    //                    Email = googleUser.Email,
+    //                    PasswordHash = hashPassword,
+    //                    FullName = googleUser.Name,
+    //                    AvatarUrl = googleUser.Picture,
+    //                    OauthProvider = "google",
+    //                    OauthId = googleUser.Sub,
+    //                    Role = "customer"
+    //                };
+
+    //                user = _mapper.Map<User>(createUserDto);
+    //                await _userRepository.AddAsync(user);
+    //            }
+    //            else
+    //            {
+    //                // Nếu có email nhưng chưa có OauthId, cập nhật lại
+    //                user.OauthProvider = "google";
+    //                user.OauthId = googleUser.Sub;
+    //                await _userRepository.UpdateAsync(user);
+    //            }
+    //        }
+            
+    //        var userDto = _mapper.Map<CreateUser>(user);
+            
+    //        var auth = new Auth
+    //        {
+    //            AccessToken = _jwtTokenService.GenerateAccessToken(userDto),
+    //            RefreshToken = _jwtTokenService.GenerateRefreshToken(),
+    //            FullName = userDto.FullName,
+    //            PhoneNumber = userDto.PhoneNumber,
+    //            AvatarUrl = userDto.AvatarUrl,
+    //            Role = userDto.Role
+    //        };
+    //        // Lưu refresh token vào database
+    //        var refreshToken = new RefreshToken
+    //        {
+    //            UserId = user.UserId,
+    //            Token = auth.RefreshToken,
+    //            Provider = "google",
+    //            IssuedAt = DateTime.UtcNow,
+    //            ExpiresAt = DateTime.UtcNow.AddDays(7)
+    //        };
+
+    //        await _refreshTokenRepository.AddAsync(refreshToken);
+
+
+    //        return (true, "Google login successful", auth);
+    //    }
+        public async Task<(bool IsSuccess, string Message, LoginResponse loginResponse)> GoogleLoginWithCodeAsync(string code)
         {
             // Step 1: Đổi code lấy access token
             var client = new HttpClient();
@@ -155,20 +251,27 @@ namespace BE_Fashion.Services
             }
 
             var userDto = _mapper.Map<CreateUser>(user);
-            var auth = new Auth
+
+            var accessTokenStr = _jwtTokenService.GenerateAccessToken(userDto);
+            var refreshTokenStr = _jwtTokenService.GenerateRefreshToken();
+
+            var loginResponse = new LoginResponse
             {
-                AccessToken = _jwtTokenService.GenerateAccessToken(userDto),
-                RefreshToken = _jwtTokenService.GenerateRefreshToken(),
-                FullName = userDto.FullName,
-                PhoneNumber = userDto.PhoneNumber,
-                AvatarUrl = userDto.AvatarUrl,
-                Role = userDto.Role
+                UserId = user.UserId,
+                Email = user.Email,
+                PhoneNumber = user.PhoneNumber,
+                FullName = user.FullName ?? "",
+                AvatarUrl = user.AvatarUrl ?? "",
+                Role = user.Role ?? "",
+                IsGoogleLinked = true,
+                AccessToken = accessTokenStr,
+                RefreshToken = refreshTokenStr
             };
             // Lưu refresh token vào database
             var refreshToken = new RefreshToken
             {
                 UserId = user.UserId,
-                Token = auth.RefreshToken,
+                Token = refreshTokenStr,
                 Provider = "google",
                 IssuedAt = DateTime.UtcNow,
                 ExpiresAt = DateTime.UtcNow.AddDays(7)
@@ -177,7 +280,7 @@ namespace BE_Fashion.Services
             await _refreshTokenRepository.AddAsync(refreshToken);
 
 
-            return (true, "Google login successful", auth);
+            return (true, "Google login successful", loginResponse);
         }
 
     }

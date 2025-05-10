@@ -15,12 +15,13 @@ namespace BE_Fashion.Mappings
             CreateMap<Product, ProductListDto>()
                 .ForMember(dest => dest.Images, opt => opt.MapFrom(src =>
                     src.ProductColors
+                        .Where(c => c.ProductColorImages != null && c.ProductColorImages.Any())
                         .SelectMany(c => c.ProductColorImages)
                         .Where(i => i.IsPrimary == true)
                         .Select(i => new ProductImageDto
                         {
                             ImageUrl = i.ImageUrl,
-                            ColorName = i.Color.ColorName
+                            ColorName = i.Color.ColorName != null && i.Color.ColorName != null ? i.Color.ColorName : "Default Color"
 
                         })
                         .ToList()));

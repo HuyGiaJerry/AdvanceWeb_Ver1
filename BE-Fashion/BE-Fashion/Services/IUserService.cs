@@ -7,5 +7,6 @@ namespace BE_Fashion.Services
         Task<(bool isSuccess, string message)> RegisterAsync(RegisterRequest dto);
         Task<(bool isSuccess, string message, LoginResponse? dto)> LoginAsync(LoginRequest dto);
         Task<(bool isSuccess, string message, CreateUser? dto)> CheckEmailExistsAsync(string email);
+        Task<IEnumerable<UserDto>> GetAllCustomersAsync();
     }
 }

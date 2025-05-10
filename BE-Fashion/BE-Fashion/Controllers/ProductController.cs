@@ -1,6 +1,10 @@
-﻿using BE_Fashion.Services;
+﻿using BE_Fashion.DTOs;
+using BE_Fashion.Models;
+using BE_Fashion.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using System.Linq.Expressions;
 
 namespace BE_Fashion.Controllers
 {
@@ -8,10 +12,12 @@ namespace BE_Fashion.Controllers
     [ApiController]
     public class ProductController : ControllerBase
     {
-        private readonly ProductService _productService;
-        public ProductController(ProductService productService)
+        private readonly IProductService _productService;
+        private readonly ILogger<ProductController> _logger;
+        public ProductController(IProductService productService, ILogger<ProductController> logger)
         {
             _productService = productService;
+            _logger = logger;
         }
         // API return page number
         [HttpGet("total-pages")]
@@ -41,17 +47,33 @@ namespace BE_Fashion.Controllers
             }
             return Ok(productDetail);
         }
-        //public async Task<IActionResult> GetProductDetail(int productId)
-        //{
-        //    var productDetail = await _productService.GetProductDetailAsync(productId);
+        [HttpPost("filter")]
+        public async Task<IActionResult> GetFilteredProducts(
+                    [FromBody] FilterRequestDto filterRequest)
+        {
+            _logger.LogInformation("Filtering products with price range from {MinPrice} to {MaxPrice}",
+     filterRequest?.PriceRanges?.FirstOrDefault()?.MinPrice,
+     filterRequest?.PriceRanges?.FirstOrDefault()?.MaxPrice);
 
-        //    if (productDetail == null)
-        //    {
-        //        return NotFound(new { message = "Product not found" });
-        //    }
+            // Kiểm tra khoảng giá
+            if (filterRequest?.PriceRanges?.Any(r => r.MinPrice > r.MaxPrice) == true)
+            {
+                return BadRequest("MinPrice phải nhỏ hơn hoặc bằng MaxPrice.");
+            }
 
-        //    return Ok(productDetail);
-        //}
+            var products = await _productService.GetFilteredProductsAsync(
+                filterRequest?.PriceRanges,
+                filterRequest?.CategoryIds,
+                filterRequest?.Colors,
+                filterRequest?.Sizes
+            );
 
+            if (!products.Any())
+            {
+                return NotFound("Không tìm thấy sản phẩm phù hợp với bộ lọc.");
+            }
+
+            return Ok(products);
+        }
     }
 }

@@ -51,99 +51,117 @@ const ShopCart = () => {
                 <Col>
                     <h1 className="text-center">Shopping Cart</h1>
                     <p className="text-center">
-                        <Link to="/">Home</Link> &gt; Your Shopping Cart
+                        <Link to="/" style={{ color: "gray", textDecoration: "none" }}>Home</Link> &gt; Your Shopping Cart
                     </p>
                 </Col>
             </Row>
 
-            {/* Bảng sản phẩm */}
-            <Row>
-                <Col>
-                    <Table responsive className="text-center">
-                        <thead>
-                            <tr>
-                                <th style={{ textAlign: "left" }}>Product</th>
-                                <th>Price</th>
-                                <th>Quantity</th>
-                                <th>Total</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {cartItems.map((item) => (
-                                <tr key={item.productId}>
-                                    <td>
-                                        <div className="product-info">
-                                            <img
-                                                src={require(`../../assets/images/${item.imageUrl}`)}
-                                                alt={item.name}
-                                                className="product-image"
-                                            />
-                                            <div className="product-details">
-                                                <p className="product-name">{item.name}</p>
-                                                <p className="product-color">Color: {item.color}</p>
-                                                <p className="product-size">Size: {item.size}</p>
-                                                <button
-                                                    className="remove-link"
-                                                    onClick={() => handleRemoveItem(item.productId)}
-                                                >
-                                                    Remove
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>${item.price.toFixed(2)}</td>
-                                    <td>
-                                        <div className="quantity-control d-flex justify-content-center align-items-center">
-                                            <Button
-                                                variant="outline-dark"
-                                                size="sm"
-                                                onClick={() => handleDecreaseQuantity(item.productId)}
-                                                disabled={item.quantity === 1} // Không cho giảm dưới 1
-                                            >
-                                                -
-                                            </Button>
-                                            <span className="mx-2">{item.quantity}</span>
-                                            <Button
-                                                variant="outline-dark"
-                                                size="sm"
-                                                onClick={() => handleIncreaseQuantity(item.productId)}
-                                            >
-                                                +
-                                            </Button>
-                                        </div>
-                                    </td>
-                                    <td>${(item.price * item.quantity).toFixed(2)}</td>
-                                </tr>
-                            ))}
-                        </tbody>
-                    </Table>
-                </Col>
-            </Row>
+            {/* Kiểm tra giỏ hàng trống */}
+            {cartItems.length === 0 ? (
+                <Row className="text-center">
+                    <Col>
+                        <img
+                            src={require('../../assets/images/empty_cart.jpg')} // Đường dẫn đến ảnh emptycart
+                            alt="Empty Cart"
+                            className="empty-cart-image"
+                        />
+                        <h4 className="text-muted">Bạn chưa có sản phẩm nào trong giỏ hàng!</h4>
+                        <Link to="/shop">
+                            <Button variant="dark" className="mt-3">Đi đến Shop</Button>
+                        </Link>
+                    </Col>
+                </Row>
+            ) : (
+                <>
+                    {/* Bảng sản phẩm */}
+                    <Row>
+                        <Col>
+                            <Table responsive className="text-center">
+                                <thead>
+                                    <tr>
+                                        <th style={{ textAlign: "left" }}>Product</th>
+                                        <th>Price</th>
+                                        <th>Quantity</th>
+                                        <th>Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {cartItems.map((item) => (
+                                        <tr key={item.productId}>
+                                            <td>
+                                                <div className="product-info">
+                                                    <img
+                                                        src={require(`../../assets/images/${item.imageUrl}`)}
+                                                        alt={item.name}
+                                                        className="product-image"
+                                                    />
+                                                    <div className="product-details">
+                                                        <p className="product-name">{item.name}</p>
+                                                        <p className="product-color">Color: {item.color}</p>
+                                                        <p className="product-size">Size: {item.size}</p>
+                                                        <button
+                                                            className="remove-link"
+                                                            onClick={() => handleRemoveItem(item.productId)}
+                                                        >
+                                                            Remove
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td style={{ fontSize: "18px" }}>${item.price.toFixed(2)}</td>
+                                            <td>
+                                                <div className="quantity-control d-flex justify-content-center align-items-center">
+                                                    <Button
+                                                        variant="outline-dark"
+                                                        size="sm"
+                                                        onClick={() => handleDecreaseQuantity(item.productId)}
+                                                        disabled={item.quantity === 1} // Không cho giảm dưới 1
+                                                    >
+                                                        -
+                                                    </Button>
+                                                    <span className="mx-2">{item.quantity}</span>
+                                                    <Button
+                                                        variant="outline-dark"
+                                                        size="sm"
+                                                        onClick={() => handleIncreaseQuantity(item.productId)}
+                                                    >
+                                                        +
+                                                    </Button>
+                                                </div>
+                                            </td>
+                                            <td style={{ fontSize: "18px" }}>${(item.price * item.quantity).toFixed(2)}</td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </Table>
+                        </Col>
+                    </Row>
 
-            {/* Tùy chọn và tổng tiền */}
-            <Row className="mb-4">
-                <Col md={6}>
-                    <Form.Check
-                        type="checkbox"
-                        label="For $10.00 Please Wrap The Product"
-                        className="wrap-option"
-                    />
-                </Col>
-                <Col md={6} className="text-end">
-                    <p>Subtotal: <strong>${calculateTotal()}</strong></p>
-                </Col>
-            </Row>
+                    {/* Tùy chọn và tổng tiền */}
+                    <Row className="mb-4">
+                        <Col md={6}>
+                            <Form.Check
+                                type="checkbox"
+                                label="For $10.00 Please Wrap The Product"
+                                className="wrap-option"
+                            />
+                        </Col>
+                        <Col md={6} className="text-end">
+                            <p style={{ fontSize: "22px" }}>Subtotal: <strong>${calculateTotal()}</strong></p>
+                        </Col>
+                    </Row>
 
-            {/* Nút hành động */}
-            <Row className="mb-5">
-                <Col className="text-center">
-                    <Link to="/check-out">
-                        <Button variant="dark" className="checkout-btn mb-3">Checkout</Button>
-                    </Link>
-                    <br />
-                    <Button variant="outline-dark" className="view-cart-btn">View Cart</Button>
-                </Col>
-            </Row>
+                    {/* Nút hành động */}
+                    <Row className="mb-5">
+                        <Col className="text-center">
+                            <Link to="/check-out">
+                                <Button variant="dark" className="checkout-btn mb-3">Checkout</Button>
+                            </Link>
+                            <br />
+                        </Col>
+                    </Row>
+                </>
+            )}
 
             {/* Component Sub */}
             <Sub />

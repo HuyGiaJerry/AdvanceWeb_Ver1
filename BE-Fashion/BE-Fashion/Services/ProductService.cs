@@ -7,11 +7,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BE_Fashion.Services
 {
-    public class ProductService
+    public class ProductService : IProductService
     {
-        private readonly ProductRepository _productRepository;
+        private readonly IProductRepository _productRepository;
         private readonly IMapper _mapper;
-        public ProductService(ProductRepository productRepository, IMapper mapper)
+        public ProductService(IProductRepository productRepository, IMapper mapper)
         {
             _productRepository = productRepository;
             _mapper = mapper;
@@ -106,6 +106,63 @@ namespace BE_Fashion.Services
 
             return productDetail;
         }
+        //public async Task<IEnumerable<ProductListDto>> GetFilteredProductsAsync(
+        //            List<(decimal MinPrice, decimal MaxPrice)> priceRanges,
+        //            List<int>? categoryIds,
+        //            List<string>? colors,
+        //            List<string>? sizes) 
+        //{
+        //    // Lấy các sản phẩm đã lọc từ repository
+        //    var products = await _productRepository.GetFilteredProductsAsync(
+        //        priceRanges,
+        //        categoryIds,
+        //        colors,
+        //        sizes);
 
+        //    // Chuyển đổi danh sách sản phẩm sang DTO
+        //    var productList = _mapper.Map<IEnumerable<ProductListDto>>(products);
+
+        //    // Kiểm tra xem danh sách sản phẩm đã được ánh xạ đúng chưa
+        //    foreach (var product in productList)
+        //    {
+        //        // Kiểm tra null cho Images
+        //        if (product.Images != null)
+        //        {
+        //            product.Images = product.Images.Where(img => img != null).ToList();
+        //        }
+        //    }
+
+        //    return productList;
+        //}
+        public async Task<IEnumerable<ProductListDto>> GetFilteredProductsAsync(
+            List<PriceRangeDto>? priceRanges,
+            List<int>? categoryIds,
+            List<string>? colors,
+            List<string>? sizes)
+        {
+            var products = await _productRepository.GetFilteredProductsAsync(
+                priceRanges, categoryIds, colors, sizes);
+
+            // Ánh xạ thủ công từ Product sang ProductListDto
+            var productDtos = products.Select(p => new ProductListDto
+            {
+                ProductId = p.ProductId,
+                Name = p.Name ?? string.Empty,
+                BasePrice = p.BasePrice,
+                DiscountPrice = p.DiscountPrice ?? 0, // Xử lý decimal? sang decimal
+                Images = p.ProductColors
+                    .Where(c => c.ProductColorImages != null && c.ProductColorImages.Any(i => i.IsPrimary == true))
+                    .SelectMany(c => c.ProductColorImages)
+                    .Where(i => i.IsPrimary == true) // Giả định IsPrimary là bool
+                    .Select(i => new ProductImageDto
+                    {
+                        ImageUrl = i.ImageUrl ?? string.Empty,
+                        ColorName = i.Color != null ? i.Color.ColorName ?? string.Empty : string.Empty
+                    })
+                    .ToList()
+            }).ToList();
+
+            return productDtos;
+        }
     }
 }

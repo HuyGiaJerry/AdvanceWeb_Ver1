@@ -53,7 +53,7 @@
 
         .remove-link {
             font-size: 0.9rem;
-            color: #8A8A8A;
+            color: red;
             text-decoration: none;
             background-color: #fff;
             border: none;
@@ -76,6 +76,7 @@
         }
     }
 
+
     .wrap-option {
         font-size: 1rem;
     }
@@ -89,5 +90,21 @@
     .view-cart-btn {
         width: 200px;
         font-size: 1rem;
+    }
+
+    .text-muted {
+        font-size: 1.2rem;
+        margin-top: 20px;
+    }
+
+    .mt-3 {
+        margin-top: 20px;
+    }
+
+    .empty-cart-image {
+        max-width: 300px;
+        width: 100%;
+        margin: 20px auto;
+        display: block;
     }
 }

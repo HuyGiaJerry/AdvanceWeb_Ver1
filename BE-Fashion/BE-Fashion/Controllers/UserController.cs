@@ -1,5 +1,6 @@
 ﻿using BE_Fashion.DTOs;
 using BE_Fashion.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 [ApiController]
@@ -37,5 +38,12 @@ public class UserController : ControllerBase
             return Unauthorized(new { message });
 
         return Ok(userInfo);
+    }
+    //[Authorize(Roles = "admin")]
+    [HttpGet("customers")]
+    public async Task<IEnumerable<UserDto>> GetAllCustomer()
+    {
+        var customers = await _userService.GetAllCustomersAsync();
+        return customers;
     }
 }
