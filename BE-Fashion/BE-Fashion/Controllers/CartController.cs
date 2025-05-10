@@ -26,8 +26,8 @@ namespace BE_Fashion.Controllers
         [HttpPost("{userId}")]
         public async Task<IActionResult> AddToCart(int userId, [FromBody] CartItemDto item)
         {
-            await _redisCartService.AddOrUpdateItemAsync(userId, item);
-            return Ok();
+            var result = await _redisCartService.AddOrUpdateItemAsync(userId, item);
+            return Ok(result);
         }
 
         [HttpDelete("{userId}/{variantId}")]
@@ -41,8 +41,8 @@ namespace BE_Fashion.Controllers
         {
             try
             {
-                await _redisCartService.DecreaseItemQuantityAsync(userId, variantId, quantity);
-                return Ok(new { message = "Đã giảm số lượng sản phẩm trong giỏ hàng." });
+                var updatedCart = await _redisCartService.DecreaseItemQuantityAsync(userId, variantId, quantity);
+                return Ok(updatedCart);
             }
             catch (InvalidOperationException ex)
             {

@@ -54,12 +54,13 @@ public class RedisCartService : IRedisCartService
         await _redisDb.StringSetAsync(key, serialized, TimeSpan.FromDays(7)); // TTL = 7 ngày
     }
 
-    public async Task AddOrUpdateItemAsync(int userId, CartItemDto item)
+    public async Task<CartItemResultDto> AddOrUpdateItemAsync(int userId, CartItemDto item)
     {
         if (item.Quantity <= 0)
         {
             throw new InvalidOperationException("Số lượng sản phẩm phải lớn hơn 0.");
         }
+
         var lockAcquired = await AcquireLockAsync(userId);
         if (!lockAcquired)
         {
@@ -69,7 +70,6 @@ public class RedisCartService : IRedisCartService
         try
         {
             var cart = await GetCartAsync(userId);
-
             var existingItem = cart.FirstOrDefault(x => x.VariantId == item.VariantId);
             int newQuantity = item.Quantity + (existingItem?.Quantity ?? 0);
 
@@ -79,22 +79,31 @@ public class RedisCartService : IRedisCartService
                 throw new InvalidOperationException($"Chỉ còn lại {stock} sản phẩm trong kho.");
             }
 
-            if (existingItem != null)
-            {
-                existingItem.Quantity += item.Quantity;
-            }
-            else
+            bool isNewItem = existingItem == null;
+
+            if (isNewItem)
             {
                 cart.Add(item);
             }
+            else
+            {
+                existingItem!.Quantity = newQuantity;
+            }
 
             await SaveCartAsync(userId, cart);
+
+            return new CartItemResultDto
+            {
+                VariantId = item.VariantId,
+                QuantityInCart = newQuantity,
+            };
         }
         finally
         {
             await ReleaseLockAsync(userId);
         }
     }
+
 
     public async Task RemoveItemAsync(int userId, int variantId)
     {
@@ -163,7 +172,7 @@ public class RedisCartService : IRedisCartService
         }
     }
 
-    public async Task DecreaseItemQuantityAsync(int userId, int variantId, int quantityToDecrease)
+    public async Task<CartItemResultDto> DecreaseItemQuantityAsync(int userId, int variantId, int quantityToDecrease)
     {
         var lockAcquired = await AcquireLockAsync(userId);
         if (!lockAcquired)
@@ -181,16 +190,28 @@ public class RedisCartService : IRedisCartService
                 throw new InvalidOperationException("Sản phẩm không có trong giỏ hàng.");
             }
 
+            int stock = await _productRepository.GetStockQuantityAsync(variantId);
+
             if (item.Quantity <= quantityToDecrease)
             {
                 cart.Remove(item);
+                await SaveCartAsync(userId, cart);
+                return new CartItemResultDto
+                {
+                    VariantId = variantId,
+                    QuantityInCart = 0,
+                };
             }
             else
             {
                 item.Quantity -= quantityToDecrease;
+                await SaveCartAsync(userId, cart);
+                return new CartItemResultDto
+                {
+                    VariantId = variantId,
+                    QuantityInCart = item.Quantity,
+                };
             }
-
-            await SaveCartAsync(userId, cart);
         }
         finally
         {
