@@ -150,5 +150,62 @@ namespace BE_Fashion.Services
                 throw; // Hoặc return Enumerable.Empty<CustomerDto>() nếu muốn xử lý nhẹ nhàng hơn
             }
         }
+        public async Task<(bool isSuccess, string message, LoginResponse? dto)> LoginAdminAsync(LoginRequest dto)
+        {
+            try
+            {
+                var loginIdentifier = !string.IsNullOrEmpty(dto.Email) ? dto.Email : dto.PhoneNumber;
+
+                if (string.IsNullOrEmpty(loginIdentifier))
+                {
+                    return (false, "Email or phone number is required", null);
+                }
+
+                _logger.LogInformation("Attempting login with identifier: {Identifier}", loginIdentifier);
+                var user = await _userRepository.GetByCredentialsAsync(loginIdentifier, dto.Password);
+
+                if (user == null)
+                {
+                    _logger.LogWarning("Invalid credentials for identifier: {Identifier}", loginIdentifier);
+                    return (false, "Invalid credentials", null);
+                }
+
+                // Check if user is admin
+                if (user.Role != "admin")
+                {
+                    _logger.LogWarning("User is not admin: {UserId}", user.UserId);
+                    return (false, "You do not have admin access", null);
+                }
+
+                // If the user is an admin, generate tokens
+                _logger.LogInformation("User found: {UserId}", user.UserId);
+                var createUserDto = _mapper.Map<CreateUser>(user);
+
+                var accessToken = _jwtService.GenerateAccessToken(createUserDto);
+                var refreshToken = _jwtService.GenerateRefreshToken();
+
+                await _refreshTokenRepository.AddAsync(new RefreshToken
+                {
+                    UserId = user.UserId,
+                    Token = refreshToken,
+                    IssuedAt = DateTime.UtcNow,
+                    ExpiresAt = DateTime.UtcNow.AddDays(7),
+                    Provider = "local"
+                });
+
+                var userInfo = _mapper.Map<LoginResponse>(user);
+                userInfo.AccessToken = accessToken;
+                userInfo.RefreshToken = refreshToken;
+
+                return (true, "Login successful", userInfo);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error during login for identifier: {Identifier}. Message: {Message}, StackTrace: {StackTrace}",
+                    dto.Email ?? dto.PhoneNumber, ex.Message, ex.StackTrace);
+                return (false, $"An error occurred during login: {ex.Message}", null);
+            }
+        }
+
     }
 }

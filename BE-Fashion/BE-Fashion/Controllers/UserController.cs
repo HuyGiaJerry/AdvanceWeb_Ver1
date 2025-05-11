@@ -46,4 +46,15 @@ public class UserController : ControllerBase
         var customers = await _userService.GetAllCustomersAsync();
         return customers;
     }
+    [HttpPost("login-admin")]
+    public async Task<IActionResult> LoginAdmin([FromBody] LoginRequest loginRequest)
+    {
+        var result = await _userService.LoginAdminAsync(loginRequest);
+
+        if (result.isSuccess)
+        {
+            return Ok(new { message = result.message, user = result.dto });
+        }
+        return BadRequest(new { message = result.message });
+    }
 }

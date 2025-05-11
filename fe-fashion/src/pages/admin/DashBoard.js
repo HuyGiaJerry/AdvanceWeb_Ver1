@@ -7,7 +7,7 @@ import RecentOrders from "../../components/admin/RecentOrders";
 import BestSellingProducts from "../../components/admin/BestSellingProducts";
 import LowStockAlert from "../../components/admin/LowStockAlert";
 import jsPDF from 'jspdf';
-import { saveAs } from "file-saver";
+// import { saveAs } from "file-saver";
 
 const Dashboard = () => {
   // Original data from dataDashboard
@@ -28,18 +28,18 @@ const Dashboard = () => {
   const filterData = (filterType) => {
     // In a real application, you would fetch data from an API with the filter parameter
     // For this demo, we'll simulate different data for different filters
-    
+
     // Get current date for filtering
     const currentDate = new Date();
     const currentDay = currentDate.getDate();
     const currentMonth = currentDate.getMonth();
     const currentYear = currentDate.getFullYear();
-    
+
     let filteredSummary = { ...originalData.summary };
     let filteredRecentSales = [...originalData.recentSales];
     let filteredRecentOrders = [...originalData.recentOrders];
     let filteredBestSellingProducts = [...originalData.bestSellingProducts];
-    
+
     // Apply filter logic based on filter type
     switch (filterType) {
       case "today":
@@ -51,18 +51,18 @@ const Dashboard = () => {
           totalOrders: Math.floor(filteredSummary.totalOrders * 0.15),
           newCustomers: Math.floor(filteredSummary.newCustomers * 0.15)
         };
-        
+
         // Filter sales for today
         filteredRecentSales = filteredRecentSales.slice(-1);
-        
+
         // Filter orders for today
         filteredRecentOrders = filteredRecentOrders.filter(order => {
           const orderDate = new Date(order.date);
           return orderDate.getDate() === currentDay &&
-                 orderDate.getMonth() === currentMonth &&
-                 orderDate.getFullYear() === currentYear;
+            orderDate.getMonth() === currentMonth &&
+            orderDate.getFullYear() === currentYear;
         });
-        
+
         // Filter best selling products for today
         filteredBestSellingProducts = filteredBestSellingProducts.map(product => ({
           ...product,
@@ -70,7 +70,7 @@ const Dashboard = () => {
           revenue: product.revenue * 0.15
         }));
         break;
-        
+
       case "week":
         // Filter for this week's data
         filteredSummary = {
@@ -79,19 +79,19 @@ const Dashboard = () => {
           totalOrders: Math.floor(filteredSummary.totalOrders * 0.35),
           newCustomers: Math.floor(filteredSummary.newCustomers * 0.35)
         };
-        
+
         // Filter sales for this week
         filteredRecentSales = filteredRecentSales.slice(-7);
-        
+
         // Filter orders for this week
         const oneWeekAgo = new Date();
         oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
-        
+
         filteredRecentOrders = filteredRecentOrders.filter(order => {
           const orderDate = new Date(order.date);
           return orderDate >= oneWeekAgo;
         });
-        
+
         // Filter best selling products for this week
         filteredBestSellingProducts = filteredBestSellingProducts.map(product => ({
           ...product,
@@ -99,7 +99,7 @@ const Dashboard = () => {
           revenue: product.revenue * 0.35
         }));
         break;
-        
+
       case "month":
         // Filter for this month's data
         filteredSummary = {
@@ -108,14 +108,14 @@ const Dashboard = () => {
           totalOrders: Math.floor(filteredSummary.totalOrders * 0.65),
           newCustomers: Math.floor(filteredSummary.newCustomers * 0.65)
         };
-        
+
         // Filter orders for this month
         filteredRecentOrders = filteredRecentOrders.filter(order => {
           const orderDate = new Date(order.date);
           return orderDate.getMonth() === currentMonth &&
-                 orderDate.getFullYear() === currentYear;
+            orderDate.getFullYear() === currentYear;
         });
-        
+
         // Filter best selling products for this month
         filteredBestSellingProducts = filteredBestSellingProducts.map(product => ({
           ...product,
@@ -123,7 +123,7 @@ const Dashboard = () => {
           revenue: product.revenue * 0.65
         }));
         break;
-        
+
       case "quarter":
         // Filter for this quarter's data
         filteredSummary = {
@@ -132,20 +132,20 @@ const Dashboard = () => {
           totalOrders: Math.floor(filteredSummary.totalOrders * 0.85),
           newCustomers: Math.floor(filteredSummary.newCustomers * 0.85)
         };
-        
+
         // Filter orders for this quarter
         const currentQuarter = Math.floor(currentMonth / 3);
         const quarterStartMonth = currentQuarter * 3;
         const quarterEndMonth = quarterStartMonth + 2;
-        
+
         filteredRecentOrders = filteredRecentOrders.filter(order => {
           const orderDate = new Date(order.date);
           const orderMonth = orderDate.getMonth();
           return orderDate.getFullYear() === currentYear &&
-                 orderMonth >= quarterStartMonth &&
-                 orderMonth <= quarterEndMonth;
+            orderMonth >= quarterStartMonth &&
+            orderMonth <= quarterEndMonth;
         });
-        
+
         // Filter best selling products for this quarter
         filteredBestSellingProducts = filteredBestSellingProducts.map(product => ({
           ...product,
@@ -153,7 +153,7 @@ const Dashboard = () => {
           revenue: product.revenue * 0.85
         }));
         break;
-        
+
       case "year":
         // Filter for this year's data
         // For demo purposes, use almost full data
@@ -162,13 +162,13 @@ const Dashboard = () => {
           return orderDate.getFullYear() === currentYear;
         });
         break;
-        
+
       case "current":
       default:
         // Default case, use original data
         break;
     }
-    
+
     // Update filtered data state
     setFilteredData({
       summary: filteredSummary,
@@ -190,17 +190,17 @@ const Dashboard = () => {
   const exportToPDF = () => {
     const doc = new jsPDF();
     doc.text("Báo cáo Tổng quan", 20, 20);
-    
+
     // Add filter information to the PDF
     doc.text(`Thời gian: ${getFilterLabel(currentFilter)}`, 20, 30);
-    
+
     // Add summary data
     doc.text("Tổng quan:", 20, 40);
     doc.text(`Tổng doanh thu: ${filteredData.summary.totalRevenue.toLocaleString('vi-VN')}đ`, 25, 50);
     doc.text(`Tổng đơn hàng: ${filteredData.summary.totalOrders}`, 25, 60);
     doc.text(`Tổng sản phẩm: ${filteredData.summary.totalProducts}`, 25, 70);
     doc.text(`Khách hàng mới: ${filteredData.summary.newCustomers}`, 25, 80);
-    
+
     doc.save("Báo_cáo.pdf");
   };
 
@@ -225,31 +225,31 @@ const Dashboard = () => {
 
   return (
     <div className="dashboard" style={{ padding: "20px" }}>
-      <div className="report-header" style={{ 
-        display: "flex", 
-        justifyContent: "space-between", 
-        alignItems: "center", 
-        marginBottom: "20px" 
+      <div className="report-header" style={{
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+        marginBottom: "20px"
       }}>
         <h1 style={{ fontSize: "24px", fontWeight: "600", color: "#333" }}>
           Tổng quan hệ thống - {getFilterLabel(currentFilter)}
         </h1>
-        <div className="report-actions" style={{ 
-          display: "flex", 
+        <div className="report-actions" style={{
+          display: "flex",
           gap: "15px",
-          alignItems: "center" 
+          alignItems: "center"
         }}>
-          <div className="report-filter" style={{ 
-            display: "flex", 
-            alignItems: "center", 
+          <div className="report-filter" style={{
+            display: "flex",
+            alignItems: "center",
             gap: "8px",
             backgroundColor: "white",
             padding: "8px 12px",
             borderRadius: "4px",
-            boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)" 
+            boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)"
           }}>
-            <FaFilter /> 
-            <select 
+            <FaFilter />
+            <select
               value={currentFilter}
               onChange={handleFilterChange}
               style={{

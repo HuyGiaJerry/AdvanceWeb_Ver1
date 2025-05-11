@@ -77,6 +77,23 @@ namespace BE_Fashion.Repositories
                 .Where(o => o.Status!.ToLower() == status)
                 .ToListAsync();
         }
+        public async Task<bool> DecreaseStockAsync(int variantId, int quantity)
+        {
+            var variant = await _context.ProductVariants.FindAsync(variantId);
+            if (variant == null) return false;
 
+            if (variant.StockQuantity < quantity)
+                return false;
+
+            variant.StockQuantity -= quantity;
+            _context.ProductVariants.Update(variant);
+            return true;
+        }
+        public async Task<Order?> GetOrderByIdWithItemsAsync(Guid orderId)
+        {
+            return await _context.Orders
+                .Include(o => o.OrderItems)
+                .FirstOrDefaultAsync(o => o.OrderId == orderId);
+        }
     }
 }
