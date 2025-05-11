@@ -24,7 +24,7 @@ const Orders = () => {
     };
 
     return (
-        <Container className="orders" style={{ marginTop: '100px' ,marginBottom: '100px'}}>
+        <Container className="orders" style={{ marginTop: '100px', marginBottom: '300px' }}>
             <h1 className="text-center mb-4">Đơn hàng của tôi</h1>
             <Nav variant="tabs" defaultActiveKey="Tất cả đơn hàng" className="justify-content-center mb-4">
                 {['Tất cả đơn hàng', 'Đang xử lý', 'Đang giao', 'Đã giao', 'Đã hủy'].map((status, index) => (
