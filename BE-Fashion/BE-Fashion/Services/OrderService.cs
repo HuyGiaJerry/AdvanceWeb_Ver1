@@ -110,16 +110,34 @@ namespace BE_Fashion.Services
         }
         public async Task<bool> UpdateOrderStatusAsync(UpdateOrderStatusDto dto)
         {
-            var order = await _repo.GetOrderByIdAsync(dto.OrderId);
+            var order = await _repo.GetOrderByIdWithItemsAsync(dto.OrderId); // cần bao gồm OrderItems
             if (order == null) return false;
 
             order.Status = dto.Status;
             order.UpdatedAt = DateTime.UtcNow;
 
+            if (dto.Status == "confirmed")
+            {
+                // Giảm tồn kho cho từng sản phẩm trong đơn
+                foreach (var item in order.OrderItems)
+                {
+                    if (!item.VariantId.HasValue)
+                        throw new InvalidOperationException("Thiếu VariantId trong OrderItem.");
+
+                    var success = await _repo.DecreaseStockAsync(item.VariantId.Value, item.Quantity);
+                    if (!success)
+                    {
+                        // Tùy chọn: rollback hoặc throw
+                        throw new InvalidOperationException($"Không đủ hàng cho sản phẩm có ID {item.VariantId}");
+                    }
+                }
+            }
+
             _repo.UpdateAsync(order);
             await _repo.SaveChangesAsync();
             return true;
         }
+
         public async Task<IEnumerable<OrderDto>> GetOrdersByStatusAsync(string status)
         {
             IEnumerable<Order> orders;
@@ -142,6 +160,5 @@ namespace BE_Fashion.Services
                 CreatedAt = o.CreatedAt ?? DateTime.MinValue
             });
         }
-
     }
 }

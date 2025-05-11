@@ -7,7 +7,7 @@ import RecentOrders from "../../components/admin/RecentOrders";
 import BestSellingProducts from "../../components/admin/BestSellingProducts";
 import LowStockAlert from "../../components/admin/LowStockAlert";
 import jsPDF from 'jspdf';
-import { saveAs } from "file-saver";
+// import { saveAs } from "file-saver";
 
 const Dashboard = () => {
   // Original data from dataDashboard
