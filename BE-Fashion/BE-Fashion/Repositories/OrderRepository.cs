@@ -63,5 +63,20 @@ namespace BE_Fashion.Repositories
         {
             await _context.SaveChangesAsync();
         }
+        public async Task<IEnumerable<Order>> GetAllOrdersAsync()
+        {
+            return await _context.Orders
+                .Include(o => o.Payment)
+                .ToListAsync();
+        }
+
+        public async Task<IEnumerable<Order>> GetOrdersByStatusAsync(string status)
+        {
+            return await _context.Orders
+                .Include(o => o.Payment)
+                .Where(o => o.Status!.ToLower() == status)
+                .ToListAsync();
+        }
+
     }
 }

@@ -44,6 +44,19 @@ namespace BE_Fashion.Controllers
 
             return Ok(new { message = "Order status updated successfully" });
         }
+        [HttpGet("filter-by-status")]
+        public async Task<IActionResult> GetOrdersByStatus([FromQuery] string status)
+        {
+            try
+            {
+                var orders = await _orderService.GetOrdersByStatusAsync(status);
+                return Ok(orders);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest($"Error: {ex.Message}");
+            }
+        }
 
     }
 }

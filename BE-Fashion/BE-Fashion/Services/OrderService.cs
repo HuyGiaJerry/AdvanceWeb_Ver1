@@ -120,5 +120,28 @@ namespace BE_Fashion.Services
             await _repo.SaveChangesAsync();
             return true;
         }
+        public async Task<IEnumerable<OrderDto>> GetOrdersByStatusAsync(string status)
+        {
+            IEnumerable<Order> orders;
+
+            if (string.IsNullOrEmpty(status) || status.ToLower() == "all")
+            {
+                orders = await _repo.GetAllOrdersAsync();
+            }
+            else
+            {
+                orders = await _repo.GetOrdersByStatusAsync(status.ToLower());
+            }
+
+            return orders.Select(o => new OrderDto
+            {
+                Id = o.OrderId,
+                Status = o.Status ?? string.Empty,
+                PaymentStatus = o.Payment?.Status ?? string.Empty,
+                TotalAmount = o.TotalAmount,
+                CreatedAt = o.CreatedAt ?? DateTime.MinValue
+            });
+        }
+
     }
 }
