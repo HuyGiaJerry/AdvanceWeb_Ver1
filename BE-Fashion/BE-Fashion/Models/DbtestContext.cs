@@ -45,6 +45,7 @@ public partial class DbtestContext : DbContext
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         => optionsBuilder.UseMySql("name=DefaultConnection", Microsoft.EntityFrameworkCore.ServerVersion.Parse("9.1.0-mysql"));
 
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder
