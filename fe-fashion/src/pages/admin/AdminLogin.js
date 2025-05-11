@@ -23,24 +23,28 @@ const handleSubmit = async (e) => {
   setLoading(true);
 
   try {
-    const response = await fetch('https://localhost:7123/api/User/login', {
+    const response = await fetch('https://localhost:7123/api/User/login-admin', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email: username.includes('@') ? username : '', phoneNumber: username.includes('@') ? '' : username, password })
+      body: JSON.stringify({ 
+        email: username.includes('@') ? username : '', 
+        phoneNumber: username.includes('@') ? '' : username, 
+        password 
+      })
     });
 
     const data = await response.json();
 
     if (response.ok) {
-      localStorage.setItem('adminToken', data.accessToken);
-      localStorage.setItem('adminUser', JSON.stringify(data));
+      localStorage.setItem('adminToken', data.user.accessToken);
+      localStorage.setItem('adminUser', JSON.stringify(data.user));
       navigate('/admin/dashboard');
     } else {
       setError(data.message || 'Đăng nhập thất bại!');
     }
   } catch (error) {
     setError('Có lỗi xảy ra, vui lòng thử lại!');
-    console.error('❌ Error logging in:', error);
+    console.error('❌ Lỗi kết nối API:', error);
   }
 
   setLoading(false);

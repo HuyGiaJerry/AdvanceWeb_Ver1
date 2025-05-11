@@ -11,6 +11,7 @@ const CategoryList = () => {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
+        //gửi request đến API  fetch , async/await 
         const response = await fetch("https://localhost:7123/api/Category");
         if (!response.ok) throw new Error("Lỗi khi lấy dữ liệu danh mục");
 
