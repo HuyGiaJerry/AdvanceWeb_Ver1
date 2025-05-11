@@ -82,7 +82,8 @@ const OrderList = () => {
         paymentMethod: getPaymentMethodName(order.paymentStatus),
         status: vietnameseStatus,
         total: order.totalAmount.toLocaleString('vi-VN') + 'đ',
-        rawStatus: order.status.toLowerCase() // Store original status for filtering
+        rawStatus: order.status.toLowerCase() ,
+         userId: order.userId
       };
     });
   };
@@ -100,7 +101,7 @@ const OrderList = () => {
 
   const columns = [
     { key: 'code', name: 'Mã đơn', sortable: true },
-    // { key: 'customerName', name: 'Khách hàng', sortable: true },
+   { key: 'userId', name: 'User ID', sortable: true }, 
     { key: 'date', name: 'Ngày đặt', sortable: true },
     { key: 'paymentMethod', name: 'Phương thức thanh toán', sortable: true },
     { key: 'status', name: 'Trạng thái', sortable: true },
@@ -137,7 +138,7 @@ const OrderList = () => {
   const handleUpdateStatus = async () => {
    try {
   // Gửi API cập nhật
-  const response = await axios.put("https://localhost:7123/api/Order/update-status", {
+  const response = await axios.put("https://localhost:7123/api/Order/filter-by-status?status=${statusFilter}", {
     orderId: currentOrder.id,
     status: newStatus
   });
