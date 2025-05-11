@@ -1374,10 +1374,10 @@ const dataProduct = [
 const addProduct = (productData) => {
     // Tạo ID mới dựa trên ID lớn nhất hiện tại + 1
     const newId = Math.max(...dataProduct.map(product => product.productId), 0) + 1;
-    
+
     // Tạo ngày hiện tại cho createdAt và updatedAt
     const currentDate = new Date().toISOString();
-    
+
     // Tạo đối tượng sản phẩm mới với cấu trúc giống như dataProduct
     const newProduct = {
         productId: newId,
@@ -1399,7 +1399,7 @@ const addProduct = (productData) => {
             };
         })
     };
-    
+
     // Xử lý variants
     productData.variants.forEach((variant, idx) => {
         const colorIndex = variant.color_id - 1;
@@ -1412,10 +1412,10 @@ const addProduct = (productData) => {
             });
         }
     });
-    
+
     // Thêm sản phẩm mới vào mảng dataProduct
     dataProduct.push(newProduct);
-    
+
     return newProduct;
 };
 

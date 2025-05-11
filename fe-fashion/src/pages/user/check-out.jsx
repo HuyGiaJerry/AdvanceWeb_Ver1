@@ -1,13 +1,17 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Container, Row, Col, Form, Button, Card, Dropdown } from 'react-bootstrap';
-import cartData from '../../services/sampleDataCart';
+import cartService from '../../services/cartService'; // Import cartService
 import './check-out.scss';
 import axios from 'axios';
+import { toast } from 'react-toastify';
+import checkOutService from '../../services/checkOutService'; // Import checkOutService
 
 const CheckOut = () => {
+    const [cartData, setCartData] = useState([]); // Thay thế dữ liệu tĩnh bằng state
     const [contact, setContact] = useState({
         name: '',
         phone: '',
+        email: '',
     });
     const [address, setAddress] = useState({
         province: '',
@@ -25,6 +29,7 @@ const CheckOut = () => {
     // Refs để cuộn đến trường chưa điền
     const nameRef = useRef(null);
     const phoneRef = useRef(null);
+    const emailRef = useRef(null);
     const provinceRef = useRef(null);
     const districtRef = useRef(null);
     const wardRef = useRef(null);
@@ -81,6 +86,24 @@ const CheckOut = () => {
         fetchWards();
     }, [address.district]);
 
+    // Fetch dữ liệu giỏ hàng từ API
+    useEffect(() => {
+        const fetchCartData = async () => {
+            try {
+                const userId = JSON.parse(localStorage.getItem('authState'))?.userId; // Lấy userId từ localStorage
+                if (!userId) {
+                    console.error('Không tìm thấy userId.');
+                    return;
+                }
+                const cartItems = await cartService.getCart(userId); // Gọi API lấy giỏ hàng
+                setCartData(cartItems); // Cập nhật state với dữ liệu từ API
+            } catch (error) {
+                console.error('Lỗi khi lấy dữ liệu giỏ hàng:', error);
+            }
+        };
+        fetchCartData();
+    }, []);
+
     const handleContactChange = (e) => {
         const { name, value } = e.target;
         setContact((prev) => ({
@@ -109,24 +132,82 @@ const CheckOut = () => {
         }
     };
 
-    const handleCompleteOrder = () => {
-        if (!paymentMethod) {
-            alert('Vui lòng chọn phương thức thanh toán.');
+    const handleCompleteOrder = async () => {
+        const invalidFields = validateForm();
+        if (invalidFields.length > 0) {
+            toast.error('Vui lòng điền đầy đủ thông tin và kiểm tra giỏ hàng.');
             return;
         }
-        alert(`Đơn hàng đã được hoàn tất với phương thức thanh toán: ${paymentMethod}`);
+
+        if (!paymentMethod) {
+            toast.error('Vui lòng chọn phương thức thanh toán.');
+            return;
+        }
+
+        try {
+            const userId = JSON.parse(localStorage.getItem('authState'))?.userId;
+            if (!userId) {
+                toast.error('Không tìm thấy thông tin người dùng.');
+                return;
+            }
+
+            const orderData = {
+                userId: userId,
+                customerName: contact.name,
+                customerEmail: contact.email,
+                customerPhone: contact.phone,
+                shippingAddress: `${address.street}, ${address.ward}, ${address.district}, ${address.province}`,
+                items: [{
+                    variantId: 0,
+                    productId: 0,
+                    productName: "string",
+                    colorId: 0,
+                    colorName: "string",
+                    size: "string",
+                    quantity: 0,
+                    price: 0,
+                    imageUrl: "string",
+                }],
+                paymentMethod: paymentMethod,
+            };
+            console.log('Dữ liệu đơn hàng:', orderData);
+            if (paymentMethod === 'VNPAY') {
+                const response = await checkOutService.createVnPayPaymentUrl(orderData);
+                const { paymentUrl } = response;
+                console.log('URL thanh toán VNPAY:', paymentUrl);
+                console.log('URL thanh toán VNPAY:', paymentUrl);
+                if (paymentUrl) {
+                    window.location.href = paymentUrl; // Chuyển hướng đến URL thanh toán VNPAY
+                } else {
+                    toast.error('Không thể tạo URL thanh toán. Vui lòng thử lại.');
+                }
+            }
+
+
+            const response = await checkOutService.checkoutOrderCod(orderData);
+            toast.success(`Đơn hàng đã được tạo thành công! Mã đơn hàng: ${response.orderId}`);
+            setCartData([]);
+            localStorage.removeItem('cart');
+        } catch (error) {
+            console.error('Lỗi khi thanh toán:', error);
+            toast.error('Đã xảy ra lỗi khi thanh toán. Vui lòng thử lại.');
+        }
     };
 
     const validateForm = () => {
-        const { name, phone } = contact;
+        const { name, phone, email } = contact;
         const { province, district, ward, street } = address;
         const invalidFields = [];
         if (!name) invalidFields.push('name');
         if (!phone || !/^\d{10}$/.test(phone)) invalidFields.push('phone'); // Kiểm tra số điện thoại hợp lệ
+        if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) invalidFields.push('email');
         if (!province) invalidFields.push('province');
         if (!district) invalidFields.push('district');
         if (!ward) invalidFields.push('ward');
         if (!street) invalidFields.push('street');
+        if (cartData.length === 0) invalidFields.push('cart');
+
+        setInvalidFields(invalidFields);
         setIsFormValid(invalidFields.length === 0);
         return invalidFields;
     };
@@ -135,6 +216,7 @@ const CheckOut = () => {
         const refs = {
             name: nameRef,
             phone: phoneRef,
+            email: emailRef,
             province: provinceRef,
             district: districtRef,
             ward: wardRef,
@@ -149,7 +231,7 @@ const CheckOut = () => {
 
     return (
         <Container className="check-out" style={{ marginTop: '100px', marginBottom: '170px' }}>
-            <h1 className="text-center mb-4">FASCO Demo Checkout</h1>
+            <h1 className="text-center mb-4">FASCO Checkout</h1>
             <Row>
                 {/* Phần bên trái: Thông tin liên hệ và địa chỉ */}
                 <Col md={4}>
@@ -183,7 +265,20 @@ const CheckOut = () => {
                                 className={invalidFields.includes('phone') ? 'is-invalid' : ''}
                             />
                         </Form.Group>
-
+                        <Form.Group className="mb-3" ref={emailRef}>
+                            <Form.Label>Email</Form.Label>
+                            <Form.Control
+                                type="email"
+                                name="email"
+                                value={contact.email || ''} // Đảm bảo giá trị mặc định là chuỗi rỗng nếu chưa có
+                                onChange={(e) => {
+                                    handleContactChange(e);
+                                    validateForm();
+                                }}
+                                placeholder="Nhập địa chỉ email"
+                                className={invalidFields.includes('email') ? 'is-invalid' : ''}
+                            />
+                        </Form.Group>
                         <h4>Thông tin địa chỉ</h4>
                         <Form.Group className="mb-3" ref={provinceRef}>
                             <Form.Label>Tỉnh/Thành</Form.Label>
@@ -265,7 +360,7 @@ const CheckOut = () => {
                                 {paymentMethod || 'Chọn phương thức thanh toán'}
                             </Dropdown.Toggle>
                             <Dropdown.Menu>
-                                {['VN Pay', 'COD', 'Momo'].map((method) => (
+                                {['VNPAY', 'COD', 'MOMO'].map((method) => (
                                     <Dropdown.Item
                                         key={method}
                                         onClick={() => handlePaymentChange(method)}
@@ -281,37 +376,39 @@ const CheckOut = () => {
                 {/* Phần bên phải: Danh sách sản phẩm và thanh toán */}
                 <Col md={8}>
                     <h4>Giỏ hàng</h4>
-                    {cartData.map((item) => (
-                        <Card key={item.productId} className="mb-3">
-                            <Row className="g-0">
-                                <Col md={8}>
-                                    <Card.Body>
-                                        <Card.Title>{item.name}</Card.Title>
-                                        <Card.Text>
-                                            <strong>Màu sắc:</strong> {item.color} <br />
-                                            <strong>Kích thước:</strong> {item.size} <br />
-                                            <strong>Số lượng:</strong> {item.quantity} <br />
-                                            <strong>Giá:</strong> ${item.price.toFixed(2)}
-                                        </Card.Text>
-                                    </Card.Body>
-                                </Col>
-                                <Col md={4}>
-                                    <Card.Img
-                                        src={require(`../../assets/images/${item.imageUrl}`)}
-                                        alt={item.name}
-                                        className="card-img"
-                                    />
-                                </Col>
-                            </Row>
-                        </Card>
-                    ))}
+                    <div className="cart-scrollable">
+                        {cartData.map((item) => (
+                            <Card key={item.productId} className="mb-3">
+                                <Row className="g-0">
+                                    <Col md={8}>
+                                        <Card.Body>
+                                            <Card.Title>{item.name}</Card.Title>
+                                            <Card.Text>
+                                                <strong>Màu sắc:</strong> {item.colorName} <br />
+                                                <strong>Kích thước:</strong> {item.size} <br />
+                                                <strong>Số lượng:</strong> {item.quantity} <br />
+                                                <strong>Giá:</strong> ${item.price.toFixed(2)}
+                                            </Card.Text>
+                                        </Card.Body>
+                                    </Col>
+                                    <Col md={4}>
+                                        <Card.Img
+                                            src={`https://localhost:7123${item.imageUrl}`}
+                                            alt={item.name}
+                                            className="card-img"
+                                        />
+                                    </Col>
+                                </Row>
+                            </Card>
+                        ))}
+                    </div>
                     <div className="text-end">
                         <h5>Tổng tiền: ${calculateTotal()}</h5>
                     </div>
                     <Button
                         variant="dark"
                         className="w-100"
-                        style={{ marginTop: '100px' }}
+                        style={{ marginTop: '280px' }}
                         onClick={handleCompleteOrder}
                         disabled={!paymentMethod}
                     >
