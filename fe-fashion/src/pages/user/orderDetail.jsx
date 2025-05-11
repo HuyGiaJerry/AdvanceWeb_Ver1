@@ -12,7 +12,7 @@ const OrderDetail = () => {
     ];
 
     return (
-        <Container className="order-details" style={{ marginTop: '100px', marginBottom: '300px' }}>
+        <Container className="order-details" style={{ marginTop: '100px', marginBottom: '400px' }}>
             <h1 className="text-center mb-4">Chi tiết đơn hàng #{orderId}</h1>
             <Row>
                 {products.map((product) => (
