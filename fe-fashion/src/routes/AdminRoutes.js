@@ -7,7 +7,6 @@ import CustomerList from '../pages/admin/customers/CustomerList';
 import ProductList from '../pages/admin/products/ProductList';
 import ProductCreate from '../pages/admin/products/ProductCreate';
 import CategoryList from '../pages/admin/categories/CategoryList';
-import SupplierList from '../pages/admin/suppliers/SupplierList';
 import InventoryList from '../pages/admin/inventory/InventoryList';
 import SalesDashboard from '../pages/admin/sales/SalesDashboard';
 import OrderList from '../pages/admin/sales/OrderList';
@@ -27,7 +26,6 @@ const AdminRoutes = () => {
         <Route path="products" element={<ProductList />} />
         <Route path="products/create" element={<ProductCreate />} />
         <Route path="categories" element={<CategoryList />} />
-        <Route path="suppliers" element={<SupplierList />} />
         <Route path="inventory" element={<InventoryList />} />
         <Route path="sales" element={<SalesDashboard />} />
         <Route path="orders" element={<OrderList />} />

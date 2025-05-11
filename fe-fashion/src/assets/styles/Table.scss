@@ -35,25 +35,25 @@ margin: 30px;
     }
   }
 
-  .table-card {
-    background: #fff;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
-  }
+ 
 
   .data-table {
     width: 100%;
     border-collapse: collapse;
-
+/* Định dạng tiêu đề và ô */
     th, td {
       padding: 30px;
-      text-align: center;
-      word-wrap: break-word; /* Cho phép nội dung xuống dòng khi quá dài */
-      overflow-wrap: break-word; /* Đảm bảo xuống dòng đúng */
-      white-space: normal; /* Tránh nội dung bị dính trên một dòng */
-      max-width: 200px; /* Giới hạn chiều rộng cột */
-    
+      // text-align: center;
+      // word-wrap: break-word; /* Cho phép nội dung xuống dòng khi quá dài */
+      // overflow-wrap: break-word; /* Đảm bảo xuống dòng đúng */
+      // white-space: normal; /* Tránh nội dung bị dính trên một dòng */
+      // max-width: 200px; /* Giới hạn chiều rộng cột */
+    //  padding: 12px;
+  text-align: left;
+  font-size: 16px;
+  min-width: 120px; /* Đảm bảo không bị co quá nhỏ */
+  white-space: nowrap;
+
     }
 
     th {
@@ -176,18 +176,72 @@ margin: 30px;
       color: #aaa;
     }
   }
-  @media screen and (max-width: 768px) {
-    font-size: 14px;
-    
-    th, td {
-      padding: 12px;
-      display: block;
-      text-align: left; /* Cho mobile */
-      width: 100%;
-    }
+/* Đảm bảo bảng co giãn linh hoạt */
+.table-card {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto; /* Cho phép cuộn ngang nếu bảng quá lớn */
+}
 
-    th {
-      text-align: center;
-    }
+
+
+
+
+/* ✅ Màn hình vừa (Tablet - Laptop) */
+@media screen and (max-width: 1024px) {
+  th, td {
+    font-size: 14px;
+    padding: 10px;
   }
+}
+
+/* ✅ Màn hình nhỏ hơn (Tablet dọc & Mobile lớn) */
+@media screen and (max-width: 768px) {
+  .data-table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  th, td {
+    font-size: 13px;
+    padding: 8px;
+    display: block;
+    width: 100%;
+  }
+
+  th {
+    text-align: center;
+  }
+
+  .actions {
+    flex-direction: column;
+    gap: 5px;
+  }
+}
+
+/* ✅ Màn hình điện thoại nhỏ hơn (≤480px) */
+@media screen and (max-width: 480px) {
+  .data-table {
+    display: block;
+    overflow-x: auto;
+    white-space: normal;
+  }
+
+  th, td {
+    font-size: 12px;
+    padding: 6px;
+    word-break: break-word; /* Nội dung xuống dòng nếu quá dài */
+  }
+
+  .pagination {
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+
+  .actions {
+    flex-direction: column;
+    gap: 5px;
+  }
+}
 }

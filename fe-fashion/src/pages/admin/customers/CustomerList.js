@@ -1,129 +1,185 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
 import Table from "../../../components/admin/Table";
-import SearchBar from "../../../components/admin/SearchBar"; // thêm dòng này
+import SearchBar from "../../../components/admin/SearchBar";
 import { dataCustomers } from "../../../services/dataCustomers";
 import "../../../assets/styles/ModalCustomer.scss";
+import "../../../assets/styles/SearchBar.scss";
+import { toast } from "react-toastify";
 
 const CustomerList = () => {
-  const navigate = useNavigate();
+  // State để lưu trữ dữ liệu khách hàng gốc
+  const [allCustomers, setAllCustomers] = useState([]);
+  // State để lưu trữ dữ liệu khách hàng đã lọc (sẽ được truyền vào Table)
+  const [filteredCustomers, setFilteredCustomers] = useState([]);
+  // State cho tìm kiếm
+  const [searchTerm, setSearchTerm] = useState("");
+  // States cho chức năng sửa
   const [editingCustomer, setEditingCustomer] = useState(null);
   const [showModal, setShowModal] = useState(false);
+
+  // Khởi tạo dữ liệu khách hàng
+// Gọi API để lấy danh sách khách hàng
+  useEffect(() => {
+    const fetchCustomers = async () => {
+      try {
+        const response = await fetch("https://localhost:7123/api/User/customers");
+        const data = await response.json();
+
+        if (response.ok) {
+          const formattedCustomers = data.map((customer) => ({
+            id: customer?.userId?.toString() || "N/A",
+            userId: customer?.userId?.toString() || "N/A",
+            fullName: customer?.fullName || "Không có dữ liệu",
+            email: customer?.email || "Không có email",
+            phoneNumber: customer?.phoneNumber || "Không có số điện thoại",
+            isActive: customer?.isActive ? "✅ Đang hoạt động" : "❌ Bị khóa",
+            avatar: customer?.avatarUrl ? (
+              <img
+                src={require(`../../../assets/images/${customer.avatarUrl}`)}
+                alt={customer.fullName}
+                style={{ width: "40px", height: "40px", borderRadius: "50%" }}
+              />
+            ) : "Không có ảnh"
+          }));
+
+          setAllCustomers(formattedCustomers);
+          setFilteredCustomers(formattedCustomers);
+        } else {
+          console.error("Lỗi khi lấy dữ liệu khách hàng:", data.message);
+        }
+      } catch (error) {
+        console.error("Lỗi kết nối API:", error);
+      }
+    };
+
+    fetchCustomers();
+  }, []);
+
+
+  // Cập nhật danh sách khách hàng đã lọc mỗi khi searchTerm thay đổi
+  useEffect(() => {
+    filterCustomers();
+  }, [searchTerm, allCustomers]);
+
+  // Hàm lọc khách hàng dựa trên searchTerm
+  const filterCustomers = () => {
+    const term = searchTerm.toLowerCase().trim();
+    if (!term) {
+      // Nếu không có từ khóa tìm kiếm, hiển thị tất cả
+      setFilteredCustomers(allCustomers);
+    } else {
+      // Nếu có từ khóa, lọc theo tên hoặc ID
+      const filtered = allCustomers.filter((customer) => {
+        const name = (customer.fullName || "").toLowerCase();
+        const id = (customer.userId || "").toString().toLowerCase();
+        return name.includes(term) || id.includes(term);
+      });
+      setFilteredCustomers(filtered);
+    }
+  };
+
+  // Xử lý khi người dùng nhập vào ô tìm kiếm
+  const handleSearchChange = (e) => {
+    const value = e.target.value;
+    setSearchTerm(value);
+  };
+
   const handleEdit = (customer) => {
     setEditingCustomer(customer);
     setShowModal(true);
   };
-  const handleSaveStatus = (newStatus) => {
-    const updated = customers.map((c) =>
-      c.userId === editingCustomer.userId
-        ? { ...c, isActive: newStatus }
-        : c
-    );
-    setCustomers(updated);
-    setShowModal(false);
-  };
- 
-  
-  const originalCustomers = dataCustomers?.map((customer) => ({
-    userId: customer?.userId || "N/A",
-    fullName: customer?.fullName || "Không có dữ liệu",
-    email: customer?.email || "Không có email",
-    phoneNumber: customer?.phoneNumber || "Không có số điện thoại",
-    role: customer?.role || "Không rõ",
-    isActive: customer?.isActive === 1 ? "✅ Đang hoạt động" : "❌ Bị khóa",
-    totalSpent: customer?.totalSpent ? `$${customer.totalSpent.toFixed(2)}` : "$0.00",
-    loyaltyPoints: customer?.loyaltyPoints || 0,
-    lastLogin: customer?.lastLogin ? new Date(customer.lastLogin).toLocaleString("vi-VN") : "Không có dữ liệu",
-    createdAt: customer?.createdAt ? new Date(customer.createdAt).toLocaleString("vi-VN") : "Không có dữ liệu",
-    updatedAt: customer?.updatedAt ? new Date(customer.updatedAt).toLocaleString("vi-VN") : "Không có dữ liệu",
-  })) || [];
 
-  const [customers, setCustomers] = useState(originalCustomers);
-  const [searchTerm, setSearchTerm] = useState("");
-
-  const filteredCustomers = customers.filter((customer) =>
-    customer.fullName.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    customer.userId.toString().toLowerCase().includes(searchTerm.toLowerCase())
+const handleSaveStatus = (newStatus) => {
+  // Cập nhật trạng thái trong danh sách gốc
+  const updatedCustomers = allCustomers.map((c) =>
+    c.userId === editingCustomer.userId ? { ...c, isActive: newStatus } : c
   );
+  setAllCustomers(updatedCustomers);
 
-  const columns = [
-    { key: "userId", name: "User ID", sortable: true },
-    { key: "fullName", name: "Tên khách hàng", sortable: true },
-    { key: "email", name: "Email", sortable: true },
-    { key: "phoneNumber", name: "Số điện thoại", sortable: true },
-    { key: "role", name: "Vai trò", sortable: true },
-    { key: "isActive", name: "Trạng thái", sortable: true },
-  ];
+  // Áp dụng bộ lọc hiện tại
+  filterCustomers();
 
-  const handleRowClick = (id) => {
-    navigate(`/admin/customers/detail/${id}`);
-  };
+  // Thông báo thành công
+  toast.success("Cập nhật trạng thái thành công!", {
+    position: "top-right",
+    autoClose: 2000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+  });
+
+  setShowModal(false);
+};
+
 
   const handleDelete = (id) => {
     if (window.confirm("Bạn có chắc chắn muốn xóa khách hàng này?")) {
-      const updated = customers.filter((customer) => customer.userId !== id); // Sử dụng `userId`
-      setCustomers(updated);
-      setSearchTerm(""); // Reset tìm kiếm để đảm bảo danh sách cập nhật
+      const updatedCustomers = allCustomers.filter((customer) => customer.userId !== id);
+      setAllCustomers(updatedCustomers);
+      // Việc lọc lại sẽ tự động xảy ra thông qua useEffect
     }
   };
-  
-  
-  
+
+ const columns = [
+  { key: "avatar", name: "Ảnh đại diện", sortable: false },
+  { key: "userId", name: "User ID", sortable: true },
+  { key: "fullName", name: "Tên khách hàng", sortable: true },
+  { key: "email", name: "Email", sortable: true },
+  { key: "phoneNumber", name: "Số điện thoại", sortable: true },
+  { key: "isActive", name: "Trạng thái", sortable: true },
+];
 
   return (
     <div>
-      <div className="flex justify-between items-center mb-6">
-        <h1 className="text-2xl font-bold">Danh sách khách hàng</h1>
-      </div>
-  
-      {/* Search Bar */}
-  
-        <SearchBar
-          placeholder="Tìm theo tên hoặc ID..."
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-        />
-    
-    <Table
-  columns={columns}
-  data={filteredCustomers.map((customer) => ({
-    ...customer,
-    onClick: () => handleRowClick(customer.userId),
-    onEdit: () => handleEdit(customer),
-    onDelete: () => handleDelete(customer.userId), // 👈 Kiểm tra ID có đúng không
-  }))}
-  onDelete={handleDelete}
-  onEdit={handleEdit}
-  editUrl={null}
-  createUrl="/admin/customers/create"
-/>
+      <h1 style={{ fontSize: "24px", fontWeight: "600", color: "#333", margin: "20px" }}>
+        Danh sách khách hàng
+      </h1>
+ <div className="search-bar-container"  >
+ <SearchBar
+        placeholder="Tìm theo tên hoặc ID..."
+        value={searchTerm}
+        onChange={handleSearchChange}
+      />
 
+ </div>
+     
+      <Table
+        columns={columns}
+        data={filteredCustomers.map((customer) => ({
+          ...customer,
+          onEdit: () => handleEdit(customer),
+        }))}
+        onDelete={handleDelete}
+        editUrl={null}
+        createUrl="/admin/customers/create"
+        
+  showAddButton={false}
+      />
 
-  
-      {/* Modal sửa trạng thái */}
       {showModal && editingCustomer && (
-  <div className="modal-overlay">
-    <div className="modal-container">
-      <h2>Chỉnh sửa trạng thái</h2>
-      <p>Khách hàng: <strong>{editingCustomer.fullName}</strong></p>
-      <div className="modal-buttons">
-        <button className="active" onClick={() => handleSaveStatus("✅ Đang hoạt động")}>
-          Đang hoạt động
-        </button>
-        <button className="blocked" onClick={() => handleSaveStatus("❌ Bị khóa")}>
-          Bị khóa
-        </button>
-      </div>
-      <div className="modal-cancel" onClick={() => setShowModal(false)}>
-        Hủy bỏ
-      </div>
-    </div>
-  </div>
-)}
-
+        <div className="modal-overlay">
+          <div className="modal-container">
+            <h2>Chỉnh sửa trạng thái</h2>
+            <p>
+              Khách hàng: <strong>{editingCustomer.fullName}</strong>
+            </p>
+            <div className="modal-buttons">
+              <button className="active" onClick={() => handleSaveStatus("✅ Đang hoạt động")}>
+                Đang hoạt động
+              </button>
+              <button className="blocked" onClick={() => handleSaveStatus("❌ Bị khóa")}>
+                Bị khóa
+              </button>
+            </div>
+            <div className="modal-cancel" onClick={() => setShowModal(false)}>
+              Hủy bỏ
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
-  
 };
 
 export default CustomerList;

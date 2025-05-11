@@ -21,7 +21,8 @@ const LowStockAlert = ({ lowStockAlert }) => {
   return (
     <div className="low-stock-alert">
       <h2>Sản phẩm sắp hết hàng</h2>
-      <Table columns={columns} data={formattedData} itemsPerPage={5} />
+      <Table columns={columns} data={formattedData} itemsPerPage={5} showActions={false}
+  showAddButton={false} />
     </div>
   );
 };
