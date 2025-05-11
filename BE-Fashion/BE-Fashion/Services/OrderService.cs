@@ -164,7 +164,9 @@ namespace BE_Fashion.Services
                 Status = o.Status ?? string.Empty,
                 PaymentStatus = o.Payment?.Status ?? string.Empty,
                 TotalAmount = o.TotalAmount,
-                CreatedAt = o.CreatedAt ?? DateTime.MinValue
+                CreatedAt = o.CreatedAt ?? DateTime.MinValue,
+                UserId = o.UserId ?? 0,           // Gán UserId từ Order
+                CustomerName = o.CustomerName ?? string.Empty // Gán CustomerName từ Order
             });
         }
 
