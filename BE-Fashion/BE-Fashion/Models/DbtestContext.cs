@@ -16,13 +16,7 @@ public partial class DbtestContext : DbContext
     {
     }
 
-    public virtual DbSet<Cart> Carts { get; set; }
-
-    public virtual DbSet<CartItem> CartItems { get; set; }
-
     public virtual DbSet<Category> Categories { get; set; }
-
-    public virtual DbSet<LoyaltyPoint> LoyaltyPoints { get; set; }
 
     public virtual DbSet<Order> Orders { get; set; }
 
@@ -58,64 +52,6 @@ public partial class DbtestContext : DbContext
             .UseCollation("utf8mb4_0900_ai_ci")
             .HasCharSet("utf8mb4");
 
-        modelBuilder.Entity<Cart>(entity =>
-        {
-            entity.HasKey(e => e.CartId).HasName("PRIMARY");
-
-            entity.ToTable("carts");
-
-            entity.HasIndex(e => e.UserId, "user_id").IsUnique();
-
-            entity.Property(e => e.CartId).HasColumnName("cart_id");
-            entity.Property(e => e.CreatedAt)
-                .HasDefaultValueSql("CURRENT_TIMESTAMP")
-                .HasColumnType("timestamp")
-                .HasColumnName("created_at");
-            entity.Property(e => e.UpdatedAt)
-                .ValueGeneratedOnAddOrUpdate()
-                .HasDefaultValueSql("CURRENT_TIMESTAMP")
-                .HasColumnType("timestamp")
-                .HasColumnName("updated_at");
-            entity.Property(e => e.UserId).HasColumnName("user_id");
-
-            entity.HasOne(d => d.User).WithOne(p => p.Cart)
-                .HasForeignKey<Cart>(d => d.UserId)
-                .OnDelete(DeleteBehavior.Cascade)
-                .HasConstraintName("carts_ibfk_1");
-        });
-
-        modelBuilder.Entity<CartItem>(entity =>
-        {
-            entity.HasKey(e => e.CartItemId).HasName("PRIMARY");
-
-            entity.ToTable("cart_items");
-
-            entity.HasIndex(e => e.CartId, "cart_id");
-
-            entity.HasIndex(e => e.VariantId, "variant_id");
-
-            entity.Property(e => e.CartItemId).HasColumnName("cart_item_id");
-            entity.Property(e => e.CartId).HasColumnName("cart_id");
-            entity.Property(e => e.CreatedAt)
-                .HasDefaultValueSql("CURRENT_TIMESTAMP")
-                .HasColumnType("timestamp")
-                .HasColumnName("created_at");
-            entity.Property(e => e.Quantity)
-                .HasDefaultValueSql("'1'")
-                .HasColumnName("quantity");
-            entity.Property(e => e.VariantId).HasColumnName("variant_id");
-
-            entity.HasOne(d => d.Cart).WithMany(p => p.CartItems)
-                .HasForeignKey(d => d.CartId)
-                .OnDelete(DeleteBehavior.Cascade)
-                .HasConstraintName("cart_items_ibfk_1");
-
-            entity.HasOne(d => d.Variant).WithMany(p => p.CartItems)
-                .HasForeignKey(d => d.VariantId)
-                .OnDelete(DeleteBehavior.Cascade)
-                .HasConstraintName("cart_items_ibfk_2");
-        });
-
         modelBuilder.Entity<Category>(entity =>
         {
             entity.HasKey(e => e.CategoryId).HasName("PRIMARY");
@@ -139,39 +75,6 @@ public partial class DbtestContext : DbContext
                 .HasConstraintName("categories_ibfk_1");
         });
 
-        modelBuilder.Entity<LoyaltyPoint>(entity =>
-        {
-            entity.HasKey(e => e.PointId).HasName("PRIMARY");
-
-            entity.ToTable("loyalty_points");
-
-            entity.HasIndex(e => e.OrderId, "order_id");
-
-            entity.HasIndex(e => e.UserId, "user_id");
-
-            entity.Property(e => e.PointId).HasColumnName("point_id");
-            entity.Property(e => e.CreatedAt)
-                .HasDefaultValueSql("CURRENT_TIMESTAMP")
-                .HasColumnType("timestamp")
-                .HasColumnName("created_at");
-            entity.Property(e => e.OrderId).HasColumnName("order_id");
-            entity.Property(e => e.Points).HasColumnName("points");
-            entity.Property(e => e.TransactionType)
-                .HasColumnType("enum('earn','redeem')")
-                .HasColumnName("transaction_type");
-            entity.Property(e => e.UserId).HasColumnName("user_id");
-
-            entity.HasOne(d => d.Order).WithMany(p => p.LoyaltyPoints)
-                .HasForeignKey(d => d.OrderId)
-                .OnDelete(DeleteBehavior.SetNull)
-                .HasConstraintName("loyalty_points_ibfk_2");
-
-            entity.HasOne(d => d.User).WithMany(p => p.LoyaltyPoints)
-                .HasForeignKey(d => d.UserId)
-                .OnDelete(DeleteBehavior.Cascade)
-                .HasConstraintName("loyalty_points_ibfk_1");
-        });
-
         modelBuilder.Entity<Order>(entity =>
         {
             entity.HasKey(e => e.OrderId).HasName("PRIMARY");
@@ -185,6 +88,17 @@ public partial class DbtestContext : DbContext
                 .HasDefaultValueSql("CURRENT_TIMESTAMP")
                 .HasColumnType("timestamp")
                 .HasColumnName("created_at");
+            entity.Property(e => e.CustomerEmail)
+                .HasMaxLength(255)
+                .HasColumnName("customer_email");
+            entity.Property(e => e.CustomerName)
+                .HasMaxLength(255)
+                .HasColumnName("customer_name")
+                .UseCollation("utf8mb3_general_ci")
+                .HasCharSet("utf8mb3");
+            entity.Property(e => e.CustomerPhone)
+                .HasMaxLength(20)
+                .HasColumnName("customer_phone");
             entity.Property(e => e.ShippingAddress)
                 .HasColumnType("text")
                 .HasColumnName("shipping_address");
@@ -274,7 +188,7 @@ public partial class DbtestContext : DbContext
 
             entity.ToTable("payments");
 
-            entity.HasIndex(e => e.OrderId, "order_id");
+            entity.HasIndex(e => e.OrderId, "unique_order_id").IsUnique();
 
             entity.Property(e => e.PaymentId).HasColumnName("payment_id");
             entity.Property(e => e.Amount)
@@ -296,8 +210,8 @@ public partial class DbtestContext : DbContext
                 .HasMaxLength(255)
                 .HasColumnName("transaction_id");
 
-            entity.HasOne(d => d.Order).WithMany(p => p.Payments)
-                .HasForeignKey(d => d.OrderId)
+            entity.HasOne(d => d.Order).WithOne(p => p.Payment)
+                .HasForeignKey<Payment>(d => d.OrderId)
                 .OnDelete(DeleteBehavior.SetNull)
                 .HasConstraintName("payments_ibfk_1");
         });

@@ -5,9 +5,13 @@ namespace BE_Fashion.Models;
 
 public partial class Order
 {
-    public int OrderId { get; set; }
+    public Guid OrderId { get; set; }
 
     public int? UserId { get; set; }
+
+    public string? CustomerEmail { get; set; }
+
+    public string? CustomerPhone { get; set; }
 
     public decimal TotalAmount { get; set; }
 
@@ -19,11 +23,11 @@ public partial class Order
 
     public DateTime? UpdatedAt { get; set; }
 
-    public virtual ICollection<LoyaltyPoint> LoyaltyPoints { get; set; } = new List<LoyaltyPoint>();
+    public string? CustomerName { get; set; }
 
     public virtual ICollection<OrderItem> OrderItems { get; set; } = new List<OrderItem>();
 
-    public virtual ICollection<Payment> Payments { get; set; } = new List<Payment>();
+    public virtual Payment? Payment { get; set; }
 
     public virtual User? User { get; set; }
 }

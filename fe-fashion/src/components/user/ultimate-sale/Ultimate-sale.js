@@ -2,7 +2,7 @@ import React from 'react';
 import { Container, Row, Col, Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './Ultimate-sale.scss'; 
+import './Ultimate-sale.scss';
 const UltimateSale = () => {
     const navigate = useNavigate();
     return (
@@ -37,9 +37,9 @@ const UltimateSale = () => {
                             <h2 className="text-uppercase" style={{ fontSize: '50px', fontWeight: 'bold' }}>Ultimate</h2>
                             <h1 className="outline-text" >SALE</h1>
                             <p className="text-muted">New Collection</p>
-                            <Button 
-                            onClick={() => navigate('/shop')}
-                            variant="dark">SHOP NOW</Button>
+                            <Button
+                                onClick={() => navigate('/shop')}
+                                variant="dark">SHOP NOW</Button>
                         </div>
 
                         {/* Bottom small image */}
@@ -69,7 +69,9 @@ const UltimateSale = () => {
                 <Row className="text-center mt-5 justify-content-between">
                     {["CHANEL", "LOUIS VUITTON", "PRADA", "Calvin Klein", "DENIM"].map((brand, idx) => (
                         <Col key={idx} xs={6} md="auto" className="my-2">
-                            <h5 className="fw-bold">{brand}</h5>
+                            
+                                <h5 className="fw-bold brand">{brand}</h5>
+                            
                         </Col>
                     ))}
                 </Row>
