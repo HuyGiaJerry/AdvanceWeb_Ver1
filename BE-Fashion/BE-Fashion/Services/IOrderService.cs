@@ -7,7 +7,7 @@ namespace BE_Fashion.Services
         Task<Guid> CheckoutAsync(CheckoutRequest request);
         Task<CancelOrderResult> CancelOrderAsync(Guid orderId);
         Task<bool> UpdateOrderStatusAsync(UpdateOrderStatusDto dto);
-        Task<IEnumerable<OrderDto>> GetOrdersByStatusAsync(string status);
+        Task<IEnumerable<OrderDto>> GetOrdersByStatusAsync(string status, int? userId);
 
     }
 }

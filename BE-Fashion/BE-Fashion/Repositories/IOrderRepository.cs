@@ -13,7 +13,7 @@ namespace BE_Fashion.Repositories
 
         Task<IEnumerable<Order>> GetAllOrdersAsync();
 
-        Task<IEnumerable<Order>> GetOrdersByStatusAsync(string status);
+        Task<IEnumerable<Order>> GetOrdersByStatusAsync(string status, int? userId);
 
         Task<Order?> GetOrderByIdWithItemsAsync(Guid orderId); // Lấy luôn cả OrderItems
         Task<bool> DecreaseStockAsync(int variantId, int quantity); // Trừ tồn kho

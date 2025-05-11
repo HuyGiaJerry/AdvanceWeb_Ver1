@@ -114,67 +114,6 @@ namespace BE_Fashion.Controllers
                 return BadRequest($"Error processing callback: {ex.Message}");
             }
         }
-
-        //[HttpGet("return")]
-        //public async Task<IActionResult> Return()
-        //{
-        //    try
-        //    {
-        //        var query = Request.Query.ToDictionary(
-        //            kvp => kvp.Key,
-        //            kvp => kvp.Value.ToString()
-        //        );
-
-        //        var vnp_SecureHash = query.GetValueOrDefault("vnp_SecureHash");
-        //        if (string.IsNullOrEmpty(vnp_SecureHash))
-        //            return BadRequest("Missing signature.");
-
-        //        bool isValid = _vnPayService.ValidateSignature(vnp_SecureHash, query);
-        //        if (!isValid)
-        //            return BadRequest("Invalid signature.");
-
-        //        var orderId = Guid.Parse(query["vnp_TxnRef"]);
-        //        var responseCode = query["vnp_ResponseCode"];
-
-        //        var order = await _orderRepository.GetOrderByIdAsync(orderId);
-        //        if (order == null)
-        //            return NotFound("Order not found.");
-
-        //        if (order.Payment == null)
-        //            return BadRequest("Payment record not found for this order.");
-
-        //        if (responseCode == "00")
-        //        {
-        //            if (order.Status != "confirmed")
-        //            {
-        //                order.Status = "confirmed";
-        //                order.Payment.Status = "completed";
-        //                order.Payment.TransactionId = query.GetValueOrDefault("vnp_TransactionNo");
-        //                order.UpdatedAt = DateTime.UtcNow;
-
-        //                await _orderRepository.UpdateOrderAsync(order);
-        //                await _redisCartService.ClearCartAsync(order.UserId ?? -1);
-        //            }
-        //            return Ok("Giao dịch thành công!");
-        //        }
-        //        else
-        //        {
-        //            if (order.Status != "cancelled")
-        //            {
-        //                order.Status = "cancelled";
-        //                order.Payment.Status = "failed";
-        //                order.UpdatedAt = DateTime.UtcNow;
-
-        //                await _orderRepository.UpdateOrderAsync(order);
-        //            }
-        //            return BadRequest("Giao dịch thất bại hoặc không hợp lệ.");
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return BadRequest($"Error processing return: {ex.Message}");
-        //    }
-        //}
         [HttpGet("return")]
         public async Task<IActionResult> Return()
         {

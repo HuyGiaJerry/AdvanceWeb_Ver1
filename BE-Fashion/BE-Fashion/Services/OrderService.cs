@@ -138,17 +138,24 @@ namespace BE_Fashion.Services
             return true;
         }
 
-        public async Task<IEnumerable<OrderDto>> GetOrdersByStatusAsync(string status)
+        public async Task<IEnumerable<OrderDto>> GetOrdersByStatusAsync(string status, int? userId)
         {
             IEnumerable<Order> orders;
 
-            if (string.IsNullOrEmpty(status) || status.ToLower() == "all")
+            if (userId.HasValue)
             {
+                // Use the new repository method to filter by userId and status
+                orders = await _repo.GetOrdersByStatusAsync(status, userId.Value);
+            }
+            else if (string.IsNullOrEmpty(status) || status.ToLower() == "all")
+            {
+                // Fetch all orders if no userId and status is "all"
                 orders = await _repo.GetAllOrdersAsync();
             }
             else
             {
-                orders = await _repo.GetOrdersByStatusAsync(status.ToLower());
+                // Fetch orders by status only (no userId)
+                orders = await _repo.GetOrdersByStatusAsync(status.ToLower(), null);
             }
 
             return orders.Select(o => new OrderDto
@@ -160,5 +167,6 @@ namespace BE_Fashion.Services
                 CreatedAt = o.CreatedAt ?? DateTime.MinValue
             });
         }
+
     }
 }
