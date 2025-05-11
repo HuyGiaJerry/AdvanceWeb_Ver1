@@ -54,5 +54,46 @@ namespace BE_Fashion.Repositories
             }
             await _context.SaveChangesAsync();
         }
+        public void UpdateAsync(Order order)
+        {
+            _context.Orders.Update(order);
+        }
+
+        public async Task SaveChangesAsync()
+        {
+            await _context.SaveChangesAsync();
+        }
+        public async Task<IEnumerable<Order>> GetAllOrdersAsync()
+        {
+            return await _context.Orders
+                .Include(o => o.Payment)
+                .ToListAsync();
+        }
+
+        public async Task<IEnumerable<Order>> GetOrdersByStatusAsync(string status)
+        {
+            return await _context.Orders
+                .Include(o => o.Payment)
+                .Where(o => o.Status!.ToLower() == status)
+                .ToListAsync();
+        }
+        public async Task<bool> DecreaseStockAsync(int variantId, int quantity)
+        {
+            var variant = await _context.ProductVariants.FindAsync(variantId);
+            if (variant == null) return false;
+
+            if (variant.StockQuantity < quantity)
+                return false;
+
+            variant.StockQuantity -= quantity;
+            _context.ProductVariants.Update(variant);
+            return true;
+        }
+        public async Task<Order?> GetOrderByIdWithItemsAsync(Guid orderId)
+        {
+            return await _context.Orders
+                .Include(o => o.OrderItems)
+                .FirstOrDefaultAsync(o => o.OrderId == orderId);
+        }
     }
 }
