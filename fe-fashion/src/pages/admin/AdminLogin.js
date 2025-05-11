@@ -106,7 +106,7 @@ const handleSubmit = async (e) => {
                   <input type="checkbox" id="remember" />
                   <label htmlFor="remember">Ghi nhớ đăng nhập</label>
                 </div>
-                <a href="#forgot" className="forgot-password">Quên mật khẩu?</a>
+               
               </div>
               
               <button 

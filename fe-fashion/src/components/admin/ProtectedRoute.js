@@ -14,6 +14,8 @@ const ProtectedRoute = () => {
   // Nếu đã đăng nhập, render layout và các route con
   return (
     <Layout>
+      {/* hiển thị các route con bên trong ProtectedRoute */}
+
       <Outlet />
     </Layout>
   );
