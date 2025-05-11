@@ -155,7 +155,8 @@ namespace BE_Fashion.Controllers
                         await _redisCartService.ClearCartAsync(order.UserId ?? -1);
                     }
 
-                    return Redirect("http://localhost:3000/payment-result?status=success&orderId=" + orderId);
+                    //return Redirect("http://localhost:3000/payment-result?status=success&orderId=" + orderId);
+                    return Redirect($"http://localhost:3000/payment-result?status=success&orderId={orderId}&amount={order.TotalAmount}");
                 }
                 else
                 {
@@ -168,7 +169,8 @@ namespace BE_Fashion.Controllers
                         await _orderRepository.UpdateOrderAsync(order);
                     }
 
-                    return Redirect("http://localhost:3000/payment-result?status=failed&orderId=" + orderId);
+                    //return Redirect("http://localhost:3000/payment-result?status=failed&orderId=" + orderId);
+                    return Redirect($"http://localhost:3000/payment-result?status=failed&orderId={orderId}&amount={order.TotalAmount}");
                 }
             }
             catch (Exception ex)
