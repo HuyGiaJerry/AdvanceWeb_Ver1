@@ -13,7 +13,7 @@ import CheckOut from "../pages/user/check-out"
 import Header from "../components/user/header/Header"
 import Footer from "../components/user/footer/Footer"
 import '../App'
-// import NotFound from "../components/user/not_found/NotFound"
+import NotFound from "../components/user/not_found/NotFound"
 import PaymentResult from "../pages/user/PaymentResult"
 const UserRoutes = () => {
     return (
@@ -34,7 +34,7 @@ const UserRoutes = () => {
                     <Route path="/check-out" element={<CheckOut />} />
                     <Route path="/shop/product/detail/:id" element={<Detail />} />
                     <Route path="/payment-result" element={<PaymentResult />} />
-                    {/* <Route path="*" element={<NotFound />} /> */}
+                    <Route path="*" element={<NotFound />} />
                 </Routes>
             </div>
             <Footer />

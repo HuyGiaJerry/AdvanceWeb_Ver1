@@ -10,7 +10,7 @@ const PaymentResult = () => {
 
     const status = queryParams.get('status'); // Lấy trạng thái thanh toán từ URL
     const orderId = queryParams.get('orderId'); // Lấy mã đơn hàng từ URL
-
+    const amount = queryParams.get('amount');
     useEffect(() => {
         if (status === 'success') {
             toast.success('Thanh toán thành công!');
@@ -33,6 +33,9 @@ const PaymentResult = () => {
                     />
                     <p>
                         Mã đơn hàng: <strong>{orderId}</strong>
+                    </p>
+                    <p>
+                        Tổng tiền : <strong>{parseFloat(amount).toLocaleString()}₫</strong>
                     </p>
                     <Link to={`/order/${orderId}`} className="btn btn-primary">
                         Xem chi tiết đơn hàng

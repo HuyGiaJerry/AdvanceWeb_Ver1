@@ -4,14 +4,23 @@ import { FaGoogle, FaEdit } from 'react-icons/fa'; // Import icon Google và bú
 import './account.scss';
 
 const Account = () => {
-    const [profileImage, setProfileImage] = useState(require('../../assets/images/defaultImg.jpg')); // Ảnh mặc định
+    // Lấy thông tin từ authState trong localStorage
+    const authState = JSON.parse(localStorage.getItem('authState')) || {};
+
+    const [profileImage, setProfileImage] = useState(
+        authState.profileImage || require('../../assets/images/defaultImg.jpg') // Ảnh mặc định
+    );
+
     const [formData, setFormData] = useState({
-        fullName: 'Nguyễn Gia Huy',
-        username: 'nguyengiahuy',
-        phone: '0123456789',
-        email: 'userTest@gmail.com',
+        fullName: authState.fullName || 'Nguyễn Gia Huy',
+        username: authState.username || 'nguyengiahuy',
+        phone: authState.phoneNumber || '0123456789',
+        email: authState.email || 'userTest@gmail.com',
     });
-    const [isGoogleConnected, setIsGoogleConnected] = useState(false); // Trạng thái kết nối Google
+
+    const [isGoogleConnected, setIsGoogleConnected] = useState(
+        authState.isGoogleConnected || false // Trạng thái kết nối Google
+    );
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -24,18 +33,36 @@ const Account = () => {
             const reader = new FileReader();
             reader.onload = () => {
                 setProfileImage(reader.result); // Cập nhật ảnh
+                localStorage.setItem(
+                    'authState',
+                    JSON.stringify({ ...authState, profileImage: reader.result }) // Lưu ảnh vào authState
+                );
             };
             reader.readAsDataURL(file);
         }
     };
 
     const handleSave = () => {
-        alert('Profile updated successfully!');
+        // Lưu thông tin vào authState trong localStorage
+        const updatedAuthState = {
+            ...authState,
+            fullName: formData.fullName,
+            username: formData.username,
+            phone: formData.phone,
+            email: formData.email,
+        };
+        localStorage.setItem('authState', JSON.stringify(updatedAuthState));
+        alert('Thông tin đã được lưu thành công!');
     };
 
     const handleGoogleConnect = () => {
         // Giả lập kết nối Google
-        setIsGoogleConnected(!isGoogleConnected);
+        const newStatus = !isGoogleConnected;
+        setIsGoogleConnected(newStatus);
+        localStorage.setItem(
+            'authState',
+            JSON.stringify({ ...authState, isGoogleConnected: newStatus }) // Lưu trạng thái vào authState
+        );
     };
 
     return (
