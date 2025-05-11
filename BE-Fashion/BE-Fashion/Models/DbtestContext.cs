@@ -43,7 +43,12 @@ public partial class DbtestContext : DbContext
     public virtual DbSet<Wishlist> Wishlists { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+<<<<<<< HEAD
         => optionsBuilder.UseMySql("name=DefaultConnection", Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.42-mysql"));
+=======
+        => optionsBuilder.UseMySql("name=DefaultConnection", Microsoft.EntityFrameworkCore.ServerVersion.Parse("9.1.0-mysql"));
+
+>>>>>>> 67275d441d407996b93e2bd935d3d23cfff9b436
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

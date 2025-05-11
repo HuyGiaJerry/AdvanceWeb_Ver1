@@ -10,5 +10,8 @@ namespace BE_Fashion.Repositories
 
         void UpdateAsync(Order order);
         Task SaveChangesAsync();
+
+        Task<IEnumerable<Order>> GetAllOrdersAsync();
+        Task<IEnumerable<Order>> GetOrdersByStatusAsync(string status);
     }
 }
