@@ -31,7 +31,7 @@
     }
 
     .card-img {
-        margin-top:30px ;
+        margin-top: 30px;
         width: 50%;
         /* Đảm bảo ảnh chiếm toàn bộ chiều rộng của cột */
         height: 100px;
@@ -50,4 +50,12 @@
         margin-top: 20px;
     }
 
+    .cart-scrollable {
+        max-height: 400px;
+        /* Giới hạn chiều cao hiển thị */
+        overflow-y: auto;
+        /* Thêm thanh cuộn dọc */
+        padding-right: 10px;
+        /* Thêm khoảng cách để tránh che nội dung bởi thanh cuộn */
+    }
 }
