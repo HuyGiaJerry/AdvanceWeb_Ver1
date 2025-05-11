@@ -54,5 +54,14 @@ namespace BE_Fashion.Repositories
             }
             await _context.SaveChangesAsync();
         }
+        public void UpdateAsync(Order order)
+        {
+            _context.Orders.Update(order);
+        }
+
+        public async Task SaveChangesAsync()
+        {
+            await _context.SaveChangesAsync();
+        }
     }
 }

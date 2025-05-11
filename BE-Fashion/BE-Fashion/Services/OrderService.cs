@@ -108,5 +108,17 @@ namespace BE_Fashion.Services
                 Message = "Đã hủy đơn hàng thành công."
             };
         }
+        public async Task<bool> UpdateOrderStatusAsync(UpdateOrderStatusDto dto)
+        {
+            var order = await _repo.GetOrderByIdAsync(dto.OrderId);
+            if (order == null) return false;
+
+            order.Status = dto.Status;
+            order.UpdatedAt = DateTime.UtcNow;
+
+            _repo.UpdateAsync(order);
+            await _repo.SaveChangesAsync();
+            return true;
+        }
     }
 }

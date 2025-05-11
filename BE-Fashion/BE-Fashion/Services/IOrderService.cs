@@ -6,7 +6,7 @@ namespace BE_Fashion.Services
     {
         Task<Guid> CheckoutAsync(CheckoutRequest request);
         Task<CancelOrderResult> CancelOrderAsync(Guid orderId);
-
+        Task<bool> UpdateOrderStatusAsync(UpdateOrderStatusDto dto);
     }
 }
     

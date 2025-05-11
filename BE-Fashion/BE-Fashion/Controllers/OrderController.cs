@@ -35,7 +35,15 @@ namespace BE_Fashion.Controllers
 
             return Ok(new { message = result.Message });
         }
+        [HttpPut("update-status")]
+        public async Task<IActionResult> UpdateOrderStatus([FromBody] UpdateOrderStatusDto dto)
+        {
+            var result = await _orderService.UpdateOrderStatusAsync(dto);
+            if (!result)
+                return NotFound(new { message = "Order not found" });
 
+            return Ok(new { message = "Order status updated successfully" });
+        }
 
     }
 }

@@ -7,5 +7,8 @@ namespace BE_Fashion.Repositories
         Task CreateOrderAsync(Order order, List<OrderItem> items, Payment payment);
         Task<Order> GetOrderByIdAsync(Guid orderId);
         Task UpdateOrderAsync(Order order);
+
+        void UpdateAsync(Order order);
+        Task SaveChangesAsync();
     }
 }
