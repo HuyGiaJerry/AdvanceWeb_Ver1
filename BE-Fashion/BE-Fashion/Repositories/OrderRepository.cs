@@ -70,13 +70,22 @@ namespace BE_Fashion.Repositories
                 .ToListAsync();
         }
 
-        public async Task<IEnumerable<Order>> GetOrdersByStatusAsync(string status)
+        public async Task<IEnumerable<Order>> GetOrdersByStatusAsync(string status, int? userId)
         {
-            return await _context.Orders
+            var query = _context.Orders
                 .Include(o => o.Payment)
-                .Where(o => o.Status!.ToLower() == status)
-                .ToListAsync();
+                .Include(o => o.User)
+                .AsQueryable();
+
+            if (!string.IsNullOrEmpty(status) && status != "all")
+                query = query.Where(o => o.Status!.ToLower() == status.ToLower());
+
+            if (userId.HasValue)
+                query = query.Where(o => o.UserId == userId.Value);
+
+            return await query.ToListAsync();
         }
+
         public async Task<bool> DecreaseStockAsync(int variantId, int quantity)
         {
             var variant = await _context.ProductVariants.FindAsync(variantId);

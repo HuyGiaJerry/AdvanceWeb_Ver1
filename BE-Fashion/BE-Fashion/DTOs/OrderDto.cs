@@ -7,5 +7,9 @@
         public string PaymentStatus { get; set; } = string.Empty; // completed, failed, ...
         public decimal TotalAmount { get; set; }
         public DateTime CreatedAt { get; set; }
+
+        // Thêm thông tin UserId và CustomerName
+        public int UserId { get; set; } // ID của người dùng (customer)
+        public string CustomerName { get; set; } = string.Empty; // Tên khách hàng
     }
 }

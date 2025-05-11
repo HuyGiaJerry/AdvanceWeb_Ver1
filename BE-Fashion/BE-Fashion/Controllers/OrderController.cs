@@ -45,11 +45,11 @@ namespace BE_Fashion.Controllers
             return Ok(new { message = "Order status updated successfully" });
         }
         [HttpGet("filter-by-status")]
-        public async Task<IActionResult> GetOrdersByStatus([FromQuery] string status)
+        public async Task<IActionResult> GetOrdersByStatus([FromQuery] string status, [FromQuery] int? userId)
         {
             try
             {
-                var orders = await _orderService.GetOrdersByStatusAsync(status);
+                var orders = await _orderService.GetOrdersByStatusAsync(status, userId);
                 return Ok(orders);
             }
             catch (Exception ex)
