@@ -52,13 +52,49 @@ const ShopCart = () => {
     };
 
     // Xử lý tăng số lượng
-    const handleIncreaseQuantity = (variantId) => {
-        const updatedCart = cartItems.map((item) =>
-            item.variantId === variantId
-                ? { ...item, quantity: item.quantity + 1 }
-                : item
-        );
-        setCartItems(updatedCart);
+    const handleIncreaseQuantity = async (variantId) => {
+        if (!variantId) {
+            toast.error('Không thể xác định sản phẩm cần tăng số lượng.');
+            return;
+        }
+
+        if (authState) {
+            // Nếu đã đăng nhập, gọi API để tăng số lượng
+            const userId = JSON.parse(localStorage.getItem('authState'))?.userId;
+
+            if (!userId) {
+                toast.error('Không thể xác định người dùng.');
+                return;
+            }
+
+            try {
+                // Gọi API tăng số lượng
+                const { variantId: updatedVariantId, quantityInCart, messeage } = await cartService.increaseCartItem(userId, variantId);
+
+                // Cập nhật số lượng sản phẩm trong state
+                setCartItems((prevCartItems) =>
+                    prevCartItems.map((item) =>
+                        item.variantId === updatedVariantId
+                            ? { ...item, quantity: quantityInCart } // Cập nhật số lượng từ API
+                            : item
+                    )
+                );
+                toast.success(messeage); // Hiển thị thông báo từ API
+            } catch (error) {
+                console.error('Lỗi khi tăng số lượng sản phẩm:', error);
+                toast.error('Không thể tăng số lượng sản phẩm. Vui lòng thử lại.');
+            }
+        } else {
+            // Nếu chưa đăng nhập, tăng số lượng trong localStorage
+            const updatedCart = cartItems.map((item) =>
+                item.variantId === variantId
+                    ? { ...item, quantity: item.quantity + 1 }
+                    : item
+            );
+            setCartItems(updatedCart);
+            localStorage.setItem('cart', JSON.stringify(updatedCart));
+            toast.success('Số lượng sản phẩm đã được tăng!');
+        }
     };
 
     // Xử lý giảm số lượng
@@ -78,14 +114,18 @@ const ShopCart = () => {
             }
 
             try {
-                await cartService.decreaseCartItem(userId, variantId); // Gọi API giảm số lượng
+                // Gọi API giảm số lượng
+                const { variantId: updatedVariantId, quantityInCart } = await cartService.decreaseCartItem(userId, variantId);
+
+                // Cập nhật số lượng sản phẩm trong state
                 setCartItems((prevCartItems) =>
                     prevCartItems.map((item) =>
-                        item.variantId === variantId && item.quantity > 1
-                            ? { ...item, quantity: item.quantity - 1 } // Giảm số lượng trên frontend
+                        item.variantId === updatedVariantId
+                            ? { ...item, quantity: quantityInCart } // Cập nhật số lượng từ API
                             : item
                     )
                 );
+
                 toast.success('Số lượng sản phẩm đã được giảm!');
             } catch (error) {
                 console.error('Lỗi khi giảm số lượng sản phẩm:', error);

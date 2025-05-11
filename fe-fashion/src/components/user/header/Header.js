@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../../../store/store';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import productService from '../../../services/productService';
 import './Header.scss';
 
 const Header = () => {
@@ -39,17 +40,30 @@ const Header = () => {
     const handleCloseModal = () => setShowSearchModal(false);
 
     // Xử lý tìm kiếm
-    const handleSearchChange = (e) => {
-        const query = e.target.value;
+    const handleSearchChange = async (e) => {
+        const query = e.target.value; // Thay đổi từ const thành let
+
+
+
+
         setSearchQuery(query);
 
-        // Lọc kết quả tìm kiếm từ dữ liệu mẫu
-        const filteredResults = suggestedProducts.filter((product) =>
-            product.name.toLowerCase().includes(query.toLowerCase())
-        );
+        if (query.trim() === '') {
+            setSearchResults([]); // Xóa kết quả tìm kiếm nếu input rỗng
+            return;
+        }
 
-        setSearchResults(filteredResults);
+        try {
+            // Gọi API tìm kiếm sản phẩm theo tên
+            const results = await productService.searchProductByName(query);
+            setSearchResults(results); // Cập nhật kết quả tìm kiếm
+        } catch (error) {
+            console.error('Lỗi khi tìm kiếm sản phẩm:', error);
+            toast.error('Không thể tìm kiếm sản phẩm. Vui lòng thử lại.');
+        }
     };
+
+
     const handleSignOut = () => {
         dispatch(logout());
         localStorage.removeItem('authState'); // Xóa thông tin đăng nhập khỏi localStorage
@@ -174,20 +188,26 @@ const Header = () => {
                             </>
                         ) : (
                             <div className="search-results">
-                                {searchResults.map((product) => (
-                                    <NavLink
-                                        key={product.id}
-                                        to={`/shop/product/detail/${product.id}`}
-                                        className="search-result-item"
-                                    >
-                                        <img
-                                            src={require(`../../../assets/images/${product.image}`)}
-                                            alt={product.name}
-                                            className="result-image"
-                                        />
-                                        <span className="result-name">{product.name}</span>
-                                    </NavLink>
-                                ))}
+                                {searchResults.length > 0 ? (
+                                    searchResults.map((product) => (
+                                        <NavLink
+                                            key={product.productId}
+                                            to={`/shop/product/detail/${product.productId}`}
+                                            className="search-result-item"
+                                            onClick={handleCloseModal} // Đóng modal khi nhấp vào kết quả
+                                        >
+                                            <img
+                                                src={`https://localhost:7123${product.images[0]?.imageUrl}`} // Hiển thị ảnh đầu tiên
+                                                alt={product.name}
+                                                className="result-image"
+                                            />
+                                            <span className="result-name">{product.name}</span>
+
+                                        </NavLink>
+                                    ))
+                                ) : (
+                                    <p className="no-results">Không tìm thấy sản phẩm nào.</p>
+                                )}
                             </div>
                         )}
                     </div>
